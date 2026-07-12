@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KredAz — Onlayn nağd kredit</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F4F1E8;
+    --ink:#151F1B;
+    --ink-soft:#57645C;
+    --teal-deep:#0B3A34;
+    --teal-mid:#155C51;
+    --gold:#AD7F3F;
+    --sage:#E3E9DF;
+    --line:#D8D0BC;
+    --white:#FFFFFF;
+    --radius:14px;
+    --shadow-sm:0 2px 8px -2px rgba(21,31,27,0.12);
+    --shadow-md:0 16px 32px -18px rgba(21,31,27,0.35);
+    --shadow-lg:0 28px 56px -24px rgba(21,31,27,0.4);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Manrope',sans-serif;
+    line-height:1.5;
+  }
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:600;
+    margin:0;
+    letter-spacing:-0.01em;
+  }
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+  /* kilim motif divider */
+  .kilim{
+    height:14px;
+    width:100%;
+    background-image: repeating-linear-gradient(135deg, var(--gold) 0 6px, transparent 6px 12px);
+    opacity:0.55;
+  }
+  .kilim.dark{background-image: repeating-linear-gradient(135deg, var(--sage) 0 6px, transparent 6px 12px); opacity:0.5;}
+
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(246,241,228,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:18px 24px;max-width:1080px;margin:0 auto;
+  }
+  .logo{
+    font-family:'Fraunces',serif;font-weight:700;font-size:22px;
+    display:flex;align-items:baseline;gap:4px;
+  }
+  .logo span{color:var(--teal-mid);}
+  nav ul{list-style:none;display:flex;gap:28px;margin:0;padding:0;font-size:14.5px;font-weight:600;}
+  nav ul a{text-decoration:none;opacity:0.8;transition:opacity .2s;}
+  nav ul a:hover{opacity:1;}
+  .cta-btn{
+    background:var(--teal-deep);color:var(--white);
+    border:none;border-radius:999px;padding:12px 24px;
+    font-weight:700;font-size:14.5px;cursor:pointer;letter-spacing:.01em;
+    font-family:'Manrope',sans-serif;box-shadow:var(--shadow-sm);
+    transition:transform .18s ease, background .2s ease, box-shadow .2s ease;
+  }
+  .cta-btn:hover{background:var(--teal-mid);transform:translateY(-2px);box-shadow:var(--shadow-md);}
+  .cta-btn:active{transform:translateY(0);}
+  .cta-btn:focus-visible, a:focus-visible, button:focus-visible, input:focus-visible{
+    outline:3px solid var(--gold); outline-offset:2px;
+  }
+  .cta-ghost{
+    background:transparent;border:1.5px solid var(--ink);color:var(--ink);
+    border-radius:999px;padding:11px 22px;font-weight:700;font-size:14.5px;cursor:pointer;
+    transition:background .2s ease, color .2s ease, transform .18s ease;
+  }
+  .cta-ghost:hover{background:var(--ink);color:var(--white);transform:translateY(-2px);}
+
+  /* HERO */
+  .hero{padding:88px 0 56px;}
+  .hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:48px;align-items:center;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--teal-mid);margin-bottom:14px;display:block;
+  }
+  .hero h1{font-size:clamp(34px,5vw,54px);line-height:1.05;}
+  .hero h1 em{font-style:normal;color:var(--teal-deep);border-bottom:4px solid var(--gold);}
+  .hero p{margin-top:20px;font-size:17.5px;color:var(--ink-soft);max-width:46ch;}
+  .hero-actions{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap;}
+
+  .hero-card{
+    background:var(--white);border:1px solid var(--line);border-radius:20px;
+    padding:28px;box-shadow:var(--shadow-lg);
+    transition:transform .3s ease;
+  }
+  .hero-card .row{display:flex;justify-content:space-between;font-size:13.5px;color:var(--ink-soft);margin-bottom:6px;}
+  .hero-card .big-number{font-family:'IBM Plex Mono',monospace;font-size:30px;font-weight:600;color:var(--teal-deep);}
+  .hero-card hr{border:none;border-top:1px dashed var(--line);margin:16px 0;}
+
+  section{padding:64px 0;}
+  .section-head{max-width:60ch;margin-bottom:36px;}
+  .section-head .eyebrow{margin-bottom:10px;}
+  .section-head h2{font-size:clamp(26px,3.2vw,36px);}
+  .section-head p{color:var(--ink-soft);margin-top:12px;font-size:16px;}
+
+  /* CALCULATOR */
+  .calc-card{
+    background:var(--white);border:1px solid var(--line);border-radius:20px;
+    padding:36px;display:grid;grid-template-columns:1.1fr 0.9fr;gap:40px;
+    box-shadow:var(--shadow-md);
+  }
+  .slider-block{margin-bottom:30px;}
+  .slider-block label{display:flex;justify-content:space-between;font-weight:700;font-size:15px;margin-bottom:10px;}
+  .slider-value{font-family:'IBM Plex Mono',monospace;color:var(--teal-deep);font-size:17px;}
+  input[type=range]{
+    -webkit-appearance:none;width:100%;height:6px;border-radius:4px;
+    background:linear-gradient(to right, var(--teal-mid) 0%, var(--teal-mid) var(--fill,50%), var(--sage) var(--fill,50%), var(--sage) 100%);
+  }
+  input[type=range]::-webkit-slider-thumb{
+    -webkit-appearance:none;width:22px;height:22px;border-radius:50%;
+    background:var(--white);border:4px solid var(--teal-deep);cursor:pointer;
+    box-shadow:var(--shadow-sm);transition:transform .15s ease;
+  }
+  input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.1);}
+  .range-labels{display:flex;justify-content:space-between;font-size:12.5px;color:var(--ink-soft);margin-top:8px;font-family:'IBM Plex Mono',monospace;}
+
+  .results{
+    background:var(--teal-deep);color:var(--white);border-radius:16px;padding:26px;
+  }
+  .results .pair{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.15);font-size:14.5px;}
+  .results .pair:last-child{border-bottom:none;}
+  .results .headline-pair{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px;}
+  .results .headline-pair .num{font-family:'IBM Plex Mono',monospace;font-size:32px;font-weight:600;color:#E8C688;}
+  .results .headline-pair .lbl{font-size:13.5px;opacity:0.85;}
+
+  /* OFFERS */
+  .offers-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .offer-card{
+    background:var(--white);border:1px solid var(--line);border-radius:18px;padding:28px;
+    position:relative;overflow:hidden;box-shadow:var(--shadow-sm);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .offer-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);}
+  .offer-card.vip{background:var(--teal-deep);color:var(--white);}
+  .offer-card .tag{
+    font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:block;
+  }
+  .offer-card h3{font-size:24px;margin-bottom:6px;}
+  .offer-card .amount{font-family:'IBM Plex Mono',monospace;font-size:19px;margin-bottom:18px;}
+  .offer-card ul{list-style:none;padding:0;margin:0;font-size:14.5px;}
+  .offer-card ul li{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed var(--line);}
+  .offer-card.vip ul li{border-bottom:1px dashed rgba(255,255,255,0.25);}
+
+  /* HOW IT WORKS */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .step{border-left:2px solid var(--gold);padding-left:18px;}
+  .step .num{font-family:'IBM Plex Mono',monospace;color:var(--teal-mid);font-size:14px;}
+  .step h3{font-size:19px;margin:8px 0 8px;}
+  .step p{color:var(--ink-soft);font-size:15px;margin:0;}
+
+  /* FAQ */
+  .faq-item{border-bottom:1px solid var(--line);}
+  .faq-q{
+    width:100%;text-align:left;background:none;border:none;cursor:pointer;
+    padding:20px 4px;font-size:16.5px;font-weight:700;font-family:'Manrope',sans-serif;
+    display:flex;justify-content:space-between;align-items:center;color:var(--ink);
+  }
+  .faq-q .icon{font-family:'IBM Plex Mono',monospace;color:var(--teal-mid);font-size:20px;}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease;font-size:15px;color:var(--ink-soft);}
+  .faq-a p{margin:0 0 18px;padding-right:20px;}
+  .faq-item.open .faq-a{max-height:220px;}
+
+  /* APPLICATION FORM */
+  .form-card{
+    background:var(--white);border:1px solid var(--line);border-radius:20px;padding:36px;
+    max-width:640px;
+  }
+  .field{margin-bottom:20px;}
+  .field label{display:block;font-weight:700;font-size:14.5px;margin-bottom:8px;}
+  .field input, .field select{
+    width:100%;padding:13px 14px;border:1.5px solid var(--line);border-radius:10px;
+    font-family:'Manrope',sans-serif;font-size:15px;background:var(--paper);
+    transition:border-color .18s ease, box-shadow .18s ease;
+  }
+  .field input:focus, .field select:focus{
+    border-color:var(--teal-mid);box-shadow:0 0 0 3px rgba(21,92,81,0.15);outline:none;
+  }
+  .toggle-row{display:flex;gap:12px;}
+  .toggle-btn{
+    flex:1;padding:13px;border-radius:10px;border:1.5px solid var(--line);
+    background:var(--white);cursor:pointer;font-weight:700;font-size:14.5px;
+    transition:background .18s ease, color .18s ease, border-color .18s ease;
+  }
+  .toggle-btn.active{background:var(--teal-deep);color:var(--white);border-color:var(--teal-deep);}
+  .checkline{display:flex;gap:10px;align-items:flex-start;margin-bottom:14px;font-size:13.5px;color:var(--ink-soft);}
+  .checkline input{margin-top:3px;}
+  .disclaimer-box{
+    background:var(--sage);border-radius:12px;padding:16px 18px;font-size:13px;color:var(--ink-soft);
+    margin-top:6px;margin-bottom:20px;
+  }
+  .form-status{margin-top:16px;font-size:14px;font-weight:700;color:var(--teal-deep);display:none;}
+  .field-error{display:none;color:#A63B2F;font-size:12.5px;margin-top:6px;font-weight:600;}
+  .field.invalid input{border-color:#A63B2F;background:#FBEFEC;}
+  .field.invalid .field-error{display:block;}
+  .field.valid input{border-color:var(--teal-mid);}
+
+  .modal-overlay{
+    position:fixed;inset:0;background:rgba(11,20,17,0.65);
+    display:none;align-items:flex-start;justify-content:center;
+    z-index:200;padding:40px 20px;overflow-y:auto;
+  }
+  .modal-overlay.active{display:flex;}
+  .modal-card{
+    background:var(--white);border-radius:20px;padding:36px;max-width:640px;width:100%;
+    position:relative;box-shadow:var(--shadow-lg);
+    animation:modalIn .22s ease;
+  }
+  @keyframes modalIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+  .modal-close{
+    position:absolute;top:18px;right:18px;background:var(--sage);border:none;
+    width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:15px;font-weight:700;
+    transition:background .18s ease;
+  }
+  .modal-close:hover{background:var(--line);}
+
+  footer{background:var(--ink);color:#EDE7D6;padding:48px 0 28px;}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px;margin-bottom:32px;}
+  .footer-grid h4{font-family:'Fraunces',serif;font-size:16px;margin-bottom:14px;color:var(--white);}
+  .footer-grid p, .footer-grid a{font-size:13.5px;color:#C9C2AE;line-height:1.7;text-decoration:none;}
+  .foot-note{
+    border-top:1px solid rgba(255,255,255,0.15);padding-top:20px;
+    font-size:12px;color:#9B9480;line-height:1.7;
+  }
+
+  @media (max-width:860px){
+    .hero-grid, .calc-card, .offers-grid, .footer-grid{grid-template-columns:1fr;}
+    .steps{grid-template-columns:1fr;}
+    nav ul{display:none;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    .cta-btn, .cta-ghost, .faq-a, .offer-card, .modal-card{transition:none;animation:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">KredAz<span>.</span></div>
+    <nav><ul>
+      <li><a href="#hesabla">Hesabla</a></li>
+      <li><a href="#teklifler">Təkliflər</a></li>
+      <li><a href="#neceislyir">Necə işləyir</a></li>
+      <li><a href="#faq">Suallar</a></li>
+    </ul></nav>
+    <button class="cta-btn" onclick="openModal()">Müraciət et</button>
+  </div>
+</header>
+
+<div class="kilim"></div>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Rəsmi gəlir sənədi tələb olunmadan · 24/7</span>
+      <h1>Pulunuz <em>30 dəqiqəyə</em> kartınızda ola bilər.</h1>
+      <p>Şəxsiyyət vəsiqəniz kifayətdir — rəsmi iş yeri sənədi tələb olunmur. Məbləği seçin, ödəniş qrafikini əvvəlcədən görün, sonra qərarı özünüz verin.</p>
+      <div class="hero-actions">
+        <button class="cta-btn" onclick="document.getElementById('hesabla').scrollIntoView()">Kalkulyatoru aç</button>
+        <button class="cta-ghost" onclick="document.getElementById('teklifler').scrollIntoView()">Şərtlərə bax</button>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="row"><span>Kredit təşkilatı</span><span class="mono">KredAz MKT</span></div>
+      <div class="row"><span>Məbləğ aralığı</span><span class="mono">100–700 AZN</span></div>
+      <hr>
+      <div class="row"><span>Nümunə: 500 AZN / 3 ay</span></div>
+      <div class="big-number">202 AZN <span style="font-size:14px;color:var(--ink-soft);font-family:'Manrope',sans-serif;">/ ay</span></div>
+      <div class="row" style="margin-top:10px;"><span>Aylıq faiz dərəcəsi</span><span class="mono">4%</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="hesabla">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Kalkulyator</span>
+      <h2>Nə qədər lazımdır, neçə aya rahatdır?</h2>
+      <p>Sürüşdürücüləri hərəkət etdirin — rəqəmlər dərhal yenilənir. Bu, yalnız ilkin göstəricidir, yekun təklif ərizədən sonra bildirilir.</p>
+    </div>
+
+    <div class="calc-card">
+      <div>
+        <div class="slider-block">
+          <label>Kredit məbləği <span class="slider-value" id="amountLabel">400 AZN</span></label>
+          <input type="range" id="amountSlider" min="100" max="700" step="50" value="400">
+          <div class="range-labels"><span>100 AZN</span><span>700 AZN</span></div>
+        </div>
+        <div class="slider-block">
+          <label>Müddət <span class="slider-value" id="termLabel">3 ay</span></label>
+          <input type="range" id="termSlider" min="2" max="3" step="1" value="3">
+          <div class="range-labels"><span>2 ay</span><span>3 ay</span></div>
+        </div>
+      </div>
+      <div class="results">
+        <div class="headline-pair">
+          <div><div class="lbl">Aylıq ödəniş</div><div class="num" id="monthlyOut">202 AZN</div></div>
+          <div style="text-align:right"><div class="lbl">Qaytarılacaq məbləğ</div><div class="num" id="totalOut">605 AZN</div></div>
+        </div>
+        <div class="pair"><span>Kredit məbləği</span><span class="mono" id="principalOut">400 AZN</span></div>
+        <div class="pair"><span>Komissiya (9%, ilk ödənişdə)</span><span class="mono" id="feeOut">36 AZN</span></div>
+        <div class="pair"><span>Müddət</span><span class="mono" id="termOut">3 ay</span></div>
+        <div class="pair"><span>Aylıq faiz dərəcəsi</span><span class="mono">4%</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="kilim dark"></div></div>
+
+<section id="teklifler">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Təkliflər</span>
+      <h2>İki fərqli müddət, eyni sadəlik</h2>
+      <p>Rəsmi gəlir sənədi tələb olunmur. Limit hər iki planda eynidir, yalnız müddət fərqlənir. Komissiya ilk ödənişdə tutulur, gizli ödəniş yoxdur.</p>
+    </div>
+    <div class="offers-grid">
+      <div class="offer-card">
+        <span class="tag">Standart</span>
+        <h3>Sürətli Kredit</h3>
+        <div class="amount mono">100 – 700 AZN</div>
+        <ul>
+          <li><span>Müddət</span><span class="mono">2 ay</span></li>
+          <li><span>Aylıq faiz</span><span class="mono">4%</span></li>
+          <li><span>Komissiya</span><span class="mono">9%</span></li>
+          <li><span>Rəsmi gəlir tələbi</span><span class="mono">Yoxdur</span></li>
+        </ul>
+      </div>
+      <div class="offer-card vip">
+        <span class="tag">VIP</span>
+        <h3>Uzadılmış Kredit</h3>
+        <div class="amount mono">100 – 700 AZN</div>
+        <ul>
+          <li><span>Müddət</span><span class="mono">3 ay</span></li>
+          <li><span>Aylıq faiz</span><span class="mono">4%</span></li>
+          <li><span>Komissiya</span><span class="mono">9%</span></li>
+          <li><span>Rəsmi gəlir tələbi</span><span class="mono">Yoxdur</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="neceislyir">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Necə işləyir</span>
+      <h2>Üç addımda müraciət</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="num">01</span>
+        <h3>Hesablayın</h3>
+        <p>Kalkulyatorda məbləği və müddəti seçin, ödəniş planını əvvəlcədən görün.</p>
+      </div>
+      <div class="step">
+        <span class="num">02</span>
+        <h3>Müraciət göndərin</h3>
+        <p>Şəxsiyyət vəsiqəsi məlumatları və mobil nömrənizlə formu doldurun.</p>
+      </div>
+      <div class="step">
+        <span class="num">03</span>
+        <h3>Qərarı öyrənin</h3>
+        <p>Kredit tarixçəniz və müraciətiniz yoxlanılır, nəticə barədə məlumatlandırılırsınız.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Sual-Cavab</span>
+      <h2>Tez-tez verilən suallar</h2>
+    </div>
+    <div id="faqList">
+      <div class="faq-item">
+        <button class="faq-q">Nə qədər məbləğ ala bilərəm? <span class="icon">+</span></button>
+        <div class="faq-a"><p>100–700 AZN arasında, rəsmi gəlir sənədi olmadan da müraciət edə bilərsiniz. Uyğun limit kredit tarixçənizə və müraciət zamanı verdiyiniz məlumatlara əsasən müəyyən olunur.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Hansı sənədlər lazımdır? <span class="icon">+</span></button>
+        <div class="faq-a"><p>Əsas tələb — şəxsiyyət vəsiqəsi məlumatlarıdır. Razılığınızla iş yeri və kredit tarixçəniz elektron qaydada yoxlanılır.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Gecikmə olarsa nə baş verir? <span class="icon">+</span></button>
+        <div class="faq-a"><p>Gecikmə halında müqavilədə göstərilən cərimə tətbiq olunur və məlumat kredit bürosuna ötürülür, bu da gələcək kredit tarixçənizə təsir edə bilər.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Krediti vaxtından əvvəl qapata bilərəmmi? <span class="icon">+</span></button>
+        <div class="faq-a"><p>Bəli. Erkən ödəmədə faiz yalnız istifadə etdiyiniz günlərə görə hesablanır, qalan hissə üzrə əlavə haqq alınmır.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="wrap"><div class="kilim"></div></div>
+
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal-card">
+    <button type="button" class="modal-close" onclick="closeModal()" aria-label="Bağla">✕</button>
+    <h2 style="font-size:26px;margin-bottom:6px;">Onlayn kredit müraciəti</h2>
+    <p style="color:var(--ink-soft);font-size:14.5px;margin:0 0 26px;">Məlumatlarınızı daxil edin, yoxlamanı davam etdirək.</p>
+    <form id="applyForm" novalidate>
+      <div class="field">
+        <label for="fin">FIN kod</label>
+        <input type="text" id="fin" placeholder="Məsələn: 7A2BC9D" maxlength="7">
+        <div class="field-error" id="finError">FIN kod 7 simvoldan ibarət olmalıdır (rəqəm və hərf).</div>
+      </div>
+      <div class="field">
+        <label for="idnum">Şəxsiyyət vəsiqəsinin seriya nömrəsi</label>
+        <div style="display:flex;gap:10px;">
+          <select id="idPrefix" style="max-width:90px;">
+            <option>AZE</option>
+          </select>
+          <input type="text" id="idnum" placeholder="12345678" maxlength="8" inputmode="numeric">
+        </div>
+        <div class="field-error" id="idError">Seriya nömrəsi 8 rəqəmdən ibarət olmalıdır.</div>
+      </div>
+      <div class="field">
+        <label for="phone">Mobil nömrə</label>
+        <input type="tel" id="phone" placeholder="050 123 45 67" inputmode="numeric">
+        <div class="field-error" id="phoneError">Düzgün Azərbaycan mobil nömrəsi daxil edin (10 rəqəm, məs: 050 123 45 67).</div>
+      </div>
+      <div class="field">
+        <label>Rəsmi iş yeriniz varmı?</label>
+        <div class="toggle-row">
+          <button type="button" class="toggle-btn active" data-val="beli">Bəli</button>
+          <button type="button" class="toggle-btn" data-val="xeyr">Xeyr</button>
+        </div>
+      </div>
+      <label class="checkline"><input type="checkbox" id="consent1" required> Şəxsiyyət vəsiqəsi və iş yeri məlumatlarımın yoxlanılmasına razıyam</label>
+      <label class="checkline"><input type="checkbox" id="consent2" required> Kredit tarixçəsi məlumatlarımın yoxlanılmasına razıyam</label>
+      <div class="disclaimer-box">Bu, dizayn nümunəsidir. Real istifadə üçün BOKT lisenziyası, fərdi məlumatların mühafizəsi qanunvericiliyinə uyğunluq və təhlükəsiz backend infrastrukturu tələb olunur. Heç bir məlumat serverə göndərilmir.</div>
+      <button type="submit" class="cta-btn" style="width:100%;padding:15px;">Davam et</button>
+      <div class="form-status" id="formStatus">✓ Məlumatlar formatca doğrudur. (Nümunə axın — heç nə göndərilmədi.)</div>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h4>KredAz MKT</h4>
+        <p>Bu sayt dizayn nümunəsi olaraq hazırlanıb. Real fəaliyyət üçün Azərbaycan Mərkəzi Bankından BOKT lisenziyası tələb olunur.</p>
+      </div>
+      <div>
+        <h4>Naviqasiya</h4>
+        <p><a href="#hesabla">Kalkulyator</a></p>
+        <p><a href="#teklifler">Təkliflər</a></p>
+        <p><a href="#faq">Suallar</a></p>
+      </div>
+      <div>
+        <h4>Əlaqə</h4>
+        <p>info@kredaz.az</p>
+        <p>*1414</p>
+      </div>
+    </div>
+    <div class="foot-note">© 2026 KredAz. Nümunə layihədir, real maliyyə xidməti deyil.</div>
+  </div>
+</footer>
+
+<script>
+  const amountSlider = document.getElementById('amountSlider');
+  const termSlider = document.getElementById('termSlider');
+  const amountLabel = document.getElementById('amountLabel');
+  const termLabel = document.getElementById('termLabel');
+  const monthlyOut = document.getElementById('monthlyOut');
+  const totalOut = document.getElementById('totalOut');
+  const principalOut = document.getElementById('principalOut');
+  const feeOut = document.getElementById('feeOut');
+  const termOut = document.getElementById('termOut');
+
+  function updateSliderFill(el){
+    const pct = ((el.value - el.min) / (el.max - el.min)) * 100;
+    el.style.setProperty('--fill', pct + '%');
+  }
+
+  function calc(){
+    const amount = parseInt(amountSlider.value);
+    const term = parseInt(termSlider.value);
+    const MONTHLY_RATE = 0.04;
+    const fee = Math.round(amount * 0.09);
+    const interest = Math.round(amount * MONTHLY_RATE * term);
+    const total = amount + fee + interest;
+    const monthly = Math.round(total / term);
+
+    amountLabel.textContent = amount.toLocaleString('az-AZ') + ' AZN';
+    termLabel.textContent = term + ' ay';
+    monthlyOut.textContent = monthly.toLocaleString('az-AZ') + ' AZN';
+    totalOut.textContent = total.toLocaleString('az-AZ') + ' AZN';
+    principalOut.textContent = amount.toLocaleString('az-AZ') + ' AZN';
+    feeOut.textContent = fee.toLocaleString('az-AZ') + ' AZN';
+    termOut.textContent = term + ' ay';
+
+    updateSliderFill(amountSlider);
+    updateSliderFill(termSlider);
+  }
+  amountSlider.addEventListener('input', calc);
+  termSlider.addEventListener('input', calc);
+  calc();
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    item.querySelector('.faq-q').addEventListener('click', ()=>{
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open'); i.querySelector('.icon').textContent='+';});
+      if(!isOpen){ item.classList.add('open'); item.querySelector('.icon').textContent='−'; }
+    });
+  });
+
+  // toggle buttons
+  document.querySelectorAll('.toggle-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      btn.parentElement.querySelectorAll('.toggle-btn').forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+    });
+  });
+
+  // modal open/close
+  function openModal(){
+    document.getElementById('modalOverlay').classList.add('active');
+    document.body.style.overflow='hidden';
+  }
+  function closeModal(){
+    document.getElementById('modalOverlay').classList.remove('active');
+    document.body.style.overflow='';
+  }
+  document.getElementById('modalOverlay').addEventListener('click', (e)=>{
+    if(e.target.id==='modalOverlay') closeModal();
+  });
+  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
+
+  // --- input masking: only allow valid characters as user types ---
+  const finInput = document.getElementById('fin');
+  const idInput = document.getElementById('idnum');
+  const phoneInput = document.getElementById('phone');
+
+  finInput.addEventListener('input', ()=>{
+    finInput.value = finInput.value.toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,7);
+  });
+  idInput.addEventListener('input', ()=>{
+    idInput.value = idInput.value.replace(/[^0-9]/g,'').slice(0,8);
+  });
+  phoneInput.addEventListener('input', ()=>{
+    let digits = phoneInput.value.replace(/\D/g,'').slice(0,10);
+    let out = '';
+    if(digits.length>0) out = digits.slice(0,3);
+    if(digits.length>3) out += ' ' + digits.slice(3,6);
+    if(digits.length>6) out += ' ' + digits.slice(6,8);
+    if(digits.length>8) out += ' ' + digits.slice(8,10);
+    phoneInput.value = out;
+  });
+
+  // --- validators ---
+  const AZ_MOBILE_PREFIXES = ['10','50','51','55','60','70','77','99'];
+  function validateFin(){
+    const v = finInput.value;
+    const ok = /^[A-Z0-9]{7}$/.test(v);
+    setFieldState(finInput, 'finError', ok);
+    return ok;
+  }
+  function validateId(){
+    const v = idInput.value;
+    const ok = /^[0-9]{8}$/.test(v);
+    setFieldState(idInput, 'idError', ok);
+    return ok;
+  }
+  function validatePhone(){
+    const digits = phoneInput.value.replace(/\D/g,'');
+    const prefix = digits.slice(1,3);
+    const ok = digits.length===10 && digits[0]==='0' && AZ_MOBILE_PREFIXES.includes(prefix);
+    setFieldState(phoneInput, 'phoneError', ok);
+    return ok;
+  }
+  function setFieldState(input, errorId, ok){
+    const field = input.closest('.field');
+    field.classList.remove('valid','invalid');
+    if(input.value.length===0) return; // don't flag empty until submit
+    field.classList.add(ok ? 'valid' : 'invalid');
+  }
+
+  finInput.addEventListener('blur', validateFin);
+  idInput.addEventListener('blur', validateId);
+  phoneInput.addEventListener('blur', validatePhone);
+
+  // form (no real submission — demo only)
+  document.getElementById('applyForm').addEventListener('submit', (e)=>{
+    e.preventDefault();
+    const finOk = validateFin();
+    const idOk = validateId();
+    const phoneOk = validatePhone();
+    const consentOk = document.getElementById('consent1').checked && document.getElementById('consent2').checked;
+
+    if(finInput.value.length===0){ finInput.closest('.field').classList.add('invalid'); }
+    if(idInput.value.length===0){ idInput.closest('.field').classList.add('invalid'); }
+    if(phoneInput.value.replace(/\D/g,'').length===0){ phoneInput.closest('.field').classList.add('invalid'); }
+
+    if(!finOk || !idOk || !phoneOk || !consentOk){
+      document.getElementById('formStatus').style.display='none';
+      return;
+    }
+    document.getElementById('formStatus').style.display='block';
+  });
+</script>
+
+</body>
+</html>
