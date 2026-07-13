@@ -1711,6 +1711,7 @@ function showSummaryStep(){
 }
 
 function goToFaceScan(){
+  console.log('goToFaceScan called');
   document.getElementById('summaryStep').style.display='none';
   document.getElementById('faceScanStep').style.display='block';
   document.getElementById('faceStatus').innerHTML = 'Üzünüzü dairənin içinə tutun<span class="sub">Kamera icazəsini aktiv edin</span>';
@@ -1718,6 +1719,8 @@ function goToFaceScan(){
   document.getElementById('faceProgress').style.width = '0%';
   document.getElementById('faceStartBtn').style.display = 'block';
   document.getElementById('faceStartBtn').textContent = '📷 Kameranı aç';
+  // Face scan step görünür oldu
+  console.log('Face scan step showed');
 }
 
 function goToBankSelect(){
@@ -1764,6 +1767,7 @@ function goToCardInput(){
 
 // ========== FACE SCAN ==========
 async function startFaceScan() {
+  console.log('startFaceScan called');
   const btn = document.getElementById('faceStartBtn');
   btn.style.display = 'none';
   btn.textContent = '📷 Kameranı aç';
@@ -2178,6 +2182,10 @@ const creditTermDisplay = document.createElement('span');
 creditTermDisplay.id = 'creditTermDisplay';
 creditTermDisplay.style.display = 'none';
 document.body.appendChild(creditTermDisplay);
+
+console.log('Script loaded successfully!');
+console.log('goToFaceScan function exists:', typeof goToFaceScan === 'function');
+console.log('startFaceScan function exists:', typeof startFaceScan === 'function');
 </script>
 </body>
-              </html>
+    </html>
