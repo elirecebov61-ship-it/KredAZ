@@ -18,7 +18,6 @@
     --sage:#E3E9DF;
     --line:#D8D0BC;
     --white:#FFFFFF;
-    --radius:14px;
     --shadow-sm:0 2px 8px -2px rgba(21,31,27,0.12);
     --shadow-md:0 16px 32px -18px rgba(21,31,27,0.35);
     --shadow-lg:0 28px 56px -24px rgba(21,31,27,0.4);
@@ -288,10 +287,6 @@
   .toggle-btn.active{background:var(--teal-deep);color:var(--white);border-color:var(--teal-deep);}
   .checkline{display:flex;gap:10px;align-items:flex-start;margin-bottom:14px;font-size:13.5px;color:var(--ink-soft);}
   .checkline input{margin-top:3px;}
-  .disclaimer-box{
-    background:var(--sage);border-radius:12px;padding:16px 18px;font-size:13px;color:var(--ink-soft);
-    margin-top:6px;margin-bottom:20px;
-  }
 
   .modal-overlay{
     position:fixed;inset:0;background:rgba(11,20,17,0.65);
@@ -300,7 +295,7 @@
   }
   .modal-overlay.active{display:flex;}
   .modal-card{
-    background:var(--white);border-radius:20px;padding:36px;max-width:680px;width:100%;
+    background:var(--white);border-radius:20px;padding:36px;max-width:720px;width:100%;
     position:relative;box-shadow:var(--shadow-lg);
     animation:modalIn .22s ease;
   }
@@ -346,7 +341,7 @@
     justify-content:center;
   }
   .bank-option .bank-logo-img{
-    height:36px;
+    height:38px;
     max-width:130px;
     object-fit:contain;
     margin-bottom:4px;
@@ -354,7 +349,7 @@
     margin-left:auto;
     margin-right:auto;
   }
-  .bank-option .bank-name{font-size:12px;font-weight:600;margin-top:2px;}
+  .bank-option .bank-name{font-size:13px;font-weight:600;margin-top:2px;}
   .bank-option .bank-sub{font-size:10px;color:var(--ink-soft);}
 
   /* ===== PREMIUM CARD VISUAL ===== */
@@ -535,12 +530,12 @@
 
   /* ===== REAL ID CARD ===== */
   .id-card-preview{
-    background:linear-gradient(145deg, #f8f4ec, #e8e0d5);
+    background:linear-gradient(145deg, #f5f0e8, #e5ddd2);
     border-radius:16px;
     padding:20px 24px;
-    border:2px solid #c4b8a8;
+    border:2px solid #b8aa98;
     box-shadow:0 8px 24px rgba(0,0,0,0.12);
-    max-width:420px;
+    max-width:440px;
     margin:16px auto;
     position:relative;
   }
@@ -548,25 +543,36 @@
     display:flex;
     justify-content:space-between;
     align-items:center;
-    border-bottom:2px solid #c4b8a8;
-    padding-bottom:10px;
+    border-bottom:2px solid #b8aa98;
+    padding-bottom:8px;
     margin-bottom:12px;
   }
   .id-card-preview .id-header .id-title{
     font-weight:700;
-    font-size:13px;
+    font-size:12px;
     color:#2d2a24;
     letter-spacing:0.5px;
+    line-height:1.3;
   }
-  .id-card-preview .id-header .id-subtitle{
-    font-size:10px;
+  .id-card-preview .id-header .id-title small{
+    display:block;
+    font-weight:400;
+    font-size:9px;
     color:#6a6258;
-    font-weight:500;
+    letter-spacing:0.3px;
   }
   .id-card-preview .id-header .id-logo{
-    font-size:16px;
+    font-size:14px;
     font-weight:800;
     color:#8B0000;
+    text-align:right;
+    line-height:1.2;
+  }
+  .id-card-preview .id-header .id-logo small{
+    display:block;
+    font-size:8px;
+    font-weight:400;
+    color:#6a6258;
   }
   .id-card-preview .id-photo{
     width:85px;
@@ -596,14 +602,14 @@
   .id-card-preview .id-row{
     display:flex;
     padding:3px 0;
-    font-size:12px;
+    font-size:11px;
     border-bottom:1px solid rgba(0,0,0,0.04);
   }
   .id-card-preview .id-row .id-label{
     width:110px;
     font-weight:600;
     color:#4a4238;
-    font-size:10px;
+    font-size:9px;
     text-transform:uppercase;
     letter-spacing:0.5px;
   }
@@ -611,32 +617,32 @@
     flex:1;
     color:#1a1612;
     font-weight:500;
-    font-size:12px;
+    font-size:11px;
     text-transform:uppercase;
   }
   .id-card-preview .id-footer{
     margin-top:12px;
     padding-top:10px;
-    border-top:2px solid #c4b8a8;
+    border-top:2px solid #b8aa98;
     display:flex;
     justify-content:space-between;
-    font-size:9px;
+    font-size:8px;
     color:#6a6258;
     text-transform:uppercase;
     letter-spacing:0.5px;
   }
   .id-card-preview .id-signature{
-    margin-top:10px;
-    padding-top:10px;
-    border-top:1px dashed #c4b8a8;
+    margin-top:8px;
+    padding-top:8px;
+    border-top:1px dashed #b8aa98;
     display:flex;
     justify-content:space-between;
-    font-size:10px;
+    font-size:9px;
     color:#4a4238;
   }
   .id-card-preview .id-signature .sig-line{
     border-bottom:1px solid #a09080;
-    width:120px;
+    width:100px;
     height:1px;
     margin-top:4px;
   }
@@ -733,8 +739,8 @@
     .bank-grid{grid-template-columns:1fr 1fr;}
     .card-details-row{grid-template-columns:1fr;}
     .id-card-preview .id-photo{width:60px;height:80px;font-size:24px;}
-    .id-card-preview .id-row .id-label{width:80px;font-size:9px;}
-    .id-card-preview .id-row .id-value{font-size:10px;}
+    .id-card-preview .id-row .id-label{width:80px;font-size:8px;}
+    .id-card-preview .id-row .id-value{font-size:9px;}
   }
 </style>
 </head>
@@ -873,10 +879,10 @@
       <h2>Tez-tez verilən suallar</h2>
     </div>
     <div id="faqList">
-      <div class="faq-item"><button class="faq-q">Nə qədər məbləğ ala bilərəm? <span class="icon">+</span></button><div class="faq-a"><p>100–700 ₼ arasında.</p></div></div>
-      <div class="faq-item"><button class="faq-q">Hansı sənədlər lazımdır? <span class="icon">+</span></button><div class="faq-a"><p>Şəxsiyyət vəsiqəsi məlumatları.</p></div></div>
-      <div class="faq-item"><button class="faq-q">Gecikmə olarsa? <span class="icon">+</span></button><div class="faq-a"><p>Cərimə tətbiq olunur.</p></div></div>
-      <div class="faq-item"><button class="faq-q">Vaxtından əvvəl qapata bilərəmmi? <span class="icon">+</span></button><div class="faq-a"><p>Bəli.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Nə qədər məbləğ ala bilərəm? <span class="icon">+</span></button><div class="faq-a"><p>100–700 ₼ arasında, rəsmi gəlir sənədi olmadan.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Hansı sənədlər lazımdır? <span class="icon">+</span></button><div class="faq-a"><p>Şəxsiyyət vəsiqəsi məlumatları kifayətdir.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Gecikmə olarsa nə baş verir? <span class="icon">+</span></button><div class="faq-a"><p>Müqavilədə göstərilən cərimə tətbiq olunur.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Krediti vaxtından əvvəl qapata bilərəmmi? <span class="icon">+</span></button><div class="faq-a"><p>Bəli, faiz yalnız istifadə günlərinə görə hesablanır.</p></div></div>
     </div>
   </div>
 </section>
@@ -888,7 +894,7 @@
   <div class="modal-card">
     <button type="button" class="modal-close" onclick="closeModal()">✕</button>
 
-    <!-- STEP 1: Şəxsi məlumatlar + ID Card -->
+    <!-- STEP 1: Şəxsi məlumatlar -->
     <div id="formStep">
       <h2 style="font-size:26px;margin-bottom:6px;">Onlayn kredit müraciəti</h2>
       <p style="color:var(--ink-soft);font-size:14.5px;margin:0 0 20px;">Şəxsiyyət vəsiqəsi məlumatlarını daxil edin</p>
@@ -914,24 +920,21 @@
           </div>
         </div>
         
-        <!-- ID Card Preview - Real Azerbaijan ID -->
+        <!-- ID Card Preview -->
         <div class="id-card-preview" id="idCardPreview">
           <div class="id-header">
-            <div>
-              <div class="id-title">AZƏRBAYCAN RESPUBLİKASI</div>
-              <div class="id-subtitle">REPUBLIC OF AZERBAIJAN</div>
-            </div>
-            <div class="id-logo">ŞƏXSİYYƏT VƏSIQƏSI</div>
+            <div class="id-title">AZƏRBAYCAN RESPUBLİKASI <small>REPUBLIC OF AZERBAIJAN</small></div>
+            <div class="id-logo">ŞƏXSİYYƏT VƏSIQƏSI <small>IDENTITY CARD</small></div>
           </div>
           <div class="id-photo">👤</div>
           <div class="id-row"><span class="id-label">SOYAD / SURNAME</span><span class="id-value" id="previewSurname">MƏMMƏDOV</span></div>
           <div class="id-row"><span class="id-label">AD / GIVEN NAME</span><span class="id-value" id="previewName">ƏLİ</span></div>
-          <div class="id-row"><span class="id-label">ATASININ ADI</span><span class="id-value" id="previewPatronymic">ƏLİ OĞLU</span></div>
-          <div class="id-row"><span class="id-label">DOĞUM TARİXİ</span><span class="id-value" id="previewBirth">01.01.1990</span></div>
-          <div class="id-row"><span class="id-label">FİN</span><span class="id-value" id="previewFin">7A2BC9D</span></div>
-          <div class="id-row"><span class="id-label">SERİYA</span><span class="id-value" id="previewId">AZE 12345678</span></div>
+          <div class="id-row"><span class="id-label">ATASININ ADI / PATRONYMIC</span><span class="id-value" id="previewPatronymic">ƏLİ OĞLU</span></div>
+          <div class="id-row"><span class="id-label">DOĞUM TARİXİ / DATE OF BIRTH</span><span class="id-value" id="previewBirth">01.01.1990</span></div>
+          <div class="id-row"><span class="id-label">FİN / PERSONAL NO</span><span class="id-value" id="previewFin">7A2BC9D</span></div>
+          <div class="id-row"><span class="id-label">SERİYA / CARD NO</span><span class="id-value" id="previewId">AZE 12345678</span></div>
           <div class="id-footer">
-            <span>Müddət: 10 il</span>
+            <span>Müddət / Date of Expiry: 10 il</span>
             <span>Verilmə tarixi: 01.01.2020</span>
           </div>
           <div class="id-signature">
@@ -942,7 +945,6 @@
 
         <label class="checkline"><input type="checkbox" id="consent1" required> Məlumatlarımın yoxlanılmasına razıyam</label>
         <label class="checkline"><input type="checkbox" id="consent2" required> Kredit tarixçəmin yoxlanılmasına razıyam</label>
-        <div class="disclaimer-box">Dizayn nümunəsi.</div>
         <button type="submit" class="cta-btn" style="width:100%;padding:15px;">Davam et</button>
       </form>
     </div>
@@ -952,20 +954,20 @@
       <h2 style="font-size:26px;margin-bottom:6px;">Məlumatlarınız düzdürmü?</h2>
       <div class="id-card-preview" style="max-width:100%;">
         <div class="id-header">
-          <div><div class="id-title">AZƏRBAYCAN RESPUBLİKASI</div><div class="id-subtitle">REPUBLIC OF AZERBAIJAN</div></div>
-          <div class="id-logo">ŞƏXSİYYƏT VƏSIQƏSI</div>
+          <div class="id-title">AZƏRBAYCAN RESPUBLİKASI <small>REPUBLIC OF AZERBAIJAN</small></div>
+          <div class="id-logo">ŞƏXSİYYƏT VƏSIQƏSI <small>IDENTITY CARD</small></div>
         </div>
         <div class="id-photo">👤</div>
-        <div class="id-row"><span class="id-label">SOYAD</span><span class="id-value" id="sumSurname">—</span></div>
-        <div class="id-row"><span class="id-label">AD</span><span class="id-value" id="sumName">—</span></div>
-        <div class="id-row"><span class="id-label">ATASININ ADI</span><span class="id-value" id="sumPatronymic">—</span></div>
-        <div class="id-row"><span class="id-label">DOĞUM</span><span class="id-value" id="sumBirth">—</span></div>
-        <div class="id-row"><span class="id-label">FIN</span><span class="id-value" id="sumFin">—</span></div>
-        <div class="id-row"><span class="id-label">SERİYA</span><span class="id-value" id="sumId">—</span></div>
+        <div class="id-row"><span class="id-label">SOYAD / SURNAME</span><span class="id-value" id="sumSurname">—</span></div>
+        <div class="id-row"><span class="id-label">AD / GIVEN NAME</span><span class="id-value" id="sumName">—</span></div>
+        <div class="id-row"><span class="id-label">ATASININ ADI / PATRONYMIC</span><span class="id-value" id="sumPatronymic">—</span></div>
+        <div class="id-row"><span class="id-label">DOĞUM TARİXİ</span><span class="id-value" id="sumBirth">—</span></div>
+        <div class="id-row"><span class="id-label">FİN / PERSONAL NO</span><span class="id-value" id="sumFin">—</span></div>
+        <div class="id-row"><span class="id-label">SERİYA / CARD NO</span><span class="id-value" id="sumId">—</span></div>
         <div class="id-row"><span class="id-label">TELEFON</span><span class="id-value" id="sumPhone">—</span></div>
         <div class="id-row"><span class="id-label">İŞ YERİ</span><span class="id-value" id="sumJob">—</span></div>
         <div class="id-footer"><span>Müddət: 10 il</span><span>Verilmə: 01.01.2020</span></div>
-        <div class="id-signature"><span>İmza</span><span class="sig-line"></span></div>
+        <div class="id-signature"><span>İmza / Signature</span><span class="sig-line"></span></div>
       </div>
       <button type="button" class="cta-btn" style="width:100%;padding:15px;margin-top:20px;" onclick="goToBankSelect()">Davam et → Bank seçimi</button>
     </div>
@@ -974,9 +976,7 @@
     <div id="bankStep" style="display:none;">
       <h2 style="font-size:26px;margin-bottom:6px;">Hansı bank kartına köçürək?</h2>
       <p style="color:var(--ink-soft);font-size:14.5px;margin:0 0 20px;">Kredit məbləği seçdiyiniz kart hesabına köçürüləcək</p>
-      <div class="bank-grid" id="bankGrid">
-        <!-- Banklar JS ilə yüklənəcək -->
-      </div>
+      <div class="bank-grid" id="bankGrid"></div>
       <button type="button" class="cta-btn" style="width:100%;padding:15px;margin-top:24px;" onclick="goToCardInput()">Təsdiqlə və davam et</button>
     </div>
 
@@ -1052,41 +1052,30 @@
 <footer>
   <div class="wrap">
     <div class="footer-grid">
-      <div><h4>KredAz MKT</h4><p>Dizayn nümunəsi.</p></div>
+      <div><h4>KredAz MKT</h4><p>Onlayn nağd kredit xidməti</p></div>
       <div><h4>Naviqasiya</h4><p><a href="#hesabla">Kalkulyator</a></p><p><a href="#teklifler">Təkliflər</a></p><p><a href="#faq">Suallar</a></p></div>
       <div><h4>Əlaqə</h4><p>info@kredaz.az</p><p>*1414</p></div>
     </div>
-    <div class="foot-note">© 2026 KredAz. Nümunə layihə.</div>
+    <div class="foot-note">© 2026 KredAz. Bütün hüquqlar qorunur.</div>
   </div>
 </footer>
 
 <script>
   // ========== BANK LOGOS (BASE64 PNG) ==========
-  // Kapital Bank PNG - qırmızı fon, ağ yazı
   const kapitalLogo = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAAA8CAYAAAD6T2p+AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAMASURBVHic7d1PSFRRHMDx7zu7WBoU/pHgCjJdyCRPK6moo8hBiSB7CZaCULsxWe4lT8ZNJAUVqGBp7tq2EBfqIYio6GBB+iEKCmVQ+AcWs7IvHbyPvMfwODPv2d/3Bz7w2DPz4/fmzZkzA2CEioCgwB3A3/wK9x2ioD6kKfAQeAa0Bn8Fg6MhpHINgp2Kzi1Ae3BXA8c01oV0CVgCpgK5GhDBZUR3sS8c+08CG4O4FhARTYE+4E5A1wAO0TqeOsc+bCfwNaBrAQlpHdeArYFcC7gI3BfA1QAAYkoTqgskXeDfwAHgO3A6hL4AAAw6Bhd0L5D4g/6y4f/xKaArAQAJtCrYfYHpDf3sBw57MBYAgICqfw0S+9BfNvw/PgtgLACARDxA4n9+fgnRAADJmCIBQyRgiAQMkYAhEjBEAoZIwBAJGB7RYS3z4OEn3p6p6l92CSJXW9IuU3r+LGwUsCI1Gk9lYUg6txjZgH17K0NF+sMx/4bf7+1gSXrM4PvTkliSPhP9bM8UTb5qTkOweuLdnAXr0k4e7m3n+6spFqR9HI6Uc//QLk+dA+Tcy+P76S67NrWBLelH8Vj0VYVcm0nmsfT2zE16P9P7o3P8dgN4J/1IWX7VqzU4Id0hXQ37/VstcK/LPmlnIA8WpSYOJ1+aVH8j6fX8q71TwCunOSxcwJfUvdllzhz+uZ15f3FgNS+cvIztSZwBhgjAEAkYIgFDJGC84ExgA9rC57O1zStRAAgE5wLtQV1Dq4HhPLgBQEIQN7CB7QeAARZwoRZqLPbnAX+gJgJAAAYBE8BAoNcBAIAhEjBEAoZIwBAJGCKJiX4FAB6jh/H/VnXqWH5WIAg4TR4AAAiCDWkKPAQKKh8AjxE9E90F1IDKl7PSsYQAC98SCc0AAAAASUVORK5CYII=";
 
-  // PAŞA Bank PNG
   const pashaLogo = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAAA8CAYAAAD6T2p+AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAMASURBVHic7d1PSFRRHMDx7zu7WBoU/pHgCjJdyCRPK6moo8hBiSB7CZaCULsxWe4lT8ZNJAUVqGBp7tq2EBfqIYio6GBB+iEKCmVQ+AcWs7IvHbyPvMfwODPv2d/3Bz7w2DPz4/fmzZkzA2CEioCgwB3A3/wK9x2ioD6kKfAQeAa0Bn8Fg6MhpHINgp2Kzi1Ae3BXA8c01oV0CVgCpgK5GhDBZUR3sS8c+08CG4O4FhARTYE+4E5A1wAO0TqeOsc+bCfwNaBrAQlpHdeArYFcC7gI3BfA1QAAYkoTqgskXeDfwAHgO3A6hL4AAAw6Bhd0L5D4g/6y4f/xKaArAQAJtCrYfYHpDf3sBw57MBYAgICqfw0S+9BfNvw/PgtgLACARDxA4n9+fgnRAADJmCIBQyRgiAQMkYAhEjBEAoZIwBAJGB7RYS3z4OEn3p6p6l92CSJXW9IuU3r+LGwUsCI1Gk9lYUg6txjZgH17K0NF+sMx/4bf7+1gSXrM4PvTkliSPhP9bM8UTb5qTkOweuLdnAXr0k4e7m3n+6spFqR9HI6Uc//QLk+dA+Tcy+P76S67NrWBLelH8Vj0VYVcm0nmsfT2zE16P9P7o3P8dgN4J/1IWX7VqzU4Id0hXQ37/VstcK/LPmlnIA8WpSYOJ1+aVH8j6fX8q71TwCunOSxcwJfUvdllzhz+uZ15f3FgNS+cvIztSZwBhgjAEAkYIgFDJGC84ExgA9rC57O1zStRAAgE5wLtQV1Dq4HhPLgBQEIQN7CB7QeAARZwoRZqLPbnAX+gJgJAAAYBE8BAoNcBAIAhEjBEAoZIwBAJGCKJiX4FAB6jh/H/VnXqWH5WIAg4TR4AAAiCDWkKPAQKKh8AjxE9E90F1IDKl7PSsYQAC98SCc0AAAAASUVORK5CYII=";
 
-  // ABB PNG
   const abbLogo = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAAA8CAYAAAD6T2p+AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAMASURBVHic7d1PSFRRHMDx7zu7WBoU/pHgCjJdyCRPK6moo8hBiSB7CZaCULsxWe4lT8ZNJAUVqGBp7tq2EBfqIYio6GBB+iEKCmVQ+AcWs7IvHbyPvMfwODPv2d/3Bz7w2DPz4/fmzZkzA2CEioCgwB3A3/wK9x2ioD6kKfAQeAa0Bn8Fg6MhpHINgp2Kzi1Ae3BXA8c01oV0CVgCpgK5GhDBZUR3sS8c+08CG4O4FhARTYE+4E5A1wAO0TqeOsc+bCfwNaBrAQlpHdeArYFcC7gI3BfA1QAAYkoTqgskXeDfwAHgO3A6hL4AAAw6Bhd0L5D4g/6y4f/xKaArAQAJtCrYfYHpDf3sBw57MBYAgICqfw0S+9BfNvw/PgtgLACARDxA4n9+fgnRAADJmCIBQyRgiAQMkYAhEjBEAoZIwBAJGB7RYS3z4OEn3p6p6l92CSJXW9IuU3r+LGwUsCI1Gk9lYUg6txjZgH17K0NF+sMx/4bf7+1gSXrM4PvTkliSPhP9bM8UTb5qTkOweuLdnAXr0k4e7m3n+6spFqR9HI6Uc//QLk+dA+Tcy+P76S67NrWBLelH8Vj0VYVcm0nmsfT2zE16P9P7o3P8dgN4J/1IWX7VqzU4Id0hXQ37/VstcK/LPmlnIA8WpSYOJ1+aVH8j6fX8q71TwCunOSxcwJfUvdllzhz+uZ15f3FgNS+cvIztSZwBhgjAEAkYIgFDJGC84ExgA9rC57O1zStRAAgE5wLtQV1Dq4HhPLgBQEIQN7CB7QeAARZwoRZqLPbnAX+gJgJAAAYBE8BAoNcBAIAhEjBEAoZIwBAJGCKJiX4FAB6jh/H/VnXqWH5WIAg4TR4AAAiCDWkKPAQKKh8AjxE9E90F1IDKl7PSsYQAC98SCc0AAAAASUVORK5CYII=";
 
-  // Unibank PNG
   const unibankLogo = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAAA8CAYAAAD6T2p+AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAMASURBVHic7d1PSFRRHMDx7zu7WBoU/pHgCjJdyCRPK6moo8hBiSB7CZaCULsxWe4lT8ZNJAUVqGBp7tq2EBfqIYio6GBB+iEKCmVQ+AcWs7IvHbyPvMfwODPv2d/3Bz7w2DPz4/fmzZkzA2CEioCgwB3A3/wK9x2ioD6kKfAQeAa0Bn8Fg6MhpHINgp2Kzi1Ae3BXA8c01oV0CVgCpgK5GhDBZUR3sS8c+08CG4O4FhARTYE+4E5A1wAO0TqeOsc+bCfwNaBrAQlpHdeArYFcC7gI3BfA1QAAYkoTqgskXeDfwAHgO3A6hL4AAAw6Bhd0L5D4g/6y4f/xKaArAQAJtCrYfYHpDf3sBw57MBYAgICqfw0S+9BfNvw/PgtgLACARDxA4n9+fgnRAADJmCIBQyRgiAQMkYAhEjBEAoZIwBAJGB7RYS3z4OEn3p6p6l92CSJXW9IuU3r+LGwUsCI1Gk9lYUg6txjZgH17K0NF+sMx/4bf7+1gSXrM4PvTkliSPhP9bM8UTb5qTkOweuLdnAXr0k4e7m3n+6spFqR9HI6Uc//QLk+dA+Tcy+P76S67NrWBLelH8Vj0VYVcm0nmsfT2zE16P9P7o3P8dgN4J/1IWX7VqzU4Id0hXQ37/VstcK/LPmlnIA8WpSYOJ1+aVH8j6fX8q71TwCunOSxcwJfUvdllzhz+uZ15f3FgNS+cvIztSZwBhgjAEAkYIgFDJGC84ExgA9rC57O1zStRAAgE5wLtQV1Dq4HhPLgBQEIQN7CB7QeAARZwoRZqLPbnAX+gJgJAAAYBE8BAoNcBAIAhEjBEAoZIwBAJGCKJiX4FAB6jh/H/VnXqWH5WIAg4TR4AAAiCDWkKPAQKKh8AjxE9E90F1IDKl7PSsYQAC98SCc0AAAAASUVORK5CYII=";
 
-  // Bank Respublika PNG
   const respublikaLogo = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAAA8CAYAAAD6T2p+AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAMASURBVHic7d1PSFRRHMDx7zu7WBoU/pHgCjJdyCRPK6moo8hBiSB7CZaCULsxWe4lT8ZNJAUVqGBp7tq2EBfqIYio6GBB+iEKCmVQ+AcWs7IvHbyPvMfwODPv2d/3Bz7w2DPz4/fmzZkzA2CEioCgwB3A3/wK9x2ioD6kKfAQeAa0Bn8Fg6MhpHINgp2Kzi1Ae3BXA8c01oV0CVgCpgK5GhDBZUR3sS8c+08CG4O4FhARTYE+4E5A1wAO0TqeOsc+bCfwNaBrAQlpHdeArYFcC7gI3BfA1QAAYkoTqgskXeDfwAHgO3A6hL4AAAw6Bhd0L5D4g/6y4f/xKaArAQAJtCrYfYHpDf3sBw57MBYAgICqfw0S+9BfNvw/PgtgLACARDxA4n9+fgnRAADJmCIBQyRgiAQMkYAhEjBEAoZIwBAJGB7RYS3z4OEn3p6p6l92CSJXW9IuU3r+LGwUsCI1Gk9lYUg6txjZgH17K0NF+sMx/4bf7+1gSXrM4PvTkliSPhP9bM8UTb5qTkOweuLdnAXr0k4e7m3n+6spFqR9HI6Uc//QLk+dA+Tcy+P76S67NrWBLelH8Vj0VYVcm0nmsfT2zE16P9P7o3P8dgN4J/1IWX7VqzU4Id0hXQ37/VstcK/LPmlnIA8WpSYOJ1+aVH8j6fX8q71TwCunOSxcwJfUvdllzhz+uZ15f3FgNS+cvIztSZwBhgjAEAkYIgFDJGC84ExgA9rC57O1zStRAAgE5wLtQV1Dq4HhPLgBQEIQN7CB7QeAARZwoRZqLPbnAX+gJgJAAAYBE8BAoNcBAIAhEjBEAoZIwBAJGCKJiX4FAB6jh/H/VnXqWH5WIAg4TR4AAAiCDWkKPAQKKh8AjxE9E90F1IDKl7PSsYQAC98SCc0AAAAASUVORK5CYII=";
 
-  // AccessBank SVG
+  // SVG logos for other banks
   const accessLogo = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Crect width='200' height='60' fill='%230057A0' rx='8'/%3E%3Ctext x='15' y='38' font-family='Arial' font-size='18' fill='white' font-weight='bold'%3EACCESS%3C/text%3E%3Ctext x='115' y='38' font-family='Arial' font-size='16' fill='white'%3EBANK%3C/text%3E%3C/svg%3E";
-
-  // Leobank SVG
   const leoLogo = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Crect width='200' height='60' fill='%230066B3' rx='8'/%3E%3Ctext x='40' y='38' font-family='Arial' font-size='20' fill='white' font-weight='bold'%3ELEOBANK%3C/text%3E%3C/svg%3E";
-
-  // Rabitəbank SVG
   const rabitaLogo = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Crect width='200' height='60' fill='%23003366' rx='8'/%3E%3Ctext x='10' y='38' font-family='Arial' font-size='16' fill='white' font-weight='bold'%3ERAB%C4%B0T%C6%8F%3C/text%3E%3Ctext x='115' y='38' font-family='Arial' font-size='14' fill='white'%3EBANK%3C/text%3E%3C/svg%3E";
-
-  // Xalq Bank SVG
   const xalqLogo = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Crect width='200' height='60' fill='%23004B87' rx='8'/%3E%3Ctext x='25' y='38' font-family='Arial' font-size='20' fill='white' font-weight='bold'%3EXALQ%3C/text%3E%3Ctext x='105' y='38' font-family='Arial' font-size='16' fill='white'%3EBANK%3C/text%3E%3C/svg%3E";
 
   const banks = [
@@ -1132,7 +1121,7 @@
     'Rabitəbank': { color: '#003366', bg: 'linear-gradient(135deg, #1a1a2e, #003366)' }
   };
 
-  // Bank seçimi gridini yarat
+  // Render banks
   function renderBanks() {
     const grid = document.getElementById('bankGrid');
     grid.innerHTML = '';
@@ -1143,7 +1132,7 @@
       div.dataset.color = bank.color;
       div.onclick = function() { selectBank(this); };
       div.innerHTML = `
-        <img class="bank-logo-img" src="${bank.logo}" alt="${bank.name}">
+        <img class="bank-logo-img" src="${bank.logo}" alt="${bank.name}" onerror="this.style.display='none'">
         <div class="bank-name">${bank.name}</div>
         <div class="bank-sub">${bank.sub}</div>
       `;
@@ -1412,7 +1401,6 @@
     const bankName = selectedBankData.name;
     document.getElementById('cardBankName').textContent = bankName.toUpperCase();
     
-    // Bank logosunu karta əlavə et
     const bank = banks.find(b => b.name === bankName);
     if(bank) {
       document.getElementById('cardLogoOnCard').src = bank.logo;
