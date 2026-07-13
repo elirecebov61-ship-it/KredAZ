@@ -62,26 +62,26 @@
   .logo{
     display:flex;
     align-items:center;
-    gap:8px;
+    gap:0;
     font-family:'Fraunces',serif;
     font-weight:700;
-    font-size:24px;
+    font-size:26px;
   }
   .logo .logo-icon{
-    width:40px;
-    height:40px;
+    width:38px;
+    height:38px;
     background:linear-gradient(135deg, #0B3A34, #155C51);
     border-radius:10px;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:18px;
+    font-size:17px;
     color:var(--white);
     font-weight:800;
+    margin-right:6px;
   }
   .logo .kredit{color:#155C51;}
   .logo .az{color:#AD7F3F;}
-  .logo span{color:var(--teal-mid);}
   
   nav ul{list-style:none;display:flex;gap:28px;margin:0;padding:0;font-size:14.5px;font-weight:600;}
   nav ul a{text-decoration:none;opacity:0.8;transition:opacity .2s;}
@@ -1824,7 +1824,7 @@ document.getElementById('idnum').addEventListener('input', function(){
   updateIDPreview();
 });
 
-// Telefon maskası - maksimum 10 rəqəm
+// Telefon maskası - maksimum 10 rəqəm (0501234567)
 document.getElementById('phone').addEventListener('input', function(){
   let digits = this.value.replace(/\D/g,'').slice(0,10);
   let out = '';
@@ -1840,4 +1840,4 @@ document.getElementById('checkFin').addEventListener('input', function(){
 });
 </script>
 </body>
-          </html>
+      </html>
